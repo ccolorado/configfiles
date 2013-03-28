@@ -1,0 +1,5 @@
+#!/bin/bash
+dirname $BASH_SOURCE;
+#Determinae where the files should be linked from 
+#Determinate where the files should be linked to 
+#Batch link everything
