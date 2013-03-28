@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #Simple script that batch link config files form this repository 
 #their usage location
 STARTING_DIR=$(pwd)
