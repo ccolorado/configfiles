@@ -1,5 +1,26 @@
 #!/bin/bash
-dirname $BASH_SOURCE;
-#Determinae where the files should be linked from 
-#Determinate where the files should be linked to 
+#Simple script that batch link config files form this repository 
+#their usage location
+STARTING_DIR=$(pwd)
+ORIGIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
+cd $ORIGIN_DIR
+ORIGIN_DIR=$(pwd)
+DESTINY_DIR=~
+cd $STARTING_DIR
+
 #Batch link everything
+FILES=$(find $ORIGIN_DIR -maxdepth 1 \( ! -iname ".*" \) );
+
+for f in $FILES
+do
+    filename=$(basename $f)
+    target_filename=$DESTINY_DIR"/."$filename
+
+    if [ ! -f $target_filename ] && [ ! -d $target_filename ];
+    then
+        ln -sv $f $target_filename 
+        #echo "ln -sv $f $target_filename"
+    fi
+
+done
+
