@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 #Simple script that batch link config files form this repository 
 #their usage location
+
+#   TODO
+#   Add  arguments help, source/source destination
+
 STARTING_DIR=$(pwd)
 ORIGIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 cd $ORIGIN_DIR
@@ -15,11 +19,15 @@ for f in $FILES
 do
     filename=$(basename $f)
     target_filename=$DESTINY_DIR"/."$filename
+    
+    if [ -h $target_filename ];
+    then
+           rm $target_filename;
+    fi
 
     if [ ! -f $target_filename ] && [ ! -d $target_filename ];
     then
         ln -sv $f $target_filename 
-        #echo "ln -sv $f $target_filename"
     fi
 
 done
