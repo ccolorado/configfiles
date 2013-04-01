@@ -46,6 +46,9 @@ highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
 " sudo omission fix
 cmap w!! w !sudo tee >/dev/null %
 
+" Highlight empty whitespaces at the right
+highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
+match WhiteSpaceEOL /\s\+$/
 
 " Find cursor:  Highlight current posstion
 hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -56,13 +59,13 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 call pathogen#infect()
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-"========Custom Keystrokes 
+"========Custom Keystrokes
 "==Clear search highlights
 nmap \q :nohlsearch<CR>
 "==Open previous buffer
-nmap <C-e> :e#<CR> 
+nmap <C-e> :e#<CR>
 "===Initiate Ctrl-P
 nmap ; :CtrlPBuffer<CR>
 
-"set ff=dos,unix Change file format to avoid ^M line breaks also 
+"set ff=dos,unix Change file format to avoid ^M line breaks also
 "replacing ^M's :%s/CTRL-v ENTER//g
