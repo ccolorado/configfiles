@@ -6,6 +6,7 @@ set autoread
 set ruler
 set showcmd
 set lazyredraw
+set nocursorline
 " Show matching bracets when text indicator is over them
 set showmatch
 set cursorline
