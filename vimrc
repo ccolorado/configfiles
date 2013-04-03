@@ -1,10 +1,8 @@
-" ======================
-" hacosta recepies https://github.com/hacosta/configfiles/blob/master/vimrc
-" Maintainer:	Héctor Acosta <hector.acosta@gazzang.com>
-
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+""" ======================
+""" Use Vim settings, rather then Vi settings (much better!).
+""" This must be first, because it changes other options as a side effect.
 set nocompatible
+
 
 " Search options
 
