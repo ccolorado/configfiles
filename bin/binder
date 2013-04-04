@@ -20,7 +20,7 @@ for f in $FILES
 do
     filename=$(basename $f)
     target_filename=$DESTINY_DIR"/."$filename
-    
+
     if [ -h $target_filename ];
     then
            rm $target_filename;
@@ -28,7 +28,7 @@ do
 
     if [ ! -f $target_filename ] && [ ! -d $target_filename ];
     then
-        ln -sv $f $target_filename 
+        ln -sv $f $target_filename
     fi
 
 done
