@@ -85,12 +85,12 @@ call pathogen#infect()
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "========Custom Keystrokes
-"==Clear search highlights
-nmap \q :nohlsearch<CR>
-"==Open previous buffer
-nmap <C-e> :e#<CR>
+
 "===Initiate Ctrl-P
 nmap ; :CtrlPBuffer<CR>
+
+"==Clear search highlights
+nmap \q :nohlsearch<CR>
 
 "set ff=dos,unix Change file format to avoid ^M line breaks also
 "replacing ^M's :%s/CTRL-v ENTER//g
