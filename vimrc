@@ -7,14 +7,21 @@ set ruler
 set showcmd
 set lazyredraw
 set nocursorline
+
 " Show matching bracets when text indicator is over them
 set showmatch
-set cursorline
 
-" Backup and restoring 
-set backupdir=./.backup,~/.vim/backup_files,/tmp
+"=========Backup and restoring 
 set dir=./.backup,~/.vim/backup_files,/tmp
-
+silent execute '!mkdir -p $HOME/.vim/tmp/{backup,swap,view,undo}'
+set backupdir=$HOME/.vim/tmp/backup/
+set backup
+set directory=$HOME/.vim/tmp/swap/
+set viewdir=$HOME/.vim/tmp/view/
+set undodir=$HOME/.vim/tmp/undo/
+" store undo files, undo edits after deleting a buffer
+set undofile
+set viminfo='50,n$HOME/.vim/tmp/viminfo
 
 scriptencoding utf-8
 set termencoding=utf-8
