@@ -1,0 +1,3 @@
+Add submodules (https://git.wiki.kernel.org/index.php/GitSubmoduleTutorial)
+ctrlp https://github.com/kien/ctrlp.vim
+syntastic https://github.com/scrooloose/syntastic
