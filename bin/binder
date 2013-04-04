@@ -3,12 +3,13 @@
 #their usage location
 
 #   TODO
-#   Add  arguments help, source/source destination
+#   Add  arguments help, source or source / destination
 
 STARTING_DIR=$(pwd)
 ORIGIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 cd $ORIGIN_DIR
-ORIGIN_DIR=$(pwd)
+ORIGIN_DIR=$(pwd)"/home/"
+#ORIGIN_DIR=$(pwd)
 DESTINY_DIR=~
 cd $STARTING_DIR
 
