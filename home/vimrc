@@ -41,10 +41,6 @@ set smartcase
 set hlsearch
 
 set nu
-
-
-
-
 if has("syntax")
     syntax on
 endif
@@ -58,14 +54,6 @@ set shiftwidth=4
 set expandtab
 set autoindent
 
-" latex shinanningas
-
-filetype plugin indent on
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
-
-highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
-
 " sudo omission fix
 cmap w!! w !sudo tee >/dev/null %
 
@@ -74,8 +62,6 @@ highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
 match WhiteSpaceEOL /\s\+$/
 
 " Find cursor:  Highlight current posstion
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 " Reload vimrc
 map <leader>e :e! ~/.vimrc<cr>
