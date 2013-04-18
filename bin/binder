@@ -10,8 +10,7 @@ ORIGIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 cd $ORIGIN_DIR
 ORIGIN_DIR=$(pwd)"/home/"
 #ORIGIN_DIR=$(pwd)
-#DESTINY_DIR=~
-DESTINY_DIR="/tmp/test"
+DESTINY_DIR=~
 cd $STARTING_DIR
 
 #Batch link everything
@@ -22,7 +21,7 @@ do
     filename=$(basename $f)
     target_filename=$DESTINY_DIR"/."$filename
     extra_filename=$DESTINY_DIR"/.extra_"$filename
-    
+
     if [ -f $target_filename ] && [ ! -h $target_filename ];
     then
            echo "Creating $extra_filename"
