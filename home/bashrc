@@ -41,6 +41,12 @@ export PS1='[$?]\033[0;36m[\u@'$HC'\h\033[0;36m \W]\$ \[\033[0m\]'
 
 alias ls='ls --color=auto -p'
 alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
+alias grep="grep --color=auto"
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
+alias svim='sudo vim'
+alias svimdiff='sudo vimdiff'
 
 mkdir -p ~/bin
 export PATH=$PATH":~/bin"
