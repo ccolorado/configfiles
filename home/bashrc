@@ -51,7 +51,7 @@ alias svimdiff='sudo vimdiff'
 mkdir -p ~/bin
 export PATH=$PATH":~/bin"
 # Include host specific bashrc
-if [ ! -f ~/.extra_bashrc ];
+if [ -f ~/.extra_bashrc ];
 then
     source ~/.extra_bashrc
 fi
