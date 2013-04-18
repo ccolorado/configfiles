@@ -1,0 +1,53 @@
+str2color()
+{
+    [ -z "$1" ] && return
+    #'\e[0;30m' # Black - Regular
+    local colors=(
+    '\e[0;31m' \
+        '\e[0;32m' \
+        '\e[0;33m' \
+        '\e[0;34m' \
+        '\e[0;35m' \
+        '\e[0;36m' \
+        '\e[0;37m' \
+        '\e[1;31m' \
+        '\e[1;32m' \
+        '\e[1;33m' \
+        '\e[1;34m' \
+        '\e[1;35m' \
+        '\e[1;36m' \
+        '\e[1;37m' \
+        )
+    local str_len=$(( ${#1} - 1 ))
+    for i in $(seq 0 $str_len); do
+        (( sum=$(printf "%d" "'${1:$i:1}'") + ${#colors[@]} ))
+    done
+    (( random_color = $sum % ${#colors[@]} ))
+    echo -ne ${colors[$random_color]}
+}
+
+export ARCH='\033[1;36mA\033'
+export CENT='\033[1;30mC\033'
+export SUSE='\1;32mS\033'
+export FEDO='\1;34mF\033'
+export GENT='\1;35mg\033'
+export REDH='\1;31mR\033'
+export REDH='\1;31m@\033'
+
+export hostcolor=$(str2color $HOSTNAME)
+export HC=$hostcolor
+export PS1='[$?]\033[0;36m[\u@'$HC'\h\033[0;36m \W]\$ \[\033[0m\]'
+
+#PS1="\n\[\033[35m\]\$(/bin/date)\n\[\033[32m\]\w\n\[\033[1;31m\]\u@\h: \[\033[1;34m\]\$(/usr/bin/tty | /bin/sed -e 's:/dev/::'): \[\033[1;36m\]\$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed 's: ::g') files \[\033[1;33m\]\$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')b\[\033[0m\] -> \[\033[0m\]"
+
+
+alias ls='ls --color=auto -p'
+alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
+
+mkdir -p ~/bin
+export PATH=$PATH":~/bin"
+# Include host specific bashrc
+if [ ! -f ~/.extra_bashrc ];
+then
+    source ~/.extra_bashrc
+fi
