@@ -36,8 +36,12 @@ export DBIN='\1;31m@\033'
 
 export hostcolor=$(str2color $HOSTNAME)
 export HC=$hostcolor
-export PS1='[$?]\033[0;36m[\u@'$HC'\h\033[0;36m \W]\$ \[\033[0m\]'
 
+export PS1='[$?]\033[0;36m[\u@'$HC'\h\033[0;36m \W]\$ \[\033[0m\]'
+if [ "root" = $(whoami) ];
+then
+    export PS1='[$?]\033[1;31m[\u@'$HC'\h\033[1;31m \W]\$ \[\033[0m\]'
+fi;
 
 alias ls='ls --color=auto -p'
 alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
