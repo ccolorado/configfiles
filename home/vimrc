@@ -85,7 +85,8 @@ noremap   <Right>  <NOP>
 
 "=== Initiate Ctrl-P
 nmap ; :CtrlPBuffer<CR>
-
+"=== Initiate NerdTree
+nmap \e :NERDTreeToggle<CR>
 "== Clear search highlights
 nmap \q :nohlsearch<CR>
 "== Switch to next buffer
@@ -97,3 +98,6 @@ nmap <C-e> :e#<CR>
 imap jj <Esc>
 imap ii <Esc>
 
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+      set t_Co=256
+endif
