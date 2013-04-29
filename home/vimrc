@@ -47,11 +47,18 @@ endif
 
 
 filetype plugin indent on
-"  Spaces TAB
-set smartindent
-set tabstop=4
-set shiftwidth=4
+" Indentation 
 set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+"  Switching indentation schemas
+nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+
+set smartindent
 set autoindent
 
 " sudo omission fix
