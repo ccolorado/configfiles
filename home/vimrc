@@ -108,4 +108,7 @@ imap ii <Esc>
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
       set t_Co=256
 endif
-set colorcolumn=80
+
+if version >= 703
+ set colorcolumn=80
+endif
