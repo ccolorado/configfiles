@@ -77,6 +77,9 @@ alias mv='mv -v'
 alias rm='rm -v'
 alias svim='sudo vim'
 alias svimdiff='sudo vimdiff'
+alias mysql='mysql --auto-rehash'
+alias sshmount='sshfs -o reconnect -o follow_symlinks'
+
 
 mkdir -p ~/bin
 export PATH=$PATH":~/bin"
