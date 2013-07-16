@@ -112,3 +112,5 @@ endif
 if version >= 703
  set colorcolumn=80
 endif
+
+let g:Powerline_symbols = 'fancy'
