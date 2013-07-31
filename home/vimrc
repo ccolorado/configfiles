@@ -94,6 +94,8 @@ noremap   <Right>  <NOP>
 nmap ; :CtrlPBuffer<CR>
 "=== Initiate NerdTree
 nmap \e :NERDTreeToggle<CR>
+let g:NERDTreeDirArrows=0
+let NERDTreeShowHidden=1
 "== Clear search highlights
 nmap \q :nohlsearch<CR>
 "== Switch to next buffer
