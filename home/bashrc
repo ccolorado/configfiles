@@ -79,6 +79,7 @@ alias svim='sudo vim'
 alias svimdiff='sudo vimdiff'
 alias mysql='mysql --auto-rehash'
 alias sshmount='sshfs -o reconnect -o follow_symlinks'
+alias tmux='tmux -2'
 
 
 mkdir -p ~/bin
