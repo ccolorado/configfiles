@@ -89,3 +89,4 @@ if [ -f ~/.extra_bashrc ];
 then
     source ~/.extra_bashrc
 fi
+export TERM=xterm-256color
