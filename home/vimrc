@@ -34,6 +34,17 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Search options
+" Blinks underscore of search result
+function! HLNext (blinktime)
+  set invcursorline
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  set invcursorline
+  redraw
+endfunction
+
+nnoremap <silent> n n:call HLNext(0.4)<cr>
+nnoremap <silent> N N:call HLNext(0.4)<cr>
 
 set incsearch
 set ignorecase
@@ -65,11 +76,11 @@ set autoindent
 cmap w!! w !sudo tee >/dev/null %
 
 " Highlight empty whitespaces at the right
-highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
-match WhiteSpaceEOL /\s\+$/
-
-" Find cursor:  Highlight current posstion
-nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+"highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
+"match WhiteSpaceEOL /\s\+$/
+"   Testing new hightligh for white spaces
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
 " Reload vimrc
 map <leader>e :e! ~/.vimrc<cr>
 
@@ -89,6 +100,10 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
+" I never want regular Visual mode
+" I always want Visual Block mode
+nnoremap  v  <C-V>
+nnoremap  <C-V>  v
 
 "=== Initiate Ctrl-P
 nmap ; :CtrlPBuffer<CR>
@@ -112,7 +127,9 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gno
 endif
 
 if version >= 703
- set colorcolumn=80
+ "set colorcolumn=80
+ highlight ColorColumn ctermbg=magenta
+ call matchadd('ColorColumn', '\%81v', 100)
 endif
 
 let g:Powerline_symbols = 'fancy'
