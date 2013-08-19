@@ -80,7 +80,9 @@ alias svimdiff='sudo vimdiff'
 alias mysql='mysql --auto-rehash'
 alias sshmount='sshfs -o reconnect -o follow_symlinks'
 alias tmux='tmux -2'
-
+alias coffeeshop='mplayer -nocache http://coffitivity.com/other/cleanupcut.mp3'
+alias reboot='sudo systemctl reboot'
+alias shutdown='sudo systemctl poweroff'
 
 mkdir -p ~/bin
 export PATH=$PATH":~/bin"
