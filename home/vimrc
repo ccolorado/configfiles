@@ -8,7 +8,7 @@ set showcmd
 set lazyredraw
 set nocursorline
 
-" Show matching bracets when text indicator is over them
+" Show matching brackets when text indicator is over them
 set showmatch
 
 "=========Backup and restoring 
@@ -27,7 +27,7 @@ scriptencoding utf-8
 set termencoding=utf-8
 set encoding=utf-8
 set backspace=indent,eol,start
-" show the cursor postion all the time
+" show the cursor position all the time
 
 
 let mapleader = ","
@@ -38,7 +38,7 @@ let g:mapleader = ","
 function! HLNext (blinktime)
   set invcursorline
   redraw
-  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  exec 'sleep ' . float2nr(a:blinktime * 250) . 'm'
   set invcursorline
   redraw
 endfunction
@@ -63,7 +63,7 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-"  Switching indentation schemas
+"  Switching indentation schema
 nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
 nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
@@ -75,10 +75,10 @@ set autoindent
 " sudo omission fix
 cmap w!! w !sudo tee >/dev/null %
 
-" Highlight empty whitespaces at the right
+" Highlight empty white spaces at the right
 "highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
 "match WhiteSpaceEOL /\s\+$/
-"   Testing new hightligh for white spaces
+"   Testing new highlight for white spaces
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 " Reload vimrc
@@ -105,12 +105,26 @@ noremap   <Right>  <NOP>
 nnoremap  v  <C-V>
 nnoremap  <C-V>  v
 
-"=== Initiate Ctrl-P
+"========Custom Keystrokes
+"== Ctrl-P
+" Initiate Ctrl-P
 nmap ; :CtrlPBuffer<CR>
-"=== Initiate NerdTree
-nmap \e :NERDTreeToggle<CR>
+
+"== NerdTree
+" Initiate NerdTree
+nmap f :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
+" AutoClose NerdTree after file is open
+let NERDTreeQuitOnOpen = 1
+
+"== Powrline
+let g:Powerline_symbols = 'fancy'
+" FIXES The statusline is hidden/only appears in split windows!
+set laststatus=2
+
+
+
 "== Clear search highlights
 nmap \q :nohlsearch<CR>
 "== Switch to next buffer
@@ -122,15 +136,14 @@ nmap <C-e> :e#<CR>
 imap jj <Esc>
 imap ii <Esc>
 
+"Enable spell check and text with on git commits by default
+autocmd Filetype gitcommit setlocal spell textwidth=72
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
       set t_Co=256
 endif
 
 if version >= 703
- "set colorcolumn=80
  highlight ColorColumn ctermbg=magenta
  call matchadd('ColorColumn', '\%81v', 100)
 endif
 
-let g:Powerline_symbols = 'fancy'
-set laststatus=2
