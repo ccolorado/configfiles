@@ -112,7 +112,7 @@ nmap ; :CtrlPBuffer<CR>
 
 "== NerdTree
 " Initiate NerdTree
-nmap f :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
 " AutoClose NerdTree after file is open
