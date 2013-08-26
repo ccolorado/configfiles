@@ -120,10 +120,10 @@ let NERDTreeShowHidden=1
 " AutoClose NerdTree after file is open
 let NERDTreeQuitOnOpen = 1
 
-"== Powrline
-let g:Powerline_symbols = 'fancy'
-" FIXES The statusline is hidden/only appears in split windows!
-set laststatus=2
+"== Powerline
+"let g:Powerline_symbols = 'fancy'
+"" FIXES The statusline is hidden/only appears in split windows!
+"set laststatus=2
 
 "== taglist
 " First check if ctags is installed
