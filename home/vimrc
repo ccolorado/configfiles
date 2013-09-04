@@ -38,6 +38,10 @@ set ruler
 let mapleader = ","
 let g:mapleader = ","
 
+" tab completion for comands and hopefully filenames
+set wildmode=longest,list,full
+set wildmenu
+
 " Search options
 " Blinks underscore of search result
 function! HLNext (blinktime)
@@ -149,6 +153,9 @@ imap ii <Esc>
 
 "Enable spell check and text with on git commits by default
 autocmd Filetype gitcommit setlocal spell textwidth=72
+"Enable spell check and text with on mediawiki files by default
+autocmd Filetype mediawiki setlocal spell textwidth=72
+
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
       set t_Co=256
 endif
