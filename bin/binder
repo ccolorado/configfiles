@@ -19,8 +19,8 @@ FILES=$(find $ORIGIN_DIR -maxdepth 1 \( ! -iname "home" \) );
 for f in $FILES
 do
     filename=$(basename $f)
-    target_filename=$DESTINY_DIR"/."$filename
-    extra_filename=$DESTINY_DIR"/.extra_"$filename
+    target_filename=$DESTINY_DIR"/"$filename
+    extra_filename=$DESTINY_DIR"/.extra_"${filename:1}
 
     if [ -f $target_filename ] && [ ! -h $target_filename ];
     then
