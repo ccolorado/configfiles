@@ -93,7 +93,7 @@ cmap w!! w !sudo tee >/dev/null %
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 " Reload vimrc
-map <leader>e :e! ~/.vimrc<cr>
+map <leader>e :so $MYVIMRC<CR>
 
 "========Plug-ins
 call pathogen#infect()
@@ -112,6 +112,11 @@ noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
 "========Custom Keystrokes
+" Arrow window navigation
+nmap <silent> <C-Up> :wincmd k<CR>
+nmap <silent> <C-Down> :wincmd j<CR>
+nmap <silent> <C-Left> :wincmd h<CR>
+nmap <silent> <C-Right> :wincmd l<CR>
 "== Ctrl-P
 " Initiate Ctrl-P
 nmap ; :CtrlPBuffer<CR>
@@ -148,6 +153,8 @@ if filereadable("/usr/bin/ctags")
   map <F4> :TlistToggle<cr>
   " Maps building tags to F10 for the current directory
   map <F10> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+  " Open tag file on vertical split and move it to the right split
+  nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR> <C-W>R<CR>
 endif
 
 "== Clear search highlights
