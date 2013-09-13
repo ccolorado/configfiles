@@ -1,4 +1,4 @@
-""" ======================
+"" ======================
 """ Use Vim settings, rather then Vi settings (much better!).
 """ This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -13,7 +13,7 @@ set nocursorline
 " Show matching brackets when text indicator is over them
 set showmatch
 
-"=========Backup and restoring 
+"=========Backup and restoring
 set dir=./.backup,~/.vim/backup_files,/tmp
 silent execute '!mkdir -p $HOME/.vim/tmp/{backup,swap,view,undo}'
 set backupdir=$HOME/.vim/tmp/backup/
@@ -27,6 +27,8 @@ set viminfo='50,n$HOME/.vim/tmp/viminfo
 
 "Change buffer - without saving
 set hid
+" Don't move cursor to begining of line when switching buffers
+set nostartofline
 
 scriptencoding utf-8
 set termencoding=utf-8
@@ -69,7 +71,7 @@ endif
 
 
 filetype plugin indent on
-" Indentation 
+" Indentation
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -134,7 +136,7 @@ let NERDTreeQuitOnOpen = 1
 set laststatus=2
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
-let g:airline_powerline_fonts=0
+let g:airline_powerline_fonts=1
 
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
@@ -170,6 +172,9 @@ nmap <leader>d :w !diff % -<CR>
 "Alternative Insert Mode exit
 imap jj <Esc>
 imap ii <Esc>
+
+" Toggle between relative and 'absolute' line numbers
+nmap <F2> :exec &rnu==1? "se rnu!" : "se rnu"<CR>
 
 "Enable spell check and text with on git commits by default
 autocmd Filetype gitcommit setlocal spell textwidth=72
