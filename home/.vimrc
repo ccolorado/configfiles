@@ -95,7 +95,7 @@ cmap w!! w !sudo tee >/dev/null %
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 " Reload vimrc
-map <leader>e :so $MYVIMRC<CR>
+map <silent><leader>e :so $MYVIMRC<CR>
 
 "========Plug-ins
 call pathogen#infect()
@@ -119,6 +119,9 @@ nmap <silent> <C-Up> :wincmd k<CR>
 nmap <silent> <C-Down> :wincmd j<CR>
 nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
+
+nmap <Down> gj
+nmap <Up> gk
 "== Ctrl-P
 " Initiate Ctrl-P
 nmap ; :CtrlPBuffer<CR>
@@ -151,6 +154,7 @@ let g:airline_linecolumn_prefix = '⭡'
 if filereadable("/usr/bin/ctags")
   let Tlist_Ctags_Cmd = "/usr/bin/ctags"
   let Tlist_WinWidth = 50
+  let Tlist_Use_Right_Window=1
   " Maps F4 to toggle the ctags widnow
   map <F4> :TlistToggle<cr>
   " Maps building tags to F10 for the current directory
@@ -174,7 +178,7 @@ imap jj <Esc>
 imap ii <Esc>
 
 " Toggle between relative and 'absolute' line numbers
-nmap <F2> :exec &rnu==1? "se rnu!" : "se rnu"<CR>
+nmap <silent><F2> :exec &rnu==1? "se rnu!" : "se rnu"<CR>
 
 "Enable spell check and text with on git commits by default
 autocmd Filetype gitcommit setlocal spell textwidth=72
