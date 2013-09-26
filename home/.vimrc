@@ -178,11 +178,11 @@ imap jj <Esc>
 imap ii <Esc>
 
 " Toggle between relative and 'absolute' line numbers
+" Vim 7.4 doesn't turn line numbers on when disable relative lines
 if version <= 703
   nmap <silent><F2> :exec &rnu==1? "se nu" : "se rnu"<CR>
 else
-  " Vim 7.4 doesn't turn line numbers on when disable relative lines
-  nmap <silent><F2> :exec &rnu==1? "se rnu!" : "se rnu"<CR>j
+  nmap <silent><F2> :exec &rnu==1? "se rnu!" : "se rnu"<CR>
 endif
 
 "Enable spell check and text with on git commits by default
