@@ -198,3 +198,9 @@ if version >= 703
  highlight ColorColumn ctermbg=magenta
  call matchadd('ColorColumn', '\%81v', 100)
 endif
+
+" From https://groups.google.com/forum/#!topic/vim_use/IERXsR4WVFk
+" Fix the difficult-to-read default setting for diff text highlighting.  The
+" bang (!) is required since we are overwriting the DiffText setting. The highlighting
+" for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
+highlight! link DiffText MatchParen
