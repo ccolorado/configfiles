@@ -65,7 +65,7 @@ alias shutdown='sudo systemctl poweroff'
 
 # Host completion for ssh and scp for non archlinux hosts
 # TODO validate 'complete' exists
-if [ "$distro_flag" != "$ARCH_FLAG" ];
+if [ ! -f /etc/arch-release ];
 then
   complete -W  "$(grep '^Host' ~/.ssh/config | awk '{print $2}')" ssh scp
   complete -W  "$(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | grep -v ^# | sort |uniq | grep -v '\[' )" ssh scp
