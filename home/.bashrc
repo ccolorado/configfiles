@@ -45,7 +45,7 @@ export PS1='[$?]'$distro_flag"$PROMPT_USER_COLOR[\u@$HC\h$PROMPT_USER_COLOR \W]$
 if [ "root" = $(whoami) ];
 then
     #export PS1='[$?]\033[1;31m[\u@'$HC'\h\033[1;31m \W]\# \[\033[0m\]'
-    export PS1='[$?]'$distro_flag"$PROMPT_ROOT_COLOR[\u@$HC\h$PROMPT_ROOT_COLOR \W]$CLEAR\$ "
+    export PS1='[$?]'$distro_flag"$PROMPT_ROOT_COLOR[\u@$HC\h$PROMPT_ROOT_COLOR \W]$CLEAR\# "
 fi;
 
 alias ls='ls --color=auto -p'
