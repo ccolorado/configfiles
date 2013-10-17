@@ -1,29 +1,8 @@
 str2color()
 {
     [ -z "$1" ] && return
-    #'\e[0;30m' # Black - Regular
-    local colors=(
-        '\[\033[40;0;31m\]' \
-        '\[\033[40;0;32m\]' \
-        '\[\033[40;0;33m\]' \
-        '\[\033[40;0;34m\]' \
-        '\[\033[40;0;35m\]' \
-        '\[\033[40;0;36m\]' \
-        '\[\033[40;0;37m\]' \
-        '\[\033[40;1;31m\]' \
-        '\[\033[40;1;32m\]' \
-        '\[\033[40;1;33m\]' \
-        '\[\033[40;1;34m\]' \
-        '\[\033[40;1;35m\]' \
-        '\[\033[40;1;36m\]' \
-        '\[\033[40;1;37m\]' \
-        )
-    local str_len=$(( ${#1} - 1 ))
-    for i in $(seq 0 $str_len); do
-        (( sum=$(printf "%d" "'${1:$i:1}'") + ${#colors[@]} ))
-    done
-    (( random_color = $sum % ${#colors[@]} ))
-    echo -ne ${colors[$random_color]}
+    hex=$(echo -n "$1" |md5sum| head -c 2)
+    printf "\e[48;5;0m\e[38;5;%dm" 0x$hex
 }
 
 # Colors and prompts
