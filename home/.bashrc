@@ -67,8 +67,7 @@ alias shutdown='sudo systemctl poweroff'
 # TODO validate 'complete' exists
 if [ ! -f /etc/arch-release ];
 then
-  complete -W  "$(grep '^Host' ~/.ssh/config | awk '{print $2}')" ssh scp
-  complete -W  "$(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | grep -v ^# | sort |uniq | grep -v '\[' )" ssh scp
+  complete -W  "$(echo `grep '^Host' ~/.ssh/config | awk '{print $2}'` `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | grep -v ^# | grep -v '\['`)" ssh scp
 fi
 
 mkdir -p ~/bin
