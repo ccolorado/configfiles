@@ -45,7 +45,7 @@ export PS1='[$?]'$distro_flag"$PROMPT_USER_COLOR[\u@$HC\h$PROMPT_USER_COLOR \W]$
 if [ "root" = $(whoami) ];
 then
     #export PS1='[$?]\033[1;31m[\u@'$HC'\h\033[1;31m \W]\# \[\033[0m\]'
-    export PS1='[$?]'$distro_flag"$PROMPT_ROOT_COLOR[\u@$HC\h$PROMPT_ROOT_COLOR \W]$CLEAR\# "
+    export PS1='[$?]'$distro_flag"$PROMPT_ROOT_COLOR[\u@$HC\h$PROMPT_ROOT_COLOR \W]$CLEAR# "
 fi;
 
 alias ls='ls --color=auto -p'
@@ -59,7 +59,7 @@ alias svimdiff='sudo vimdiff'
 alias mysql='mysql --auto-rehash'
 alias sshmount='sshfs -o reconnect -o follow_symlinks'
 alias tmux='tmux -2'
-alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -loop 0 -shuffle -softvol -quiet'
+alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -shuffle -softvol -quiet  volume=20 -loop 0 '
 alias reboot='sudo systemctl reboot'
 alias shutdown='sudo systemctl poweroff'
 
