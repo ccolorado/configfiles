@@ -114,6 +114,9 @@ noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
 "========Custom Keystrokes
+" Paste Toggle
+set pastetoggle=<f5>
+
 " Arrow window navigation
 nmap <silent> <C-Up> :wincmd k<CR>
 nmap <silent> <C-Down> :wincmd j<CR>
@@ -124,7 +127,7 @@ nmap <Down> gj
 nmap <Up> gk
 "== Ctrl-P
 " Initiate Ctrl-P
-nmap ; :CtrlPBuffer<CR>
+nmap <leader>; :CtrlPBuffer<CR>
 
 "== NerdTree
 " Initiate NerdTree
