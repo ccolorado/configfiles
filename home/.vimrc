@@ -13,6 +13,9 @@ set nocursorline
 " Show matching brackets when text indicator is over them
 set showmatch
 
+" No wrapping text by default
+set nowrap
+
 "=========Backup and restoring
 set dir=./.backup,~/.vim/backup_files,/tmp
 silent execute '!mkdir -p $HOME/.vim/tmp/{backup,swap,view,undo}'
