@@ -4,6 +4,15 @@ str2color()
     hex=$(echo -n "$1" |md5sum| head -c 2)
     printf "\e[48;5;0m\e[38;5;%dm" 0x$hex
 }
+# bash
+# Bypass Ctrl+s default behaivour under vim
+vim()
+{
+    local STTYOPTS="$(stty --save)"
+    stty stop '' -ixoff
+    command vim "$@"
+    stty "$STTYOPTS"
+}
 
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"

@@ -116,6 +116,9 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
+"=== Save file with Ctrl+s
+inoremap <c-s> <Esc>:update<CR>
+
 "========Custom Keystrokes
 " Paste Toggle
 set pastetoggle=<f5>
