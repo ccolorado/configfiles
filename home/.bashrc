@@ -46,7 +46,7 @@ distroPromptFlag()
     echo $distro_flag;
 }
 export hostcolor=$(str2color $HOSTNAME)
-export HC=$hostcolor
+export HC='\[$hostcolor\]'
 export distro_flag=$( distroPromptFlag )
 
 #export PS1='[$?]\033[0;36m[\u@'$HC'\h\033[0;36m \W]\$ \[\033[0m\]'
