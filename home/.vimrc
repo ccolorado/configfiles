@@ -90,6 +90,8 @@ set autoindent
 
 " sudo omission fix
 cmap w!! w !sudo tee >/dev/null %
+" testing alternative to w!! map, as it doesn not always works.
+command W w !sudo tee % > /dev/null
 
 " Highlight empty white spaces at the right
 "highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
