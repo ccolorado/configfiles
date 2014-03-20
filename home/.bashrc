@@ -4,7 +4,7 @@ str2color()
     hex=$(echo -n "$1" |md5sum| head -c 2)
     printf "\e[48;5;0m\e[38;5;%dm" 0x$hex
 }
-# bash
+
 # Bypass Ctrl+s default behaivour under vim
 vim()
 {
@@ -45,17 +45,26 @@ distroPromptFlag()
     fi;
     echo $distro_flag;
 }
+
+# Setting up PS1 value
 export hostcolor=$(str2color $HOSTNAME)
 export HC='\[$hostcolor\]'
 export distro_flag=$( distroPromptFlag )
 
-#export PS1='[$?]\033[0;36m[\u@'$HC'\h\033[0;36m \W]\$ \[\033[0m\]'
-export PS1='[$?]'$distro_flag"$PROMPT_USER_COLOR[\u@$HC\h$PROMPT_USER_COLOR \W]$CLEAR\$ "
+IS_SSH_SESSION=""
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  IS_SSH_SESSION="\[\033[40;1;33m\]!$CLEAR"
+fi;
+
+#   Setting User color and user symbol ( $ for users and # for root)
+_USER_COLOR=$PROMPT_USER_COLOR
+_USER_SYMBL='$'
 if [ "root" = $(whoami) ];
 then
-    #export PS1='[$?]\033[1;31m[\u@'$HC'\h\033[1;31m \W]\# \[\033[0m\]'
-    export PS1='[$?]'$distro_flag"$PROMPT_ROOT_COLOR[\u@$HC\h$PROMPT_ROOT_COLOR \W]$CLEAR# "
+  _USER_COLOR=$PROMPT_ROOT_COLOR
+  _USER_SYMBL='#'
 fi;
+export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]\n$_USER_SYMBL $CLEAR"
 
 alias ls='ls --color=auto -p'
 alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
