@@ -67,7 +67,6 @@ set ignorecase
 set smartcase
 set hlsearch
 
-set nu
 if has("syntax")
     syntax on
 endif
@@ -224,8 +223,7 @@ endif
 " for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
 highlight! link DiffText MatchParen
 
+set nu
 if version >= 702
   set rnu
-else
-  set nu
 endif
