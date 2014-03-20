@@ -177,7 +177,7 @@ if filereadable("/usr/bin/ctags")
   " Maps F4 to toggle the ctags widnow
   map <F4> :TlistToggle<cr>
   " Maps building tags to F10 for the current directory
-  map <leader><F10> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+  map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   " Open tag file on vertical split and move it to the right split
   nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR> <C-W>R<CR>
 endif
