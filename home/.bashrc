@@ -69,9 +69,9 @@ alias mysql='mysql --auto-rehash'
 alias sshmount='sshfs -o reconnect -o follow_symlinks'
 alias tmux='tmux -2'
 alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -shuffle -softvol -quiet  volume=20 -loop 0 '
-alias reboot='sudo systemctl reboot'
-alias shutdown='sudo systemctl poweroff'
 
+command -v systemctl  >/dev/null 2>&1 && alias reboot='sudo systemctl reboot'
+command -v systemctl  >/dev/null 2>&1 && alias shutdown='sudo systemctl poweroff'
 
 # Host completion for ssh and scp for non archlinux hosts
 # TODO validate 'complete' exists
