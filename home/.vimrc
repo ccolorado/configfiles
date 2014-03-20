@@ -223,3 +223,9 @@ endif
 " bang (!) is required since we are overwriting the DiffText setting. The highlighting
 " for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
 highlight! link DiffText MatchParen
+
+if version >= 702
+  set rnu
+else
+  set nu
+endif
