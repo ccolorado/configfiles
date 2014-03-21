@@ -1,7 +1,40 @@
+"" [Vundle setup]
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'bling/vim-airline.git'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'vim-ruby/vim-ruby.git'
+Bundle 'jelera/vim-javascript-syntax.git'
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-fugitive.git'
+
+filetype plugin indent on     " required
+
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install (update) bundles
+" :BundleSearch(!) foo - search (or refresh cache first) for foo
+" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle commands are not allowed.
+" Put your stuff after this line
+
 "" ======================
 """ Use Vim settings, rather then Vi settings (much better!).
 """ This must be first, because it changes other options as a side effect.
-set nocompatible
 set autoread
 " display incomplete commands
 set showcmd
@@ -71,8 +104,6 @@ if has("syntax")
     syntax on
 endif
 
-
-filetype plugin indent on
 " Indentation
 set expandtab
 set tabstop=2
@@ -102,7 +133,6 @@ set list
 map <silent><leader>e :so $MYVIMRC<CR>
 
 "========Plug-ins
-call pathogen#infect()
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "========Custom Keystrokes

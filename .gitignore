@@ -2,3 +2,5 @@
 /home/.vim/tmp
 *.swp
 *.swo
+home/.vim/bundle/**
+~home/.vim/bundle/**
