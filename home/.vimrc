@@ -16,6 +16,7 @@ Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'jelera/vim-javascript-syntax.git'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-surround'
 
 filetype plugin indent on     " required
 
@@ -120,8 +121,6 @@ set autoindent
 
 " sudo omission fix
 cmap w!! w !sudo tee >/dev/null %
-" testing alternative to w!! map, as it doesn not always works.
-command W w !sudo tee % > /dev/null
 
 " Highlight empty white spaces at the right
 "highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
@@ -196,6 +195,7 @@ let g:airline_right_alt_sep = '⮃'
 let g:airline#extensions#branch#symbol = '⭠'
 let g:airline#extensions#readonly#symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
+let g:airline_theme = 'dark'
 
 "== taglist
 " First check if ctags is installed
@@ -241,6 +241,9 @@ autocmd Filetype mediawiki setlocal spell textwidth=72
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
       set t_Co=256
 endif
+
+set background=dark
+colorscheme molokai-transparent
 
 if version >= 703
  highlight ColorColumn ctermbg=magenta
