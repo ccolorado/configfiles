@@ -226,14 +226,6 @@ nmap <leader>d :w !diff % -<CR>
 imap jj <Esc>
 imap ii <Esc>
 
-" Toggle between relative and 'absolute' line numbers
-" Vim 7.4 doesn't turn line numbers on when disable relative lines
-if version <= 703
-  nmap <silent><F2> :exec &rnu==1? "se nu" : "se rnu"<CR>
-else
-  nmap <silent><F2> :exec &rnu==1? "se rnu!" : "se rnu"<CR>
-endif
-
 "Enable spell check and text with on git commits by default
 autocmd Filetype gitcommit setlocal spell textwidth=72
 "Enable spell check and text with on mediawiki files by default
@@ -258,6 +250,16 @@ endif
 highlight! link DiffText MatchParen
 
 set nu
-if version >= 702
+if version > 702
+  "set relative line numbering On by default on vim 7.2 and up
   set rnu
+
+  " Toggle between relative and 'absolute' line numbers
+  " Vim 7.4 doesn't turn line numbers on when disable relative lines
+  if version <= 703
+    nmap <silent><F2> :exec &rnu==1? "se nu" : "se rnu"<CR>
+  else
+    nmap <silent><F2> :exec &rnu==1? "se rnu!" : "se rnu"<CR>
+  endif
+
 endif
