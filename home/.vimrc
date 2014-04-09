@@ -181,6 +181,12 @@ let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
 " AutoClose NerdTree after file is open
 let NERDTreeQuitOnOpen = 1
+" Ignore .svn directoies
+let NERDTreeIgnore = ['\.svn$'] 
+" Open Nerdtree on startup if no files where opened
+autocmd vimenter * if !argc() | NERDTree | endif
+" Close vim if Nerdtree is the only remaining window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "== airline
 "" FIXES The statusline is hidden/only appears in split windows!
