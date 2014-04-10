@@ -82,15 +82,6 @@ alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -shuffle -s
 command -v systemctl  >/dev/null 2>&1 && alias reboot='sudo systemctl reboot'
 command -v systemctl  >/dev/null 2>&1 && alias shutdown='sudo systemctl poweroff'
 
-# Host completion for ssh and scp for non archlinux hosts
-# TODO validate 'complete' exists
-if [ ! -f /etc/arch-release ];
-then
-  if [[ -f ~/.ssh/config && -f ~/.ssh/known_hosts ]]; then
-    complete -W  "$(echo $(grep ^Host ~/.ssh/config | awk '{print $2}') $(cut -f 1 -d \  ~/.ssh/known_hosts | sed -e s/,.*//g | grep -v ^# | grep -v '\['))" ssh scp
-  fi;
-fi
-
 mkdir -p ~/bin
 export PATH=$PATH":~/bin"
 # Include host specific bashrc
