@@ -82,11 +82,21 @@ alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -shuffle -s
 command -v systemctl  >/dev/null 2>&1 && alias reboot='sudo systemctl reboot'
 command -v systemctl  >/dev/null 2>&1 && alias shutdown='sudo systemctl poweroff'
 
+#Adding ~/bin directory to PATH 
 mkdir -p ~/bin
 export PATH=$PATH":~/bin"
+
+#python virtualenv settings
+mkdir -p ~/.virtualenvs
+
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+  source /usr/bin/virtualenvwrapper.sh
+fi
+
 # Include host specific bashrc
 if [ -f ~/.extra_bashrc ];
 then
     source ~/.extra_bashrc
 fi
+
 export TERM=xterm-256color
