@@ -134,6 +134,7 @@ map <silent><leader>e :so $MYVIMRC<CR>
 
 "========Plug-ins
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 
 "========Custom Keystrokes
 
@@ -182,7 +183,7 @@ let NERDTreeShowHidden=1
 " AutoClose NerdTree after file is open
 let NERDTreeQuitOnOpen = 1
 " Ignore .svn directoies
-let NERDTreeIgnore = ['\.svn$'] 
+let NERDTreeIgnore = ['\.svn$']
 " Open Nerdtree on startup if no files where opened
 autocmd vimenter * if !argc() | NERDTree | endif
 " Close vim if Nerdtree is the only remaining window
@@ -194,6 +195,8 @@ set laststatus=2
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 let g:airline_powerline_fonts=1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
@@ -202,7 +205,22 @@ let g:airline_right_alt_sep = '⮃'
 let g:airline#extensions#branch#symbol = '⭠'
 let g:airline#extensions#readonly#symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
+
 let g:airline_theme = 'dark'
+let g:airline_inactive_collapse=1
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
 
 "== taglist
 " First check if ctags is installed
