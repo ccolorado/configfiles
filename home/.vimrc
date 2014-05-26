@@ -132,9 +132,6 @@ set list
 " Reload vimrc
 map <silent><leader>e :so $MYVIMRC<CR>
 
-"========Plug-ins
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 
 "========Custom Keystrokes
 
@@ -159,7 +156,6 @@ map <F12> :tabp<cr>
 "=== Save file with Ctrl+s
 inoremap <c-s> <Esc>:update<CR>
 
-"========Custom Keystrokes
 " Paste Toggle
 set pastetoggle=<f5>
 
@@ -171,8 +167,13 @@ nmap <silent> <C-Right> :wincmd l<CR>
 
 nmap <Down> gj
 nmap <Up> gk
+
+"========Plug-ins
+
 "== Ctrl-P
 " Initiate Ctrl-P
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 nmap <leader>; :CtrlPBuffer<CR>
 
 "== NerdTree
