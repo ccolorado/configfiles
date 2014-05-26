@@ -170,11 +170,14 @@ nmap <Up> gk
 
 "========Plug-ins
 
-"== Ctrl-P
-" Initiate Ctrl-P
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
-nmap <leader>; :CtrlPBuffer<CR>
+""== Ctrl-P
+"" Initiate Ctrl-P
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
+"let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
+"nmap <leader>; :CtrlPBuffer<CR>
+
+"== Unite
+nmap <leader>; :Unite buffer file<CR>
 
 "== NerdTree
 " Initiate NerdTree
