@@ -179,6 +179,7 @@ nmap <Up> gk
 
 "== Unite
 nmap <leader>; :Unite buffer file<CR>
+nmap <leader>f :Unite buffer file file_rec<CR>
 
 "== NerdTree
 " Initiate NerdTree
