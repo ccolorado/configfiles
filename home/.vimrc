@@ -8,11 +8,8 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline.git'
-Bundle 'kien/ctrlp.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'scrooloose/syntastic'
-"Bundle 'scrooloose/nerdtree.git'
-"Bundle 'Xuyuanp/git-nerdtree'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'jelera/vim-javascript-syntax.git'
@@ -171,27 +168,9 @@ nmap <Up> gk
 
 "========Plug-ins
 
-""== Ctrl-P
-"" Initiate Ctrl-P
-"set runtimepath^=~/.vim/bundle/ctrlp.vim
-"let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
-"nmap <leader>; :CtrlPBuffer<CR>
-
 "== Unite
 nmap <leader>; :Unite buffer file<CR>
 nmap <leader>f :Unite buffer file file_rec<CR>
-
-"== NerdTree
-" Initiate NerdTree
-nmap <silent><leader>f :NERDTreeToggle<CR>
-let g:NERDTreeDirArrows=0
-let NERDTreeShowHidden=1
-" AutoClose NerdTree after file is open
-let NERDTreeQuitOnOpen = 1
-" Ignore .svn directoies
-let NERDTreeIgnore = ['\.svn$']
-" Close vim if Nerdtree is the only remaining window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "== airline
 "" FIXES The statusline is hidden/only appears in split windows!
@@ -258,6 +237,8 @@ imap ii <Esc>
 autocmd Filetype gitcommit setlocal spell textwidth=72
 "Enable spell check and text with on mediawiki files by default
 autocmd Filetype mediawiki setlocal spell textwidth=72
+autocmd Filetype markdown setlocal spell textwidth=90
+
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
       set t_Co=256
