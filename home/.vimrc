@@ -48,6 +48,10 @@ set showmatch
 
 " No wrapping text by default
 set nowrap
+" Leave hidden buffers open 
+set hidden
+" override default 8 last commands to remember
+set history=100
 
 "=========Backup and restoring
 set dir=./.backup,~/.vim/backup_files,/tmp
