@@ -16,6 +16,7 @@ Bundle 'jelera/vim-javascript-syntax.git'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-surround'
+Bundle 'tommcdo/vim-exchange'
 
 filetype plugin indent on     " required
 
