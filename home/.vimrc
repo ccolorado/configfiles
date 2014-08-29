@@ -129,7 +129,7 @@ cmap w!! w !sudo tee >/dev/null %
 "highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
 "match WhiteSpaceEOL /\s\+$/
 "   Testing new highlight for white spaces
-exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~"
 set list
 " Reload vimrc
 map <silent><leader>e :so $MYVIMRC<CR>
@@ -250,6 +250,7 @@ endif
 
 set background=dark
 colorscheme molokai-transparent
+:hi Visual term=reverse cterm=reverse guibg=Grey
 
 if version >= 703
  highlight ColorColumn ctermbg=magenta
