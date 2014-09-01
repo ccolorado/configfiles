@@ -17,6 +17,7 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-surround'
 Bundle 'tommcdo/vim-exchange'
+Bundle 'joonty/vdebug'
 
 filetype plugin indent on     " required
 
@@ -160,7 +161,7 @@ map <F12> :tabp<cr>
 inoremap <c-s> <Esc>:update<CR>
 
 " Paste Toggle
-set pastetoggle=<f5>
+set pastetoggle=<f3>
 
 " Arrow window navigation
 nmap <silent> <C-Up> :wincmd k<CR>
