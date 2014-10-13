@@ -192,6 +192,7 @@ nmap <Up> gk
 "========Plug-ins
 
 "== Unite
+let g:unite_source_file_rec_min_cache_files = 10000
 nmap <leader>; :Unite buffer file<CR>
 nmap <leader>f :Unite buffer file file_rec<CR>
 
