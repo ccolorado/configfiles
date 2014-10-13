@@ -18,6 +18,23 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-surround'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'joonty/vdebug'
+" Incliging 
+Bundle 'tpope/vim-commentary'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'sheerun/vim-polyglot'
+Bundle 'vim-scripts/grep.vim'
+"" Considering
+" NeoBundle 'majutsushi/tagbar'
+"" Not reviewed yet
+" NeoBundle 'amirh/HTML-AutoCloseTag'
+" NeoBundle 'hail2u/vim-css3-syntax'
+" NeoBundle 'gorodinskiy/vim-coloresque'
+" NeoBundle 'tpope/vim-haml'
+"" Ruby Bundle
+" NeoBundle 'tpope/vim-rake'
+" NeoBundle 'tpope/vim-projectionist'
+" NeoBundle 'thoughtbot/vim-rspec'
+
 
 filetype plugin indent on     " required
 
