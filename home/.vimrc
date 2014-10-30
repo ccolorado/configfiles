@@ -283,17 +283,18 @@ endif
 " for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
 highlight! link DiffText MatchParen
 
+" Toggle line numbering relative and absolute
+" Vim 7.4 doesn't turn line numbers on when disable relative lines
+function! ToggleLineNumbering()
+  set nu!
+  if version > 703
+    set rnu!
+  endif
+endfunction
+
 set nu
 if version > 702
   "set relative line numbering On by default on vim 7.2 and up
   set rnu
-
-  " Toggle between relative and 'absolute' line numbers
-  " Vim 7.4 doesn't turn line numbers on when disable relative lines
-  if version <= 703
-    nmap <silent><F2> :exec &rnu==1? "se nu" : "se rnu"<CR>
-  else
-    nmap <silent><F2> :exec &rnu==1? "se rnu!" : "se rnu"<CR>
-  endif
-
+  nmap <F2> :call ToggleLineNumbering()<CR>
 endif
