@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline.git'
 Bundle 'Shougo/unite.vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'jelera/vim-javascript-syntax.git'
@@ -191,9 +192,10 @@ nmap <Up> gk
 
 "========Plug-ins
 
+"== Nerdtree
+nmap <silent><leader>f :NERDTreeToggle<CR>
 "== Unite
-let g:unite_source_file_rec_min_cache_files = 10000
-nmap <leader>f :Unite -start-insert buffer file<CR>
+"let g:unite_source_file_rec_min_cache_files = 10000
 nmap <space> :<C-u>Unite -start-insert buffer file file_rec<CR>
 
 "== airline
