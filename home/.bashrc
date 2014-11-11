@@ -47,6 +47,7 @@ distroPromptFlag()
 }
 
 # Setting up PS1 value
+export EDITOR=vim
 export hostcolor=$(str2color $HOSTNAME)
 export HC='\[$hostcolor\]'
 export distro_flag=$( distroPromptFlag )
@@ -74,7 +75,7 @@ export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$
 alias ls='ls --color=auto -p'
 alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
 alias grep="grep --color=auto"
-alias svim='sudo vim'
+alias svim='sudoedit'
 alias svimdiff='sudo vimdiff'
 alias mysql='mysql --auto-rehash'
 alias sshmount='sshfs -o reconnect -o follow_symlinks'
