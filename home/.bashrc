@@ -54,6 +54,11 @@ export distro_flag=$( distroPromptFlag )
 IS_SSH_SESSION=""
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   IS_SSH_SESSION="\[\033[40;1;33m\]!$CLEAR"
+else
+  #Muting output when performed over ssh to avoid choking the connection
+  alias cp='cp -v'
+  alias mv='mv -v'
+  alias rm='rm -v'
 fi;
 
 #   Setting User color and user symbol ( $ for users and # for root)
@@ -69,9 +74,6 @@ export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$
 alias ls='ls --color=auto -p'
 alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
 alias grep="grep --color=auto"
-alias cp='cp -v'
-alias mv='mv -v'
-alias rm='rm -v'
 alias svim='sudo vim'
 alias svimdiff='sudo vimdiff'
 alias mysql='mysql --auto-rehash'
