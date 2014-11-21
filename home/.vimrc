@@ -196,7 +196,7 @@ nmap <Up> gk
 nmap <silent><leader>f :NERDTreeToggle<CR>
 "== Unite
 "let g:unite_source_file_rec_min_cache_files = 10000
-nmap <space> :<C-u>Unite -start-insert buffer file file_rec<CR>
+nmap <space> :<C-u>Unite -start-insert buffer file file_rec/async<CR>
 
 "== airline
 "" FIXES The statusline is hidden/only appears in split windows!
@@ -233,7 +233,7 @@ let g:airline_mode_map = {
 
 "== taglist
 " First check if ctags is installed
-if filereadable("/usr/bin/ctags")
+if executable('ctags')
   let Tlist_Ctags_Cmd = "/usr/bin/ctags"
   let Tlist_WinWidth = 50
   let Tlist_Use_Right_Window=1
