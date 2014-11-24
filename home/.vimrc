@@ -9,6 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline.git'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/taglist.vim'
@@ -195,8 +196,15 @@ nmap <Up> gk
 "== Nerdtree
 nmap <silent><leader>f :NERDTreeToggle<CR>
 "== Unite
-"let g:unite_source_file_rec_min_cache_files = 10000
-nmap <space> :<C-u>Unite -start-insert buffer file file_rec/async<CR>
+let g:unite_source_file_rec_min_cache_files = 10000
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+  nmap <space> :<C-u>Unite -start-insert buffer file file_rec/async<CR>
+else
+  nmap <space> :<C-u>Unite -start-insert buffer file file_rec<CR>
+endif
 
 "== airline
 "" FIXES The statusline is hidden/only appears in split windows!
