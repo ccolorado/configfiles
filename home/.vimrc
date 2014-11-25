@@ -200,6 +200,7 @@ nmap <Up> gk
 "========Plug-ins
 
 "== Nerdtree
+let NERDTreeShowLineNumbers=1
 nmap <silent><leader>f :NERDTreeToggle<CR>
 "== Unite
 let g:unite_source_file_rec_min_cache_files = 10000
