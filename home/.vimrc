@@ -20,7 +20,7 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-surround'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'joonty/vdebug'
-" Incliging 
+" Incliging
 Bundle 'tpope/vim-commentary'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'sheerun/vim-polyglot'
@@ -69,10 +69,14 @@ set showmatch
 
 " No wrapping text by default
 set nowrap
-" Leave hidden buffers open 
+" Leave hidden buffers open
 set hidden
 " override default 8 last commands to remember
 set history=100
+
+" Do vertical splits to the right and horizontal splits below instead of top
+set splitbelow
+set splitright
 
 "=========Backup and restoring
 set dir=./.backup,~/.vim/backup_files,/tmp
@@ -102,6 +106,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " tab completion for comands and hopefully filenames
+set wildignorecase
 set wildmode=longest,list,full
 set wildmenu
 
@@ -115,6 +120,7 @@ function! HLNext (blinktime)
   redraw
 endfunction
 
+set scrolloff=10
 nnoremap <silent> n n:call HLNext(0.4)<cr>
 nnoremap <silent> N N:call HLNext(0.4)<cr>
 
