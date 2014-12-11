@@ -205,16 +205,15 @@ nmap <silent><leader>f :NERDTreeToggle<CR>
 "== Unite
 let g:unite_source_file_rec_min_cache_files = 10000
 
-if exists(':VimProcBang')
-  nmap <space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async<CR>
-else
-  nmap <space> :<C-u>Unite -start-insert buffer file file_rec<CR>
-endif
-
 if executable('ag')
+
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
+
+  nmap <space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async<CR>
+else
+  nmap <space> :<C-u>Unite -start-insert buffer file file_rec<CR>
 endif
 
 "== airline
