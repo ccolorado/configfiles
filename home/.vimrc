@@ -261,6 +261,7 @@ if executable('ctags')
   map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   " Open tag file on vertical split and move it to the right split
   nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+  nmap <leader>]  :sp  <CR>:exec("tag ".expand("<cword>"))<CR>
 endif
 
 "== Clear search highlights
