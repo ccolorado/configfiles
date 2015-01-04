@@ -1,7 +1,12 @@
 str2color()
 {
     [ -z "$1" ] && return
-    hex=$(echo -n "$1" |md5sum| head -c 2)
+    if [ "darwin14" = $OSTYPE ];
+    then
+        hex=$(echo -n "$1" |md5| head -c 2)
+    else
+        hex=$(echo -n "$1" |md5sum| head -c 2)
+    fi;
     printf "\e[48;5;0m\e[38;5;%dm" 0x$hex
 }
 
