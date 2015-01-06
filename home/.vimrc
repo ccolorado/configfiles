@@ -1,4 +1,4 @@
-"" [Vundle setup]
+"'" [Vundle setup]
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -106,7 +106,6 @@ let mapleader = ","
 let g:mapleader = ","
 
 " tab completion for comands and hopefully filenames
-set wildignorecase
 set wildmode=longest,list,full
 set wildmenu
 
@@ -203,7 +202,9 @@ nmap <Up> gk
 let NERDTreeShowLineNumbers=1
 nmap <silent><leader>f :NERDTreeToggle<CR>
 "== Unite
+
 let g:unite_source_file_rec_min_cache_files = 10000
+let g:unite_source_file_rec_max_cache_files = 200000
 
 if executable('ag')
 
@@ -211,9 +212,12 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 
-  nmap <space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async<CR>
+  call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
+  nmap <space> :<C-u>Unite -no-split -start-insert buffer file <CR>
+  nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async <CR>
 else
-  nmap <space> :<C-u>Unite -start-insert buffer file file_rec<CR>
+  nmap <space> :<C-u>Unite -no-split -start-insert buffer file<CR>
+  nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec<CR>
 endif
 
 "== airline
@@ -260,8 +264,8 @@ if executable('ctags')
   " Maps building tags to F10 for the current directory
   map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
   " Open tag file on vertical split and move it to the right split
-  nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-  nmap <leader>]  :sp  <CR>:exec("tag ".expand("<cword>"))<CR>
+  nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR>zz
+  nmap <leader>[  :exec("tag ".expand("<cword>"))<CR>zz
 endif
 
 "== Clear search highlights
