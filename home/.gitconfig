@@ -1,0 +1,15 @@
+[user]
+  name = ccolorado
+[color]
+  ui = true
+[merge]
+  tool = vimdiff
+[core]
+  editor = vim 
+[diff]
+  tool = vimdiff
+[alias]
+  ci = commit -v
+  co = checkout
+  st = status
+  df = status
