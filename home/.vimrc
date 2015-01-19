@@ -212,7 +212,7 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 
-  call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
+  "call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
   nmap <space> :<C-u>Unite -no-split -start-insert buffer file <CR>
   nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async <CR>
 else
@@ -236,6 +236,9 @@ let g:airline_right_alt_sep = '⮃'
 let g:airline#extensions#branch#symbol = '⭠'
 let g:airline#extensions#readonly#symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
+
+let g:airline#extensions#whitespace#trailing_format = '$ [%s]'
+let g:airline#extensions#whitespace#mixed_indent_format = ' ^[%s]' 
 
 let g:airline_theme = 'dark'
 let g:airline_inactive_collapse=1
