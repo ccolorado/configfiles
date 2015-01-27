@@ -151,11 +151,8 @@ set autoindent
 " sudo omission fix
 cmap w!! w !sudo tee >/dev/null %
 
-" Highlight empty white spaces at the right
-"highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
-"match WhiteSpaceEOL /\s\+$/
-"   Testing new highlight for white spaces
-exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~"
+" Display characters for indetation, eol, and trailing whitespace
+exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~,eol:\uAC"
 set list
 " Reload vimrc
 map <silent><leader>e :so $MYVIMRC<CR>
@@ -240,7 +237,7 @@ let g:airline#extensions#branch#symbol = '⭠'
 let g:airline#extensions#readonly#symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
 
-let g:airline#extensions#whitespace#trailing_format = '$ [%s]'
+let g:airline#extensions#whitespace#trailing_format = '$[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = ' ^[%s]' 
 
 let g:airline_theme = 'dark'
@@ -309,10 +306,8 @@ if version >= 703
  call matchadd('ColorColumn', '\%81v', 100)
 endif
 
+" Better diff highlights
 " From https://groups.google.com/forum/#!topic/vim_use/IERXsR4WVFk
-" Fix the difficult-to-read default setting for diff text highlighting.  The
-" bang (!) is required since we are overwriting the DiffText setting. The highlighting
-" for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
 highlight! link DiffText MatchParen
 
 " Toggle line numbering relative and absolute
