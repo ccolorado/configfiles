@@ -143,7 +143,7 @@ set softtabstop=2
 nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
 nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
-nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+nmap \m :set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
 set smartindent
 set autoindent
@@ -298,6 +298,7 @@ endif
 
 set background=dark
 colorscheme molokai-transparent
+:hi Normal ctermbg=NONE
 :hi Visual term=reverse cterm=reverse guibg=Grey
 
 if version >= 703
