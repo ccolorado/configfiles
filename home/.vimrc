@@ -31,7 +31,6 @@ Bundle 'vim-scripts/grep.vim'
 " NeoBundle 'amirh/HTML-AutoCloseTag'
 " NeoBundle 'hail2u/vim-css3-syntax'
 " NeoBundle 'gorodinskiy/vim-coloresque'
-" NeoBundle 'tpope/vim-haml'
 "" Ruby Bundle
 " NeoBundle 'tpope/vim-rake'
 " NeoBundle 'tpope/vim-projectionist'
