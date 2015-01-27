@@ -187,11 +187,14 @@ inoremap <c-s> <Esc>:update<CR>
 " Paste Toggle
 set pastetoggle=<f3>
 
-" Arrow window navigation
-nmap <silent> <C-Up> :wincmd k<CR>
-nmap <silent> <C-Down> :wincmd j<CR>
-nmap <silent> <C-Left> :wincmd h<CR>
-nmap <silent> <C-Right> :wincmd l<CR>
+" Arrowless window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" return to preovious window
+nnoremap <tab> <c-w><c-p>
 
 nmap <Down> gj
 nmap <Up> gk
