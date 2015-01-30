@@ -67,7 +67,7 @@ set nocursorline
 set showmatch
 
 " No wrapping text by default
-set nowrap
+set wrap
 " Leave hidden buffers open
 set hidden
 " override default 8 last commands to remember
@@ -318,9 +318,24 @@ function! ToggleLineNumbering()
   endif
 endfunction
 
+" Toggle extra characters for copying with mouse
+function! ToggleCopyMode()
+  echom "functino called"
+  call ToggleLineNumbering()
+  if &number
+    set list
+    set wrap
+    :GitGutterEnable
+  else
+    set nolist
+    set nowrap
+    :GitGutterDisable
+  endif
+endfunction
+
 set nu
 if version > 702
   "set relative line numbering On by default on vim 7.2 and up
   set rnu
-  nmap <F2> :call ToggleLineNumbering()<CR>
+  nmap <F2> :call ToggleCopyMode()<CR>
 endif
