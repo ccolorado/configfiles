@@ -11,6 +11,9 @@ au BufRead,BufNewFile *wiki.*               set filetype=mediawiki
 
 """ Use sql syntax highligth for files opened inside vim  with the \e flag """
 """ inside mysql cli client """
-au BufNewFile,BufRead *tmp/sql*             set syntax=set nu!
+au BufNewFile,BufRead *tmp/sql*             set syntax=set nonu
+au BufNewFile,BufRead *tmp/sql*             set syntax=set nolist
 au BufNewFile,BufRead *tmp/sql*             set syntax=set paste
 au BufNewFile,BufRead *tmp/sql*             set syntax=sql
+
+au BufNewFile,BufRead *.cmd*             set syntax=confluencewiki
