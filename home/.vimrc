@@ -31,7 +31,6 @@ Bundle 'vim-scripts/grep.vim'
 " NeoBundle 'amirh/HTML-AutoCloseTag'
 " NeoBundle 'hail2u/vim-css3-syntax'
 " NeoBundle 'gorodinskiy/vim-coloresque'
-" NeoBundle 'tpope/vim-haml'
 "" Ruby Bundle
 " NeoBundle 'tpope/vim-rake'
 " NeoBundle 'tpope/vim-projectionist'
@@ -143,7 +142,7 @@ set softtabstop=2
 nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
 nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
-nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+nmap \m :set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
 set smartindent
 set autoindent
@@ -151,11 +150,8 @@ set autoindent
 " sudo omission fix
 cmap w!! w !sudo tee >/dev/null %
 
-" Highlight empty white spaces at the right
-"highlight WhiteSpaceEOL ctermbg=darkred guibg=lightred
-"match WhiteSpaceEOL /\s\+$/
-"   Testing new highlight for white spaces
-exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~"
+" Display characters for indetation, eol, and trailing whitespace
+exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~,eol:\uAC"
 set list
 " Reload vimrc
 map <silent><leader>e :so $MYVIMRC<CR>
@@ -187,11 +183,14 @@ inoremap <c-s> <Esc>:update<CR>
 " Paste Toggle
 set pastetoggle=<f3>
 
-" Arrow window navigation
-nmap <silent> <C-Up> :wincmd k<CR>
-nmap <silent> <C-Down> :wincmd j<CR>
-nmap <silent> <C-Left> :wincmd h<CR>
-nmap <silent> <C-Right> :wincmd l<CR>
+" Arrowless window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" return to preovious window
+nnoremap <tab> <c-w><c-p>
 
 nmap <Down> gj
 nmap <Up> gk
@@ -237,7 +236,7 @@ let g:airline#extensions#branch#symbol = '⭠'
 let g:airline#extensions#readonly#symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
 
-let g:airline#extensions#whitespace#trailing_format = '$ [%s]'
+let g:airline#extensions#whitespace#trailing_format = '$[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = ' ^[%s]' 
 
 let g:airline_theme = 'dark'
@@ -298,6 +297,7 @@ endif
 
 set background=dark
 colorscheme molokai-transparent
+:hi Normal ctermbg=NONE
 :hi Visual term=reverse cterm=reverse guibg=Grey
 
 if version >= 703
@@ -305,10 +305,8 @@ if version >= 703
  call matchadd('ColorColumn', '\%81v', 100)
 endif
 
+" Better diff highlights
 " From https://groups.google.com/forum/#!topic/vim_use/IERXsR4WVFk
-" Fix the difficult-to-read default setting for diff text highlighting.  The
-" bang (!) is required since we are overwriting the DiffText setting. The highlighting
-" for "Todo" also looks nice (yellow) if you don't like the "MatchParen" colors.
 highlight! link DiffText MatchParen
 
 " Toggle line numbering relative and absolute
