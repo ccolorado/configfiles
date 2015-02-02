@@ -25,6 +25,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'sheerun/vim-polyglot'
 Bundle 'vim-scripts/grep.vim'
+Bundle 'vim-scripts/confluencewiki.vim'
 "" Considering
 " NeoBundle 'majutsushi/tagbar'
 "" Not reviewed yet
