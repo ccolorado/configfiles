@@ -15,6 +15,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'jelera/vim-javascript-syntax.git'
+Bundle 'takac/vim-hardtime'
+Bundle 'editorconfig/editorconfig-vim'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-surround'
@@ -198,13 +200,13 @@ nmap <Up> gk
 
 "========Plug-ins
 
+"== vim-hardtime
+let g:hardtime_default_on = 1
+
 "== Nerdtree
 let NERDTreeShowLineNumbers=1
 nmap <silent><leader>f :NERDTreeToggle<CR>
 "== Unite
-
-let g:unite_source_file_rec_min_cache_files = 10000
-let g:unite_source_file_rec_max_cache_files = 200000
 
 if executable('ag')
 
@@ -238,7 +240,7 @@ let g:airline#extensions#readonly#symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
 
 let g:airline#extensions#whitespace#trailing_format = '$[%s]'
-let g:airline#extensions#whitespace#mixed_indent_format = ' ^[%s]' 
+let g:airline#extensions#whitespace#mixed_indent_format = ' ^[%s]'
 
 let g:airline_theme = 'dark'
 let g:airline_inactive_collapse=1
