@@ -231,6 +231,10 @@ nmap <silent><leader>f :NERDTreeToggle<CR>
 
 "== airline
 "" FIXES The statusline is hidden/only appears in split windows!
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
 set laststatus=2
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
@@ -244,7 +248,7 @@ let g:airline_right_sep = '⮂'
 let g:airline_right_alt_sep = '⮃'
 let g:airline#extensions#branch#symbol = '⭠'
 let g:airline#extensions#readonly#symbol = '⭤'
-let g:airline_linecolumn_prefix = '⭡'
+let g:airline_symbols.linenr = '⭡'
 
 let g:airline#extensions#whitespace#trailing_format = '$[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = ' ^[%s]'
