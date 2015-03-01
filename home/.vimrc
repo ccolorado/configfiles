@@ -8,7 +8,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline.git'
-Bundle 'Shougo/unite.vim'
+Bundle 'kien/ctrlp.vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
@@ -202,25 +202,32 @@ nmap <Up> gk
 
 "== vim-hardtime
 let g:hardtime_default_on = 1
+let g:hard_time_timeout = 5000
+
+"== cntlp
+nmap <space> :CtrlPBuffer<CR>
+nmap <leader><space> :CtrlPMixed<CR>
+
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 "== Nerdtree
 let NERDTreeShowLineNumbers=1
 nmap <silent><leader>f :NERDTreeToggle<CR>
-"== Unite
-
-if executable('ag')
-
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
-
-  "call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
-  nmap <space> :<C-u>Unite -no-split -start-insert buffer file <CR>
-  nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async <CR>
-else
-  nmap <space> :<C-u>Unite -no-split -start-insert buffer file<CR>
-  nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec<CR>
-endif
+""== Unite
+"
+"if executable('ag')
+"
+"  let g:unite_source_grep_command = 'ag'
+"  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+"  let g:unite_source_grep_recursive_opt = ''
+"
+"  "call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
+"  nmap <space> :<C-u>Unite -no-split -start-insert buffer file <CR>
+"  nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async <CR>
+"else
+"  nmap <space> :<C-u>Unite -no-split -start-insert buffer file<CR>
+"  nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec<CR>
+"endif
 
 "== airline
 "" FIXES The statusline is hidden/only appears in split windows!
