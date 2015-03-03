@@ -6,39 +6,38 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'bling/vim-airline.git'
-Bundle 'kien/ctrlp.vim'
 Bundle 'Shougo/vimproc.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'vim-ruby/vim-ruby.git'
-Bundle 'jelera/vim-javascript-syntax.git'
-Bundle 'takac/vim-hardtime'
+Bundle 'bling/vim-airline.git'
+Bundle 'chrisbra/NrrwRgn'
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'tpope/vim-surround'
-Bundle 'tommcdo/vim-exchange'
+Bundle 'gmarik/vundle'
+Bundle 'jelera/vim-javascript-syntax.git'
 Bundle 'joonty/vdebug'
-" Incliging
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'takac/vim-hardtime'
+Bundle 'tommcdo/vim-exchange'
+Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby.git'
+Bundle 'vim-scripts/taglist.vim'" Incliging
 Bundle 'tpope/vim-commentary'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'sheerun/vim-polyglot'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/confluencewiki.vim'
 "" Considering
-" NeoBundle 'majutsushi/tagbar'
+" Bundle 'majutsushi/tagbar'
 "" Not reviewed yet
-" NeoBundle 'amirh/HTML-AutoCloseTag'
-" NeoBundle 'hail2u/vim-css3-syntax'
-" NeoBundle 'gorodinskiy/vim-coloresque'
+" Bundle 'amirh/HTML-AutoCloseTag'
+" Bundle 'hail2u/vim-css3-syntax'
+" Bundle 'gorodinskiy/vim-coloresque'
 "" Ruby Bundle
-" NeoBundle 'tpope/vim-rake'
-" NeoBundle 'tpope/vim-projectionist'
-" NeoBundle 'thoughtbot/vim-rspec'
-
+" Bundle 'tpope/vim-rake'
+" Bundle 'tpope/vim-projectionist'
+" Bundle 'thoughtbot/vim-rspec'
 
 filetype plugin indent on     " required
 
