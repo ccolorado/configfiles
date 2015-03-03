@@ -55,8 +55,7 @@ filetype plugin indent on     " required
 " Put your stuff after this line
 
 "" ======================
-""" Use Vim settings, rather then Vi settings (much better!).
-""" This must be first, because it changes other options as a side effect.
+set ssop=blank,buffers,curdir,folds,resize,tabpages,winsize,winpos
 set autoread
 " display incomplete commands
 set showcmd
