@@ -51,6 +51,16 @@ distroPromptFlag()
     echo $distro_flag;
 }
 
+
+get_branching_out_commit (){
+
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  origin_branch=${DEFAULT_GIT_BRANCH-'master'}
+  origin_branch=${1-$origin_branch}
+  echo "git merge-base $origin_branch $current_branch" 1>&2
+  echo `git merge-base $origin_branch $current_branch`
+}
+
 # Setting up PS1 value
 export EDITOR=vim
 export hostcolor=$(str2color $HOSTNAME)
@@ -90,7 +100,7 @@ alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -shuffle -s
 command -v systemctl  >/dev/null 2>&1 && alias reboot='sudo systemctl reboot'
 command -v systemctl  >/dev/null 2>&1 && alias shutdown='sudo systemctl poweroff'
 
-#Adding ~/bin directory to PATH 
+#Adding ~/bin directory to PATH
 mkdir -p ~/bin
 export PATH=$PATH":~/bin"
 

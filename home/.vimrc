@@ -22,14 +22,13 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby.git'
-Bundle 'vim-scripts/taglist.vim'" Incliging
+Bundle 'vim-scripts/taglist.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'sheerun/vim-polyglot'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/confluencewiki.vim'
 "" Considering
-" Bundle 'majutsushi/tagbar'
 "" Not reviewed yet
 " Bundle 'amirh/HTML-AutoCloseTag'
 " Bundle 'hail2u/vim-css3-syntax'
@@ -39,6 +38,8 @@ Bundle 'vim-scripts/confluencewiki.vim'
 " Bundle 'tpope/vim-projectionist'
 " Bundle 'thoughtbot/vim-rspec'
 
+" Themes
+Bundle 'wellsjo/wells-colorscheme.vim'
 filetype plugin indent on     " required
 
 " To ignore plugin indent changes, instead use:
