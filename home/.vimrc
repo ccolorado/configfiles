@@ -22,7 +22,8 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby.git'
-Bundle 'vim-scripts/taglist.vim'" Incliging
+Bundle 'vim-scripts/taglist.vim'
+" Incliging
 Bundle 'tpope/vim-commentary'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'sheerun/vim-polyglot'
