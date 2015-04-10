@@ -52,13 +52,21 @@ distroPromptFlag()
 }
 
 
-get_branching_out_commit (){
+git_get_branching_out_commit (){
 
   current_branch=$(git rev-parse --abbrev-ref HEAD)
   origin_branch=${DEFAULT_GIT_BRANCH-'master'}
   origin_branch=${1-$origin_branch}
   echo "git merge-base $origin_branch $current_branch" 1>&2
   echo `git merge-base $origin_branch $current_branch`
+}
+
+git_get_last_pushed_commit (){
+
+  origin_branch=${DEFAULT_GIT_BRANCH-'master'}
+  origin_branch=${1-$origin_branch}
+  echo "git rev-parse origin/$origin_branch" 1>&2
+  echo `git rev-parse origin/$origin_branch`
 }
 
 # Setting up PS1 value
