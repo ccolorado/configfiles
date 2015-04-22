@@ -126,3 +126,4 @@ then
 fi
 
 export TERM=xterm-256color
+unset SSH_ASKPASS
