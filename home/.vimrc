@@ -6,11 +6,11 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+Bundle 'gmarik/vundle'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'bling/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'gmarik/vundle'
 Bundle 'jelera/vim-javascript-syntax.git'
 Bundle 'joonty/vdebug'
 Bundle 'kien/ctrlp.vim'
@@ -342,6 +342,16 @@ set background=dark
 colorscheme molokai-transparent
 :hi Normal ctermbg=NONE
 :hi Visual term=reverse cterm=reverse guibg=Grey
+
+"== Vdebug
+
+" less intrusive, more readable highlighting
+
+:highlight DbgBreakptLine ctermbg=none ctermfg=none
+:highlight DbgBreakptSign ctermbg=none ctermfg=10
+
+:highlight DbgCurrentLine ctermfg=none ctermbg=none
+:highlight DbgCurrentSign ctermfg=Red ctermbg=White
 
 if version >= 703
  highlight ColorColumn ctermbg=magenta
