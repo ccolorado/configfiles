@@ -320,8 +320,18 @@ nmap <C-e> :e#<CR>
 "set ff=dos,unix Change file format to avoid ^M line breaks also
 "replacing ^M's :%s/CTRL-v ENTER//g
 
-" Show diff of unsaved changes
-nmap <leader>d :w !diff % -<CR>
+" Show vimdiff of unsaved changes
+
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
+nmap <leader>d :DiffSaved <CR>
 
 "Alternative Insert Mode exit
 imap jj <Esc>
@@ -389,6 +399,8 @@ endfunction
 set nu
 if version > 702
   "set relative line numbering On by default on vim 7.2 and up
+  "
+  "
   set rnu
   nmap <F2> :call ToggleCopyMode()<CR>
 endif
