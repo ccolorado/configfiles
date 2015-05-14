@@ -5,11 +5,14 @@
 [merge]
   tool = vimdiff
 [core]
-  editor = vim 
+  editor = vim
 [diff]
   tool = vimdiff
+[push]
+  default = simple
 [alias]
   ci = commit -v
   co = checkout
-  st = status
+  st = status -s
   df = status
+  lg = log --oneline --decorate --all --graph
