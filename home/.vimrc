@@ -23,6 +23,7 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-vinegar'
+Bundle 'takac/vim-hardtime'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'vim-scripts/taglist.vim'
 
@@ -232,6 +233,8 @@ let g:rbpt_colorpairs = [
 "== vim-hardtime
 let g:hardtime_default_on = 1
 let g:hard_time_timeout = 5000
+let g:hardtime_allow_different_key = 1
+let g:hardtime_maxcount = 2
 
 "== cntlp
 nmap <space> :CtrlPBuffer<CR>
@@ -358,10 +361,10 @@ colorscheme molokai-transparent
 " less intrusive, more readable highlighting
 
 :highlight DbgBreakptLine ctermbg=none ctermfg=none
-:highlight DbgBreakptSign ctermbg=none ctermfg=10
+:highlight DbgBreakptSign ctermbg=10 ctermfg=none
 
 :highlight DbgCurrentLine ctermfg=none ctermbg=none
-:highlight DbgCurrentSign ctermfg=Red ctermbg=White
+:highlight DbgCurrentSign ctermfg=red ctermbg=none
 
 if version >= 703
  highlight ColorColumn ctermbg=magenta
