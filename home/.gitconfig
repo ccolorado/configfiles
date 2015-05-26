@@ -14,5 +14,5 @@
   ci = commit -v
   co = checkout
   st = status -s
-  df = status
+  df = diff
   lg = log --oneline --decorate --all --graph
