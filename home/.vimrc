@@ -232,7 +232,7 @@ let g:rbpt_colorpairs = [
 
 "== vim-hardtime
 let g:hardtime_default_on = 1
-let g:hard_time_timeout = 5000
+let g:hard_time_timeout = 10000
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
 
