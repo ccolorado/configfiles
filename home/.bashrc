@@ -105,6 +105,10 @@ alias sshmount='sshfs -o reconnect -o follow_symlinks'
 alias tmux='tmux -2'
 alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -shuffle -softvol -quiet  volume=20 -loop 0 '
 
+#stop bash flow control for ^s
+stty stop ^e
+stty start ^b
+
 command -v systemctl  >/dev/null 2>&1 && alias reboot='sudo systemctl reboot'
 command -v systemctl  >/dev/null 2>&1 && alias shutdown='sudo systemctl poweroff'
 

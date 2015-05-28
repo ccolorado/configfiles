@@ -74,7 +74,7 @@ set nocursorline
 set showmatch
 
 " No wrapping text by default
-set wrap
+set nowrap
 " Leave hidden buffers open
 set hidden
 " override default 8 last commands to remember
@@ -151,7 +151,6 @@ nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
 nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
 nmap \m :set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
-set smartindent
 set autoindent
 
 " sudo omission fix
@@ -201,7 +200,8 @@ map <F11> :tabn<cr>
 map <F12> :tabp<cr>
 
 "=== Save file with Ctrl+s
-inoremap <c-s> <Esc>:update<CR>
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
 
 " Paste Toggle
 set pastetoggle=<f3>
@@ -376,11 +376,11 @@ colorscheme molokai-transparent
 
 " less intrusive, more readable highlighting
 
-:highlight DbgBreakptLine ctermbg=none ctermfg=none
-:highlight DbgBreakptSign ctermbg=10 ctermfg=none
+highlight DbgBreakptLine ctermbg=none ctermfg=none
+highlight DbgBreakptSign ctermbg=none ctermfg=10
 
-:highlight DbgCurrentLine ctermfg=none ctermbg=none
-:highlight DbgCurrentSign ctermfg=red ctermbg=none
+"highlight DbgCurrentLine ctermbg=none ctermfg=none
+highlight DbgCurrentSign ctermbg=none ctermfg=red
 
 if version >= 703
  highlight ColorColumn ctermbg=magenta
@@ -423,3 +423,5 @@ if version > 702
   set rnu
   nmap <F2> :call ToggleCopyMode()<CR>
 endif
+
+:source ~/.vim/autocorrect.vim
