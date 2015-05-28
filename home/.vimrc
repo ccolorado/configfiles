@@ -26,13 +26,12 @@ Bundle 'tpope/vim-vinegar'
 Bundle 'takac/vim-hardtime'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'vim-scripts/taglist.vim'
-
-" Incliging
+Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-repeat'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'sheerun/vim-polyglot'
 Bundle 'vim-scripts/grep.vim'
-Bundle 'vim-scripts/confluencewiki.vim'
 "" Considering
 "" Not reviewed yet
 " Bundle 'amirh/HTML-AutoCloseTag'
