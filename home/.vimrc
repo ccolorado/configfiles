@@ -28,19 +28,11 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/taglist.vim'
-"" Considering
-"" Not reviewed yet
-" Bundle 'amirh/HTML-AutoCloseTag'
-" Bundle 'hail2u/vim-css3-syntax'
-" Bundle 'gorodinskiy/vim-coloresque'
-"" Ruby Bundle
-" Bundle 'tpope/vim-rake'
-" Bundle 'tpope/vim-projectionist'
-" Bundle 'thoughtbot/vim-rspec'
 
 " Themes
 Bundle 'wellsjo/wells-colorscheme.vim'
@@ -163,12 +155,14 @@ map <silent><leader>e :so $MYVIMRC<CR>
 
 
 "========Custom Keystrokes
+"
 "=== Fat finger workaroudn
 " Approach to remap commonly mistaken keystrokes, usally by holding the shift key
 " for longer that it should.
 " taken from http://blog.sanctum.geek.nz/vim-command-typos/
 
 if has("user_commands")
+  " Saving changes
   command! -bang -nargs=? -complete=file E e<bang> <args>
   command! -bang -nargs=? -complete=file W w<bang> <args>
   command! -bang -nargs=? -complete=file Wq wq<bang> <args>
@@ -178,6 +172,11 @@ if has("user_commands")
   command! -bang Q q<bang>
   command! -bang QA qa<bang>
   command! -bang Qa qa<bang>
+
+  "Other
+  "Vertical splitting
+  command! -nargs=? -complete=file Vsp vsp <args>
+
 endif
 
 "=== Disable arrow keys
@@ -218,6 +217,10 @@ nmap <Down> gj
 nmap <Up> gk
 
 "========Plug-ins
+
+"== vim-surround
+
+let b:surround_104 = "[\"\r\"]"
 
 "== rainbow_parentheses.vim
 
