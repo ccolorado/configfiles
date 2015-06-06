@@ -34,8 +34,10 @@ Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/taglist.vim'
 
-" Themes
-Bundle 'wellsjo/wells-colorscheme.vim'
+"== Annoyance highlight ONLY the word under cursor WITHOUT jumping to the next occurence
+"   the first
+"time
+
 filetype plugin indent on     " required
 
 " To ignore plugin indent changes, instead use:
@@ -393,6 +395,16 @@ endif
 " From https://groups.google.com/forum/#!topic/vim_use/IERXsR4WVFk
 highlight! link DiffText MatchParen
 
+"== Annoyance * Spell check word under cursor without adding spellcheck to the said file
+:set spell spelllang=en_us
+highlight clear SpellRare
+highlight clear SpellBad
+highlight clear SpellCap
+highlight clear SpellLocal
+
+" TODO: create function to togggle spell highlighting
+" http://stackoverflow.com/questions/22180623/spell-check-word-under-cursor-in-vim
+
 " Toggle line numbering relative and absolute
 " Vim 7.4 doesn't turn line numbers on when disable relative lines
 function! ToggleLineNumbering()
@@ -404,7 +416,7 @@ endfunction
 
 " Toggle extra characters for copying with mouse
 function! ToggleCopyMode()
-  echom "functino called"
+  echo "function called"
   call ToggleLineNumbering()
   if &number
     set list
