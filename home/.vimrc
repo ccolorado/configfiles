@@ -19,6 +19,7 @@ Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
+Bundle 'sotte/presenting.vim'
 Bundle 'takac/vim-hardtime'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tpope/vim-abolish'
@@ -47,9 +48,7 @@ Bundle 'tejr/vim-tmux'
 Bundle 'tpope/vim-haml'
 "Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails.git'
-Bundle 'tpopevim-rails.git'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-ruby/vim-ruby.git'
 "== Annoyance highlight ONLY the word under cursor WITHOUT jumping to the next occurence
 "   the first
 "time
