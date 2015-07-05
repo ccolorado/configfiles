@@ -375,13 +375,6 @@ nmap <leader>d :DiffSaved <CR>
 imap jj <Esc>
 imap ii <Esc>
 
-"Enable spell check and text with on git commits by default
-autocmd Filetype gitcommit setlocal spell textwidth=72
-"Enable spell check and text with on mediawiki files by default
-autocmd Filetype mediawiki setlocal spell textwidth=72
-autocmd Filetype markdown setlocal spell textwidth=90
-
-
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
       set t_Co=256
 endif
@@ -454,3 +447,33 @@ if version > 702
 endif
 
 :source ~/.vim/autocorrect.vim
+
+function! SpellHighlightOn()
+
+  highlight SpellRare term=reverse ctermbg=52 gui=undercurl guisp=#FFFFFF
+  highlight SpellBad term=reverse cterm=reverse gui=undercurl guisp=#FF0000
+  highlight SpellCap term=reverse ctermbg=17 gui=undercurl guisp=#7070F
+  highlight SpellLocal term=underline ctermbg=17 gui=undercurl guisp=#70F0F0
+
+endfunction
+
+function! SpellHighlightOff()
+
+  highlight clear SpellRare
+  highlight clear SpellBad
+  highlight clear SpellCap
+  highlight clear SpellLocal
+
+endfunction
+
+command! TurnOnSpellHL call SpellHighlightOn()
+command! TurnOffSpellHL call SpellHighlightOff()
+
+"Enable spell check and text with on git, wiki, and markdown commits by default
+autocmd Filetype gitcommit :call SpellHighlightOn()
+autocmd Filetype mediawiki :call SpellHighlightOn()
+autocmd Filetype markdown :call SpellHighlightOn()
+
+autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd Filetype mediawiki setlocal spell textwidth=90
+autocmd Filetype markdown setlocal spell textwidth=90
