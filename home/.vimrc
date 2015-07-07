@@ -133,7 +133,7 @@ function! HLNext (blinktime)
   redraw
 endfunction
 
-set scrolloff=10
+set scrolloff=5
 nnoremap <silent> n n:call HLNext(0.4)<cr>
 nnoremap <silent> N N:call HLNext(0.4)<cr>
 
