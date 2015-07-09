@@ -264,6 +264,8 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'DarkOrchid3'],
     \ ['red',         'firebrick3'],
     \ ]
+"== gundo.vim
+nnoremap <leader>u :GundoToggle<CR>
 
 "== vim-hardtime
 let g:hardtime_default_on = 1
