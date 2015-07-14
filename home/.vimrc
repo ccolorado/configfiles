@@ -6,14 +6,16 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+Bundle 'gmarik/vundle'
+
 Bundle 'Shougo/vimproc.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'gmarik/vundle'
 Bundle 'jelera/vim-javascript-syntax.git'
 Bundle 'joonty/vdebug'
+Bundle 'junegunn/vim-easy-align'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/nerdtree'
@@ -266,6 +268,12 @@ let g:rbpt_colorpairs = [
     \ ]
 "== gundo.vim
 nnoremap <leader>u :GundoToggle<CR>
+
+"== easy-aluign
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "== vim-hardtime
 let g:hardtime_default_on = 1
