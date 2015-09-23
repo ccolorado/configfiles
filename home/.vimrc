@@ -404,11 +404,6 @@ endif
 highlight! link DiffText MatchParen
 
 "== Annoyance * Spell check word under cursor without adding spellcheck to the said file
-:set spell spelllang=en_us
-highlight clear SpellRare
-highlight clear SpellBad
-highlight clear SpellCap
-highlight clear SpellLocal
 
 " TODO: create function to togggle spell highlighting
 " http://stackoverflow.com/questions/22180623/spell-check-word-under-cursor-in-vim
@@ -447,32 +442,6 @@ if version > 702
 endif
 
 :source ~/.vim/autocorrect.vim
-
-function! SpellHighlightOn()
-
-  highlight SpellRare term=reverse ctermbg=52 gui=undercurl guisp=#FFFFFF
-  highlight SpellBad term=reverse cterm=reverse gui=undercurl guisp=#FF0000
-  highlight SpellCap term=reverse ctermbg=17 gui=undercurl guisp=#7070F
-  highlight SpellLocal term=underline ctermbg=17 gui=undercurl guisp=#70F0F0
-
-endfunction
-
-function! SpellHighlightOff()
-
-  highlight clear SpellRare
-  highlight clear SpellBad
-  highlight clear SpellCap
-  highlight clear SpellLocal
-
-endfunction
-
-command! TurnOnSpellHL call SpellHighlightOn()
-command! TurnOffSpellHL call SpellHighlightOff()
-
-"Enable spell check and text with on git, wiki, and markdown commits by default
-autocmd Filetype gitcommit :call SpellHighlightOn()
-autocmd Filetype mediawiki :call SpellHighlightOn()
-autocmd Filetype markdown :call SpellHighlightOn()
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Filetype mediawiki setlocal spell textwidth=90
