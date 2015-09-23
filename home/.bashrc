@@ -103,7 +103,18 @@ alias svimdiff='sudo vimdiff'
 alias mysql='mysql --auto-rehash'
 alias sshmount='sshfs -o reconnect -o follow_symlinks'
 alias tmux='tmux -2'
-alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -shuffle -softvol -quiet  volume=20 -loop 0 '
+
+alias gti="git"
+
+command -v ccze  >/dev/null 2>&1 && CCZE_DECORATOR="| ccze -A"
+
+alias tlogs='find /var/log/httpd/ -iname "*log" | xargs sudo  tail -f '$CCZE_DECORATOR
+alias tlogs_errors='find /var/log/httpd/ -iname "*error**log" | xargs sudo tail  -f | sed -u "s/\\\n/\\n/g" | sed -u "s/\\\t/\\t/g" '$CCZE_DECORATOR;
+alias tlogs_access='find /var/log/httpd/ -iname "*access*log" | xargs sudo  tail -f | sed -u "s/\\\n/\\n/g" | sed -u "s/\\\t/\\t/g" '$CCZE_DECORATOR;
+
+if [ -f ~/.white_noise_playlist ]; then
+  alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -shuffle -softvol -quiet  volume=20 -loop 0 '
+fi;
 
 #stop bash flow control for ^s
 stty stop ^e

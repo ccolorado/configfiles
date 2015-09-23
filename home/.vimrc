@@ -133,7 +133,7 @@ function! HLNext (blinktime)
   redraw
 endfunction
 
-set scrolloff=10
+set scrolloff=5
 nnoremap <silent> n n:call HLNext(0.4)<cr>
 nnoremap <silent> N N:call HLNext(0.4)<cr>
 
@@ -264,6 +264,8 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'DarkOrchid3'],
     \ ['red',         'firebrick3'],
     \ ]
+"== gundo.vim
+nnoremap <leader>u :GundoToggle<CR>
 
 "== vim-hardtime
 let g:hardtime_default_on = 1
