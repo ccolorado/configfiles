@@ -368,6 +368,13 @@ nmap <C-e> :e#<CR>
 "set ff=dos,unix Change file format to avoid ^M line breaks also
 "replacing ^M's :%s/CTRL-v ENTER//g
 
+" Follow and highlight current line
+" taken from http://vim.wikia.com/wiki/Highlight_current_line
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+nnoremap <Leader>c :set cursorline!<CR>
+
 " Show vimdiff of unsaved changes
 
 function! s:DiffWithSaved()
@@ -405,7 +412,7 @@ highlight DbgBreakptSign ctermbg=none ctermfg=10
 highlight DbgCurrentSign ctermbg=none ctermfg=red
 
 if version >= 703
- highlight ColorColumn ctermbg=magenta
+ highlight ColorColumn ctermbg=darkgrey
  call matchadd('ColorColumn', '\%81v', 100)
 endif
 
