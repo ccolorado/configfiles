@@ -96,16 +96,12 @@ fi;
 
 #Arch git completion script
 if [ -f '/usr/share/git/completion/git-prompt.sh' ]; then
-
   git_completion_script='/usr/share/git/completion/git-prompt.sh'
-
 fi;
 
 #Ubuntu git completion script
 if [ -f '/etc/bash_completion.d/git-prompt' ]; then
-
   git_completion_script='/etc/bash_completion.d/git-prompt'
-
 fi;
 
 #Apply git completion if found
@@ -120,7 +116,12 @@ if [ -f "$git_completion_script" ]; then
 
 fi;
 
-export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 "( ⭠ %s )")'"\n$_USER_SYMBL $CLEAR"
+export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]""\n$_USER_SYMBL $CLEAR"
+
+# Do not include bash_prompt if completion script if completion function  can't be found
+if [ "function"="$(type -t __git_ps1)" ]; then
+  export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 "( ⭠ %s )")'"\n$_USER_SYMBL $CLEAR"
+fi;
 
 alias ls='ls --color=auto -p'
 alias ll='ls -alh'
