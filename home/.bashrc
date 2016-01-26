@@ -93,7 +93,19 @@ then
   _USER_COLOR=$PROMPT_ROOT_COLOR
   _USER_SYMBL='#'
 fi;
-export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]\n$_USER_SYMBL $CLEAR"
+
+if [ -f '/usr/share/git/completion/git-prompt.sh' ]; then
+
+  source /usr/share/git/completion/git-prompt.sh
+  GIT_PS1_SHOWDIRTYSTATE=1
+  GIT_PS1_SHOWUNTRACKEDFILES=1
+  GIT_PS1_SHOWUNTRACKEDFILES=1
+  GIT_PS1_SHOWUPSTREAM=1
+  GIT_PS1_SHOWUPSTREAM='auto'
+
+fi;
+
+export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 " ⭠ %s ")'"\n$_USER_SYMBL $CLEAR"
 
 alias ls='ls --color=auto -p'
 alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
