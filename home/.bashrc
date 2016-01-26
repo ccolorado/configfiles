@@ -94,9 +94,24 @@ then
   _USER_SYMBL='#'
 fi;
 
+#Arch git completion script
 if [ -f '/usr/share/git/completion/git-prompt.sh' ]; then
 
-  source /usr/share/git/completion/git-prompt.sh
+  git_completion_script='/usr/share/git/completion/git-prompt.sh'
+
+fi;
+
+#Ubuntu git completion script
+if [ -f '/etc/bash_completion.d/git-prompt' ]; then
+
+  git_completion_script='/etc/bash_completion.d/git-prompt'
+
+fi;
+
+#Apply git completion if found
+if [ -f "$git_completion_script" ]; then
+
+  source "$git_completion_script"
   GIT_PS1_SHOWDIRTYSTATE=1
   GIT_PS1_SHOWUNTRACKEDFILES=1
   GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -105,7 +120,7 @@ if [ -f '/usr/share/git/completion/git-prompt.sh' ]; then
 
 fi;
 
-export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 " ⭠ %s ")'"\n$_USER_SYMBL $CLEAR"
+export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 "( ⭠ %s )")'"\n$_USER_SYMBL $CLEAR"
 
 alias ls='ls --color=auto -p'
 alias ll='ls -alh'
