@@ -108,6 +108,7 @@ fi;
 export PS1='[$?]'"$distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 " ⭠ %s ")'"\n$_USER_SYMBL $CLEAR"
 
 alias ls='ls --color=auto -p'
+alias ll='ls -alh'
 alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
 alias grep="grep --color=auto"
 alias svim='sudoedit'
