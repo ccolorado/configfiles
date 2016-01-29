@@ -69,6 +69,32 @@ git_get_last_pushed_commit (){
   echo `git rev-parse origin/$origin_branch`
 }
 
+feature_hunt_expression (){
+  query=""
+  for word in "$@"
+  do
+    query=$query".?"$word
+  done
+
+  echo $query".?"
+
+}
+
+feature_hunt(){
+  expression=$(feature_hunt_expression "$@")
+
+  echo "looking for $@ => $expression"
+  type ag > /dev/null
+  is_ag_installed=$?
+  if [ $is_ag_installed -eq "0" ]; then
+    ag $expression
+  else
+    egrep -rni "$expression" * --exclude="tags"
+  fi;
+
+}
+
+
 # Setting up PS1 value
 export EDITOR=vim
 export hostcolor=$(str2color $HOSTNAME)
