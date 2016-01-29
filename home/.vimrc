@@ -291,7 +291,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 "== Nerdtree
 let NERDTreeShowLineNumbers=1
 nmap <silent><leader>f :NERDTreeToggle<CR>
-"== Unite
+"== unite.vim
 
   if executable('ag')
 
@@ -307,7 +307,8 @@ nmap <silent><leader>f :NERDTreeToggle<CR>
     nmap <space> :<C-u>Unite -no-split -start-insert buffer file<CR>
     nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec<CR>
  endif
-
+let g:unite_force_overwrite_statusline=1
+let g:unite_kind_file_vertical_preview=1
 "== airline
 "" FIXES The statusline is hidden/only appears in split windows!
 if !exists('g:airline_symbols')
