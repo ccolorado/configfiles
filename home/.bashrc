@@ -76,6 +76,7 @@ feature_hunt_expression (){
     query=$query".?"$word
   done
 
+  query=${query//_/\.\?}
   echo $query".?"
 
 }
