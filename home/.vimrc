@@ -23,7 +23,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'sotte/presenting.vim'
-Bundle 'takac/vim-hardtime'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
@@ -276,11 +275,11 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-"== vim-hardtime
-let g:hardtime_default_on = 1
-let g:hard_time_timeout = 10000
-let g:hardtime_allow_different_key = 1
-let g:hardtime_maxcount = 2
+""== vim-hardtime
+"let g:hardtime_default_on = 1
+"let g:hard_time_timeout = 10000
+"let g:hardtime_allow_different_key = 1
+"let g:hardtime_maxcount = 2
 
 ""== cntlp
 "nmap <space> :CtrlPBuffer<CR>
