@@ -370,6 +370,9 @@ nmap <C-e> :e#<CR>
 "set ff=dos,unix Change file format to avoid ^M line breaks also
 "replacing ^M's :%s/CTRL-v ENTER//g
 
+"== Search visually selected text
+vnoremap // y/<C-R>"<CR>
+
 " Follow and highlight current line
 " taken from http://vim.wikia.com/wiki/Highlight_current_line
 hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -389,6 +392,10 @@ endfunction
 com! DiffSaved call s:DiffWithSaved()
 
 nmap <leader>d :DiffSaved <CR>
+
+"== Center cursor vertically
+" TODO: make this toggable
+nmap <leader>zz :set scrolloff=999
 
 "Alternative Insert Mode exit
 imap jj <Esc>
@@ -413,7 +420,7 @@ highlight DbgBreakptSign ctermbg=none ctermfg=10
 "highlight DbgCurrentLine ctermbg=none ctermfg=none
 highlight DbgCurrentSign ctermbg=none ctermfg=red
 
-if version >= 703
+if v:version > 702
  highlight ColorColumn ctermbg=darkgrey
  call matchadd('ColorColumn', '\%81v', 100)
 endif
@@ -452,9 +459,8 @@ function! ToggleCopyMode()
 endfunction
 
 set nu
-if version > 702
+if v:version > 702
   "set relative line numbering On by default on vim 7.2 and up
-  "
   "
   set rnu
   nmap <F2> :call ToggleCopyMode()<CR>
