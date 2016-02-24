@@ -395,7 +395,7 @@ nmap <leader>d :DiffSaved <CR>
 
 "== Center cursor vertically
 " TODO: make this toggable
-nmap <leader>zz :set scrolloff=999
+nmap <leader>zz :set scrolloff=999<CR>
 
 "Alternative Insert Mode exit
 imap jj <Esc>
@@ -438,7 +438,7 @@ highlight! link DiffText MatchParen
 " Vim 7.4 doesn't turn line numbers on when disable relative lines
 function! ToggleLineNumbering()
   set nu!
-  if version > 703
+  if v:version > 703
     set rnu!
   endif
 endfunction
@@ -471,3 +471,10 @@ endif
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Filetype mediawiki setlocal spell textwidth=90
 autocmd Filetype markdown setlocal spell textwidth=90
+
+
+" Opens each line of a text file in vim
+" for line in getline(1, '$') | exec 'argadd' line | endfor
+
+" Traverse the buffer list comparing against development branch
+nnoremap <leader>t :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
