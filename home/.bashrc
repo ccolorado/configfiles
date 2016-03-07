@@ -34,6 +34,13 @@ distroPromptFlag()
     REDH_FLAG="\[\033[40;1;31m\]R$CLEAR"
     DBIN_FLAG="\[\033[40;1;31m\]@$CLEAR"
     DRWN_FLAG="\[\033[40;1;37m\]ć$CLEAR"
+    UBNT_FLAG="\[\033[1;33;45m\]U$CLEAR"
+
+    if [ -f "/etc/lsb-release" ] || [ 0 -eq $(grep --quiet -i ubuntu /etc/lsb-release) ];
+    then
+      distro_flag=$UBNT_FLAG;
+    fi;
+
     if [ -f /etc/centos-release ];
     then
       distro_flag=$CENT_FLAG;
@@ -159,6 +166,7 @@ alias svimdiff='sudo vimdiff'
 alias mysql='mysql --auto-rehash'
 alias sshmount='sshfs -o reconnect -o follow_symlinks'
 alias tmux='tmux -2'
+alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 alias gti="git"
 
