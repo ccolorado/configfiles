@@ -170,7 +170,7 @@ cmap w!! w !sudo tee >/dev/null %
 exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~,eol:\uAC"
 set list
 " Reload vimrc
-map <silent><leader>e :so $MYVIMRC<CR>
+map <leader>e :so $MYVIMRC<CR>
 
 
 "========Custom Keystrokes
@@ -467,6 +467,16 @@ if v:version > 702
 endif
 
 :source ~/.vim/autocorrect.vim
+
+" Pdf text reader command Rpdf
+:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
+:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
+
+" Unsuccessful attempt to do a 'read mode' highlighting perhaps can be ironned
+" out in the future
+"" 'Reading Mode' Next/Previous Sentence highlight
+" xnoremap <leader>( <Esc>((vis
+" xnoremap <leader>) <Esc>vis
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Filetype mediawiki setlocal spell textwidth=90
