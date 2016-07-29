@@ -167,6 +167,8 @@ alias mysql='mysql --auto-rehash'
 alias sshmount='sshfs -o reconnect -o follow_symlinks'
 alias tmux='tmux -2'
 alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias youtube-dl="youtube-dl -t "
+alias yt-audio="youtube-dl --extract-audio --audio-format mp3 "
 
 alias gti="git"
 
