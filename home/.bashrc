@@ -170,7 +170,16 @@ alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias youtube-dl="youtube-dl -t "
 alias yt-audio="youtube-dl --extract-audio --audio-format mp3 "
 
+# Typos
+# =====
+# I should really take a look at zsh
 alias gti="git"
+
+
+# Custom system type switching
+export CUSTOM_SYSTEM_TYPE_FILE="$HOME/.custom_system_type"
+alias set_custom_system_type="echo $@ >  $CUSTOM_SYSTEM_TYPE_FILE"
+alias get_custom_system_type="cat $CUSTOM_SYSTEM_TYPE_FILE"
 
 command -v ccze  >/dev/null 2>&1 && CCZE_DECORATOR="| ccze -A"
 

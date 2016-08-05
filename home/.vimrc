@@ -5,11 +5,19 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+let custom_system_type = join(readfile(glob('~/.custom_system_type')))
 
 Bundle 'gmarik/vundle'
 
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
+if custom_system_type == "full"
+  Bundle 'Shougo/unite.vim'
+  Bundle 'Shougo/vimproc.vim'
+  Bundle 'kien/rainbow_parentheses.vim'
+endif
+if custom_system_type != "full"
+  Bundle 'kien/ctrlp.vim'
+endif
+
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
@@ -17,8 +25,6 @@ Bundle 'editorconfig/editorconfig-vim'
 Bundle 'jelera/vim-javascript-syntax.git'
 Bundle 'joonty/vdebug'
 Bundle 'junegunn/vim-easy-align'
-Bundle 'kien/ctrlp.vim'
-Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
