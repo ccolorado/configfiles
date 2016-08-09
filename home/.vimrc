@@ -246,31 +246,33 @@ nmap <Up> gk
 
 let b:surround_104 = "[\"\r\"]"
 
-"== rainbow_parentheses.vim
+if custom_system_type == "full"
+  "== rainbow_parentheses.vim
 
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+  au VimEnter * RainbowParenthesesToggle
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * RainbowParenthesesLoadBraces
 
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+  let g:rbpt_colorpairs = [
+      \ ['brown',       'RoyalBlue3'],
+      \ ['Darkblue',    'SeaGreen3'],
+      \ ['darkgray',    'DarkOrchid3'],
+      \ ['darkgreen',   'firebrick3'],
+      \ ['darkcyan',    'RoyalBlue3'],
+      \ ['darkred',     'SeaGreen3'],
+      \ ['darkmagenta', 'DarkOrchid3'],
+      \ ['brown',       'firebrick3'],
+      \ ['gray',        'RoyalBlue3'],
+      \ ['black',       'SeaGreen3'],
+      \ ['darkmagenta', 'DarkOrchid3'],
+      \ ['Darkblue',    'firebrick3'],
+      \ ['darkgreen',   'RoyalBlue3'],
+      \ ['darkcyan',    'SeaGreen3'],
+      \ ['darkred',     'DarkOrchid3'],
+      \ ['red',         'firebrick3'],
+      \ ]
+endif
 "== gundo.vim
 nnoremap <leader>u :GundoToggle<CR>
 
@@ -286,31 +288,36 @@ nmap ga <Plug>(EasyAlign)
 "let g:hardtime_allow_different_key = 1
 "let g:hardtime_maxcount = 2
 
-""== cntlp
-"nmap <space> :CtrlPBuffer<CR>
-"nmap <leader><space> :CtrlPMixed<CR>
-
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 "== Nerdtree
 let NERDTreeShowLineNumbers=1
 nmap <silent><leader>f :NERDTreeToggle<CR>
+
+  if custom_system_type == "full"
 "== unite.vim
+    if executable('ag')
 
-  if executable('ag')
+      let g:unite_source_grep_command = 'ag'
+      let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+      let g:unite_source_grep_recursive_opt = ''
 
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-    let g:unite_source_grep_recursive_opt = ''
+      "call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
+      nmap <space> :<C-u>Unite -no-split -start-insert buffer file <CR>
+      nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async <CR>
 
-    "call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
-    nmap <space> :<C-u>Unite -no-split -start-insert buffer file <CR>
-    nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async <CR>
+    else
+      nmap <space> :<C-u>Unite -no-split -start-insert buffer file<CR>
+      nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec<CR>
+    endif
 
   else
-    nmap <space> :<C-u>Unite -no-split -start-insert buffer file<CR>
-    nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec<CR>
- endif
+""== cntlp
+
+    nmap <space> :CtrlPBuffer<CR>
+    nmap <leader><space> :CtrlPMixed<CR>
+    let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+  endif
 let g:unite_force_overwrite_statusline=1
 let g:unite_kind_file_vertical_preview=1
 "== airline
