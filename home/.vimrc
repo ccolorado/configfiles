@@ -18,6 +18,8 @@ if custom_system_type != "full"
   Bundle 'kien/ctrlp.vim'
 endif
 
+"== Features  Plugins
+
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
@@ -37,10 +39,12 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
+Bundle 'tpope/vim-eunuch'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/taglist.vim'
 
-"== Syntax Plugind
+"== Syntax Plugins
+
 Bundle 'JulesWang/css.vim'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'ap/vim-css-color'
@@ -51,11 +55,13 @@ Bundle 'mitsuhiko/vim-python-combined'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'rodjek/vim-puppet'
+Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'sheerun/rspec.vim'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails.git'
 Bundle 'vim-ruby/vim-ruby'
+
 "== Annoyance highlight ONLY the word under cursor WITHOUT jumping to the next occurence
 "   the first
 "time

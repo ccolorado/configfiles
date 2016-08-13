@@ -217,3 +217,7 @@ fi
 
 export TERM=xterm-256color
 unset SSH_ASKPASS
+
+if [ -d /home/vagrant/.config/composer/vendor/bin ]; then
+  PATH=$PATH":/home/vagrant/.config/composer/vendor/bin"
+fi;
