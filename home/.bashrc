@@ -170,6 +170,15 @@ alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias youtube-dl="youtube-dl -t "
 alias yt-audio="youtube-dl --extract-audio --audio-format mp3 "
 
+# vagrant aliases
+# next will use containers/docker
+
+alias vssh="vagrant ssh"
+alias vup="vagrant up"
+alias vdown="vagrant halt"
+alias vkill="vagrant destroy -f"
+
+
 # Typos
 # =====
 # I should really take a look at zsh
