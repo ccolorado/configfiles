@@ -24,11 +24,9 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'jelera/vim-javascript-syntax.git'
 Bundle 'joonty/vdebug'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 Bundle 'sotte/presenting.vim'
 Bundle 'tommcdo/vim-exchange'
@@ -48,13 +46,16 @@ Bundle 'vim-scripts/taglist.vim'
 Bundle 'JulesWang/css.vim'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'ap/vim-css-color'
+Bundle 'jelera/vim-javascript-syntax.git'
 Bundle 'junegunn/goyo.vim'
+Bundle 'ruanyl/vim-blade'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
 Bundle 'mitsuhiko/vim-python-combined'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'rodjek/vim-puppet'
+Bundle 'scrooloose/syntastic'
 Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'sheerun/rspec.vim'
 Bundle 'tpope/vim-haml'
@@ -499,7 +500,6 @@ endif
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Filetype mediawiki setlocal spell textwidth=90
 autocmd Filetype markdown setlocal spell textwidth=90
-
 
 " Opens each line of a text file in vim
 " for line in getline(1, '$') | exec 'argadd' line | endfor

@@ -1,6 +1,9 @@
 au BufNewFile,BufRead /var/www/conf/httpd/conf.d/* setf apache
 au BufRead,BufNewFile *.php.bkp set filetype=php
 
+""" Set comment string for blade templastes
+autocmd FileType blade  setlocal commentstring={{--%s--}}
+
 """ .wiki file detection and highlight. """
 au BufRead,BufNewFile *.md                  set filetype=markdown
 au BufRead,BufNewFile *.wiki                set filetype=mediawiki
