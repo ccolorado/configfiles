@@ -501,6 +501,9 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Filetype mediawiki setlocal spell textwidth=90
 autocmd Filetype markdown setlocal spell textwidth=90
 
+" Auto resize splits proportionaly on window resize
+autocmd VimResized * :wincmd =  
+
 " Opens each line of a text file in vim
 " for line in getline(1, '$') | exec 'argadd' line | endfor
 
