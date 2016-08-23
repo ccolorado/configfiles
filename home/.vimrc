@@ -29,17 +29,20 @@ Bundle 'junegunn/vim-easy-align'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'sotte/presenting.vim'
+Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
-Bundle 'tpope/vim-eunuch'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/taglist.vim'
+Bundle 'junegunn/goyo.vim'
+Bundle 'sheerun/rspec.vim'
 
 "== Syntax Plugins
 
@@ -47,7 +50,6 @@ Bundle 'JulesWang/css.vim'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'ap/vim-css-color'
 Bundle 'jelera/vim-javascript-syntax.git'
-Bundle 'junegunn/goyo.vim'
 Bundle 'ruanyl/vim-blade'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
@@ -57,7 +59,6 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/syntastic'
 Bundle 'shawncplus/phpcomplete.vim'
-Bundle 'sheerun/rspec.vim'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails.git'
@@ -283,6 +284,10 @@ endif
 "== gundo.vim
 nnoremap <leader>u :GundoToggle<CR>
 
+"== vim-php-cs-fixer
+"nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
+"nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+
 "== easy-aluign
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -502,7 +507,7 @@ autocmd Filetype mediawiki setlocal spell textwidth=90
 autocmd Filetype markdown setlocal spell textwidth=90
 
 " Auto resize splits proportionaly on window resize
-autocmd VimResized * :wincmd =  
+autocmd VimResized * :wincmd =
 
 " Opens each line of a text file in vim
 " for line in getline(1, '$') | exec 'argadd' line | endfor
