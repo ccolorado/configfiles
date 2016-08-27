@@ -20,11 +20,14 @@ endif
 
 "== Features  Plugins
 
+Bundle 'SirVer/ultisnips'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'honza/vim-snippets'
 Bundle 'joonty/vdebug'
+Bundle 'junegunn/goyo.vim'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
@@ -41,8 +44,6 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/taglist.vim'
-Bundle 'junegunn/goyo.vim'
-Bundle 'sheerun/rspec.vim'
 
 "== Syntax Plugins
 
@@ -234,13 +235,19 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" return to preovious window
-nnoremap <tab> <c-w><c-p>
-
 nmap <Down> gj
 nmap <Up> gk
 
 "========Plug-ins
+
+"== UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 "== vim-surround
 
@@ -277,8 +284,9 @@ endif
 nnoremap <leader>u :GundoToggle<CR>
 
 "== vim-php-cs-fixer
-"nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
-"nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+let g:php_cs_fixer_enable_default_mapping = 0
+nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
+nnoremap <silent><leader>P :call PhpCsFixerFixDirectory()<CR>
 
 "== easy-aluign
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
