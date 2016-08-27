@@ -180,7 +180,7 @@ set autoindent
 cmap w!! w !sudo tee >/dev/null %
 
 " Display characters for indetation, eol, and trailing whitespace
-exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~,eol:\uAC"
+exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~"
 set list
 " Reload vimrc
 map <leader>e :so $MYVIMRC<CR>
