@@ -221,14 +221,6 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-"=== Tabs ===
-" Create new tab
-map <F10> :tabedit <cr>
-" Go to next tab
-map <F11> :tabn<cr>
-" Go to previous tab
-map <F12> :tabp<cr>
-
 "=== Save file with Ctrl+s
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
@@ -293,13 +285,6 @@ nnoremap <leader>u :GundoToggle<CR>
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-""== vim-hardtime
-"let g:hardtime_default_on = 1
-"let g:hard_time_timeout = 10000
-"let g:hardtime_allow_different_key = 1
-"let g:hardtime_maxcount = 2
-
 
 "== Nerdtree
 let NERDTreeShowLineNumbers=1
