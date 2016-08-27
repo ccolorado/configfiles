@@ -173,8 +173,9 @@ alias yt-audio="youtube-dl --extract-audio --audio-format mp3 "
 # vagrant aliases
 # next will use containers/docker
 
-alias vssh="vagrant ssh"
+alias vsh="vagrant ssh"
 alias vup="vagrant up"
+alias vrl="vagrant reload"
 alias vdown="vagrant halt"
 alias vkill="vagrant destroy -f"
 
