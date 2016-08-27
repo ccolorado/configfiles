@@ -307,12 +307,12 @@ nmap <silent><leader>f :NERDTreeToggle<CR>
       let g:unite_source_grep_recursive_opt = ''
 
       "call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
-      nmap <space> :<C-u>Unite -no-split -start-insert buffer file <CR>
-      nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec/async <CR>
+      nmap <space> :<C-u>Unite -start-insert buffer file <CR>
+      nmap <leader><space> :<C-u>Unite -start-insert buffer file file_rec/async <CR>
 
     else
-      nmap <space> :<C-u>Unite -no-split -start-insert buffer file<CR>
-      nmap <leader><space> :<C-u>Unite -no-split -start-insert buffer file file_rec<CR>
+      nmap <space> :<C-u>Unite -start-insert buffer file<CR>
+      nmap <leader><space> :<C-u>Unite -start-insert buffer file file_rec<CR>
     endif
 
   else
