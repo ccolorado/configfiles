@@ -242,7 +242,7 @@ nmap <Up> gk
 
 "== UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-l>"
+" let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -392,7 +392,7 @@ vnoremap // y/<C-R>"<CR>
 
 " Follow and highlight current line
 " taken from http://vim.wikia.com/wiki/Highlight_current_line
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+hi CursorLine   cterm=NONE ctermbg=black ctermfg=yellow guibg=darkred guifg=white
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>c :set cursorline!<CR>
