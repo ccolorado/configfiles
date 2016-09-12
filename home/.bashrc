@@ -103,6 +103,40 @@ feature_hunt(){
 }
 
 
+kernel_needs_reload(){
+
+  kernel_needs_reboot=""
+  pacman_ver=""
+  uname_ver=$(uname -r | sed -e 's/-ARCH//gi')
+
+  if [ -f /tmp/.kernel_needs_reboot ]; then
+    kernel_needs_reboot=$(cat /tmp/.kernel_needs_reboot)
+
+  else
+
+    type pacman > /dev/null 2>&1
+
+    if [ $? -eq 0 ]; then
+      pacman_ver=$(pacman -Q linux | sed -e 's/linux //gi')
+    else
+      return 0
+    fi
+
+    if [ $pacman_ver != "" ]
+    then
+
+      if [ "$pacman_ver" != "$uname_ver" ]
+      then
+        kernel_needs_reboot="$pacman_ver > $uname_ver"
+        echo $kernel_needs_reboot > /tmp/kernel_needs_reboot
+      fi;
+
+    fi;
+
+  fi;
+
+}
+
 # Setting up PS1 value
 export EDITOR=vim
 export hostcolor=$(str2color $HOSTNAME)
@@ -150,11 +184,11 @@ if [ -f "$git_completion_script" ]; then
 
 fi;
 
-export PS1='[$?]'"\@ $distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]""\n$_USER_SYMBL $CLEAR"
+export PS1='$(kernel_needs_reload)[$?]'"\@ $distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]""\n$_USER_SYMBL $CLEAR"
 
 # Do not include bash_prompt if completion script if completion function  can't be found
 if [ `type -t __git_ps1`"" == 'function' ]; then
-  export PS1='[$?]'" \@ $distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 "( ⭠ %s )")'"\n$_USER_SYMBL $CLEAR"
+  export PS1='$(kernel_needs_reload)''[$?]'" \@ $distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 "( ⭠ %s )")'"\n$_USER_SYMBL $CLEAR"
 fi;
 
 alias ls='ls --color=auto -p'
