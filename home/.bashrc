@@ -264,3 +264,5 @@ unset SSH_ASKPASS
 if [ -d ~/.config/composer/vendor/bin ]; then
   PATH=$PATH":$HOME/.config/composer/vendor/bin"
 fi;
+
+alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
