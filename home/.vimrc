@@ -44,6 +44,8 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/taglist.vim'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-notes'
 
 "== Syntax Plugins
 
@@ -364,6 +366,9 @@ let g:airline_mode_map = {
       \ 'S'  : 'S',
       \ '' : 'S',
       \ }
+
+"== vim-notes
+let g:notes_directories = ['~/Dropbox/Notes']
 
 "== taglist
 " First check if ctags is installed
