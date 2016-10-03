@@ -1,113 +1,148 @@
 #examples from https://github.com/zircote/swagger-php/tree/master/Examples/swagger-spec/petstore-simple
 snippet sgp "swagger property with doc"
-	/**
-	 * @SWG\Property(format="${4:int64}")
-	 * @var ${3:integer}
-	 */
-	${2:public} $${1};
-endsnippet
-
-snippet docsgg "swagger get method doc block"
-	/**
-	 * Retrieve all ${1} records.
-	 *
-	 * @return \Illuminate\Http\JsonResponse
-	 *
-	 * @SWG\Get(
-	 *     path="/api/v1/${2}/${3:\{id\}}",
-	 *     description="Retrieve all ${3:$1} records.",
-	 *     operationId="${4:$2}.${5:index}",
-	 *     produces={"application/json"},
-	 *     tags={"$2"},
-	 *     @SWG\Response(
-	 *         response=200,
-	 *         description="Retrieve all ${6:$1} records."
-	 *     ),
-	 *     @SWG\Response(
-	 *         response=401,
-	 *         description="Unauthorized action.",
-	 *     )
-	 * )
-	 */
-endsnippet
-
-snippet docsgp "swagger post method block"
-	/**
-	 * @SWG\Post(
-	 *     path="/pets",
-	 *     operationId="addPet",
-	 *     description="Creates a new pet in the store.  Duplicates are allowed",
-	 *     produces={"application/json"},
-	 *     @SWG\Parameter(
-	 *         name="pet",
-	 *         in="body",
-	 *         description="Pet to add to the store",
-	 *         required=true,
-	 *         @SWG\Schema(ref="#/definitions/petInput"),
-	 *     ),
-	 *     @SWG\Response(
-	 *         response=200,
-	 *         description="pet response",
-	 *         @SWG\Schema(ref="#/definitions/pet")
-	 *     ),
-	 *     @SWG\Response(
-	 *         response="default",
-	 *         description="unexpected error",
-	 *         @SWG\Schema(ref="#/definitions/errorModel")
-	 *     )
-	 * )
-	 * @SWG\Definition(
-	 *     definition="petInput",
-	 *     allOf={
-	 *         @SWG\Schema(ref="pet"),
-	 *         @SWG\Schema(
-	 *             required={"name"},
-	 *             @SWG\Property(
-	 *                 property="id",
-	 *                 type="integer",
-	 *                 format="int64"
-	 *             )
-	 *         )
-	 *     }
-	 * )
-	 */
-endsnippet
-
-snippet docsgd "swagger delete method doc block"
-	/**
-	 * ${1} record deletion.
-	 *      - Update value for lastUpdatedBy, auditing purposes
-	 *      - Delete PlatformUserPhone record.
-	 *
-	 * @return \Illuminate\Http\JsonResponse
-	 *
-	 * @SWG\Delete(
-	 *     path="/api/v1/${2}/{id}",
-	 *     description="${1} record deletion.",
-	 *     operationId="${2}.destroy",
-	 *     produces={"application/json"},
-	 *     tags={"${2}"},
-	 *     @SWG\Parameter(
-	 *         description="ID of ${1} record to delete",
-	 *         format="${4:int64}",
-	 *         in="path",
-	 *         name="${5:id}",
-	 *         required=${6:true},
-	 *         type="${7:integer}"
-	 *     ),
-	 *     @SWG\Response(
-	 *         response=200,
-	 *         description="${1} record deleted"
-	 *     ),
-	 *     @SWG\Response(
-	 *         response=401,
-	 *         description="Unauthorized action.",
-	 *     )
-	 * )
-	 */
+/**
+ * @SWG\Property(format="${4:int64}")
+ * @var ${3:integer}
+ */
+${2:public} $${1};
 endsnippet
 
 
+snippet gstore_doc "swagger post method block"
+/**
+ * ${1} record creation.
+ *
+ * @return \Illuminate\Http\JsonResponse
+ *
+ * @SWG\Post(
+ *     path="/api/v1/${2}/",
+ *     description="${3:$1} record creation.
+ *     Create new ${4:$1} record.
+ *     operationId="${5:$2}.${6:store}",
+ *     produces={"application/json"},
+ *     tags={"${7:$2}"},
+ *     @SWG\Parameter(
+ *         name="request",
+ *         in="body",
+ *         description="${8:$1}",
+ *         required=true,
+ *         @SWG\Schema(ref="#/definitions/${9:$1}"),
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="Request processed"
+ *     ),
+ *     @SWG\Response(
+ *         response=400,
+ *         description="Access denied"
+ *     )
+ * )
+ */
+endsnippet
 
 
+snippet sput_doc "swagger put method doc block"
+/**
+ * ${1} record modification.
+ *      - Update ${4:$1} record.
+ *
+ * @return \Illuminate\Http\JsonResponse
+ *
+ * @SWG\Put(
+ *     path="/api/v1/${2}/{id}",
+ *     description="${5:$1} record modification.",
+ *     operationId="${9:$2}.${3:update}",
+ *     produces={"application/json"},
+ *     tags={"${10:$2}"},
+ *     @SWG\Parameter(
+ *         description="ID of ${6:$1} record to update",
+ *         format="int64",
+ *         in="path",
+ *         name="id",
+ *         required=true,
+ *         type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *         name="request",
+ *         in="body",
+ *         description="${7:$1}",
+ *         required=true,
+ *         @SWG\Schema(ref="#/definitions/${8:$1}"),
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="Request processed"
+ *     ),
+ *     @SWG\Response(
+ *         response=400,
+ *         description="Access denied"
+ *     ),
+ *     @SWG\Response(
+ *         response=401,
+ *         description="Missing or invalid JSON payload supplied.",
+ *     ),
+ *     @SWG\Response(
+ *         response=499,
+ *         description="Unknown error."
+ *     )
+ * )
+ */
+endsnippet
 
+# snippet sget_doc "swagger get method doc block"
+# /**
+#  * Retrieve all ${1} records.
+#  *
+#  * @return \Illuminate\Http\JsonResponse
+#  *
+#  * @SWG\Get(
+#  *     path="/api/v1/${2}/${3:\{id\}}",
+#  *     description="Retrieve all ${3:$1} records.",
+#  *     operationId="${4:$2}.${5:index}",
+#  *     produces={"application/json"},
+#  *     tags={"$2"},
+#  *     @SWG\Response(
+#  *         response=200,
+#  *         description="Retrieve all ${6:$1} records."
+#  *     ),
+#  *     @SWG\Response(
+#  *         response=401,
+#  *         description="Unauthorized action.",
+#  *     )
+#  * )
+#  */
+# endsnippet
+
+# snippet delete_doc "swagger delete method doc block"
+# /**
+#  * ${1} record deletion.
+#  *      - Update value for lastUpdatedBy, auditing purposes
+#  *      - Delete PlatformUserPhone record.
+#  *
+#  * @return \Illuminate\Http\JsonResponse
+#  *
+#  * @SWG\Delete(
+#  *     path="/api/v1/${2}/{id}",
+#  *     description="${1} record deletion.",
+#  *     operationId="${2}.destroy",
+#  *     produces={"application/json"},
+#  *     tags={"${2}"},
+#  *     @SWG\Parameter(
+#  *         description="ID of ${1} record to delete",
+#  *         format="${4:int64}",
+#  *         in="path",
+#  *         name="${5:id}",
+#  *         required=${6:true},
+#  *         type="${7:integer}"
+#  *     ),
+#  *     @SWG\Response(
+#  *         response=200,
+#  *         description="${1} record deleted"
+#  *     ),
+#  *     @SWG\Response(
+#  *         response=401,
+#  *         description="Unauthorized action.",
+#  *     )
+#  * )
+#  */
+# endsnippet
