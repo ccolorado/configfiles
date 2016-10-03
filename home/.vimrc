@@ -14,11 +14,12 @@ if custom_system_type == "full"
   Bundle 'Shougo/vimproc.vim'
   Bundle 'kien/rainbow_parentheses.vim'
 endif
-if custom_system_type != "full"
+if custom_system_type == "vm"
   Bundle 'kien/ctrlp.vim'
 endif
 
 "== Features  Plugins
+" Bundle 'sotte/presenting.vim'
 
 Bundle 'SirVer/ultisnips'
 Bundle 'airblade/vim-gitgutter'
@@ -31,7 +32,6 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
-Bundle 'sotte/presenting.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tpope/vim-abolish'
@@ -243,13 +243,15 @@ nmap <Up> gk
 "========Plug-ins
 
 "== UltiSnips
+set runtimepath+=~/.vim/custom_snippets
 let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsListSnippets=<
+" let g:UltiSnipsSnippetDirectories=["UltiSnips", "~/.vim/custom_snippets/"]
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/custom_snippets']
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit="context"
 
 "== vim-surround
 
@@ -309,19 +311,18 @@ nmap <silent><leader>f :NERDTreeToggle<CR>
       let g:unite_source_grep_recursive_opt = ''
 
       "call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
-      nmap <space> :<C-u>Unite -start-insert buffer file <CR>
-      nmap <leader><space> :<C-u>Unite -start-insert buffer file file_rec/async <CR>
-
+      nmap <space> :<C-u>Unite -start-insert buffer file file_rec/async <CR>
+      nmap <leader><space> :<C-u>Unite -start-insert buffer file <CR>
     else
-      nmap <space> :<C-u>Unite -start-insert buffer file<CR>
-      nmap <leader><space> :<C-u>Unite -start-insert buffer file file_rec<CR>
+      nmap <space> :<C-u>Unite -start-insert buffer file file_rec<CR>
+      nmap <leader><space> :<C-u>Unite -start-insert buffer file<CR>
     endif
 
   else
 ""== cntlp
 
-    nmap <space> :CtrlPBuffer<CR>
-    nmap <leader><space> :CtrlPMixed<CR>
+    nmap <leader><space> :CtrlPBuffer<CR>
+    nmap <leader> :CtrlPMixed<CR>
     let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
   endif
@@ -369,6 +370,8 @@ let g:airline_mode_map = {
 
 "== vim-notes
 let g:notes_directories = ['~/Dropbox/Notes']
+nnoremap <leader>nc :vsp<CR>:Note<Space>
+nnoremap <leader>ns :vsp<CR>:SearchNotes<Space>
 
 "== taglist
 " First check if ctags is installed
@@ -421,7 +424,6 @@ nmap <leader>zz :set scrolloff=999<CR>
 
 "Alternative Insert Mode exit
 imap jj <Esc>
-imap ii <Esc>
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
       set t_Co=256
