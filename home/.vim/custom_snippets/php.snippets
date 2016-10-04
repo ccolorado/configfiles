@@ -7,8 +7,7 @@ snippet sgp "swagger property with doc"
 ${2:public} $${1};
 endsnippet
 
-
-snippet gstore_doc "swagger post method block"
+snippet sgstore "swagger controller's store method block"
 /**
  * ${1} record creation.
  *
@@ -17,7 +16,7 @@ snippet gstore_doc "swagger post method block"
  * @SWG\Post(
  *     path="/api/v1/${2}/",
  *     description="${3:$1} record creation.
- *     Create new ${4:$1} record.
+ *     Creates A new ${4:$1} record.",
  *     operationId="${5:$2}.${6:store}",
  *     produces={"application/json"},
  *     tags={"${7:$2}"},
@@ -40,8 +39,7 @@ snippet gstore_doc "swagger post method block"
  */
 endsnippet
 
-
-snippet sput_doc "swagger put method doc block"
+snippet sgupdate "swagger controller's update method block"
 /**
  * ${1} record modification.
  *      - Update ${4:$1} record.
@@ -89,60 +87,133 @@ snippet sput_doc "swagger put method doc block"
  */
 endsnippet
 
-# snippet sget_doc "swagger get method doc block"
-# /**
-#  * Retrieve all ${1} records.
-#  *
-#  * @return \Illuminate\Http\JsonResponse
-#  *
-#  * @SWG\Get(
-#  *     path="/api/v1/${2}/${3:\{id\}}",
-#  *     description="Retrieve all ${3:$1} records.",
-#  *     operationId="${4:$2}.${5:index}",
-#  *     produces={"application/json"},
-#  *     tags={"$2"},
-#  *     @SWG\Response(
-#  *         response=200,
-#  *         description="Retrieve all ${6:$1} records."
-#  *     ),
-#  *     @SWG\Response(
-#  *         response=401,
-#  *         description="Unauthorized action.",
-#  *     )
-#  * )
-#  */
-# endsnippet
+snippet sgshow "swagger controller's show method block"
+/**
+ * Retrieve all ${1} records.
+ *
+ * @return \Illuminate\Http\JsonResponse
+ *
+ * @SWG\Get(
+ *     path="/api/v1/${2}/${3:\{id\}}",
+ *     description="Retrieve all ${4:$1} records.",
+ *     operationId="${5:$2}.${5:show}",
+ *     produces={"application/json"},
+ *     tags={"${6:$2}"},
+ *     @SWG\Response(
+ *         response=200,
+ *         description="Retrieve all ${6:$1} records."
+ *     ),
+ *     @SWG\Response(
+ *         response=401,
+ *         description="Unauthorized action.",
+ *     )
+ * )
+ */
+endsnippet
 
-# snippet delete_doc "swagger delete method doc block"
-# /**
-#  * ${1} record deletion.
-#  *      - Update value for lastUpdatedBy, auditing purposes
-#  *      - Delete PlatformUserPhone record.
-#  *
-#  * @return \Illuminate\Http\JsonResponse
-#  *
-#  * @SWG\Delete(
-#  *     path="/api/v1/${2}/{id}",
-#  *     description="${1} record deletion.",
-#  *     operationId="${2}.destroy",
-#  *     produces={"application/json"},
-#  *     tags={"${2}"},
-#  *     @SWG\Parameter(
-#  *         description="ID of ${1} record to delete",
-#  *         format="${4:int64}",
-#  *         in="path",
-#  *         name="${5:id}",
-#  *         required=${6:true},
-#  *         type="${7:integer}"
-#  *     ),
-#  *     @SWG\Response(
-#  *         response=200,
-#  *         description="${1} record deleted"
-#  *     ),
-#  *     @SWG\Response(
-#  *         response=401,
-#  *         description="Unauthorized action.",
-#  *     )
-#  * )
-#  */
-# endsnippet
+snippet sgshow "swagger controller's show method block"
+/**
+ * Retrieve all ${1} records.
+ *
+ * @return \Illuminate\Http\JsonResponse
+ *
+ * @SWG\Get(
+ *     path="/api/v1/${2}/${3:\{id\}}",
+ *     description="Retrieve all ${4:$1} records.",
+ *     operationId="${5:$2}.${5:show}",
+ *     produces={"application/json"},
+ *     tags={"${6:$2}"},
+ *     @SWG\Response(
+ *         response=200,
+ *         description="Retrieve all ${6:$1} records."
+ *     ),
+ *     @SWG\Response(
+ *         response=401,
+ *         description="Unauthorized action.",
+ *     )
+ * )
+ */
+endsnippet
+
+snippet defauilt_elems "Generates classes boiler plate methods and properties"
+/**
+ * List of ${2:$1} objects with key/value of id => object.
+ * @var array
+ */
+private $items = [];
+
+/**
+ * @return ${3:$1}
+ */
+public function getModel(){
+    return new ${1}();
+}
+endsnippet
+
+snippet sgparameter "Swagger parameter documentation"
+ *     @SWG\Parameter(
+ *         description="${2}",
+ *         format="${3:int64}",
+ *         in="${4:path}",
+ *         name="${1}",
+ *         required=${6:true},
+ *         type="${7:integer}"
+ *         ${8:@SWG\Schema(ref="#/definitions/${10:classname}"),}
+ *     )${9:,}
+endsnippet
+
+snippet sgresponse "Swagger Response Documentation"
+ *     @SWG\Response(
+ *         response=${1:200},
+ *         description="${2:Request processed}"
+ *     )${3:,}
+endsnippet
+
+
+snippet delete_doc "swagger delete method doc block"
+/**
+ * ${1} record deletion.
+ *      - Update value for lastUpdatedBy, auditing purposes
+ *
+ * @return \Illuminate\Http\JsonResponse
+ *
+ * @SWG\Delete(
+ *     path="/api/v1/${2}/{id}",
+ *     description="${1} record deletion.",
+ *     operationId="${2}.destroy",
+ *     produces={"application/json"},
+ *     tags={"${2}"},
+ *     @SWG\Parameter(
+ *         description="ID of ${1} record to delete",
+ *         format="${4:int64}",
+ *         in="path",
+ *         name="${5:id}",
+ *         required=${6:true},
+ *         type="${7:integer}"
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="${1} record deleted"
+ *     ),
+ *     @SWG\Response(
+ *         response=401,
+ *         description="Unauthorized action.",
+ *     )
+ * )
+ */
+endsnippet
+
+snippet defauilt_items "Generates classes boiler plate methods and properties"
+/**
+ * List of ${2:$1} objects with key/value of id => object.
+ * @var array
+ */
+private $items = [];
+
+/**
+ * @return ${3:$1}
+ */
+public function getModel(){
+    return new ${1}();
+}
+endsnippet
