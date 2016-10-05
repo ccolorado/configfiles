@@ -7,7 +7,7 @@ snippet sgp "swagger property with doc"
 ${2:public} $${1};
 endsnippet
 
-snippet sgstore "swagger controller's store method block"
+snippet sg_store "swagger controller's store method block"
 /**
  * ${1} record creation.
  *
@@ -39,7 +39,7 @@ snippet sgstore "swagger controller's store method block"
  */
 endsnippet
 
-snippet sgupdate "swagger controller's update method block"
+snippet sg_update "swagger controller's update method block"
 /**
  * ${1} record modification.
  *      - Update ${4:$1} record.
@@ -59,13 +59,6 @@ snippet sgupdate "swagger controller's update method block"
  *         name="id",
  *         required=true,
  *         type="integer"
- *     ),
- *     @SWG\Parameter(
- *         name="request",
- *         in="body",
- *         description="${7:$1}",
- *         required=true,
- *         @SWG\Schema(ref="#/definitions/${8:$1}"),
  *     ),
  *     @SWG\Response(
  *         response=200,
@@ -87,7 +80,7 @@ snippet sgupdate "swagger controller's update method block"
  */
 endsnippet
 
-snippet sgshow "swagger controller's show method block"
+snippet sg_show "swagger controller's show method block"
 /**
  * Retrieve all ${1} records.
  *
@@ -111,66 +104,35 @@ snippet sgshow "swagger controller's show method block"
  */
 endsnippet
 
-snippet sgshow "swagger controller's show method block"
+snippet sg_index "Swagger controller's index method block"
 /**
  * Retrieve all ${1} records.
  *
  * @return \Illuminate\Http\JsonResponse
  *
  * @SWG\Get(
- *     path="/api/v1/${2}/${3:\{id\}}",
- *     description="Retrieve all ${4:$1} records.",
- *     operationId="${5:$2}.${5:show}",
+ *     path="/api/v1/${2}",
+ *     description="Retrieve all ${3:$1} records.",
+ *     operationId="${6:$2}.index",
  *     produces={"application/json"},
- *     tags={"${6:$2}"},
+ *     tags={"${7:$2}"},
  *     @SWG\Response(
  *         response=200,
- *         description="Retrieve all ${6:$1} records."
+ *         description="Retrieve all ${4:$1} records."
  *     ),
  *     @SWG\Response(
- *         response=401,
- *         description="Unauthorized action.",
+ *         response=404,
+ *         description="${5:$1} not found"
+ *     ),
+ *     @SWG\Response(
+ *         response=499,
+ *         description="Unknown error."
  *     )
  * )
  */
 endsnippet
 
-snippet defauilt_elems "Generates classes boiler plate methods and properties"
-/**
- * List of ${2:$1} objects with key/value of id => object.
- * @var array
- */
-private $items = [];
-
-/**
- * @return ${3:$1}
- */
-public function getModel(){
-    return new ${1}();
-}
-endsnippet
-
-snippet sgparameter "Swagger parameter documentation"
- *     @SWG\Parameter(
- *         description="${2}",
- *         format="${3:int64}",
- *         in="${4:path}",
- *         name="${1}",
- *         required=${6:true},
- *         type="${7:integer}"
- *         ${8:@SWG\Schema(ref="#/definitions/${10:classname}"),}
- *     )${9:,}
-endsnippet
-
-snippet sgresponse "Swagger Response Documentation"
- *     @SWG\Response(
- *         response=${1:200},
- *         description="${2:Request processed}"
- *     )${3:,}
-endsnippet
-
-
-snippet delete_doc "swagger delete method doc block"
+snippet sg_delete "Swagger controller's delete method doc block"
 /**
  * ${1} record deletion.
  *      - Update value for lastUpdatedBy, auditing purposes
@@ -203,7 +165,7 @@ snippet delete_doc "swagger delete method doc block"
  */
 endsnippet
 
-snippet defauilt_items "Generates classes boiler plate methods and properties"
+snippet defauilt_elems "Generates classes boiler plate methods and properties"
 /**
  * List of ${2:$1} objects with key/value of id => object.
  * @var array
@@ -216,4 +178,42 @@ private $items = [];
 public function getModel(){
     return new ${1}();
 }
+endsnippet
+
+snippet sg_param "Swagger parameter documentation"
+@SWG\Parameter(
+*         name="${1}",
+*         in="${2:formData}",
+*         description="${3}",
+*         required=${4:true},
+*         type="${5:integer}",
+*         format="${6:int64}"
+*         ${8:, @SWG\Schema(ref="#/definitions/${9:classname}"),}
+*     )${7:,}
+endsnippet
+
+snippet sg_res "Swagger Response Documentation"
+@SWG\Response(
+*         response=${1:200},
+*         description="${2:Request processed}"
+*     )${3:,}
+endsnippet
+
+snippet default_items "Generates classes boiler plate methods and properties"
+/**
+ * List of ${2:$1} objects with key/value of id => object.
+ * @var array
+ */
+private $items = [];
+
+/**
+ * @return ${3:$1}
+ */
+public function getModel(){
+    return new ${1}();
+}
+endsnippet
+
+snippet keyval "Adds a keyvalue item to an associative array"
+'${1}' => ${3:"${2}"}${4:,}
 endsnippet
