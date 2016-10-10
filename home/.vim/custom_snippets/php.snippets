@@ -134,7 +134,7 @@ snippet sg_index "Swagger controller's index method block"
  *     tags={"${7:$2}"},
  *     @SWG\Response(
  *         response=200,
- *         description="Retrieve all ${4:$1} records."
+ *         description="Request processed"
  *     ),
  *     @SWG\Response(
  *         response=404,
@@ -148,34 +148,44 @@ snippet sg_index "Swagger controller's index method block"
  */
 endsnippet
 
-snippet sg_delete "Swagger controller's delete method doc block"
+snippet sg_soft_destroy "Swagger controller's delete method doc block"
+
 /**
  * ${1} record deletion.
- *      - Update value for lastUpdatedBy, auditing purposes
+ *      - Soft delete ${3:$1} record.
  *
  * @return \Illuminate\Http\JsonResponse
  *
  * @SWG\Delete(
  *     path="/api/v1/${2}/{id}",
- *     description="${1} record deletion.",
- *     operationId="${2}.destroy",
+ *     description="${4:$1} record deletion.
+ *     Soft delete ${5:$1} record.",
+ *     operationId="${7:$2}.destroy",
  *     produces={"application/json"},
- *     tags={"${2}"},
+ *     tags={"${8:$2}"},
  *     @SWG\Parameter(
- *         description="ID of ${1} record to delete",
- *         format="${4:int64}",
+ *         description="ID of ${6:$1} record to delete",
+ *         format="int64",
  *         in="path",
- *         name="${5:id}",
- *         required=${6:true},
- *         type="${7:integer}"
+ *         name="id",
+ *         required=true,
+ *         type="integer"
  *     ),
  *     @SWG\Response(
  *         response=200,
- *         description="${1} record deleted"
+ *         description="Request processed"
  *     ),
  *     @SWG\Response(
- *         response=401,
- *         description="Unauthorized action.",
+ *         response=400,
+ *         description="Access denied"
+ *     ),
+ *     @SWG\Response(
+ *         response=404,
+ *         description="Not Found"
+ *     ),
+ *     @SWG\Response(
+ *         response=499,
+ *         description="Unknown error."
  *     )
  * )
  */
