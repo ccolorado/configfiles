@@ -231,7 +231,7 @@ alias tlogs_errors='sudo find /var/log/httpd/ -iname "*error**log" | xargs sudo 
 alias tlogs_access='sudo find /var/log/httpd/ -iname "*access*log" | xargs sudo  tail -f | sed -u "s/\\\n/\\n/g" | sed -u "s/\\\t/\\t/g" '$CCZE_DECORATOR;
 
 if [ -f ~/.white_noise_playlist ]; then
-  alias whitenoise='mplayer -nocache -playlist ~/.white_noise_playlist -shuffle -softvol -quiet  volume=20 -loop 0 '
+  alias whitenoise='mplayer -nocache -loop 0 -shuffle $(cat ~/.white_noise_playlist)  -volume 20 -quiet'
 fi;
 
 #stop bash flow control for ^s
