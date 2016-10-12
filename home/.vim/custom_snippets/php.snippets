@@ -7,6 +7,24 @@ snippet sgp "swagger property with doc"
 ${2:public} $${1};
 endsnippet
 
+snippet aff_store "Affiliates resource store method"
+
+${5:sg_store${6}}
+
+public function store(${1}Request $request)
+{
+    $${2:$1} = $this->getModel();
+    $${3:$1}->fill($request->all());
+
+    if ($${3:$1}->save()) {
+        return response()->json(AffiliatesResponse::getMessage(AffiliatesResponse::REQUEST_PROCESSED));
+    }
+
+    throw new AffiliatesBadResponseException($${4:$1});
+}
+
+endsnippet
+
 snippet sg_store "swagger controller's store method block"
 /**
  * ${1} record creation.
@@ -20,14 +38,6 @@ snippet sg_store "swagger controller's store method block"
  *     operationId="${5:$2}.${6:store}",
  *     produces={"application/json"},
  *     tags={"${7:$2}"},
- *     @SWG\Parameter(
- *         name="name",
- *         in="formData",
- *         description="${8:$1}",
- *         required=true,
- *         type="string",
- *         ${8:, @SWG\Schema(ref="#/definitions/${9:classname}"),}
- *     ),
  *     @SWG\Response(
  *         response=200,
  *         description="Request processed"
@@ -39,6 +49,8 @@ snippet sg_store "swagger controller's store method block"
  * )
  */
 endsnippet
+
+snippet res_store "laravel controller 
 
 snippet sg_update "swagger controller's update method block"
 /**
@@ -79,6 +91,24 @@ snippet sg_update "swagger controller's update method block"
  *     )
  * )
  */
+endsnippet
+
+snippet aff_show "Affiliates resource store method"
+
+${3:sg_show${2}}
+
+public function showTest(ApiTester $I)
+{
+    $I->wantTo('See records using /1 route');
+    $I->sendGET($this->baseURI.'/1');
+    $I->seeResponseCodeIs(\Illuminate\Http\Response::HTTP_OK ); // 200
+    $I->dontSeeResponseCodeIs(\Illuminate\Http\Response::HTTP_NOT_FOUND);
+    $I->seeResponseIsJson();
+    $I->seeResponseMatchesJsonType([
+        ${1}
+    ]);
+}
+
 endsnippet
 
 snippet sg_show "swagger controller's show method block"
@@ -250,4 +280,8 @@ endsnippet
 
 snippet kv "Adds a keyvalue item to an associative array"
 '${1}' => ${3:"${2}"}${4:,}
+endsnippet
+
+snippet , "Adds array next constant value"
+${1:${2:'${3}' ,${4}}}
 endsnippet
