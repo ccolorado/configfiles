@@ -289,10 +289,11 @@ nnoremap <leader>u :GundoToggle<CR>
 
 "== vim-php-cs-fixer
 let g:php_cs_fixer_enable_default_mapping = 0
+let g:php_cs_fixer_level='psr2'
 nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
 nnoremap <silent><leader>P :call PhpCsFixerFixDirectory()<CR>
 
-"== easy-aluign
+"== easy-align
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
@@ -508,6 +509,12 @@ autocmd Filetype markdown setlocal spell textwidth=90
 
 " Auto resize splits proportionaly on window resize
 autocmd VimResized * :wincmd =
+
+" open file under cursor on new vertical split
+:nnoremap gf] <C-W>vgf
+
+" open file under cursor on new horizontal split
+:nnoremap gf[ <C-W><C-f>
 
 " Opens each line of a text file in vim
 " for line in getline(1, '$') | exec 'argadd' line | endfor
