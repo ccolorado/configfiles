@@ -95,18 +95,13 @@ endsnippet
 
 snippet aff_show "Affiliates resource store method"
 
-${3:sg_show${2}}
+${2:sg_show${1}}
 
-public function showTest(ApiTester $I)
+public function show($id)
 {
-    $I->wantTo('See records using /1 route');
-    $I->sendGET($this->baseURI.'/1');
-    $I->seeResponseCodeIs(\Illuminate\Http\Response::HTTP_OK ); // 200
-    $I->dontSeeResponseCodeIs(\Illuminate\Http\Response::HTTP_NOT_FOUND);
-    $I->seeResponseIsJson();
-    $I->seeResponseMatchesJsonType([
-        ${1}
-    ]);
+    $record = $this->getModel()->findorFail($id);
+
+    return response()->json($record);
 }
 
 endsnippet
@@ -179,6 +174,17 @@ snippet sg_index "Swagger controller's index method block"
  */
 endsnippet
 
+snippet aff_index "Affiliates resource index method"
+
+${5:sg_index${6}}
+
+public function index()
+{
+    return $this->getModel()->get();
+}
+
+endsnippet
+
 snippet sg_destroy "Swagger controller's delete method doc block"
 
 /**
@@ -220,6 +226,23 @@ snippet sg_destroy "Swagger controller's delete method doc block"
  *     )
  * )
  */
+endsnippet
+
+snippet aff_destroy "Swagger controller's delete method doc block"
+
+${1:sg_destroy${2}}
+
+public function destroy($id)
+{
+    $del = $this->getModel()->findorFail($id);
+
+    if ($del->delete()) {
+        return AffiliatesResponse::getMessage(AffiliatesResponse::REQUEST_PROCESSED);
+    }
+
+    throw new AffiliatesBadResponseException($del);
+}
+
 endsnippet
 
 snippet defauilt_elems "Generates classes boiler plate methods and properties"
