@@ -50,7 +50,6 @@ snippet sg_store "swagger controller's store method block"
  */
 endsnippet
 
-snippet res_store "laravel controller 
 
 snippet sg_update "swagger controller's update method block"
 /**
@@ -284,6 +283,51 @@ snippet sg_res "Swagger Response Documentation"
 *         response=${1:200},
 *         description="${2:Request processed}"
 *     )${3:,}
+endsnippet
+
+snippet aff_getby "Created a Get by method"
+
+/**
+ * Retrieve all ${1} records for a specific ${2}.
+ *
+ * @param $affiliate_id
+ * @return \Illuminate\Http\JsonResponse
+ * @SWG\Get(
+ *     path="/api/v1/${3}/${8:$2}/{id}",
+ *     description="Retrieve all ${2:$1} records for a specific ${8:$2}.",
+ *     operationId="${5:$3}.getBy${8:$2}",
+ *     produces={"application/json"},
+ *     tags={"${5:$3}"},
+ *     @SWG\Parameter(
+ *         description="ID of ${2} record to fetch",
+ *         format="int64",
+ *         in="path",
+ *         name="id",
+ *         required=true,
+ *         type="integer"
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="Request processed"
+ *     ),
+ *     @SWG\Response(
+ *         response=400,
+ *         description="Access denied"
+ *     ),
+ *     @SWG\Response(
+ *         response=404,
+ *         description="Not Found"
+ *     ),
+ *     @SWG\Response(
+ *         response=499,
+ *         description="Unknown error."
+ *     )
+ * )
+ */
+public function getBy${8:$2}(var_id)
+{
+    return ${8:$2}::findOrFail( var_id )->rel_method()->get();
+}
 endsnippet
 
 snippet default_items "Generates classes boiler plate methods and properties"
