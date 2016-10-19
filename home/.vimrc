@@ -13,6 +13,7 @@ if custom_system_type == "full"
   Bundle 'Shougo/unite.vim'
   Bundle 'Shougo/vimproc.vim'
   Bundle 'kien/rainbow_parentheses.vim'
+  Bundle 'xolox/vim-notes'
 endif
 if custom_system_type == "vm"
   Bundle 'kien/ctrlp.vim'
@@ -45,7 +46,6 @@ Bundle 'tpope/vim-vinegar'
 Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-notes'
 
 "== Syntax Plugins
 
