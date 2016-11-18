@@ -27,16 +27,19 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'elixir-lang/vim-elixir'
 Bundle 'honza/vim-snippets'
 Bundle 'joonty/vdebug'
 Bundle 'junegunn/goyo.vim'
 Bundle 'junegunn/vim-easy-align'
+Bundle 'posva/vim-vue'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-repeat'
@@ -383,7 +386,8 @@ if executable('ctags')
   " Maps F4 to toggle the ctags widnow
   map <F4> :TlistToggle<cr>
   " Maps building tags to F10 for the current directory
-  map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+  " map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+  map <leader>0 :Dispatch /usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . --exclude=*.phar<CR>
   " Open tag file on vertical split and move it to the right split
   nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR>zz
   nmap <leader>[  :exec("tag ".expand("<cword>"))<CR>zz
@@ -521,3 +525,8 @@ autocmd VimResized * :wincmd =
 
 " Traverse the buffer list comparing against development branch
 nnoremap <leader>t :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
+map <leader>T :Dispatch! tmux send-keys -t 2.3 "clear; php ./artisan run:tests -a" C-m <CR>
+map <leader>t :Dispatch! tmux send-keys -t 2.3 "clear; php ./artisan run:tests api %" C-m <CR>
+
+let @q='{jdd}ddvip:s/)€kuvip:s/(€ku{jwf>Gxvip,{jf,w}$x0Pvip=vip:s/increments/g€kb/€kbinteger/gvip:t€kbs/text,/in€kb€kbstring,/gvip:s/timestamp,/t€kbstring,/g'
+let @w='{jdd}ddvip:s/)€kuvip:s/(€ku{jwf>Gxvip,{jf,w}$x0Pvip=vip:s/increments/g€kb/€kbinteger/gvip:t€kbs/text,/in€kb€kbstring,/gvip:s/timestamp,/t€kbstring,/g'

@@ -18,3 +18,6 @@ au BufNewFile,BufRead *tmp/sql*             set syntax=set nonu
 au BufNewFile,BufRead *tmp/sql*             set syntax=set nolist
 au BufNewFile,BufRead *tmp/sql*             set syntax=set paste
 au BufNewFile,BufRead *tmp/sql*             set syntax=sql
+
+""" web-dev
+au BufRead,BufNewFile *.vue                 set filetype=javascript
