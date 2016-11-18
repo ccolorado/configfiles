@@ -307,6 +307,12 @@ let NERDTreeShowLineNumbers=1
 nmap <silent><leader>f :NERDTreeToggle<CR>
 
   if custom_system_type == "full"
+
+"== vim-grep.vim
+
+:let Grep_Skip_Files = '*~ *,v s.*, tags'
+:let Grep_Skip_Dirs = 'RCS CVS SCCS GIT SVN'
+
 "== unite.vim
     if executable('ag')
 
