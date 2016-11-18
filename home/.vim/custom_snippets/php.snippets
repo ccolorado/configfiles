@@ -10,32 +10,37 @@ endsnippet
 snippet aff_store "Affiliates resource store method"
 
 ${5:sg_store${6}}
-
 public function store(${1}Request $request)
 {
-    $${2:$1} = $this->getModel();
-    $${3:$1}->fill($request->all());
+    $model = $this->repository->create($request->all());
+    if ($model) {
+        ${2://}$this->insertLogs($request, $model);
 
-    if ($${3:$1}->save()) {
-        return response()->json(AffiliatesResponse::getMessage(AffiliatesResponse::REQUEST_PROCESSED));
+        return AffiliatesResponse::getMessage(AffiliatesResponse::REQUEST_PROCESSED);
     }
 
-    throw new AffiliatesBadResponseException($${4:$1});
+    throw new AffiliatesBadResponseException;
 }
-
 endsnippet
 
 snippet sg_store "swagger controller's store method block"
 /**
  * ${1} record creation.
+ *      - Create new ${8:$1} record.
+ *      - Create new ${9:$1}Log record.
+ *
+ * @param ${10:$1}Request $request
  *
  * @return \Illuminate\Http\JsonResponse
  *
+ * @throws \Prettus\Validator\Exceptions\ValidatorException
+ * @throws \App\Exceptions\AffiliatesBadResponseException
  * @SWG\Post(
- *     path="/api/v1/${2}",
+ *     path="/${2}/",
  *     description="${3:$1} record creation.
  *     Creates A new ${4:$1} record.",
- *     operationId="${5:$2}.${6:store}",
+ *     Creates A new ${5:$1}Log record.",
+ *     operationId="${6:$2}.${6:store}",
  *     produces={"application/json"},
  *     tags={"${7:$2}"},
  *     @SWG\Response(
@@ -50,6 +55,23 @@ snippet sg_store "swagger controller's store method block"
  */
 endsnippet
 
+snippet aff_update "Affiliates resource store method"
+
+${5:sg_update${6}}
+
+public function update(${1}Request $request, $id)
+{
+    if ($this->repository->update($request->all(), $id)) {
+
+        ${2://$this->insert${3:$1}Log($request, $this->repository->find($id));}
+        ${4://$this->update${4:$1}DurationLog($request, $id);}
+
+        return response()->json(AffiliatesResponse::getMessage(AffiliatesResponse::REQUEST_PROCESSED));
+    }
+
+    throw new AffiliatesBadResponseException($this->repository);
+}
+endsnippet
 
 snippet sg_update "swagger controller's update method block"
 /**
@@ -98,9 +120,7 @@ ${2:sg_show${1}}
 
 public function show($id)
 {
-    $record = $this->getModel()->findorFail($id);
-
-    return response()->json($record);
+    return $this->repository->find($id);
 }
 
 endsnippet
@@ -109,10 +129,11 @@ snippet sg_show "swagger controller's show method block"
 /**
  * Retrieve a specific ${1} record.
  *
- * @return \Illuminate\Http\JsonResponse
+ * @param $id
  *
+ * @return \Illuminate\Http\JsonResponse
  * @SWG\Get(
- *     path="/api/v1/${2}/${3:\{id\}}",
+ *     path="/api/v1/${2}/{id}",
  *     description="Retrieve specific ${4:$1} record.",
  *     operationId="${5:$2}.show",
  *     produces={"application/json"},
@@ -162,10 +183,6 @@ snippet sg_index "Swagger controller's index method block"
  *         description="Request processed"
  *     ),
  *     @SWG\Response(
- *         response=404,
- *         description="${5:$1} not found"
- *     ),
- *     @SWG\Response(
  *         response=499,
  *         description="Unknown error."
  *     )
@@ -179,7 +196,7 @@ ${5:sg_index${6}}
 
 public function index()
 {
-    return $this->getModel()->get();
+    return $this->repository->all();
 }
 
 endsnippet
@@ -190,11 +207,15 @@ snippet sg_destroy "Swagger controller's delete method doc block"
  * ${1} record deletion.
  *      - Soft delete ${3:$1} record.
  *
+ * @param $id
  * @return \Illuminate\Http\JsonResponse
  *
+ * @throws \InvalidArgumentException
+ * @throws \App\Exceptions\AffiliatesBadResponseException
  * @SWG\Delete(
  *     path="/api/v1/${2}/{id}",
  *     description="${4:$1} record deletion.
+ *     Update value for ${9:$1} lastUpdatedBy, auditing purposes
  *     Soft delete ${5:$1} record.",
  *     operationId="${7:$2}.destroy",
  *     produces={"application/json"},
@@ -212,10 +233,6 @@ snippet sg_destroy "Swagger controller's delete method doc block"
  *         description="Request processed"
  *     ),
  *     @SWG\Response(
- *         response=400,
- *         description="Access denied"
- *     ),
- *     @SWG\Response(
  *         response=404,
  *         description="Not Found"
  *     ),
@@ -229,17 +246,21 @@ endsnippet
 
 snippet aff_destroy "Swagger controller's delete method doc block"
 
-${1:sg_destroy${2}}
+sg_destroy${5}
 
 public function destroy($id)
 {
-    $del = $this->getModel()->findorFail($id);
+    $model = $this->repository->find($id);
+    $request = $model->first()->toArray();
 
-    if ($del->delete()) {
+    if ($this->repository->delete($id)) {
+        ${3://$this->insert${1}Log($request, $model);}
+        ${4://$this->update${2:$1}DurationLogEndDate($model);}
+
         return AffiliatesResponse::getMessage(AffiliatesResponse::REQUEST_PROCESSED);
     }
 
-    throw new AffiliatesBadResponseException($del);
+    throw new AffiliatesBadResponseException($this->repository);
 }
 
 endsnippet
@@ -293,13 +314,13 @@ snippet aff_getby "Created a Get by method"
  * @param $affiliate_id
  * @return \Illuminate\Http\JsonResponse
  * @SWG\Get(
- *     path="/api/v1/${3}/${8:$2}/{id}",
- *     description="Retrieve all ${2:$1} records for a specific ${8:$2}.",
- *     operationId="${5:$3}.getBy${8:$2}",
+ *     path="/api/v1/${3}/${4}/{id}",
+ *     description="Retrieve all ${5:$1} records for a specific ${6:$2}.",
+ *     operationId="${7:$3}.getBy${8:$2}",
  *     produces={"application/json"},
- *     tags={"${5:$3}"},
+ *     tags={"${9:$3}"},
  *     @SWG\Parameter(
- *         description="ID of ${2} record to fetch",
+ *         description="ID of ${10:$2} record to fetch",
  *         format="int64",
  *         in="path",
  *         name="id",
@@ -324,9 +345,9 @@ snippet aff_getby "Created a Get by method"
  *     )
  * )
  */
-public function getBy${8:$2}(var_id)
+public function getBy${11:$2}($var_id)
 {
-    return ${8:$2}::findOrFail( var_id )->rel_method()->get();
+    return ${12:$2}::findOrFail( $var_id )->${13:$1}()->get();
 }
 endsnippet
 
