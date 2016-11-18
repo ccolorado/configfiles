@@ -267,3 +267,4 @@ fi;
 
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
 alias vimnote='function vimnote(){ set -e; vim -c ":e note:$1"; }; vimnote'
+alias rldbash="source ~/.bashrc"
