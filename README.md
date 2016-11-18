@@ -9,7 +9,9 @@ Installation
 ============
 To install the configfiles to ~/.configfiles do:
 >git clone https://github.com/ccolorado/configfiles ~/configfiles
+
 >bash ~/configfiles/bin/binder
+
 >vim +PluginInstall +qall
 
 Todo
