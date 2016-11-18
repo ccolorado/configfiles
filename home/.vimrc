@@ -12,7 +12,6 @@ Bundle 'gmarik/vundle'
 if custom_system_type == "full"
   Bundle 'Shougo/unite.vim'
   Bundle 'Shougo/vimproc.vim'
-  Bundle 'kien/rainbow_parentheses.vim'
   Bundle 'xolox/vim-notes'
 endif
 if custom_system_type == "vm"
@@ -260,33 +259,6 @@ let g:UltiSnipsEditSplit="context"
 
 let b:surround_104 = "[\"\r\"]"
 
-if custom_system_type == "full"
-  "== rainbow_parentheses.vim
-
-  au VimEnter * RainbowParenthesesToggle
-  au Syntax * RainbowParenthesesLoadRound
-  au Syntax * RainbowParenthesesLoadSquare
-  au Syntax * RainbowParenthesesLoadBraces
-
-  let g:rbpt_colorpairs = [
-      \ ['brown',       'RoyalBlue3'],
-      \ ['Darkblue',    'SeaGreen3'],
-      \ ['darkgray',    'DarkOrchid3'],
-      \ ['darkgreen',   'firebrick3'],
-      \ ['darkcyan',    'RoyalBlue3'],
-      \ ['darkred',     'SeaGreen3'],
-      \ ['darkmagenta', 'DarkOrchid3'],
-      \ ['brown',       'firebrick3'],
-      \ ['gray',        'RoyalBlue3'],
-      \ ['black',       'SeaGreen3'],
-      \ ['darkmagenta', 'DarkOrchid3'],
-      \ ['Darkblue',    'firebrick3'],
-      \ ['darkgreen',   'RoyalBlue3'],
-      \ ['darkcyan',    'SeaGreen3'],
-      \ ['darkred',     'DarkOrchid3'],
-      \ ['red',         'firebrick3'],
-      \ ]
-endif
 "== gundo.vim
 nnoremap <leader>u :GundoToggle<CR>
 
