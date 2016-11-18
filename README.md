@@ -13,6 +13,7 @@ To install the configfiles to ~/.configfiles do:
 >git submodule init
 >git submodule update
 >bash ~/.configfiles/bin/binder
+>vim +PluginInstall +qall
 
 Todo
 ====
