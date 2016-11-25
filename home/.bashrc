@@ -265,6 +265,11 @@ if [ -d ~/.config/composer/vendor/bin ]; then
   PATH=$PATH":$HOME/.config/composer/vendor/bin"
 fi;
 
-alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
+# Opens a note using vimnote TODO autocompletion woudl be awesome
 alias vimnote='function vimnote(){ set -e; vim -c ":e note:$1"; }; vimnote'
+# Reload Bash configuration
 alias rldbash="source ~/.bashrc"
+# Run last commoand with sudo
+alias S="$(history -p \!\!)" 
+# Opens irc session on personal server
+alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
