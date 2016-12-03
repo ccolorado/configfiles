@@ -22,6 +22,7 @@ vim()
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"
 PROMPT_ROOT_COLOR="\[\033[40;1;31m\]"
+PROMPT_WARN_COLOR="\[\033[40;1;11m\]"
 CLEAR="\[\033[0m\]"
 distroPromptFlag()
 {
@@ -134,6 +135,7 @@ kernel_needs_reload(){
     fi;
 
   fi;
+  echo $kernel_needs_reboot
 }
 
 # Setting up PS1 value
@@ -269,7 +271,5 @@ fi;
 alias vimnote='function vimnote(){ set -e; vim -c ":e note:$1"; }; vimnote'
 # Reload Bash configuration
 alias rldbash="source ~/.bashrc"
-# Run last commoand with sudo
-alias S="$(history -p \!\!)" 
 # Opens irc session on personal server
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'

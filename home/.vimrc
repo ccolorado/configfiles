@@ -35,6 +35,7 @@ Bundle 'posva/vim-vue'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
+Bundle 'tmhedberg/matchit'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
@@ -291,10 +292,15 @@ nmap <silent><leader>f :NERDTreeToggle<CR>
       let g:unite_source_grep_command = 'ag'
       let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
       let g:unite_source_grep_recursive_opt = ''
+      let g:unite_update_time = 500
+      let g:unite_source_file_mru_limit = 300
+      let g:unite_cursor_line_highlight = 'TabLineSel'
+      let g:unite_source_grep_max_candidates = 200
+      call unite#custom#source('file_rec/async', 'ignore_pattern', 'node_modules/\|bower_components/')
 
       "call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
-      nmap <space> :<C-u>Unite -start-insert buffer file file_rec/async <CR>
-      nmap <leader><space> :<C-u>Unite -start-insert buffer file <CR>
+      nmap <leader><space> :<C-u>Unite -start-insert buffer file file_rec/async <CR>
+      nmap <space> :<C-u>Unite -start-insert buffer file <CR>
     else
       nmap <space> :<C-u>Unite -start-insert buffer file file_rec<CR>
       nmap <leader><space> :<C-u>Unite -start-insert buffer file<CR>
