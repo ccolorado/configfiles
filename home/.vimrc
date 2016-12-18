@@ -259,6 +259,7 @@ let g:UltiSnipsEditSplit="context"
 "== vim-surround
 
 let b:surround_104 = "[\"\r\"]"
+let b:surround_109 = "{{ \r }}"
 
 "== gundo.vim
 nnoremap <leader>u :GundoToggle<CR>
@@ -509,8 +510,7 @@ autocmd VimResized * :wincmd =
 
 " Traverse the buffer list comparing against development branch
 nnoremap <leader>t :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
-map <leader>T :Dispatch! tmux send-keys -t 2.3 "clear; php ./artisan run:tests -a" C-m <CR>
-map <leader>t :Dispatch! tmux send-keys -t 2.3 "clear; php ./artisan run:tests api %" C-m <CR>
 
-let @q='{jdd}ddvip:s/)€kuvip:s/(€ku{jwf>Gxvip,{jf,w}$x0Pvip=vip:s/increments/g€kb/€kbinteger/gvip:t€kbs/text,/in€kb€kbstring,/gvip:s/timestamp,/t€kbstring,/g'
-let @w='{jdd}ddvip:s/)€kuvip:s/(€ku{jwf>Gxvip,{jf,w}$x0Pvip=vip:s/increments/g€kb/€kbinteger/gvip:t€kbs/text,/in€kb€kbstring,/gvip:s/timestamp,/t€kbstring,/g'
+map <leader>T :Dispatch! tmux send-keys -t 3.2 "clear; codeceptjs run . --steps" C-m <CR>
+map <leader>t :Dispatch! tmux send-keys -t 3.2 "clear; codeceptjs run .  %:t  --steps" C-m <CR>
+
