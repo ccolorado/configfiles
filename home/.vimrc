@@ -210,6 +210,7 @@ if has("user_commands")
   command! -bang Q q<bang>
   command! -bang QA qa<bang>
   command! -bang Qa qa<bang>
+  command! -bang Qall qall<bang>
 
   "Other
   "Vertical splitting
@@ -258,7 +259,9 @@ let g:UltiSnipsEditSplit="context"
 
 "== vim-surround
 
-let b:surround_104 = "[\"\r\"]"
+let b:surround_72 = "[\"\r\"]"
+let b:surround_104 = "['\r']"
+
 let b:surround_109 = "{{ \r }}"
 
 "== gundo.vim
