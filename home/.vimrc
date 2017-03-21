@@ -10,7 +10,7 @@ let custom_system_type = join(readfile(glob('~/.custom_system_type')))
 Bundle 'gmarik/vundle'
 
 if custom_system_type == "full"
-  Bundle 'Shougo/unite.vim'
+  Bundle 'Shougo/denite.nvim'
   Bundle 'Shougo/vimproc.vim'
   Bundle 'xolox/vim-notes'
 endif
@@ -280,43 +280,33 @@ nmap ga <Plug>(EasyAlign)
 let NERDTreeShowLineNumbers=1
 nmap <silent><leader>f :NERDTreeToggle<CR>
 
-  if custom_system_type == "full"
 
 "== vim-grep.vim
+let Grep_Skip_Files = '*~ *,v s.*, tags svn-base'
+let Grep_Skip_Dirs = ' SVN RCS CVS SCCS GIT'
 
-:let Grep_Skip_Files = '*~ *,v s.*, tags'
-:let Grep_Skip_Dirs = 'RCS CVS SCCS GIT SVN'
+if custom_system_type == "full"
 
-"== unite.vim
-    if executable('ag')
-
-      let g:unite_source_grep_command = 'ag'
-      let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-      let g:unite_source_grep_recursive_opt = ''
-      let g:unite_update_time = 500
-      let g:unite_source_file_mru_limit = 300
-      let g:unite_cursor_line_highlight = 'TabLineSel'
-      let g:unite_source_grep_max_candidates = 200
-      call unite#custom#source('file_rec/async', 'ignore_pattern', 'node_modules/\|bower_components/')
-
-      "call unite#custom#source('file_rec/async', 'matchers', ['matcher_project_ignore_files', 'matcher_default'])
-      nmap <leader><space> :<C-u>Unite -start-insert buffer file file_rec/async <CR>
-      nmap <space> :<C-u>Unite -start-insert buffer file <CR>
-    else
-      nmap <space> :<C-u>Unite -start-insert buffer file file_rec<CR>
-      nmap <leader><space> :<C-u>Unite -start-insert buffer file<CR>
-    endif
-
-  else
-""== cntlp
-
-    nmap <leader><space> :CtrlPBuffer<CR>
-    nmap <leader> :CtrlPMixed<CR>
-    let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
+  "== denite.vim
+  if executable('ag')
+    call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nogroup',
+          \'--ignore-dir', 'node_modules',
+          \'--ignore-dir', 'vendor',
+          \'--ignore-dir', 'docs',
+          \'-g', ''])
   endif
-let g:unite_force_overwrite_statusline=1
-let g:unite_kind_file_vertical_preview=1
+
+  nmap <leader><space> :Denite file_rec buffer<CR>
+  nmap <space> :Denite buffer<CR>
+
+else
+
+  ""== cntlp
+  nmap <leader><space> :CtrlPBuffer<CR>
+  nmap <leader> :CtrlPMixed<CR>
+  let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+endif
 "== airline
 "" FIXES The statusline is hidden/only appears in split windows!
 if !exists('g:airline_symbols')
