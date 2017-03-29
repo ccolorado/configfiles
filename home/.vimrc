@@ -401,6 +401,12 @@ com! DiffSaved call s:DiffWithSaved()
 
 nmap <leader>d :DiffSaved <CR>
 
+"== Tabs
+nmap <leader>h :tabprevious<CR>
+nmap <leader>j :tab sp<CR>
+nmap <leader>k :tab new<CR>
+nmap <leader>l :tabnext<CR>
+
 "== Center cursor vertically
 " TODO: make this toggable
 nmap <leader>zz :set scrolloff=999<CR>
