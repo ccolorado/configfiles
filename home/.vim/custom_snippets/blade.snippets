@@ -1,0 +1,7 @@
+snippet erc "Adds conditional for the has error class"
+{{$errors->has('$1')? 'has-error' : ''}}
+endsnippet
+
+snippet erm "Adds error message"
+{{$errors->first('$1')}}
+endsnippet

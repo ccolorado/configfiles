@@ -25,6 +25,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
+Bundle 'diepm/vim-rest-console'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'honza/vim-snippets'
@@ -234,6 +235,8 @@ imap <C-s> <esc>:w<CR>
 
 " Paste Toggle
 set pastetoggle=<f3>
+set clipboard=unnamedplus
+
 
 " Arrowless window navigation
 nnoremap <C-h> <C-w>h
@@ -264,12 +267,18 @@ let b:surround_104 = "['\r']"
 
 let b:surround_109 = "{{ \r }}"
 
+"== vim-syntastic
+
+" let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+
 "== gundo.vim
 nnoremap <leader>u :GundoToggle<CR>
 
 "== vim-php-cs-fixer
 let g:php_cs_fixer_enable_default_mapping = 0
-let g:php_cs_fixer_level='psr2'
+let g:php_cs_fixer_level = "symfony"
+let g:php_cs_fixer_config = "default"
+let g:php_cs_fixer_rules = "@PSR2"
 nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
 nnoremap <silent><leader>P :call PhpCsFixerFixDirectory()<CR>
 
@@ -365,7 +374,7 @@ if executable('ctags')
   map <F4> :TlistToggle<cr>
   " Maps building tags to F10 for the current directory
   " map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-  map <leader>0 :Dispatch /usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . --exclude=*.phar<CR>
+  map <leader>0 :Dispatch /usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude={*.phar,node_modules,vendor,docs,public,.branch_dir,*min.js} .<CR>
   " Open tag file on vertical split and move it to the right split
   nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR>zz
   nmap <leader>[  :exec("tag ".expand("<cword>"))<CR>zz
@@ -491,6 +500,7 @@ endif
 " xnoremap <leader>( <Esc>((vis
 " xnoremap <leader>) <Esc>vis
 
+autocmd Filetype svn  setlocal spell textwidth=72
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Filetype mediawiki setlocal spell textwidth=90
 autocmd Filetype markdown setlocal spell textwidth=90
@@ -510,6 +520,15 @@ autocmd VimResized * :wincmd =
 " Traverse the buffer list comparing against development branch
 nnoremap <leader>t :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
 
-map <leader>T :Dispatch! tmux send-keys -t 3.2 "clear; codeceptjs run . --steps" C-m <CR>
-map <leader>t :Dispatch! tmux send-keys -t 3.2 "clear; codeceptjs run .  %:t  --steps" C-m <CR>
+map <leader>T :Dispatch! tmux send-keys -t 1.0 "clear; codeceptjs run . --steps" C-m <CR>
+map <leader>t :Dispatch! tmux send-keys -t 1.0 "clear; codeceptjs run .  %:t  --steps" C-m <CR>
+map <leader>g :Dispatch! tmux send-keys -t 0.2 "clear; npm run dist" C-m <CR>
 
+" au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsListSnippets="<c-e>"
+
+" this mapping Enter key to <C-y> to chose the current highlight item 
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
