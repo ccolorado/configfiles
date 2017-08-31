@@ -23,16 +23,14 @@ endif
 
 Bundle 'SirVer/ultisnips'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'bling/vim-airline.git'
+Bundle 'vim-airline/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'diepm/vim-rest-console'
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'elixir-lang/vim-elixir'
 Bundle 'honza/vim-snippets'
 Bundle 'joonty/vdebug'
 Bundle 'junegunn/goyo.vim'
 Bundle 'junegunn/vim-easy-align'
-Bundle 'posva/vim-vue'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
@@ -53,6 +51,8 @@ Bundle 'xolox/vim-misc'
 
 "== Syntax Plugins
 
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'posva/vim-vue'
 Bundle 'JulesWang/css.vim'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'ap/vim-css-color'
@@ -319,19 +319,27 @@ else
   let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 endif
+
 "== airline
 "" FIXES The statusline is hidden/only appears in split windows!
+set laststatus=2
+
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-set laststatus=2
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 let g:airline_powerline_fonts=1
-"let g:airline#extensions#tagbar#enabled = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
+" airline symbols
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'
@@ -341,7 +349,7 @@ let g:airline#extensions#readonly#symbol = '⭤'
 let g:airline_symbols.linenr = '⭡'
 
 let g:airline#extensions#whitespace#trailing_format = '$[%s]'
-let g:airline#extensions#whitespace#mixed_indent_format = ' ^[%s]'
+let g:airline#extensions#whitespace#mixed_indent_format = '^[%s]'
 
 let g:airline_theme = 'dark'
 let g:airline_inactive_collapse=1
@@ -390,13 +398,6 @@ nmap <C-e> :e#<CR>
 "== Search visually selected text
 vnoremap // y/<C-R>"<CR>
 
-" Follow and highlight current line
-" taken from http://vim.wikia.com/wiki/Highlight_current_line
-hi CursorLine   cterm=NONE ctermbg=black ctermfg=yellow guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-" nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
-nnoremap <Leader>c :set cursorline!<CR>
-
 " Show vimdiff of unsaved changes
 
 function! s:DiffWithSaved()
@@ -431,6 +432,12 @@ set background=dark
 colorscheme molokai-transparent
 :hi Normal ctermbg=NONE
 :hi Visual term=reverse cterm=reverse guibg=Grey
+
+" Follow and highlight current line
+" taken from http://vim.wikia.com/wiki/Highlight_current_line
+hi CursorLine   cterm=NONE ctermbg=black ctermfg=yellow guibg=darkred guifg=white
+hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+nnoremap <Leader>c :set cursorline!<CR>
 
 "== Vdebug
 
@@ -520,15 +527,17 @@ autocmd VimResized * :wincmd =
 " Traverse the buffer list comparing against development branch
 nnoremap <leader>t :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
 
-map <leader>T :Dispatch! tmux send-keys -t 1.0 "clear; codeceptjs run . --steps" C-m <CR>
-map <leader>t :Dispatch! tmux send-keys -t 1.0 "clear; codeceptjs run .  %:t  --steps" C-m <CR>
-map <leader>g :Dispatch! tmux send-keys -t 0.2 "clear; npm run dist" C-m <CR>
+" map <leader>T :Dispatch! tmux send-keys -t 3.0 "clear; php artisan dusk" C-m <CR>"
+" map <leader>t :Dispatch! tmux send-keys -t 1.0 "clear; codeceptjs run .  %:t  --steps" C-m <CR>codeceptjs run .  %:t  --steps" C-m <CR>
+" map <leader>t :Dispatch! tmux send-keys -t 3.1 "clear; php artisan dusk  --group=testConfirmationDivorce,testDivorceFlow" C-m <CR>
+map <leader>t :Dispatch! tmux send-keys -t 3.1 "clear; php artisan dusk" C-m <CR>
+map <leader>r :Dispatch! tmux send-keys -t 3.1 "clear; curl -q http://bankruptcy.lawfirms.com:8080/dedicated " C-m <CR>
 
 " au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 " let g:UltiSnipsJumpForwardTrigger="<tab>"
 " let g:UltiSnipsListSnippets="<c-e>"
 
-" this mapping Enter key to <C-y> to chose the current highlight item 
+" this mapping Enter key to <C-y> to chose the current highlight item
 " and close the selection list, same as other IDEs.
 " CONFLICT with some plugins like tpope/Endwise
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
