@@ -13,6 +13,7 @@
 [alias]
   ci = commit -v
   co = checkout
+  cl = clone
   st = status -s
   df = diff
   lg = log --oneline --decorate --all --graph

@@ -33,6 +33,7 @@ Bundle 'joonty/vdebug'
 Bundle 'junegunn/goyo.vim'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'posva/vim-vue'
+Bundle 'ramele/agrep'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
@@ -47,7 +48,6 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
-Bundle 'vim-scripts/grep.vim'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'xolox/vim-misc'
 
@@ -293,10 +293,6 @@ let NERDTreeShowLineNumbers=1
 nmap <silent><leader>f :NERDTreeToggle<CR>
 
 
-"== vim-grep.vim
-let Grep_Skip_Files = '*~ *,v s.*, tags svn-base'
-let Grep_Skip_Dirs = ' SVN RCS CVS SCCS GIT'
-
 if custom_system_type == "full"
 
   "== denite.vim
@@ -389,13 +385,6 @@ nmap <C-e> :e#<CR>
 
 "== Search visually selected text
 vnoremap // y/<C-R>"<CR>
-
-" Follow and highlight current line
-" taken from http://vim.wikia.com/wiki/Highlight_current_line
-hi CursorLine   cterm=NONE ctermbg=black ctermfg=yellow guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-" nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
-nnoremap <Leader>c :set cursorline!<CR>
 
 " Show vimdiff of unsaved changes
 
@@ -532,3 +521,11 @@ map <leader>g :Dispatch! tmux send-keys -t 0.2 "clear; npm run dist" C-m <CR>
 " and close the selection list, same as other IDEs.
 " CONFLICT with some plugins like tpope/Endwise
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Follow and highlight current line
+" taken from http://vim.wikia.com/wiki/Highlight_current_line
+hi CursorLine   cterm=NONE ctermbg=yellow ctermfg=black guibg=darkred guifg=white
+hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+nnoremap <Leader>c :set cursorline!<CR>
+
