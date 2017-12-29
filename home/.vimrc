@@ -13,6 +13,8 @@ if custom_system_type == "full"
   Bundle 'Shougo/denite.nvim'
   Bundle 'Shougo/vimproc.vim'
   Bundle 'xolox/vim-notes'
+  " TODO Consider pedrosans/vim-notes fork. 'xolox/vim-notes' is apparently
+  " abandoned
 endif
 if custom_system_type == "vm"
   Bundle 'kien/ctrlp.vim'
