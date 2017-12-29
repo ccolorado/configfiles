@@ -1,0 +1,18 @@
+#!/bin/bash
+
+session=$(tmux display-message -p '#S')
+
+#TODO: Test if currently inside tmux if not create session
+#TODO: Check if .bashrc is correct or necesary
+#   255: export TERM=xterm-¬256color¬
+
+if [ $? -eq 1 ]; then
+  tmux
+  session=$(tmux display-message -p '#S')
+fi
+echo $session
+tmux split-window -v -p 20 -t $session.0
+tmux split-window -h -p 30 -t $session.0
+tmux split-window -v -p 50 -t $session.1
+tmux split-window -v -p 50 -t $session.2
+

@@ -7,3 +7,4 @@ iabbrev affilaite  affiliate
 iabbrev affilaites affiliates
 iabbrev affilaite  affiliate
 iabbrev affilaites affiliates
+iabbrev resutl result
