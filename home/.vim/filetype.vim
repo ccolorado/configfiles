@@ -4,6 +4,9 @@ au BufRead,BufNewFile *.php.bkp set filetype=php
 """ Set comment string for blade templastes
 autocmd FileType blade  setlocal commentstring={{--%s--}}
 
+""" Set automatic spellcheck for notes
+autocmd Filetype notes  setlocal spell
+
 """ .wiki file detection and highlight. """
 au BufRead,BufNewFile *.md                  set filetype=markdown
 au BufRead,BufNewFile *.wiki                set filetype=mediawiki
@@ -21,3 +24,8 @@ au BufNewFile,BufRead *tmp/sql*             set syntax=sql
 
 """ web-dev
 au BufRead,BufNewFile *.vue                 set textwidth=80
+
+"""Notes
+au BufNewFile,BufRead *Notes/*              set textwidth=120
+au BufNewFile,BufRead *Notes/*              set spell
+au BufNewFile,BufRead *Notes/*              call matchadd('ColorColumn', '\%110v', 100)

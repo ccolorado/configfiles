@@ -13,6 +13,8 @@ if custom_system_type == "full"
   Bundle 'Shougo/denite.nvim'
   Bundle 'Shougo/vimproc.vim'
   Bundle 'xolox/vim-notes'
+  " TODO Consider pedrosans/vim-notes fork. 'xolox/vim-notes' is apparently
+  " abandoned
 endif
 if custom_system_type == "vm"
   Bundle 'kien/ctrlp.vim'
@@ -22,6 +24,7 @@ endif
 " Bundle 'sotte/presenting.vim'
 
 Bundle 'SirVer/ultisnips'
+Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline.git'
 Bundle 'chrisbra/NrrwRgn'
@@ -290,8 +293,12 @@ nmap ga <Plug>(EasyAlign)
 
 "== Nerdtree
 let NERDTreeShowLineNumbers=1
-nmap <silent><leader>f :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
+" nmap <silent><leader>f :NERDTreeToggle<CR> && :NERDTreeFind<CR>
+nmap <silent><leader>f :NERDTreeToggle<CR>
 
 if custom_system_type == "full"
 

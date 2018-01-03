@@ -18,6 +18,10 @@ vim()
     command vim "$@"
     stty "$STTYOPTS"
 }
+# Taken http://brettterpstra.com/2015/02/20/shell-trick-printf-rules/
+rule () {
+    printf -v _hr "%*s" $(tput cols) && echo ${_hr// /${1--}}
+}
 
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"
@@ -265,3 +269,4 @@ alias vimnote='function vimnote(){ set -e; vim -c ":e note:$1"; }; vimnote'
 alias rldbash="source ~/.bashrc"
 # Opens irc session on personal server
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
+alias gitstatusticker="watch -n30 -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
