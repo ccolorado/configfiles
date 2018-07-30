@@ -265,10 +265,14 @@ let g:UltiSnipsEditSplit="context"
 
 "== vim-surround
 
-let b:surround_72 = "[\"\r\"]"
-let b:surround_104 = "['\r']"
+" surround with H [""]
+let g:surround_72 = "[\"\r\"]"
 
-let b:surround_109 = "{{ \r }}"
+" surround with h ['']
+let g:surround_104 = "['\r']"
+
+" surround with mustaches m
+let g:surround_109 = "{{ \r }}"
 
 "== vim-syntastic
 
