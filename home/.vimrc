@@ -23,6 +23,13 @@ endif
 "== Features  Plugins
 " Bundle 'sotte/presenting.vim'
 
+" Checkout these plugins sometime in the future
+" https://vimawesome.com/plugin/obsession-vim
+" https://vimawesome.com/plugin/session-vim
+" https://vimawesome.com/plugin/vim-workspace
+
+
+Bundle 'AndrewRadev/linediff.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'airblade/vim-gitgutter'
