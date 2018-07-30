@@ -270,3 +270,4 @@ alias rldbash="source ~/.bashrc"
 # Opens irc session on personal server
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
 alias gitstatusticker="watch -n30 -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
+alias webcam_disble_autofocues="uvcdynctrl -v -d video1 --set='Focus, Auto' 0"
