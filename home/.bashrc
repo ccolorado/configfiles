@@ -112,11 +112,10 @@ kernel_needs_reload(){
 
   kernel_needs_reboot=""
   pacman_ver=""
-  uname_ver=$(uname -r | sed -e 's/-ARCH//gi')
+  uname_ver=$(uname -r | sed -e 's/-ARCH//g' | sed -e 's/-arch/.arch/g')
 
   if [ -f /tmp/.kernel_needs_reboot ]; then
     kernel_needs_reboot=$(cat /tmp/.kernel_needs_reboot)
-
   else
 
     type pacman > /dev/null 2>&1
