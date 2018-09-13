@@ -48,6 +48,7 @@ Bundle 'ramele/agrep'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
+Bundle 'tomlion/vim-solidity'
 Bundle 'tmhedberg/matchit'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tpope/vim-abolish'
@@ -322,6 +323,10 @@ if custom_system_type == "full"
           \'--ignore-dir', 'docs',
           \'-g', ''])
   endif
+
+  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+          \   [ '.git/', 'node_modules/*', 'vendor/', 'build/' ]
+          \ )
 
   nmap <leader><space> :Denite file_rec buffer<CR>
   nmap <space> :Denite buffer<CR>
