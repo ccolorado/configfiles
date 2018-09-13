@@ -30,6 +30,7 @@ endif
 
 
 Bundle 'AndrewRadev/linediff.vim'
+Bundle 'RRethy/vim-illuminate'
 Bundle 'SirVer/ultisnips'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'airblade/vim-gitgutter'
