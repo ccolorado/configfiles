@@ -23,6 +23,14 @@ rule () {
     printf -v _hr "%*s" $(tput cols) && echo ${_hr// /${1--}}
 }
 
+# Taken from https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
+pathadd() {
+   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+       PATH="${PATH:+"$PATH:"}$1"
+   fi
+}
+
+
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"
 PROMPT_ROOT_COLOR="\[\033[40;1;31m\]"
@@ -115,7 +123,7 @@ kernel_needs_reload(){
   uname_ver=$(uname -r | sed -e 's/-ARCH//g' | sed -e 's/-arch/.arch/g')
 
   if [ -f /tmp/.kernel_needs_reboot ]; then
-    kernel_needs_reboot=$(cat /tmp/.kernel_needs_reboot)
+    kernel_needs_reboot="+"
   else
 
     type pacman > /dev/null 2>&1
@@ -133,6 +141,7 @@ kernel_needs_reload(){
       then
         kernel_needs_reboot="$pacman_ver > $uname_ver"
         echo $kernel_needs_reboot > /tmp/.kernel_needs_reboot
+        $kernel_needs_reboot = "+"
       fi;
 
     fi;
@@ -238,10 +247,6 @@ stty start ^b
 command -v systemctl  >/dev/null 2>&1 && alias reboot='sudo systemctl reboot'
 command -v systemctl  >/dev/null 2>&1 && alias shutdown='sudo systemctl poweroff'
 
-#Adding ~/bin directory to PATH
-mkdir -p ~/bin
-export PATH=$PATH":~/bin"
-
 #python virtualenv settings
 mkdir -p ~/.virtualenvs
 
@@ -258,15 +263,20 @@ fi
 export TERM=xterm-256color
 unset SSH_ASKPASS
 
-if [ -d ~/.config/composer/vendor/bin ]; then
-  PATH=$PATH":$HOME/.config/composer/vendor/bin"
-fi;
+# PATH Enhancements
 
-# Opens a note using vimnote TODO autocompletion woudl be awesome
+#Adding ~/bin directory to PATH
+mkdir -p ~/bin
+pathadd "$HOME/bin"
+pathadd "$HOME/.config/composer/vendor/bin"
+pathadd "$HOME/.gem/ruby/2.4.0/bin"
+
+# Opens a note using vimnote
+# TODO autocompletion on opening would be awesome
 alias vimnote='function vimnote(){ set -e; vim -c ":e note:$1"; }; vimnote'
 # Reload Bash configuration
 alias rldbash="source ~/.bashrc"
 # Opens irc session on personal server
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
 alias gitstatusticker="watch -n30 -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
-alias webcam_disble_autofocues="uvcdynctrl -v -d video1 --set='Focus, Auto' 0"
+alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
