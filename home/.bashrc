@@ -206,7 +206,6 @@ alias mysql='mysql --auto-rehash'
 alias sshmount='sshfs -o reconnect -o follow_symlinks'
 alias tmux='tmux -2'
 alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias youtube-dl="youtube-dl -t "
 alias yt-audio="youtube-dl --extract-audio --audio-format mp3 "
 
 # vagrant aliases
@@ -278,5 +277,13 @@ alias vimnote='function vimnote(){ set -e; vim -c ":e note:$1"; }; vimnote'
 alias rldbash="source ~/.bashrc"
 # Opens irc session on personal server
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
-alias gitstatusticker="watch -n30 -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
+# TODO make gitstatusticker trigger on file changes
+alias gitstatusticker="watch -n10 -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
 alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
+
+#  Workspace aliases
+alias gotoWork="cd /home/ccolorado/Source/baraboo/token-sale/truffle"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
