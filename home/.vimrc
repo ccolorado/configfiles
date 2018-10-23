@@ -533,8 +533,10 @@ autocmd VimResized * :wincmd =
 " Traverse the buffer list comparing against development branch
 nnoremap <leader>t :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
 
-map <leader>T :Dispatch! tmux send-keys -t 1.0 "clear; codeceptjs run . --steps" C-m <CR>
-map <leader>t :Dispatch! tmux send-keys -t 1.0 "clear; codeceptjs run .  %:t  --steps" C-m <CR>
+" [Project Dependent] sctipt dispatching examples
+" map <leader>t :Dispatch! tmux send-keys -t 0.1 "clear; truffle test" C-m <CR>
+" map <leader>T :Dispatch! tmux send-keys -t 0.1 "clear; ./testanddebug" C-m <CR>
+
 map <leader>g :Dispatch! tmux send-keys -t 0.2 "clear; npm run dist" C-m <CR>
 
 " au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
