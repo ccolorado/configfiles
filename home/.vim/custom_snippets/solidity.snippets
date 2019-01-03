@@ -1,5 +1,9 @@
 # Taken https://www.reddit.com/r/ethereum/comments/40yhzw/solidity_snippets_in_vim_ultisnips_format/
 # Keywords
+snippet pgm
+pragma solidity ^0.4.2$1;
+endsnippet
+
 snippet pu
 public
 endsnippet
@@ -56,25 +60,21 @@ snippet ev "event" b
 event $1($2);
 endsnippet
 
-snippet pgm
-pragma solidity ^0.4.2$1;
-endsnippet
-
 # Variables and data structures
 snippet ui
-uint $1;
+uint256 $1;
 endsnippet
 
 snippet uip
-uint public $1;
+uint256 public $1;
 endsnippet
 
 snippet in
-int $1;
+int256 $1;
 endsnippet
 
 snippet inp
-int public $1;
+int256 public $1;
 endsnippet
 
 snippet bl
@@ -154,17 +154,22 @@ endsnippet
 
 snippet conta "Contract with some standard features" b
 contract $1 {
-    $1($2) {
+    $4
+    address public owner;
+
+    constructor($2) public{
+    public {
+        owner = msg.sender;
         $3
     }
 
     function remove() {
-	if(msg.sender == creator) {
-	    selfdestruct(creator);
-	}
+        if(msg.sender == owner) {
+            selfdestruct(owner);
+        }
     }
 
-    function () { throw; }
+    function () public{ revert('default revert'); }
 }
 endsnippet
 
@@ -206,14 +211,14 @@ endsnippet
 
 snippet modst "modifier in a certain taste"
 modifier inState(State _state) {
-  if (state != _state) throw;
+  if (state != _state) revert();
   _
 }
 endsnippet
 
 snippet modre "modifier test of condition"
 modifier require (bool condition) {
-  if (!_condition) throw;
+  if (!_condition) revert('$1');
   _
 }
 endsnippet
