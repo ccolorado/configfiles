@@ -48,8 +48,8 @@ Bundle 'ramele/agrep'
 Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'stephpy/vim-php-cs-fixer'
-Bundle 'tomlion/vim-solidity'
 Bundle 'tmhedberg/matchit'
+Bundle 'tomlion/vim-solidity'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
@@ -550,8 +550,8 @@ map <leader>g :Dispatch! tmux send-keys -t 0.2 "clear; npm run dist" C-m <CR>
 
 " Follow and highlight current line
 " taken from http://vim.wikia.com/wiki/Highlight_current_line
-hi CursorLine   cterm=NONE ctermbg=245 ctermfg=black guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=245 ctermfg=white guibg=darkred guifg=white
+hi CursorLine   cterm=NONE ctermbg=240 ctermfg=black guibg=darkred guifg=white
+hi CursorColumn cterm=NONE ctermbg=240 ctermfg=white guibg=darkred guifg=white
 " nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>c :set cursorline!<CR> :set cursorcolumn! <CR>
 
