@@ -202,8 +202,7 @@ cmap w!! w !sudo tee >/dev/null %
 exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~"
 set list
 " Reload vimrc
-map <leader>e :so $MYVIMRC<CR>
-
+map <leader>e :so $MYVIMRC <bar> call UltiSnips#RefreshSnippets() <CR>
 
 "========Custom Keystrokes
 "
@@ -501,7 +500,9 @@ if v:version > 702
   nmap <F2> :call ToggleCopyMode()<CR>
 endif
 
-:source ~/.vim/autocorrect.vim
+if filereadable("~/.vim/autocorrect.vim")
+  :source ~/.vim/autocorrect.vim
+endif
 
 " Pdf text reader command Rpdf
 :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
@@ -531,7 +532,7 @@ autocmd VimResized * :wincmd =
 " for line in getline(1, '$') | exec 'argadd' line | endfor
 
 " Traverse the buffer list comparing against development branch
-nnoremap <leader>t :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
+nnoremap <leader>X :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
 
 " [Project Dependent] sctipt dispatching examples
 " map <leader>t :Dispatch! tmux send-keys -t 0.1 "clear; truffle test" C-m <CR>
