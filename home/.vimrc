@@ -83,6 +83,9 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails.git'
 Bundle 'vim-ruby/vim-ruby'
 
+"== Apearance Plugins
+Bundle 'joshdick/onedark.vim'
+
 "== Annoyance highlight ONLY the word under cursor WITHOUT jumping to the next occurence
 "   the first
 "time
@@ -440,7 +443,8 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gno
 endif
 
 set background=dark
-colorscheme molokai-transparent
+" colorscheme molokai-transparent
+colorscheme onedark
 :hi Normal ctermbg=NONE
 :hi Visual term=reverse cterm=reverse guibg=Grey
 
