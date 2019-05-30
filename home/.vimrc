@@ -12,8 +12,8 @@ Bundle 'gmarik/vundle'
 if custom_system_type == "full"
   Bundle 'Shougo/denite.nvim'
   Bundle 'Shougo/vimproc.vim'
-  Bundle 'xolox/vim-notes'
-  " TODO Consider pedrosans/vim-notes fork. 'xolox/vim-notes' is apparently
+  " Bundle 'xolox/vim-notes'
+  " TODO Consider pedrosans/vim-notes fork. 'olox/vim-notes' is apparently
   " abandoned
 endif
 if custom_system_type == "vm"
@@ -27,7 +27,6 @@ endif
 " https://vimawesome.com/plugin/obsession-vim
 " https://vimawesome.com/plugin/session-vim
 " https://vimawesome.com/plugin/vim-workspace
-
 
 Bundle 'AndrewRadev/linediff.vim'
 Bundle 'RRethy/vim-illuminate'
@@ -43,6 +42,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'joonty/vdebug'
 Bundle 'junegunn/goyo.vim'
 Bundle 'junegunn/vim-easy-align'
+Bundle 'pedrosans/vim-notes'
 Bundle 'posva/vim-vue'
 Bundle 'ramele/agrep'
 Bundle 'scrooloose/nerdtree'
@@ -61,7 +61,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
 Bundle 'vim-scripts/taglist.vim'
-Bundle 'xolox/vim-misc'
+Plugin 'pedrosans/vim-misc'
 
 "== Syntax Plugins
 
@@ -69,19 +69,20 @@ Bundle 'JulesWang/css.vim'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'ap/vim-css-color'
 Bundle 'jelera/vim-javascript-syntax.git'
-Bundle 'ruanyl/vim-blade'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
 Bundle 'mitsuhiko/vim-python-combined'
 Bundle 'othree/html5.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'rodjek/vim-puppet'
+Bundle 'ruanyl/vim-blade'
 Bundle 'scrooloose/syntastic'
 Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails.git'
 Bundle 'vim-ruby/vim-ruby'
+Plugin 'mxw/vim-jsx'
 
 "== Apearance Plugins
 Bundle 'joshdick/onedark.vim'
@@ -276,18 +277,31 @@ let g:UltiSnipsEditSplit="context"
 
 "== vim-surround
 
-" surround with H [""]
+" surround hash key [""] 'H'
 let g:surround_72 = "[\"\r\"]"
 
-" surround with h ['']
+" surround ruby string interpolation #{} 's'
+let g:surround_115 = "\#{\r}"
+
+" surround with [''] 'h'
 let g:surround_104 = "['\r']"
 
-" surround with mustaches m
+" surround with mustaches {{}} 'm'
 let g:surround_109 = "{{ \r }}"
+
+" surround selection with console log consolelog(); 'c'
+let g:surround_99 = "console.log( \r );"
 
 "== vim-syntastic
 
-" let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 "== gundo.vim
 nnoremap <leader>u :GundoToggle<CR>
@@ -312,7 +326,7 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-" nmap <silent><leader>f :NERDTreeToggle<CR> && :NERDTreeFind<CR>
+" nmap <silent><.eader>f :NERDTreeToggle<CR> && :NERDTreeFind<CR>
 nmap <silent><leader>f :NERDTreeToggle<CR>
 
 if custom_system_type == "full"
@@ -443,8 +457,8 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gno
 endif
 
 set background=dark
-" colorscheme molokai-transparent
-colorscheme onedark
+colorscheme molokai-transparent
+" colorscheme onedark
 :hi Normal ctermbg=NONE
 :hi Visual term=reverse cterm=reverse guibg=Grey
 
@@ -539,10 +553,17 @@ autocmd VimResized * :wincmd =
 nnoremap <leader>X :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
 
 " [Project Dependent] sctipt dispatching examples
-" map <leader>t :Dispatch! tmux send-keys -t 0.1 "clear; truffle test" C-m <CR>
-" map <leader>T :Dispatch! tmux send-keys -t 0.1 "clear; ./testanddebug" C-m <CR>
+" TEST THIS FILE
+map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; truffle test ./%" C-m <CR>
+" COMPILE AND TEST THIS FILE
+map <leader>tct :Dispatch! tmux send-keys -t tester.0 "clear; rm build/contracts/* ; truffle compile && truffle test ./%" C-m <CR>
 
-map <leader>g :Dispatch! tmux send-keys -t 0.2 "clear; npm run dist" C-m <CR>
+" TEST ALL FILES
+map <leader>ta :Dispatch! tmux send-keys -t tester.0 "clear; truffle test" C-m <CR>
+" COMPILE AND TEST ALL FILES
+map <leader>tca :Dispatch! tmux send-keys -t tester.0 "clear; rm build/contracts/* ; truffle compile && truffle test" C-m <CR>
+
+map <leader>g :Dispatch! tmux send-keys -t tester.0 "clear; npm run dist" C-m <CR>
 
 " au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 " let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -560,3 +581,4 @@ hi CursorColumn cterm=NONE ctermbg=240 ctermfg=white guibg=darkred guifg=white
 " nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>c :set cursorline!<CR> :set cursorcolumn! <CR>
 
+map <leader>w :call append(line('.')-1, "console.log('>>> ".@%.":' + ".line('.').' + "" );') <CR>
