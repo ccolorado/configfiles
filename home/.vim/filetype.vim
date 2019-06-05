@@ -7,6 +7,9 @@ autocmd FileType blade  setlocal commentstring={{--%s--}}
 """ Set automatic spellcheck for notes
 autocmd Filetype notes  setlocal spell
 
+""" Set NestedMarkdownFolds for markdown
+autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+
 """ .wiki file detection and highlight. """
 au BufRead,BufNewFile *.md                  set filetype=markdown
 au BufRead,BufNewFile *.es.md               set spelllang=es filetype=markdown
@@ -15,6 +18,7 @@ au BufRead,BufNewFile *.wikipedia.org*      set filetype=mediawiki
 au BufRead,BufNewFile *.wikibooks.org*      set filetype=mediawiki
 au BufRead,BufNewFile *.wikimedia.org*      set filetype=mediawiki
 au BufRead,BufNewFile *wiki.*               set filetype=mediawiki
+
 
 """ Use sql syntax highligth for files opened inside vim  with the \e flag """
 """ inside mysql cli client """

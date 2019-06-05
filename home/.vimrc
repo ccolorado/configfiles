@@ -28,6 +28,7 @@ endif
 " https://vimawesome.com/plugin/session-vim
 " https://vimawesome.com/plugin/vim-workspace
 
+Bundle 'masukomi/vim-markdown-folding'
 Bundle 'AndrewRadev/linediff.vim'
 Bundle 'RRethy/vim-illuminate'
 Bundle 'SirVer/ultisnips'
@@ -582,3 +583,4 @@ hi CursorColumn cterm=NONE ctermbg=240 ctermfg=white guibg=darkred guifg=white
 nnoremap <Leader>c :set cursorline!<CR> :set cursorcolumn! <CR>
 
 map <leader>w :call append(line('.')-1, "console.log('>>> ".@%.":' + ".line('.').' + "" );') <CR>
+
