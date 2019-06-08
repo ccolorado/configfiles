@@ -15,7 +15,12 @@ if custom_system_type == "full"
   " Bundle 'xolox/vim-notes'
   " TODO Consider pedrosans/vim-notes fork. 'olox/vim-notes' is apparently
   " abandoned
+  if v:version > 8
+    roxma/nvim-yarp
+    roxma/vim-hug-neovim-rpc
+  endif
 endif
+
 if custom_system_type == "vm"
   Bundle 'kien/ctrlp.vim'
 endif
