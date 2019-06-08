@@ -16,8 +16,8 @@ if custom_system_type == "full"
   " TODO Consider pedrosans/vim-notes fork. 'olox/vim-notes' is apparently
   " abandoned
   if v:version > 8
-    roxma/nvim-yarp
-    roxma/vim-hug-neovim-rpc
+    Bundle 'roxma/nvim-yarp'
+    Bundle 'roxma/vim-hug-neovim-rpc'
   endif
 endif
 
