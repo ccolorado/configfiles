@@ -1,591 +1,624 @@
-"'" [Vundle setup]
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"        _
+" __   _(_)_ __ ___  _ __ ___
+" \ \ / / | '_ ` _ \| '__/ __|
+"  \ V /| | | | | | | | | (__
+" (_)_/ |_|_| |_| |_|_|  \___|
+"
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-let custom_system_type = join(readfile(glob('~/.custom_system_type')))
+" Platform Setup {{{
 
-Bundle 'gmarik/vundle'
+  set nocompatible              " be iMproved, required
+  filetype off                  " required
 
-if custom_system_type == "full"
-  Bundle 'Shougo/denite.nvim'
-  Bundle 'Shougo/vimproc.vim'
-  " Bundle 'xolox/vim-notes'
-  " TODO Consider pedrosans/vim-notes fork. 'olox/vim-notes' is apparently
-  " abandoned
-  if v:version > 8
-    Bundle 'roxma/nvim-yarp'
-    Bundle 'roxma/vim-hug-neovim-rpc'
+  " set the runtime path to include Vundle and initialize
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+  let custom_system_type = join(readfile(glob('~/.custom_system_type')))
+
+  Bundle 'gmarik/vundle'
+
+  if custom_system_type == "full"
+    Bundle 'Shougo/denite.nvim'
+    Bundle 'Shougo/vimproc.vim'
+    if v:version > 8
+      Bundle 'roxma/nvim-yarp'
+      Bundle 'roxma/vim-hug-neovim-rpc'
+    endif
   endif
-endif
 
-if custom_system_type == "vm"
-  Bundle 'kien/ctrlp.vim'
-endif
+  if custom_system_type == "vm"
+    Bundle 'kien/ctrlp.vim'
+  endif
 
-"== Features  Plugins
-" Bundle 'sotte/presenting.vim'
+" }}}
+
+" Plugins {{{
+
+" Tools and Features {{{
+
+  Bundle 'masukomi/vim-markdown-folding'
+  Bundle 'AndrewRadev/linediff.vim'
+  Bundle 'RRethy/vim-illuminate'
+  Bundle 'SirVer/ultisnips'
+  Bundle 'Xuyuanp/nerdtree-git-plugin'
+  Bundle 'airblade/vim-gitgutter'
+  Bundle 'bling/vim-airline.git'
+  Bundle 'chrisbra/NrrwRgn'
+  Bundle 'diepm/vim-rest-console'
+  Bundle 'editorconfig/editorconfig-vim'
+  Bundle 'elixir-lang/vim-elixir'
+  Bundle 'honza/vim-snippets'
+  Bundle 'joonty/vdebug'
+  Bundle 'junegunn/goyo.vim'
+  Bundle 'junegunn/vim-easy-align'
+  Bundle 'pedrosans/vim-notes'
+  Bundle 'posva/vim-vue'
+  Bundle 'ramele/agrep'
+  Bundle 'scrooloose/nerdtree'
+  Bundle 'sjl/gundo.vim'
+  Bundle 'stephpy/vim-php-cs-fixer'
+  Bundle 'tmhedberg/matchit'
+  Bundle 'tomlion/vim-solidity'
+  Bundle 'tommcdo/vim-exchange'
+  Bundle 'tpope/vim-abolish'
+  Bundle 'tpope/vim-commentary'
+  Bundle 'tpope/vim-dispatch'
+  Bundle 'tpope/vim-eunuch'
+  Bundle 'tpope/vim-fugitive.git'
+  Bundle 'tpope/vim-repeat'
+  Bundle 'tpope/vim-surround'
+  Bundle 'tpope/vim-unimpaired'
+  Bundle 'tpope/vim-vinegar'
+  Bundle 'vim-scripts/taglist.vim'
+  Plugin 'pedrosans/vim-misc'
+" }}}
+
+
+" Syntax Support {{{
+
+  Bundle 'JulesWang/css.vim'
+  Bundle 'StanAngeloff/php.vim'
+  Bundle 'ap/vim-css-color'
+  Bundle 'jelera/vim-javascript-syntax.git'
+  Bundle 'kchmck/vim-coffee-script'
+  Bundle 'leshill/vim-json'
+  Bundle 'mitsuhiko/vim-python-combined'
+  Bundle 'othree/html5.vim'
+  Bundle 'pangloss/vim-javascript'
+  Bundle 'rodjek/vim-puppet'
+  Bundle 'ruanyl/vim-blade'
+  Bundle 'scrooloose/syntastic'
+  Bundle 'shawncplus/phpcomplete.vim'
+  Bundle 'tpope/vim-haml'
+  Bundle 'tpope/vim-markdown'
+  Bundle 'tpope/vim-rails.git'
+  Bundle 'vim-ruby/vim-ruby'
+  Plugin 'mxw/vim-jsx'
+
+" }}}
+
+" Apearance {{{
+  Bundle 'joshdick/onedark.vim'
+" }}}
+
+
+"
+" Plugins to checkout {{{
 
 " Checkout these plugins sometime in the future
+" 'sotte/presenting.vim'
 " https://vimawesome.com/plugin/obsession-vim
 " https://vimawesome.com/plugin/session-vim
 " https://vimawesome.com/plugin/vim-workspace
 
-Bundle 'masukomi/vim-markdown-folding'
-Bundle 'AndrewRadev/linediff.vim'
-Bundle 'RRethy/vim-illuminate'
-Bundle 'SirVer/ultisnips'
-Bundle 'Xuyuanp/nerdtree-git-plugin'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'bling/vim-airline.git'
-Bundle 'chrisbra/NrrwRgn'
-Bundle 'diepm/vim-rest-console'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'honza/vim-snippets'
-Bundle 'joonty/vdebug'
-Bundle 'junegunn/goyo.vim'
-Bundle 'junegunn/vim-easy-align'
-Bundle 'pedrosans/vim-notes'
-Bundle 'posva/vim-vue'
-Bundle 'ramele/agrep'
-Bundle 'scrooloose/nerdtree'
-Bundle 'sjl/gundo.vim'
-Bundle 'stephpy/vim-php-cs-fixer'
-Bundle 'tmhedberg/matchit'
-Bundle 'tomlion/vim-solidity'
-Bundle 'tommcdo/vim-exchange'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-vinegar'
-Bundle 'vim-scripts/taglist.vim'
-Plugin 'pedrosans/vim-misc'
+" }}}
 
-"== Syntax Plugins
+" }}}
 
-Bundle 'JulesWang/css.vim'
-Bundle 'StanAngeloff/php.vim'
-Bundle 'ap/vim-css-color'
-Bundle 'jelera/vim-javascript-syntax.git'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'leshill/vim-json'
-Bundle 'mitsuhiko/vim-python-combined'
-Bundle 'othree/html5.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'rodjek/vim-puppet'
-Bundle 'ruanyl/vim-blade'
-Bundle 'scrooloose/syntastic'
-Bundle 'shawncplus/phpcomplete.vim'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails.git'
-Bundle 'vim-ruby/vim-ruby'
-Plugin 'mxw/vim-jsx'
+" TODO's {{{
 
-"== Apearance Plugins
-Bundle 'joshdick/onedark.vim'
+  "   SOLVED: Highlight ONLY the word under cursor WITHOUT jumping to the next occurence the first time
 
-"== Annoyance highlight ONLY the word under cursor WITHOUT jumping to the next occurence
-"   the first
-"time
+  " TODO: create function to togggle spell highlighting
+  " http://stackoverflow.com/questions/22180623/spell-check-word-under-cursor-in-vim
 
-filetype plugin indent on     " required
+  " * Spell check word under cursor without adding spellcheck to the said file
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install (update) bundles
-" :BundleSearch(!) foo - search (or refresh cache first) for foo
-" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle commands are not allowed.
-" Put your stuff after this line
+  " this mapping Enter key to <C-y> to chose the current highlight item
+  " and close the selection list, same as other IDEs.
+  " CONFLICT with some plugins like tpope/Endwise
+  " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-"" ======================
-set ssop=blank,buffers,curdir,folds,resize,tabpages,winsize,winpos
-set autoread
-" display incomplete commands
-set showcmd
-" Don't redraw while executing macros
-set lazyredraw
+" }}}
 
-set nocursorline
+" Bundle Requirements {{{
+  filetype plugin indent on     " required
+" }}}
 
-" Show matching brackets when text indicator is over them
-set showmatch
+" General Settings{{{
 
-" No wrapping text by default
-set nowrap
-" Leave hidden buffers open
-set hidden
-" override default 8 last commands to remember
-set history=100
+  if has("syntax")
+      syntax on
+  endif
 
-" Do vertical splits to the right and horizontal splits below instead of top
-set splitbelow
-set splitright
+  if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+    set t_Co=256
+  endif
 
-"=========Backup and restoring
-set dir=./.backup,~/.vim/backup_files,/tmp
-silent execute '!mkdir -p $HOME/.vim/tmp/{backup,swap,view,undo}'
-set backupdir=$HOME/.vim/tmp/backup/
-set backup
-set directory=$HOME/.vim/tmp/swap/
-set viewdir=$HOME/.vim/tmp/view/
-" store undo files, undo edits after deleting a buffer
-"set undodir=$HOME/.vim/tmp/undo/
-"set undofile
-set viminfo='50,n$HOME/.vim/tmp/viminfo
+  if filereadable("~/.vim/autocorrect.vim")
+    :source ~/.vim/autocorrect.vim
+  endif
 
-"Change buffer - without saving
-set hid
-" Don't move cursor to begining of line when switching buffers
-set nostartofline
+  " look and feel {{{
 
-scriptencoding utf-8
-set termencoding=utf-8
-set encoding=utf-8
-set backspace=indent,eol,start
-" show the cursor position all the time
-set ruler
+    set background=dark
+    colorscheme molokai-transparent
+    :hi Normal ctermbg=NONE
+    highlight! link DiffText MatchParen
+    :hi Visual term=reverse cterm=reverse guibg=Grey
 
-let mapleader = ","
-let g:mapleader = ","
+    if v:version > 702
+     highlight ColorColumn ctermbg=darkgrey
+     call matchadd('ColorColumn', '\%81v', 100)
+    endif
 
-" tab completion for comands and hopefully filenames
-set wildmode=longest,list,full
-set wildmenu
+  " }}}
 
-" Search options
-" Blinks underscore of search result
-function! HLNext (blinktime)
-  set invcursorline
-  redraw
-  exec 'sleep ' . float2nr(a:blinktime * 250) . 'm'
-  set invcursorline
-  redraw
-endfunction
+  " Variable Settings {{{
 
-set scrolloff=5
-nnoremap <silent> n n:call HLNext(0.4)<cr>
-nnoremap <silent> N N:call HLNext(0.4)<cr>
+    set autoread
+    set hidden " Leave hidden buffers open
+    set history=100 " override default 8 last commands to remember
+    set lazyredraw " Don't redraw while executing macros
+    set nocursorline " Don't Highlight the screen line of the cursor with CursorLine
+    set nowrap " No wrapping text by default
+    set showcmd " display incomplete commands
+    set showmatch " Show matching brackets when text indicator is over them
+    set splitbelow " Do vertical splits to DOWN instead of UP
+    set splitright " Do horizontal splits to the RIGH instead of LEFT
+    set ssop=blank,buffers,curdir,folds,resize,tabpages,winsize,winpos
+    scriptencoding utf-8
+    set termencoding=utf-8
+    set encoding=utf-8
+    set backspace=indent,eol,start
+    set nostartofline " Don't move cursor to begining of line when switching buffers
+    " show the cursor position all the time
+    " set ruler
+    set wildmode=longest,list,full " tab completion for comands and hopefully filenames
+    set wildmenu
+    set autoindent
 
-" do incremental searching
-set incsearch
+    set nu
+    if v:version > 702
+      set rnu
+    endif
 
-set ignorecase
-set smartcase
-set hlsearch
+    " Display characters for indetation, eol, and trailing whitespace
+    exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~"
+    set list
 
-if has("syntax")
-    syntax on
-endif
+    hi CursorLine   cterm=NONE ctermbg=240 ctermfg=black guibg=darkred guifg=white
+    hi CursorColumn cterm=NONE ctermbg=240 ctermfg=white guibg=darkred guifg=white
 
-" Indentation
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-"  Switching indentation schema
-nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
-nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
-nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
-nmap \m :set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
-
-set autoindent
-
-" sudo omission fix
-cmap w!! w !sudo tee >/dev/null %
-
-" Display characters for indetation, eol, and trailing whitespace
-exec "set listchars=tab:\uB7\uB7,trail:\uBB,nbsp:~"
-set list
-" Reload vimrc
-map <leader>e :so $MYVIMRC <bar> call UltiSnips#RefreshSnippets() <CR>
-
-"========Custom Keystrokes
-"
-"=== Fat finger workaroudn
-" Approach to remap commonly mistaken keystrokes, usally by holding the shift key
-" for longer that it should.
-" taken from http://blog.sanctum.geek.nz/vim-command-typos/
-
-if has("user_commands")
-  " Saving changes
-  command! -bang -nargs=? -complete=file E e<bang> <args>
-  command! -bang -nargs=? -complete=file W w<bang> <args>
-  command! -bang -nargs=? -complete=file Wq wq<bang> <args>
-  command! -bang -nargs=? -complete=file WQ wq<bang> <args>
-  command! -bang Wa wa<bang>
-  command! -bang WA wa<bang>
-  command! -bang Q q<bang>
-  command! -bang QA qa<bang>
-  command! -bang Qa qa<bang>
-  command! -bang Qall qall<bang>
-
-  "Other
-  "Vertical splitting
-  command! -nargs=? -complete=file Vsp vsp <args>
-
-endif
-
-"=== Disable arrow keys
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
-
-"=== Save file with Ctrl+s
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-
-" Paste Toggle
-set pastetoggle=<f3>
-set clipboard=unnamedplus
+  " }}}
 
 
-" Arrowless window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+  " Folding {{{
 
-nmap <Down> gj
-nmap <Up> gk
+    set foldlevel=0
+    set foldenable
+    " set foldlevelstart=10
+    set foldnestmax=10
+    set foldmethod=syntax
 
-"========Plug-ins
+  " }}}
 
-"== UltiSnips
-set runtimepath+=~/.vim/custom_snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" let g:UltiSnipsListSnippets=<
-" let g:UltiSnipsSnippetDirectories=["UltiSnips", "~/.vim/custom_snippets/"]
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/custom_snippets']
+  "" Backup, history and Restoring {{{
 
-let g:UltiSnipsEditSplit="context"
+    " Create directory if doesn't exists
+    silent execute '!mkdir -p $HOME/.vim/tmp/{backup,swap,view,undo}'
+    set dir=./.backup,~/.vim/backup_files,/tmp
+    set backupdir=$HOME/.vim/tmp/backup/
+    set backup
+    set directory=$HOME/.vim/tmp/swap/
+    set viewdir=$HOME/.vim/tmp/view/
+    set viminfo='50,n$HOME/.vim/tmp/viminfo
+    " store undo files, undo edits after deleting a buffer
+    "set undodir=$HOME/.vim/tmp/undo/
+    "set undofile
+    set scrolloff=5
 
-"== vim-surround
+    " Search {{{
+      set incsearch " do incremental searching
+      set ignorecase
+      set smartcase
+      set hlsearch
+    " }}}
 
-" surround hash key [""] 'H'
-let g:surround_72 = "[\"\r\"]"
+    " Indentation {{{
+      set expandtab
+      set tabstop=2
+      set shiftwidth=2
+      set softtabstop=2
+    " }}}
 
-" surround ruby string interpolation #{} 's'
-let g:surround_115 = "\#{\r}"
+  " }}}
 
-" surround with [''] 'h'
-let g:surround_104 = "['\r']"
+  " Leader + Remaps {{{
 
-" surround with mustaches {{}} 'm'
-let g:surround_109 = "{{ \r }}"
+    let mapleader = ","
+    let g:mapleader = ","
 
-" surround selection with console log consolelog(); 'c'
-let g:surround_99 = "console.log( \r );"
+    nnoremap <silent> n n:call HLNext(0.4)<cr>
+    nnoremap <silent> N N:call HLNext(0.4)<cr>
 
-"== vim-syntastic
+    " Center cursor Vertically
+    nmap <leader>zz :set scrolloff=999<CR>
+    nmap <leader>d :DiffSaved <CR>
 
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
+  "}}}
 
-"== gundo.vim
-nnoremap <leader>u :GundoToggle<CR>
+" Custom Functions {{{
 
-"== vim-php-cs-fixer
-let g:php_cs_fixer_enable_default_mapping = 0
-let g:php_cs_fixer_level = "symfony"
-let g:php_cs_fixer_config = "default"
-let g:php_cs_fixer_rules = "@PSR2"
-nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
-nnoremap <silent><leader>P :call PhpCsFixerFixDirectory()<CR>
+  " Search options
+  " Blinks underscore of search result
+  function! HLNext (blinktime)
+    set invcursorline
+    redraw
+    exec 'sleep ' . float2nr(a:blinktime * 250) . 'm'
+    set invcursorline
+    redraw
+  endfunction
 
-"== easy-align
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+  function! s:DiffWithSaved()
+    let filetype=&ft
+    diffthis
+    vnew | r # | normal! 1Gdd
+    diffthis
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+  endfunction
 
-"== Nerdtree
-let NERDTreeShowLineNumbers=1
-let NERDTreeQuitOnOpen = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+  function! ToggleCopyMode()
+    echo "function called"
+    call ToggleLineNumbering()
+    if &number
+      set list
+      set wrap
+      :GitGutterEnable
+    else
+      set nolist
+      set nowrap
+      :GitGutterDisable
+    endif
+  endfunction
 
-" nmap <silent><.eader>f :NERDTreeToggle<CR> && :NERDTreeFind<CR>
-nmap <silent><leader>f :NERDTreeToggle<CR>
+  " Toggle line numbering relative and absolute
+  " Vim 7.4 doesn't turn line numbers on when disable relative lines
+  function! ToggleLineNumbering()
+    set nu!
+    if v:version > 703
+      set rnu!
+    endif
+  endfunction
+
+  " Show vimdiff of unsaved changes
+  com! DiffSaved call s:DiffWithSaved()
+
+  autocmd VimResized * :wincmd =
+
+" }}}
+
+" }}}
+
+" Mappings {{{
+
+  "Alternative Insert Mode exit
+  imap jj <Esc>
+
+  " save as root
+  cmap w!! w !sudo tee >/dev/null %
+
+  " Save with Ctrl+s
+  map <C-s> <esc>:w<CR>
+  imap <C-s> <esc>:w<CR>
+
+  " Clear search highlights
+  nmap \q :nohlsearch<CR>
+  " Search visually selected text
+  vnoremap // y/<C-R>"<CR>
+
+  " Fat Finger {{{
+
+    if has("user_commands")
+      " Saving changes
+      command! -bang -nargs=? -complete=file E e<bang> <args>
+      command! -bang -nargs=? -complete=file W w<bang> <args>
+      command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+      command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+      command! -bang Wa wa<bang>
+      command! -bang WA wa<bang>
+      command! -bang Q q<bang>
+      command! -bang QA qa<bang>
+      command! -bang Qa qa<bang>
+      command! -bang Qall qall<bang>
+
+      "Vertical splitting
+      command! -nargs=? -complete=file Vsp vsp <args>
+
+    endif
+
+  " }}}
+
+  " Movement {{{
+
+    " == Tabs {{{
+      nmap <leader>h :tabprevious<CR>
+      nmap <leader>j :tab sp<CR>
+      nmap <leader>k :tab new<CR>
+      nmap <leader>l :tabnext<CR>
+    " }}}
+
+    " Disable arrow keys {{{
+
+      " Approach to remap commonly mistaken keystrokes, usally by holding the shift key
+      " for longer that it should.
+      " taken from http://blog.sanctum.geek.nz/vim-command-typos/
+
+      inoremap  <Up>     <NOP>
+      inoremap  <Down>   <NOP>
+      inoremap  <Left>   <NOP>
+      inoremap  <Right>  <NOP>
+      noremap   <Up>     <NOP>
+      noremap   <Down>   <NOP>
+      noremap   <Left>   <NOP>
+      noremap   <Right>  <NOP>
+
+    " }}}
+
+    " Solit Navegation {{{
+      nnoremap <C-h> <C-w>h
+      nnoremap <C-j> <C-w>j
+      nnoremap <C-k> <C-w>k
+      nnoremap <C-l> <C-w>l
+    " }}}
+
+  " }}}
+
+  " Indentation Switching{{{
+    nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+    nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+    nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+    nmap \m :set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+  " }}}
+
+  " Tool Mappings {{{
+
+    " Leader mapping {{{
+      " Reload vimrc
+      map <leader>e :so $MYVIMRC <bar> call UltiSnips#RefreshSnippets() <CR>
+    " }}}
+
+    " Unit testing {{{
+      " TEST THIS FILE
+      map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; truffle test ./%" C-m <CR>
+      " COMPILE AND TEST THIS FILE
+      map <leader>tct :Dispatch! tmux send-keys -t tester.0 "clear; rm build/contracts/* ; truffle compile && truffle test ./%" C-m <CR>
+
+      " TEST ALL FILES
+      map <leader>ta :Dispatch! tmux send-keys -t tester.0 "clear; truffle test" C-m <CR>
+      " COMPILE AND TEST ALL FILES
+      map <leader>tca :Dispatch! tmux send-keys -t tester.0 "clear; rm build/contracts/* ; truffle compile && truffle test" C-m <CR>
+
+      " Traverse the buffer list comparing against development branch
+      nnoremap <leader>X :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
+
+      map <leader>g :Dispatch! tmux send-keys -t tester.0 "clear; npm run dist" C-m <CR>
+
+      nnoremap <Leader>c :set cursorline!<CR> :set cursorcolumn! <CR>
+
+      map <leader>w :call append(line('.')-1, "console.log('>>> ".@%.":' + ".line('.').' + "" );') <CR>
+
+      " open file under cursor on new vertical split
+      :nnoremap gf] <C-W>vgf
+
+      " open file under cursor on new horizontal split
+      :nnoremap gf[ <C-W><C-f>
+
+      nmap <F2> :call ToggleCopyMode()<CR>
+    " }}}
+
+  " }}}
+
+" }}}
+
+" Plugin Settings {{{
+
+  " UltiSnips {{{
+    set runtimepath+=~/.vim/custom_snippets
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    let g:UltiSnipsListSnippets="<C-e>"
+    " let g:UltiSnipsSnippetDirectories=["UltiSnips", "~/.vim/custom_snippets/"]
+    let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/custom_snippets']
+
+    let g:UltiSnipsEditSplit="context"
+
+  " }}}
+
+  " vim-surround {{{
+
+    " surround hash key [""] 'H'
+    let g:surround_72 = "[\"\r\"]"
+
+    " surround ruby string interpolation #{} 's'
+    let g:surround_115 = "\#{\r}"
+
+    " surround with [''] 'h'
+    let g:surround_104 = "['\r']"
+
+    " surround with mustaches {{}} 'm'
+    let g:surround_109 = "{{ \r }}"
+
+    " surround selection with console log consolelog(); 'c'
+    let g:surround_99 = "console.log( \r );"
+
+  " }}}
+
+  " vim-syntastic {{{
+
+    " set statusline+=%#warningmsg#
+    " set statusline+=%{SyntasticStatuslineFlag()}
+    " set statusline+=%*
+
+    " let g:syntastic_always_populate_loc_list = 1
+    " let g:syntastic_auto_loc_list = 1
+    " let g:syntastic_check_on_open = 1
+    " let g:syntastic_check_on_wq = 0
+
+  " }}}
+
+  " gundo.vim {{{
+    nnoremap <leader>u :GundoToggle<CR>
+  " }}}
+
+  "vim-php-cs-fixer {{{
+    let g:php_cs_fixer_enable_default_mapping = 0
+    let g:php_cs_fixer_level = "symfony"
+    let g:php_cs_fixer_config = "default"
+    let g:php_cs_fixer_rules = "@PSR2"
+    nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
+    nnoremap <silent><leader>P :call PhpCsFixerFixDirectory()<CR>
+  " }}}
+
+  "== easy-align {{{
+  " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+  vmap <Enter> <Plug>(EasyAlign)
+  " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+  nmap ga <Plug>(EasyAlign)
+
+  " }}}
+
+  "== Nerdtree {{{
+  let NERDTreeShowLineNumbers=1
+  let NERDTreeQuitOnOpen = 1
+  let NERDTreeMinimalUI = 1
+  let NERDTreeDirArrows = 1
+
+  " nmap <silent><.eader>f :NERDTreeToggle<CR> && :NERDTreeFind<CR>
+  nmap <silent><leader>f :NERDTreeToggle<CR>
+  " }}}
 
 if custom_system_type == "full"
 
-  "== denite.vim
-  if executable('ag')
-    call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nogroup',
-          \'--ignore-dir', 'node_modules',
-          \'--ignore-dir', 'vendor',
-          \'--ignore-dir', 'docs',
-          \'-g', ''])
-  endif
+  "== denite.vim {{{
 
-  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-          \   [ '.git/', 'node_modules/*', 'vendor/', 'build/' ]
-          \ )
+    if executable('ag')
+        call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nogroup',
+              \'--ignore-dir', 'node_modules',
+              \'--ignore-dir', 'vendor',
+              \'--ignore-dir', 'docs',
+              \'-g', ''])
+      endif
 
-  nmap <leader><space> :Denite file_rec buffer<CR>
-  nmap <space> :Denite buffer<CR>
+      call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+              \   [ '.git/', 'node_modules/*', 'vendor/', 'build/' ]
+              \ )
 
-else
+      nmap <leader><space> :Denite file_rec buffer<CR>
+      nmap <space> :Denite buffer<CR>
 
-  ""== cntlp
-  nmap <leader><space> :CtrlPBuffer<CR>
-  nmap <leader> :CtrlPMixed<CR>
-  let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+    else
 
-endif
-"== airline
-"" FIXES The statusline is hidden/only appears in split windows!
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+      ""== cntlp
+      nmap <leader><space> :CtrlPBuffer<CR>
+      nmap <leader> :CtrlPMixed<CR>
+      let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-set laststatus=2
-let g:airline_detect_modified=1
-let g:airline_detect_paste=1
-let g:airline_powerline_fonts=1
-"let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
+    endif
 
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline#extensions#branch#symbol = '⭠'
-let g:airline#extensions#readonly#symbol = '⭤'
-let g:airline_symbols.linenr = '⭡'
+  " }}}
 
-let g:airline#extensions#whitespace#trailing_format = '$[%s]'
-let g:airline#extensions#whitespace#mixed_indent_format = ' ^[%s]'
+  "== airline {{{
+    "" FIXES The statusline is hidden/only appears in split windows!
+    if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+    endif
 
-let g:airline_theme = 'dark'
-let g:airline_inactive_collapse=1
-let g:airline_mode_map = {
-      \ '__' : '-',
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'c'  : 'C',
-      \ 'v'  : 'V',
-      \ 'V'  : 'V',
-      \ '' : 'V',
-      \ 's'  : 'S',
-      \ 'S'  : 'S',
-      \ '' : 'S',
-      \ }
+    set laststatus=2
+    let g:airline_detect_modified=1
+    let g:airline_detect_paste=1
+    let g:airline_powerline_fonts=1
+    "let g:airline#extensions#tagbar#enabled = 1
+    let g:airline#extensions#tabline#enabled = 1
 
-"== vim-notes
-let g:notes_directories = ['~/Dropbox/Notes']
-nnoremap <leader>nc :vsp<CR>:Note<Space>
-nnoremap <leader>ns :vsp<CR>:SearchNotes<Space>
+    let g:airline_left_sep = '⮀'
+    let g:airline_left_alt_sep = '⮁'
+    let g:airline_right_sep = '⮂'
+    let g:airline_right_alt_sep = '⮃'
+    let g:airline#extensions#branch#symbol = '⭠'
+    let g:airline#extensions#readonly#symbol = '⭤'
+    let g:airline_symbols.linenr = '⭡'
 
-"== taglist
-" First check if ctags is installed
-if executable('ctags')
-  let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-  let Tlist_WinWidth = 50
-  let Tlist_Use_Right_Window=1
-  " Maps F4 to toggle the ctags widnow
-  map <F4> :TlistToggle<cr>
-  " Maps building tags to F10 for the current directory
-  " map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-  map <leader>0 :Dispatch /usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude={*.phar,node_modules,vendor,docs,public,.branch_dir,*min.js} .<CR>
-  " Open tag file on vertical split and move it to the right split
-  nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR>zz
-  nmap <leader>[  :exec("tag ".expand("<cword>"))<CR>zz
-endif
+    let g:airline#extensions#whitespace#trailing_format = '$[%s]'
+    let g:airline#extensions#whitespace#mixed_indent_format = ' ^[%s]'
 
-"== Clear search highlights
-nmap \q :nohlsearch<CR>
-"== Switch to next buffer
-nmap <C-e> :e#<CR>
-"set ff=dos,unix Change file format to avoid ^M line breaks also
-"replacing ^M's :%s/CTRL-v ENTER//g
+    let g:airline_theme = 'dark'
+    let g:airline_inactive_collapse=1
+    let g:airline_mode_map = {
+          \ '__' : '-',
+          \ 'n'  : 'N',
+          \ 'i'  : 'I',
+          \ 'R'  : 'R',
+          \ 'c'  : 'C',
+          \ 'v'  : 'V',
+          \ 'V'  : 'V',
+          \ '' : 'V',
+          \ 's'  : 'S',
+          \ 'S'  : 'S',
+          \ '' : 'S',
+          \ }
 
-"== Search visually selected text
-vnoremap // y/<C-R>"<CR>
+    " }}}
 
-" Show vimdiff of unsaved changes
+    "== vim-notes {{{
+      let g:notes_directories = ['~/Dropbox/Notes']
+      nnoremap <leader>nc :vsp<CR>:Note<Space>
+      nnoremap <leader>ns :vsp<CR>:SearchNotes<Space>
+    " }}}
 
-function! s:DiffWithSaved()
-  let filetype=&ft
-  diffthis
-  vnew | r # | normal! 1Gdd
-  diffthis
-  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
-endfunction
-com! DiffSaved call s:DiffWithSaved()
+    "== taglist {{{
+      " First check if ctags is installed
+      if executable('ctags')
+        let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+        let Tlist_WinWidth = 50
+        let Tlist_Use_Right_Window=1
+        " Maps F4 to toggle the ctags widnow
+        map <F4> :TlistToggle<cr>
+        " Maps building tags to F10 for the current directory
+        " map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+        map <leader>0 :Dispatch /usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude={*.phar,node_modules,vendor,docs,public,.branch_dir,*min.js} .<CR>
+        " Open tag file on vertical split and move it to the right split
+        nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR>zz
+        nmap <leader>[  :exec("tag ".expand("<cword>"))<CR>zz
+      endif
 
-nmap <leader>d :DiffSaved <CR>
+    " }}}
 
-"== Tabs
-nmap <leader>h :tabprevious<CR>
-nmap <leader>j :tab sp<CR>
-nmap <leader>k :tab new<CR>
-nmap <leader>l :tabnext<CR>
+    "Vdebug {{{
 
-"== Center cursor vertically
-" TODO: make this toggable
-nmap <leader>zz :set scrolloff=999<CR>
+      " less intrusive, more readable highlighting
+      highlight DbgBreakptLine ctermbg=none ctermfg=none
+      highlight DbgBreakptSign ctermbg=none ctermfg=10
 
-"Alternative Insert Mode exit
-imap jj <Esc>
+      "highlight DbgCurrentLine ctermbg=none ctermfg=none
+      highlight DbgCurrentSign ctermbg=none ctermfg=red
 
-if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-      set t_Co=256
-endif
+    " }}}
 
-set background=dark
-colorscheme molokai-transparent
-" colorscheme onedark
-:hi Normal ctermbg=NONE
-:hi Visual term=reverse cterm=reverse guibg=Grey
+" }}}
 
-"== Vdebug
-
-" less intrusive, more readable highlighting
-
-highlight DbgBreakptLine ctermbg=none ctermfg=none
-highlight DbgBreakptSign ctermbg=none ctermfg=10
-
-"highlight DbgCurrentLine ctermbg=none ctermfg=none
-highlight DbgCurrentSign ctermbg=none ctermfg=red
-
-if v:version > 702
- highlight ColorColumn ctermbg=darkgrey
- call matchadd('ColorColumn', '\%81v', 100)
-endif
-
-" Better diff highlights
-" From https://groups.google.com/forum/#!topic/vim_use/IERXsR4WVFk
-highlight! link DiffText MatchParen
-
-"== Annoyance * Spell check word under cursor without adding spellcheck to the said file
-
-" TODO: create function to togggle spell highlighting
-" http://stackoverflow.com/questions/22180623/spell-check-word-under-cursor-in-vim
-
-" Toggle line numbering relative and absolute
-" Vim 7.4 doesn't turn line numbers on when disable relative lines
-function! ToggleLineNumbering()
-  set nu!
-  if v:version > 703
-    set rnu!
-  endif
-endfunction
-
-" Toggle extra characters for copying with mouse
-function! ToggleCopyMode()
-  echo "function called"
-  call ToggleLineNumbering()
-  if &number
-    set list
-    set wrap
-    :GitGutterEnable
-  else
-    set nolist
-    set nowrap
-    :GitGutterDisable
-  endif
-endfunction
-
-set nu
-if v:version > 702
-  "set relative line numbering On by default on vim 7.2 and up
-  "
-  set rnu
-  nmap <F2> :call ToggleCopyMode()<CR>
-endif
-
-if filereadable("~/.vim/autocorrect.vim")
-  :source ~/.vim/autocorrect.vim
-endif
-
-" Pdf text reader command Rpdf
-:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
-:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
-
-" Unsuccessful attempt to do a 'read mode' highlighting perhaps can be ironned
-" out in the future
-"" 'Reading Mode' Next/Previous Sentence highlight
-" xnoremap <leader>( <Esc>((vis
-" xnoremap <leader>) <Esc>vis
-
-autocmd Filetype svn  setlocal spell textwidth=72
-autocmd Filetype gitcommit setlocal spell textwidth=72
-autocmd Filetype mediawiki setlocal spell textwidth=90
-autocmd Filetype markdown setlocal spell textwidth=90
-
-" Auto resize splits proportionaly on window resize
-autocmd VimResized * :wincmd =
-
-" open file under cursor on new vertical split
-:nnoremap gf] <C-W>vgf
-
-" open file under cursor on new horizontal split
-:nnoremap gf[ <C-W><C-f>
-
-" Opens each line of a text file in vim
-" for line in getline(1, '$') | exec 'argadd' line | endfor
-
-" Traverse the buffer list comparing against development branch
-nnoremap <leader>X :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
-
-" [Project Dependent] sctipt dispatching examples
-" TEST THIS FILE
-map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; truffle test ./%" C-m <CR>
-" COMPILE AND TEST THIS FILE
-map <leader>tct :Dispatch! tmux send-keys -t tester.0 "clear; rm build/contracts/* ; truffle compile && truffle test ./%" C-m <CR>
-
-" TEST ALL FILES
-map <leader>ta :Dispatch! tmux send-keys -t tester.0 "clear; truffle test" C-m <CR>
-" COMPILE AND TEST ALL FILES
-map <leader>tca :Dispatch! tmux send-keys -t tester.0 "clear; rm build/contracts/* ; truffle compile && truffle test" C-m <CR>
-
-map <leader>g :Dispatch! tmux send-keys -t tester.0 "clear; npm run dist" C-m <CR>
-
-" au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsListSnippets="<c-e>"
-
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Follow and highlight current line
-" taken from http://vim.wikia.com/wiki/Highlight_current_line
-hi CursorLine   cterm=NONE ctermbg=240 ctermfg=black guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=240 ctermfg=white guibg=darkred guifg=white
-" nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
-nnoremap <Leader>c :set cursorline!<CR> :set cursorcolumn! <CR>
-
-map <leader>w :call append(line('.')-1, "console.log('>>> ".@%.":' + ".line('.').' + "" );') <CR>
+"" Foldding instruction do not remove
+" vim:foldmethod=marker:foldlevel=0
 

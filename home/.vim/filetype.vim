@@ -34,3 +34,10 @@ au BufRead,BufNewFile *.vue                 set textwidth=80
 au BufNewFile,BufRead *Notes/*              set textwidth=120
 au BufNewFile,BufRead *Notes/*              set spell
 au BufNewFile,BufRead *Notes/*              call matchadd('ColorColumn', '\%110v', 100)
+
+""" TextWidht
+autocmd Filetype svn  setlocal spell textwidth=72
+autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd Filetype mediawiki setlocal spell textwidth=90
+autocmd Filetype markdown setlocal spell textwidth=90
+
