@@ -73,7 +73,6 @@
   Plugin 'pedrosans/vim-misc'
 " }}}
 
-
 " Syntax Support {{{
 
   Bundle 'JulesWang/css.vim'
@@ -492,7 +491,7 @@
     nnoremap <silent><leader>P :call PhpCsFixerFixDirectory()<CR>
   " }}}
 
-  "== easy-align {{{
+  " easy-align {{{
   " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
   vmap <Enter> <Plug>(EasyAlign)
   " Start interactive EasyAlign for a motion/text object (e.g. gaip)
@@ -614,6 +613,33 @@ if custom_system_type == "full"
 
       "highlight DbgCurrentLine ctermbg=none ctermfg=none
       highlight DbgCurrentSign ctermbg=none ctermfg=red
+
+    " }}}
+
+    " vim-test {{{
+
+      let g:test#preserve_screen = 1
+      let test#strategy = {
+        \ 'nearest': 'dispatch_background',
+        \ 'file':    'dispatch_background',
+        \ 'suite':   'dispatch_background',
+      \}
+
+      let test#vim#term_position = "belowright"
+
+      let test#project_root = "/home/ccolorado/Source/nobservices/nobblockchain"
+      " let test#solidity#minitest#file_pattern = test\.js
+      " let test#solidity#rspec#executable = 'foreman run rspec'
+
+      " augroup test
+      "   autocmd!
+      "   autocmd BufWrite * if test#exists() |
+      "     \   TestFile |
+      "     \ endif
+      " augroup END
+
+      let test#custom_runners = {'Solidity': ['Truffle']}
+      let test#enabled_runners = ["solidity#truffle"]
 
     " }}}
 
