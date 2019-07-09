@@ -115,6 +115,11 @@ feature_hunt(){
 
 }
 
+vnsearch(){
+  cd ~/Dropbox/Notes/
+  feature_hunt $@
+  cd -
+}
 
 kernel_needs_reload(){
 
