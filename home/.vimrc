@@ -36,7 +36,7 @@
 
 " Tools and Features {{{
 
-  Bundle 'masukomi/vim-markdown-folding'
+  " Bundle 'joonty/vdebug'
   Bundle 'AndrewRadev/linediff.vim'
   Bundle 'RRethy/vim-illuminate'
   Bundle 'SirVer/ultisnips'
@@ -48,9 +48,11 @@
   Bundle 'editorconfig/editorconfig-vim'
   Bundle 'elixir-lang/vim-elixir'
   Bundle 'honza/vim-snippets'
-  Bundle 'joonty/vdebug'
   Bundle 'junegunn/goyo.vim'
   Bundle 'junegunn/vim-easy-align'
+  Bundle 'masukomi/vim-markdown-folding'
+  Bundle 'mattn/emmet-vim'
+  Bundle 'pedrosans/vim-misc'
   Bundle 'pedrosans/vim-notes'
   Bundle 'posva/vim-vue'
   Bundle 'ramele/agrep'
@@ -70,7 +72,6 @@
   Bundle 'tpope/vim-unimpaired'
   Bundle 'tpope/vim-vinegar'
   Bundle 'vim-scripts/taglist.vim'
-  Plugin 'pedrosans/vim-misc'
 " }}}
 
 
@@ -99,6 +100,7 @@
 
 " Apearance {{{
   Bundle 'joshdick/onedark.vim'
+  Bundle 'arcticicestudio/nord-vim'
 " }}}
 
 
@@ -153,6 +155,7 @@
 
     set background=dark
     colorscheme molokai-transparent
+    " colorscheme nord
     :hi Normal ctermbg=NONE
     highlight! link DiffText MatchParen
     :hi Visual term=reverse cterm=reverse guibg=Grey
