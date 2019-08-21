@@ -30,7 +30,6 @@ pathadd() {
    fi
 }
 
-
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"
 PROMPT_ROOT_COLOR="\[\033[40;1;31m\]"
@@ -115,6 +114,11 @@ feature_hunt(){
 
 }
 
+vnsearch(){
+  cd ~/Dropbox/Notes/
+  feature_hunt $@
+  cd -
+}
 
 kernel_needs_reload(){
 
@@ -155,6 +159,14 @@ export EDITOR=vim
 export hostcolor=$(str2color $HOSTNAME)
 export HC='\[$hostcolor\]'
 export distro_flag=$( distroPromptFlag )
+
+# Bash history tweaking
+export HISTSIZE=10000
+PROMPT_COMMAND='history -a'
+shopt -s histappend
+export HISTIGNORE="ls:ps:history:smplayer"
+export HISTCONTROL=ignoreboth
+
 
 IS_SSH_SESSION=""
 
