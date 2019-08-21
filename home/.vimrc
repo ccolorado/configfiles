@@ -32,7 +32,7 @@
 
 " }}}
 
-" Plugins {{{
+" Plugins Instalation{{{
 
 " Tools and Features {{{
 
@@ -41,6 +41,8 @@
   Bundle 'RRethy/vim-illuminate'
   Bundle 'SirVer/ultisnips'
   Bundle 'Xuyuanp/nerdtree-git-plugin'
+  " Bundle 'w0rp/ale'
+  Bundle 'janko/vim-test'
   Bundle 'airblade/vim-gitgutter'
   Bundle 'bling/vim-airline.git'
   Bundle 'chrisbra/NrrwRgn'
