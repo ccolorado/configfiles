@@ -17,6 +17,8 @@
 
   Bundle 'gmarik/vundle'
 
+  " TODO: try https://github.com/ncm2/ncm2
+  " TODO: try deoplete"
   if custom_system_type == "full"
     Bundle 'Shougo/denite.nvim'
     Bundle 'Shougo/vimproc.vim'
@@ -516,8 +518,19 @@ if custom_system_type == "full"
 
   "== denite.vim {{{
 
+
+    autocmd FileType denite call s:denite_my_settings()
+    function! s:denite_my_settings() abort
+      nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+      nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+      nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+      nnoremap <silent><buffer><expr> q denite#do_map('quit')
+      nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+      nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+    endfunction
+
     if executable('ag')
-        call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nogroup',
+        call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup',
               \'--ignore-dir', 'node_modules',
               \'--ignore-dir', 'vendor',
               \'--ignore-dir', 'docs',
@@ -528,8 +541,8 @@ if custom_system_type == "full"
               \   [ '.git/', 'node_modules/*', 'vendor/', 'build/' ]
               \ )
 
-      nmap <leader><space> :Denite file_rec buffer<CR>
-      nmap <space> :Denite buffer<CR>
+      nmap <leader><space> :Denite -start-filter file/rec buffer<CR>
+      nmap <space> :Denite -start-filter buffer<CR>
 
     else
 
