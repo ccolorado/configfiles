@@ -74,6 +74,7 @@
   Bundle 'tpope/vim-unimpaired'
   Bundle 'tpope/vim-vinegar'
   Bundle 'vim-scripts/taglist.vim'
+  Bundle 'ycm-core/YouCompleteMe'
 " }}}
 
 " Syntax Support {{{
