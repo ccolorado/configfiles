@@ -483,6 +483,26 @@
 
   " }}}
 
+  " vim-gitgutter {{{
+    " Force focus detection on focus
+    let g:gitgutter_terminal_reports_focus=0
+
+    " Force sign colors
+    let g:gitgutter_override_sign_column_highlight = 0
+    highlight GitGutterAdd ctermfg=green
+    highlight GitGutterDelete ctermfg=red
+    highlight GitGutterChange ctermfg=brown
+
+    " Force diffs to run asynchronously.
+    let g:gitgutter_async = 1
+
+    " Customize keystrokes, hunk {add, remove, preview}
+    nmap <Leader>ha <Plug>GitGutterStageHunk
+    nmap <Leader>hr <Plug>GitGutterUndoHunk
+    nmap <Leader>hv <Plug>GitGutterPreviewHunk
+
+  " }}}
+
   " gundo.vim {{{
     nnoremap <leader>u :GundoToggle<CR>
   " }}}
