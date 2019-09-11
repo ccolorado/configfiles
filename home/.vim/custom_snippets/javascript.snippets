@@ -1,4 +1,6 @@
-snippet itp
+extends javascript
+
+snippet itp "class property should be ecauls to variable"
 it("$1 is $2", async function(){
   const _$1 = await this.$3.$1();
   _$1.should.be.equal(this.$1);

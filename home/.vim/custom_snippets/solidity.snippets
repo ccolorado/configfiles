@@ -1,30 +1,32 @@
+extends solidity
+
 # Taken https://www.reddit.com/r/ethereum/comments/40yhzw/solidity_snippets_in_vim_ultisnips_format/
 # Keywords
 snippet pgm
 pragma solidity ^0.5.2$1;
 endsnippet
 
-snippet pu
+snippet pu "public RW"
 public
 endsnippet
 
-snippet pr
+snippet pr "private RW"
 private
 endsnippet
 
-snippet in
+snippet in "internal RW"
 internal
 endsnippet
 
-snippet t
+snippet t "true RW"
 true
 endsnippet
 
-snippet f
+snippet f "false RW"
 false
 endsnippet
 
-snippet dl
+snippet dl "delete"
 delete $1;
 endsnippet
 
@@ -32,11 +34,11 @@ snippet rt "return"
 return $1;
 endsnippet
 
-snippet rts "returns"
+snippet rts "returns RW"
 returns
 endsnippet
 
-snippet co
+snippet co "constant RW"
 constant
 endsnippet
 
