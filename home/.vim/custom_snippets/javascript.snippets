@@ -3,11 +3,11 @@ extends javascript
 snippet itp "class property should be ecauls to variable"
 it("$1 is $2", async function(){
   const _$1 = await this.$3.$1();
-  _$1.should.be.equal(this.$1);
+  _$1.should.be.equal($2);
 });
 endsnippet
 
-snippet ite
+snippet ite "new testcase should equals"
 it("$1", async function(){
   const testAgainst = $3
   const $2 = $4
@@ -15,25 +15,27 @@ it("$1", async function(){
 });
 endsnippet
 
-snippet dest
+snippet dest "describe('X', async function() {Y});"
 describe("$1", async function() {
   $2
 });
 endsnippet
 
 # Import Component
-snippet imrc
-import React, {Component} from 'react';
+snippet imrc "import React, {Component} from 'react';"
+import React${1:, {Component} }from 'react';
 
 endsnippet
 
 # Component Class
-snippet cc
+snippet cc "Component class"
 class ${1:MyComponent} extends Component {
 	state = {}
 	render() {
 		return (
-			${0:<div></div>}
+			<${2:div}>
+				${0: $1 Placeholder}
+			</$2>
 		)
 	}
 }
@@ -41,13 +43,13 @@ class ${1:MyComponent} extends Component {
 
 export default $1;
 endsnippet
-
-# Stateless Functional Component
-snippet sfc
+# 
+snippet sfc "Stateless Functional Component"
 const ${1:MyComponent} = (props) => {
 	return(
-		${2:<React.Fragment>}
-		$2
+		<${2:<React.Fragment}>
+      $0
+		</$2>
 	);
 }
 
@@ -55,16 +57,14 @@ const ${1:MyComponent} = (props) => {
 export default $1;
 endsnippet
 
-# Arrow Function
-snippet arf
+snippet arf "Arrow Function name = (arg) => { "
 ${1:myFunction} = (${2}) => {
-	${3}
+	${0:${VISUAL}}
 };
 endsnippet
 
-# Inline array function for arrays (maps, filters, etc);
-snippet iarf
+snippet iarf "iterating arrow funciton {name(arg => {"
 {${1:subjec}(${2:item} => (
-	${3}
+	${0:${VISUAL}}
 ))}
 endsnippet
