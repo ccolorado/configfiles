@@ -20,7 +20,7 @@
   " TODO: try https://github.com/ncm2/ncm2
   " TODO: try deoplete"
   if custom_system_type == "full"
-    Bundle 'Shougo/denite.nvim'
+    Bundle 'Shougo/denite.nvim', { 'v': '3637cbc' }
     Bundle 'Shougo/vimproc.vim'
     if v:version > 8
       Bundle 'roxma/nvim-yarp'
@@ -64,7 +64,8 @@
   Bundle 'sjl/gundo.vim'
   Bundle 'stephpy/vim-php-cs-fixer'
   Bundle 'tmhedberg/matchit'
-  Bundle 'tomlion/vim-solidity'
+  " Bundle 'tomlion/vim-solidity'
+  Bundle "TovarishFin/vim-solidity"
   Bundle 'tommcdo/vim-exchange'
   Bundle 'tpope/vim-abolish'
   Bundle 'tpope/vim-commentary'
@@ -452,6 +453,53 @@
 
     let g:UltiSnipsEditSplit="context"
 
+    " Prevent UltiSnips from removing our carefully-crafted mappings.
+    let g:UltiSnipsMappingsToIgnore = ['autocomplete']
+  " }}}
+
+  " YouCompleteMe {{{
+  " taken from Greg Hurrell's video [ https://www.youtube.com/watch?v=WeppptWfV-0 ]
+  " https://github.com/wincent/wincent/blob/9b938b4d879a2/roles/dotfiles/files/.vim/plugin/autocomplete.vim
+
+    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+    let g:ycm_key_list_accept_completion = ['<C-y>']
+
+    " Additional YouCompleteMe config.
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    let g:ycm_seed_identifiers_with_syntax = 1
+
+    " Disable unhelpful semantic completions.
+    let g:ycm_filetype_specific_completion_to_disable = {
+          \   'c': 1,
+          \   'gitcommit': 1,
+          \   'haskell': 1,
+          \   'javascript': 1,
+          \   'ruby': 1
+          \ }
+
+    let g:ycm_semantic_triggers = {
+          \   'haskell': [
+          \     '.',
+          \     '(',
+          \     ',',
+          \     ', '
+          \   ]
+          \ }
+
+    " Same as default, but with "markdown" and "text" removed.
+    let g:ycm_filetype_blacklist = {
+          \   'notes': 1,
+          \   'unite': 1,
+          \   'tagbar': 1,
+          \   'pandoc': 1,
+          \   'qf': 1,
+          \   'vimwiki': 1,
+          \   'infolog': 1,
+          \   'mail': 1
+          \ }
+
   " }}}
 
   " vim-surround {{{
@@ -684,6 +732,6 @@ if custom_system_type == "full"
 
 " }}}
 
-"" Foldding instruction do not remove
+"" Folding instruction do not remove
 " vim:foldmethod=marker:foldlevel=0
 
