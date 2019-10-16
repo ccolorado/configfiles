@@ -7,8 +7,16 @@
 
 export CUSTOM_SYSTEM_TYPE_FILE="$HOME/.custom_system_type"
 if [ ! -f "$CUSTOM_SYSTEM_TYPE_FILE" ]; then
-  echo "minimal" > "$CUSTOM_SYSTEM_TYPE_FILE"
+  echo "minimal" > "$get_custom_system_type"
 fi
+
+# TODO: this seems like it needs some cleanup
 alias set_custom_system_type="echo $@ >  $CUSTOM_SYSTEM_TYPE_FILE"
 alias get_custom_system_type="cat $CUSTOM_SYSTEM_TYPE_FILE"
+
+# TODO: Time how long does loading the bashrc file takes
+if [ ! $BESHRC_LOADED ]; then
+  echo -e ".\c"
+  source "$HOME/.bashrc"
+fi
 

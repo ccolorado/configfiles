@@ -238,6 +238,7 @@ alias gti="git"
 
 # Custom system type switching
 export CUSTOM_SYSTEM_TYPE_FILE="$HOME/.custom_system_type"
+export BASHRC_LOADED=1
 alias set_custom_system_type="echo $@ >  $CUSTOM_SYSTEM_TYPE_FILE"
 alias get_custom_system_type="cat $CUSTOM_SYSTEM_TYPE_FILE"
 
@@ -299,3 +300,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+if [ -f "$HOME/.extra_aliases" ]; then
+  source "$HOME/.extra_aliases"
+fi;
