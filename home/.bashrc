@@ -299,7 +299,14 @@ alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then 
 alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
 alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 
-export NVM_DIR="$HOME/.nvm"
+if [ -d "$HOME/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+fi
+
+if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
+  export NVM_DIR="/usr/local/opt/nvm"
+fi
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
@@ -311,3 +318,11 @@ if [ -f "$HOME/.extra_aliases" ]; then
 fi;
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+# OSX docker cli completion
+if [ ! -L "$(brew --prefix)/etc/bash_completion.d/docker" ]; then
+  etc=/Applications/Docker.app/Contents/Resources/etc
+  ln -s $etc/docker.bash-completion $(brew --prefix)/etc/bash_completion.d/docker
+  ln -s $etc/docker-machine.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-machine
+  ln -s $etc/docker-compose.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-compose
+fi

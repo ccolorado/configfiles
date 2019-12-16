@@ -19,4 +19,3 @@ if [ ! $BESHRC_LOADED ]; then
   echo -e ".\c"
   source "$HOME/.bashrc"
 fi
-
