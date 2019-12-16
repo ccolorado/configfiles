@@ -22,6 +22,7 @@
   if custom_system_type == "full"
     Bundle 'Shougo/denite.nvim', { 'v': '3637cbc' }
     Bundle 'Shougo/vimproc.vim'
+    Bundle 'pedrosans/vim-notes'
     if v:version > 8
       Bundle 'roxma/nvim-yarp'
       Bundle 'roxma/vim-hug-neovim-rpc'
@@ -39,12 +40,13 @@
 " Tools and Features {{{
 
   " Bundle 'joonty/vdebug'
+  " Bundle 'tomlion/vim-solidity'
+  " Bundle 'w0rp/ale'
+  Bundle "TovarishFin/vim-solidity"
   Bundle 'AndrewRadev/linediff.vim'
   Bundle 'RRethy/vim-illuminate'
   Bundle 'SirVer/ultisnips'
   Bundle 'Xuyuanp/nerdtree-git-plugin'
-  " Bundle 'w0rp/ale'
-  Bundle 'janko/vim-test'
   Bundle 'airblade/vim-gitgutter'
   Bundle 'bling/vim-airline.git'
   Bundle 'chrisbra/NrrwRgn'
@@ -52,20 +54,18 @@
   Bundle 'editorconfig/editorconfig-vim'
   Bundle 'elixir-lang/vim-elixir'
   Bundle 'honza/vim-snippets'
+  Bundle 'janko/vim-test'
   Bundle 'junegunn/goyo.vim'
   Bundle 'junegunn/vim-easy-align'
   Bundle 'masukomi/vim-markdown-folding'
   Bundle 'mattn/emmet-vim'
   Bundle 'pedrosans/vim-misc'
-  Bundle 'pedrosans/vim-notes'
   Bundle 'posva/vim-vue'
   Bundle 'ramele/agrep'
   Bundle 'scrooloose/nerdtree'
   Bundle 'sjl/gundo.vim'
   Bundle 'stephpy/vim-php-cs-fixer'
   Bundle 'tmhedberg/matchit'
-  " Bundle 'tomlion/vim-solidity'
-  Bundle "TovarishFin/vim-solidity"
   Bundle 'tommcdo/vim-exchange'
   Bundle 'tpope/vim-abolish'
   Bundle 'tpope/vim-commentary'
@@ -77,7 +77,9 @@
   Bundle 'tpope/vim-unimpaired'
   Bundle 'tpope/vim-vinegar'
   Bundle 'vim-scripts/taglist.vim'
-  Bundle 'ycm-core/YouCompleteMe'
+  Bundle 'vim-scripts/tar.vim'
+"  Bundle 'ycm-core/YouCompleteMe'
+
 " }}}
 
 " Syntax Support {{{
@@ -669,9 +671,11 @@ if custom_system_type == "full"
     " }}}
 
     "== vim-notes {{{
-      let g:notes_directories = ['~/Dropbox/Notes']
-      nnoremap <leader>nc :vsp<CR>:Note<Space>
-      nnoremap <leader>ns :vsp<CR>:SearchNotes<Space>
+      if custom_system_type == "full"
+        let g:notes_directories = ['~/Notes']
+        nnoremap <leader>nc :vsp<CR>:Note<Space>
+        nnoremap <leader>ns :vsp<CR>:SearchNotes<Space>
+      endif
     " }}}
 
     "== taglist {{{
