@@ -1,7 +1,7 @@
 str2color()
 {
     [ -z "$1" ] && return
-    if [ "darwin14" = $OSTYPE ];
+    if [[ $OSTYPE  == darwin* ]];
     then
         hex=$(echo -n "$1" |md5| head -c 2)
     else
@@ -63,7 +63,7 @@ distroPromptFlag()
         distro_flag=$ARCH_FLAG
     fi
     #osx distroflag
-    if [ "darwin12" = $OSTYPE ];
+    if [[ $OSTYPE == darwin* ]];
     then
         distro_flag=$DRWN_FLAG;
     fi;
@@ -115,7 +115,7 @@ feature_hunt(){
 }
 
 vnsearch(){
-  cd ~/Dropbox/Notes/
+  cd ~/Notes/
   feature_hunt $@
   cd -
 }
@@ -187,6 +187,11 @@ fi;
 #Ubuntu git completion script
 if [ -f '/etc/bash_completion.d/git-prompt' ]; then
   git_completion_script='/etc/bash_completion.d/git-prompt'
+fi;
+
+#OSX git completion script
+if [ -f '/usr/local/etc/profile.d/bash_completion.sh' ]; then
+  git_completion_script='/usr/local/etc/profile.d/bash_completion.sh'
 fi;
 
 #Apply git completion if found
@@ -304,3 +309,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 if [ -f "$HOME/.extra_aliases" ]; then
   source "$HOME/.extra_aliases"
 fi;
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
