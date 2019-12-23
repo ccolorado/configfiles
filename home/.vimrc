@@ -78,6 +78,8 @@
   Bundle 'tpope/vim-vinegar'
   Bundle 'vim-scripts/taglist.vim'
   Bundle 'vim-scripts/tar.vim'
+  Plugin 'hashivim/vim-terraform'
+  Plugin 'vim-airline/vim-airline-themes'
 "  Bundle 'ycm-core/YouCompleteMe'
 
 " }}}
@@ -181,7 +183,7 @@
     set history=100 " override default 8 last commands to remember
     set lazyredraw " Don't redraw while executing macros
     set nocursorline " Don't Highlight the screen line of the cursor with CursorLine
-    set nowrap " No wrapping text by default
+    " set nowrap " No wrapping text by default
     set showcmd " display incomplete commands
     set showmatch " Show matching brackets when text indicator is over them
     set splitbelow " Do vertical splits to DOWN instead of UP
@@ -294,11 +296,11 @@
     call ToggleLineNumbering()
     if &number
       set list
-      set wrap
+      " set wrap
       :GitGutterEnable
     else
       set nolist
-      set nowrap
+      " set nowrap
       :GitGutterDisable
     endif
   endfunction
@@ -732,6 +734,12 @@ if custom_system_type == "full"
       let test#custom_runners = {'Solidity': ['Truffle']}
       let test#enabled_runners = ["solidity#truffle"]
 
+    " }}}
+
+    " vim-terraform {{{
+      let g:terraform_align=1
+      let g:terraform_fold_sections=1
+      let g:terraform_fmt_on_save=1
     " }}}
 
 " }}}

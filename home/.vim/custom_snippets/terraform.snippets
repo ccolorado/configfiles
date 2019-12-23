@@ -1,0 +1,26 @@
+snippet svar "Adds a string variable"
+variable "$1" {
+  type = string
+  default = ${2:"text"}
+}
+
+endsnippet
+
+snippet mvar "Adds a map variable"
+variable "$1" {
+  type = map(string)
+  default = {
+    $2 = ${3:"text"}
+  }
+}
+
+endsnippet
+
+snippet lvar "Adds a list variable"
+variable "$1" {
+  type = list
+  default = [$2]
+}
+
+endsnippet
+

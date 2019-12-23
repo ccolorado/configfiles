@@ -240,7 +240,6 @@ alias vkill="vagrant destroy -f"
 # I should really take a look at zsh
 alias gti="git"
 
-
 # Custom system type switching
 export CUSTOM_SYSTEM_TYPE_FILE="$HOME/.custom_system_type"
 export BASHRC_LOADED=1
@@ -297,6 +296,7 @@ alias rldbash="source ~/.bashrc"
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
 # TODO make gitstatusticker trigger on file changes
 alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
+alias gs="git status"
 alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 
 if [ -d "$HOME/.nvm" ]; then
@@ -318,6 +318,7 @@ if [ -f "$HOME/.extra_aliases" ]; then
 fi;
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[ -r "/usr/local/etc/bash_completion" ] && . /usr/local/etc/bash_completion
 
 # OSX docker cli completion
 if [ ! -L "$(brew --prefix)/etc/bash_completion.d/docker" ]; then
