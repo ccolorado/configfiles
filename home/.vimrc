@@ -217,7 +217,7 @@
 
   " Folding {{{
 
-    set foldlevel=0
+    set foldlevel=9999
     set foldenable
     " set foldlevelstart=10
     set foldnestmax=10
@@ -511,8 +511,11 @@
     " surround hash key [""] 'H'
     let g:surround_72 = "[\"\r\"]"
 
-    " surround ruby string interpolation #{} 's'
+    " surround ruby string interpolation #{} 'r'
     let g:surround_115 = "\#{\r}"
+
+    " surround terraform string interpolation ${} 't'
+    let g:surround_116 = "\${\r}"
 
     " surround with [''] 'h'
     let g:surround_104 = "['\r']"

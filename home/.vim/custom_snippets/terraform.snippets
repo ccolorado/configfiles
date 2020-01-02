@@ -6,14 +6,16 @@ variable "$1" {
 
 endsnippet
 
-snippet mvar "Adds a map variable"
+snippet bvar "Adds a boolean variable"
 variable "$1" {
-  type = map(string)
-  default = {
-    $2 = ${3:"text"}
-  }
+  type = bool
+  default = ${2:"text"}
 }
 
+endsnippet
+
+snippet val "Value boilerplate"
+"${var.$1}"
 endsnippet
 
 snippet lvar "Adds a list variable"
@@ -24,3 +26,12 @@ variable "$1" {
 
 endsnippet
 
+snippet mvar "Adds a map variable"
+variable "$1" {
+  type = map(string)
+  default = {
+    $2 = ${3:"text"}
+  }
+}
+
+endsnippet
