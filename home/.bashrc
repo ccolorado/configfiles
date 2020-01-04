@@ -321,9 +321,12 @@ fi;
 [ -r "/usr/local/etc/bash_completion" ] && . /usr/local/etc/bash_completion
 
 # OSX docker cli completion
-if [ ! -L "$(brew --prefix)/etc/bash_completion.d/docker" ]; then
-  etc=/Applications/Docker.app/Contents/Resources/etc
-  ln -s $etc/docker.bash-completion $(brew --prefix)/etc/bash_completion.d/docker
-  ln -s $etc/docker-machine.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-machine
-  ln -s $etc/docker-compose.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-compose
+if [[ $OSTYPE == darwin* ]];
+then
+  if [ ! -L "$(brew --prefix)/etc/bash_completion.d/docker" ]; then
+    etc=/Applications/Docker.app/Contents/Resources/etc
+    ln -s $etc/docker.bash-completion $(brew --prefix)/etc/bash_completion.d/docker
+    ln -s $etc/docker-machine.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-machine
+    ln -s $etc/docker-compose.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-compose
+  fi
 fi

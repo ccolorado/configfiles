@@ -1,9 +1,10 @@
 extends solidity
 
 # Taken https://www.reddit.com/r/ethereum/comments/40yhzw/solidity_snippets_in_vim_ultisnips_format/
+# pragma solidity ^0.5.2$1;
 # Keywords
 snippet pgm
-pragma solidity ^0.5.2$1;
+pragma solidity ^0.${1:6.0};
 endsnippet
 
 snippet pu "public RW"
