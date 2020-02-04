@@ -5,17 +5,19 @@ it("$1 is $2", async function(){
   const _$1 = await this.$3.$1();
   _$1.should.be.equal($2);
 });
+
 endsnippet
 
 snippet ite "new testcase should equals"
 it("$1", async function(){
-  const testAgainst = $3
-  const $2 = $4
-  ${2:testAgainst}.should.be.equal(this.testAgainst);
+  const ${2:expectedValue} = $4
+  const ${3:resultingValue} = $5
+  $3.should.be.equal(${6:$2});
 });
+
 endsnippet
 
-snippet dest "describe('X', async function() {Y});"
+snippet desc "describe('X', async function() {Y});"
 describe("$1", async function() {
   $2
 });

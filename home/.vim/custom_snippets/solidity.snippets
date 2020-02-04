@@ -64,51 +64,39 @@ event $1($2);
 endsnippet
 
 # Variables and data structures
-snippet ui
+snippet uvar
 uint256 $1;
+endsnippet
+
+snippet upvar
+uint256 public $1;
 endsnippet
 
 snippet uip
 uint256 public $1;
 endsnippet
 
-snippet in
-int256 $1;
-endsnippet
-
-snippet inp
+snippet ipvar
 int256 public $1;
 endsnippet
 
-snippet bl
+snippet ivar
+int256 $1;
+endsnippet
+
+snippet bvar "string"
 bool $1;
 endsnippet
 
-snippet bts
-bytes
-endsnippet
-
-snippet v
-var $1;
-endsnippet
-
-snippet va
-var $1 = $2;
-endsnippet
-
-snippet blp
+snippet bpvar "string"
 bool public $1;
 endsnippet
 
-snippet sr "string"
+snippet svar "string"
 string $1;
 endsnippet
 
-snippet stri "string"
-string $1;
-endsnippet
-
-snippet sp
+snippet spvar "string"
 string public $1;
 endsnippet
 
@@ -161,7 +149,6 @@ contract $1 {
     address public owner;
 
     constructor($2) public{
-    public {
         owner = msg.sender;
         $3
     }
@@ -193,6 +180,7 @@ endsnippet
 snippet funr "Function with returns" b
 function $1($2) returns ($3){
   $4
+	return $3
 }
 endsnippet
 
