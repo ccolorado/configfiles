@@ -30,6 +30,9 @@ pathadd() {
    fi
 }
 
+set -o vi
+bind "\C-l":clear-screen
+
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"
 PROMPT_ROOT_COLOR="\[\033[40;1;31m\]"
