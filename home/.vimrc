@@ -515,8 +515,9 @@
     " surround ruby string interpolation #{} 'r'
     let g:surround_115 = "\#{\r}"
 
-    " surround terraform string interpolation ${} 't'
-    let g:surround_116 = "\${\r}"
+    " surround terraform string interpolation ${} 'T'
+    " t is for html tags so ... sorry, SOL
+    let g:surround_84= "\${\r}"
 
     " surround with [''] 'h'
     let g:surround_104 = "['\r']"
