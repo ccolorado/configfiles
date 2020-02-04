@@ -11,6 +11,7 @@
 [push]
   default = simple
 [alias]
+  rh = reset HEAD
   ci = commit -v
   co = checkout
   cl = clone
