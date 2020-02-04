@@ -1,44 +1,75 @@
 #!/usr/bin/env bash
-#Simple script that batch link config files form this repository 
-#their usage location
 
-#   TODO
-#   Add  arguments help, source or source / destination
+# Simple script that links resources from this repo into the current 
+# environment configuration
+
+# TODO check if valiations can be handled by ln --backup command
 
 STARTING_DIR=$(pwd)
 ORIGIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
-cd $ORIGIN_DIR
-ORIGIN_DIR=$(pwd)"/home"
-#ORIGIN_DIR=$(pwd)
-DESTINY_DIR=~
-cd $STARTING_DIR
+cd "$ORIGIN_DIR" || exit;
+ORIGIN_DIR=$(pwd)
+DESTINY_DIR=${1:-~}
+# Remove trailing /s from destoy directory
+DESTINY_DIR=$(echo "$DESTINY_DIR" | sed 's:/*$::')
+# DESTINY_DIR="${DESTINY_DIR%%/}"
+cd "$STARTING_DIR" || exit;
 
-#Batch link everything
-FILES=$(find $ORIGIN_DIR -type f -maxdepth 1 \( ! -iname "home" \) );
+function backup_and_link {
 
-for f in $FILES
-do
-    filename=$(basename $f)
-    target_filename=$DESTINY_DIR"/"$filename
-    extra_filename=$DESTINY_DIR"/.extra_"${filename:1}
+  source_dir=$2
+  source_file=$1
+  source_basename=$(basename "$source_file")
+  filename="$source_dir/$source_file"
 
-    if [ -f $target_filename ] && [ ! -h $target_filename ];
-    then
-           echo "Creating $extra_filename"
-           mv $target_filename $extra_filename
-    fi
-    if [ -h $target_filename ];
-    then
-           rm $target_filename;
-    fi
+  target_filename=$3"/""$source_basename"
+  extra_filename=$3"/.extra_"${source_basename:1}
 
-    if [ ! -f $target_filename ] && [ ! -d $target_filename ];
-    then
-        ln -sv $f $target_filename
-    fi
+  if [ ! -f "$filename" ] && [ ! -d "$filename" ]; 
+  then
+    echo "Configuration file $filename does not exists"
+    exit 1
+  fi
 
-done
+  # File exists and is not a symbolic link
+  if [ -f "$target_filename" ] && [ ! -h "$target_filename" ];
+  then
+    mv -v "$target_filename" "$extra_filename"
+  fi
 
-if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
+  # File is already symbolic link
+  if [ -h "$target_filename" ];
+  then
+    rm "$target_filename"
+  fi
+
+  # link if file target file doesn't exist
+  if [ ! -f "$target_filename" ]
+  then
+    ln -sv "$filename" "$target_filename"
+  fi
+}
+
+backup_and_link "home/.vim"              "$ORIGIN_DIR" "$DESTINY_DIR"
+backup_and_link "home/.vimrc"            "$ORIGIN_DIR" "$DESTINY_DIR"
+backup_and_link "home/.bash_profile"     "$ORIGIN_DIR" "$DESTINY_DIR"
+backup_and_link "home/.bashrc"           "$ORIGIN_DIR" "$DESTINY_DIR"
+backup_and_link "home/.tmux.conf"        "$ORIGIN_DIR" "$DESTINY_DIR"
+backup_and_link "home/.screenrc"         "$ORIGIN_DIR" "$DESTINY_DIR"
+backup_and_link "home/.gitconfig.sample" "$ORIGIN_DIR" "$DESTINY_DIR"
+
+if [ ! -d "$DESTINY_DIR/.vim/bundle/vundle" ]; then
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 fi;
+
+cd "$ORIGIN_DIR" || exit
+
+git submodule update
+
+mkdir -p "$DESTINY_DIR/bin"
+
+ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/brancher"  "$DESTINY_DIR/bin"
+ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/goproj"    "$DESTINY_DIR/bin"
+ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/idesplit"  "$DESTINY_DIR/bin"
+ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/yt-pl"     "$DESTINY_DIR/bin"
+
