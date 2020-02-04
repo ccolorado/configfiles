@@ -78,6 +78,7 @@
   Bundle 'tpope/vim-vinegar'
   Bundle 'vim-scripts/taglist.vim'
   Bundle 'vim-scripts/tar.vim'
+  Bundle 'w0rp/ale'
   Plugin 'hashivim/vim-terraform'
   Plugin 'vim-airline/vim-airline-themes'
 "  Bundle 'ycm-core/YouCompleteMe'
@@ -710,6 +711,13 @@ if custom_system_type == "full"
       "highlight DbgCurrentLine ctermbg=none ctermfg=none
       highlight DbgCurrentSign ctermbg=none ctermfg=red
 
+    " }}}
+
+    " w0rp/ale {{{
+      " Supported linters
+      " https://github.com/dense-analysis/ale/blob/master/supported-tools.md
+      let b:ale_linters = ['flake8', 'pylint', 'solc', 'solhint']
+      " let b:ale_fixers = ['autopep8', 'yapf']
     " }}}
 
     " vim-test {{{
