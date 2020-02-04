@@ -300,7 +300,7 @@ alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then 
 # TODO make gitstatusticker trigger on file changes
 alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
 alias gs="git status"
-alias gcam="git commit --amend"
+alias gcam="git commit --amend -v"
 alias gadd="git add"
 alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 
