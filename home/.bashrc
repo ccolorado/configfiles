@@ -33,6 +33,8 @@ pathadd() {
 set -o vi
 bind "\C-l":clear-screen
 
+export NOTES_HOME=~/Notes
+
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"
 PROMPT_ROOT_COLOR="\[\033[40;1;31m\]"
@@ -294,14 +296,17 @@ pathadd "$HOME/.gem/ruby/2.4.0/bin"
 # TODO autocompletion on opening would be awesome
 alias vimnote='function vimnote(){ set -e; vim -c ":e note:$1"; }; vimnote'
 # Reload Bash configuration
-alias rldbash="source ~/.bashrc"
+alias rld="source ~/.bashrc"
 # Opens irc session on personal server
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
 # TODO make gitstatusticker trigger on file changes
 alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
 alias gs="git status"
+alias gd="git diff"
 alias gcam="git commit --amend -v"
-alias gadd="git add"
+alias gres="git restore --staged"
+alias gad="git add"
+alias gl="git log"
 alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 
 if [ -d "$HOME/.nvm" ]; then
