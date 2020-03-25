@@ -1,10 +1,48 @@
 extends solidity
 
+snippet @p "Natspec param"
+/// @param ${1:name} ${2:description}
+endsnippet
+
+snippet @N "Natspec template"
+/// @notice ${1: does something}
+/// @dev
+@p$2
+/// @return
+endsnippet
+
 # Taken https://www.reddit.com/r/ethereum/comments/40yhzw/solidity_snippets_in_vim_ultisnips_format/
 # pragma solidity ^0.5.2$1;
 # Keywords
 snippet pgm
 pragma solidity ^0.${1:6.0};
+endsnippet
+
+# Contracts/functions
+snippet cont "Contract" b
+contract $1 {
+    $2
+}
+endsnippet
+
+snippet conta "Contract with some standard features" b
+contract $1 {
+    $4
+    address public owner;
+
+    constructor($2) public{
+        owner = msg.sender;
+        $3
+    }
+
+    function remove() {
+        if(msg.sender == owner) {
+            selfdestruct(owner);
+        }
+    }
+
+    function () public{ revert('default revert'); }
+}
 endsnippet
 
 snippet pu "public RW"
@@ -134,33 +172,6 @@ endsnippet
 
 snippet mpp "public mapping" b
 mapping ($1 => $2) public $3;
-endsnippet
-
-# Contracts/functions
-snippet cont "Contract" b
-contract $1 {
-    $2
-}
-endsnippet
-
-snippet conta "Contract with some standard features" b
-contract $1 {
-    $4
-    address public owner;
-
-    constructor($2) public{
-        owner = msg.sender;
-        $3
-    }
-
-    function remove() {
-        if(msg.sender == owner) {
-            selfdestruct(owner);
-        }
-    }
-
-    function () public{ revert('default revert'); }
-}
 endsnippet
 
 snippet fun "" b

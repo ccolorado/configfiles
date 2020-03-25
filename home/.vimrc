@@ -41,8 +41,10 @@
 
   " Bundle 'joonty/vdebug'
   " Bundle 'tomlion/vim-solidity'
-  " Bundle 'w0rp/ale'
+  " Check code linter https://github.com/maralla/validator.vim
+  " Favor tomlion vim-solidity ( check if integration with testing and linter)
   Bundle "TovarishFin/vim-solidity"
+  Bundle "jamessan/vim-gnupg"
   Bundle 'AndrewRadev/linediff.vim'
   Bundle 'RRethy/vim-illuminate'
   Bundle 'SirVer/ultisnips'
@@ -79,6 +81,7 @@
   Bundle 'vim-scripts/taglist.vim'
   Bundle 'vim-scripts/tar.vim'
   Bundle 'w0rp/ale'
+  Bundle 'wesQ3/vim-windowswap'
   Plugin 'hashivim/vim-terraform'
   Plugin 'vim-airline/vim-airline-themes'
 "  Bundle 'ycm-core/YouCompleteMe'
@@ -98,7 +101,6 @@
   Bundle 'pangloss/vim-javascript'
   Bundle 'rodjek/vim-puppet'
   Bundle 'ruanyl/vim-blade'
-  Bundle 'scrooloose/syntastic'
   Bundle 'shawncplus/phpcomplete.vim'
   Bundle 'tpope/vim-haml'
   Bundle 'tpope/vim-markdown'
@@ -430,7 +432,8 @@
 
       nnoremap <Leader>c :set cursorline!<CR> :set cursorcolumn! <CR>
 
-      map <leader>w :call append(line('.')-1, "console.log('>>> ".@%.":' + ".line('.').' + "" );') <CR>
+      map <leader>w :call append(line('.')-1, "console.log('>>> ".@%.":' + ".line('.').' )') <CR>
+      map <leader>q :call append(line('.')-1, "process.exit(".line('.')." )") <CR>
 
       " open file under cursor on new vertical split
       :nnoremap gf] <C-W>vgf
@@ -522,11 +525,14 @@
     " surround with [''] 'h'
     let g:surround_104 = "['\r']"
 
+    " surround with ${''} 'j' javascript
+    let g:surround_106 = "${\r}"
+
     " surround with mustaches {{}} 'm'
     let g:surround_109 = "{{ \r }}"
 
     " surround selection with console log consolelog(); 'c'
-    let g:surround_99 = "console.log( \r );"
+    let g:surround_99 = "console.log( \r )"
 
   " }}}
 
@@ -695,7 +701,7 @@ if custom_system_type == "full"
         map <F4> :TlistToggle<cr>
         " Maps building tags to F10 for the current directory
         " map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-        map <leader>0 :Dispatch /usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude={*.phar,node_modules,vendor,docs,public,.branch_dir,*min.js} .<CR>
+        map <leader>0 :Dispatch /usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extras=+q --exclude={*.phar,node_modules,vendor,docs,public,.branch_dir,*min.js,.brancher,.branch,build} .<CR>
         " Open tag file on vertical split and move it to the right split
         nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR>zz
         nmap <leader>[  :exec("tag ".expand("<cword>"))<CR>zz
@@ -717,7 +723,7 @@ if custom_system_type == "full"
     " w0rp/ale {{{
       " Supported linters
       " https://github.com/dense-analysis/ale/blob/master/supported-tools.md
-      let b:ale_linters = ['flake8', 'pylint', 'solc', 'solhint']
+      " let b:ale_linters = ['flake8', 'pylint', 'solc', 'solhint', 'eslint']
       " let b:ale_fixers = ['autopep8', 'yapf']
     " }}}
 
@@ -758,4 +764,15 @@ if custom_system_type == "full"
 
 "" Folding instruction do not remove
 " vim:foldmethod=marker:foldlevel=0
+
+:hi ColorColumn ctermbg=0
+
+" augroup BgHighlight
+"   autocmd!
+"   autocmd WinEnter * set cul
+"   autocmd WinLeave * set nocul
+" augroup END
+
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
