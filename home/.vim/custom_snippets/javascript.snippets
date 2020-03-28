@@ -1,27 +1,73 @@
 extends javascript
 
-snippet itp "class property should be ecauls to variable"
-it("$1 is $2", async function(){
-  const _$1 = await this.$3.$1();
-  _$1.should.be.equal($2);
-});
+snippet wc "web3 contract call"
+const _$5 = await $6this.${3:contract}.${4:methods.}$1($2).call()
+endsnippet
+
+snippet ws "web3 contract succesfull send"
+await $6this.${4:contract}.${5:methods.}$1($3).send({
+  from: $2,
+  gas: ${7:6721975}
+}).should.be.fulfilled
+
+endsnippet
+
+snippet wsr "web3 contract succesfull send"
+await $6this.${4:contract}.${5:methods.}$1($3).send({
+  from: $2,
+  gas: ${7:6721975}
+}).should.be.rejectedWith(
+  Error,
+  "--->"
+)
+
+endsnippet
+
+snippet itp "class property should be equals to variable"
+it('$1 is $2', async function () {
+  const _$1 = await this.$3.$1()
+  _$1.should.be.equal($2)
+})
 
 endsnippet
 
 snippet ite "new testcase should equals"
-it("$1", async function(){
+it('$1', async function () {
   const ${2:expectedValue} = $4
   const ${3:resultingValue} = $5
-  $3.should.be.equal(${6:$2});
-});
+  $3.should.be.equal(${6:$2})
+})
 
 endsnippet
 
-snippet desc "describe('X', async function() {Y});"
-describe("$1", async function() {
+snippet it "new testcase should equals"
+it('$1', async function () {
+  ${2:false}.should.be.equal(${3:true})
+})
+
+endsnippet
+
+snippet dec "describe('X', async function () {Y})"
+describe('$1', async function () {
   $2
-});
+})
 endsnippet
+
+snippet desc "Describe.only, before each, it.only"
+
+describe${3:.only}('$1', async function () {
+
+  beforeEach(async function () {
+    $5
+  })
+
+  it${4:.only}('$2', async function () {
+    false.should.be.equal(true)
+  });
+
+})
+endsnippet
+
 
 # Import Component
 snippet imrc "import React, {Component} from 'react';"
@@ -69,4 +115,12 @@ snippet iarf "iterating arrow funciton {name(arg => {"
 {${1:subjec}(${2:item} => (
 	${0:${VISUAL}}
 ))}
+endsnippet
+
+snippet sbe
+${2:false}.should.be.equal(${1:true})
+endsnippet
+
+snippet snbe
+${2:fasle}.should.not.be.equal(${1:true})
 endsnippet
