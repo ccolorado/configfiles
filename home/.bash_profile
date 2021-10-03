@@ -19,3 +19,7 @@ if [ ! $BESHRC_LOADED ]; then
   echo -e ".\c"
   source "$HOME/.bashrc"
 fi
+source "$HOME/.cargo/env"
+
+# Created by `pipx` on 2021-09-16 00:03:44
+export PATH="$PATH:/home/ccolorado/.local/bin"

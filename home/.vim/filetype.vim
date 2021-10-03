@@ -39,6 +39,8 @@ au BufNewFile,BufRead *Notes/*              call matchadd('ColorColumn', '\%110v
 autocmd Filetype svn  setlocal spell textwidth=72
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Filetype gitcommit setlocal foldlevel=999
+autocmd Filetype gitcommit if getfsize(@%) > 1000000 | setlocal syntax=OFF | endif
 autocmd Filetype mediawiki setlocal spell textwidth=90
 autocmd Filetype markdown setlocal spell textwidth=90
+autocmd Filetype vim setlocal foldmethod=marker
 

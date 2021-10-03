@@ -13,5 +13,4 @@ iabbrev lenght length
 iabbrev fullfilled fulfilled
 iabbrev fullfiled fulfilled
 iabbrev fulfiled fulfilled
-
-
+iabbrev requrie require

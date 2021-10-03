@@ -1,13 +1,21 @@
 extends solidity
 
-snippet @p "Natspec param"
-/// @param ${1:name} ${2:description}
+snippet pv "Proxy view function"
+function $1($3) public view returns($2) {
+    return ${4:BLKStorage}.$1(${5:$3});
+}
+
 endsnippet
 
-snippet @N "Natspec template"
+snippet @p "Natspec param"
+/// @param ${1:name} ${2:description}
+@p$3
+endsnippet
+
+snippet @n "Natspec template"
 /// @notice ${1: does something}
-/// @dev
-@p$2
+/// @dev $2
+@p$3
 /// @return
 endsnippet
 
@@ -15,10 +23,9 @@ endsnippet
 # pragma solidity ^0.5.2$1;
 # Keywords
 snippet pgm
-pragma solidity ^0.${1:6.0};
+pragma solidity ^0.${1:7.0};
 endsnippet
 
-# Contracts/functions
 snippet cont "Contract" b
 contract $1 {
     $2
@@ -26,6 +33,9 @@ contract $1 {
 endsnippet
 
 snippet conta "Contract with some standard features" b
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.${1:7.0};
+
 contract $1 {
     $4
     address public owner;
@@ -174,11 +184,21 @@ snippet mpp "public mapping" b
 mapping ($1 => $2) public $3;
 endsnippet
 
-snippet fun "" b
-function $1($2) {
-    $3
+snippet func "" b
+$9
+function $1($2) ${3:public} ${4:view} {$5:modifier} ${6:returns($7)}{
+    $8
 }
 endsnippet
+
+
+
+
+
+snippet desc "" b
+${1:public} ${2:view} ${3:modifier()} ${4:returns($5)}{
+endsnippet
+
 
 snippet funm "Function with modifier" b
 function $1($2)
@@ -343,11 +363,6 @@ $1.$2().watch({}, '', function(error, result) {
     $3
     }
 }
-endsnippet
-
-# Printing
-snippet cl
-console.log($1);
 endsnippet
 
 # Crypto

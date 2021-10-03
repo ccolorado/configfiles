@@ -20,12 +20,9 @@
   " TODO: try https://github.com/ncm2/ncm2
   " TODO: try deoplete"
   if custom_system_type == "full"
-    Bundle 'Shougo/denite.nvim', { 'v': '3637cbc' }
-    Bundle 'Shougo/vimproc.vim'
+    Bundle "junegunn/fzf.vim"
     Bundle 'pedrosans/vim-notes'
     if v:version > 8
-      Bundle 'roxma/nvim-yarp'
-      Bundle 'roxma/vim-hug-neovim-rpc'
     endif
   endif
 
@@ -35,22 +32,31 @@
 
 " }}}
 
-" Plugins Instalation{{{
+" Plugins Instalation {{{
 
 " Tools and Features {{{
 
   " Bundle 'joonty/vdebug'
   " Bundle 'tomlion/vim-solidity'
+  " Bundle 'ycm-core/YouCompleteMe'
   " Check code linter https://github.com/maralla/validator.vim
   " Favor tomlion vim-solidity ( check if integration with testing and linter)
+
+  Bundle "HP4k1h5/ephemeris"
   Bundle "TovarishFin/vim-solidity"
+  Bundle "dmdque/solidity.vim"
+  Bundle "isRuslan/vim-es6"
   Bundle "jamessan/vim-gnupg"
+  Bundle "mattn/calendar-vim"
+  Bundle "moll/vim-node"
+  Bundle "neoclide/coc.nvim"
   Bundle 'AndrewRadev/linediff.vim'
   Bundle 'RRethy/vim-illuminate'
   Bundle 'SirVer/ultisnips'
   Bundle 'Xuyuanp/nerdtree-git-plugin'
   Bundle 'airblade/vim-gitgutter'
   Bundle 'bling/vim-airline.git'
+  Bundle 'kamykn/spelunker.vim'
   Bundle 'chrisbra/NrrwRgn'
   Bundle 'diepm/vim-rest-console'
   Bundle 'editorconfig/editorconfig-vim'
@@ -84,7 +90,7 @@
   Bundle 'wesQ3/vim-windowswap'
   Plugin 'hashivim/vim-terraform'
   Plugin 'vim-airline/vim-airline-themes'
-"  Bundle 'ycm-core/YouCompleteMe'
+  Plugin 'vimwiki/vimwiki'
 
 " }}}
 
@@ -109,6 +115,16 @@
   Plugin 'mxw/vim-jsx'
 
 " }}}
+
+
+" Build Instructctions {{{
+
+  " neoclide/coc.nvim"
+  " cd ~/.vim/bundle/coc.nvim;
+  " yarn install && yarn build
+
+" }}}
+
 
 " Apearance {{{
   Bundle 'joshdick/onedark.vim'
@@ -168,13 +184,19 @@
     set background=dark
     colorscheme molokai-transparent
     " colorscheme nord
-    :hi Normal ctermbg=NONE
     highlight! link DiffText MatchParen
+    :hi Normal ctermbg=NONE
     :hi Visual term=reverse cterm=reverse guibg=Grey
 
     if v:version > 702
      highlight ColorColumn ctermbg=darkgrey
      call matchadd('ColorColumn', '\%81v', 100)
+    endif
+
+    "Don't highlist current line past line 255
+    "Stolen from https://github.com/wincent/wincent
+    if exists('+colorcolumn')
+      let &l:colorcolumn='+' . join(range(0, 254), ',+')
     endif
 
   " }}}
@@ -220,9 +242,10 @@
 
   " Folding {{{
 
+    nnoremap <Tab> za
     set foldlevel=9999
     set foldenable
-    " set foldlevelstart=10
+    set foldlevelstart=1
     set foldnestmax=10
     set foldmethod=syntax
 
@@ -415,15 +438,25 @@
     " }}}
 
     " Unit testing {{{
+      map <leader>tr :Dispatch! tmux send-keys -t tester.0 "!!" C-m <CR>
       " TEST THIS FILE
-      map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; truffle test ./%" C-m <CR>
+      map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; truffle test --migrations_directory test ./%" C-m <CR>
       " COMPILE AND TEST THIS FILE
-      map <leader>tct :Dispatch! tmux send-keys -t tester.0 "clear; rm build/contracts/* ; truffle compile && truffle test ./%" C-m <CR>
+      " map <leader>tct :Dispatch! tmux send-keys -t tester.0 " clear; truffle test ./% --compile-all" C-m <CR>
+      map <leader>tct :Dispatch! tmux send-keys -t tester.0 "truffle compile --all && clear && truffle test ./%" C-m <CR>
+
+      map <leader>tm :Dispatch! tmux send-keys -t tester.0 "clear; truffle migrate --reset" C-m <CR>
 
       " TEST ALL FILES
       map <leader>ta :Dispatch! tmux send-keys -t tester.0 "clear; truffle test" C-m <CR>
       " COMPILE AND TEST ALL FILES
-      map <leader>tca :Dispatch! tmux send-keys -t tester.0 "clear; rm build/contracts/* ; truffle compile && truffle test" C-m <CR>
+      " map <leader>tca :Dispatch! tmux send-keys -t tester.0 "clear; MIGRATE=false truffle test --compile-all" C-m <CR>
+      map <leader>tca :Dispatch! tmux send-keys -t tester.0 " truffle compile --all && clear && truffle test" C-m <CR>
+
+      " COMPILE THIS
+      map <leader>ct :Dispatch! tmux send-keys -t tester.0 " truffle compile --all ./%" C-m <CR>
+      " COMPILE ALL
+      map <leader>ca :Dispatch! tmux send-keys -t tester.0 " truffle compile --all " C-m <CR>
 
       " Traverse the buffer list comparing against development branch
       nnoremap <leader>X :w<CR>:Gwrite<CR>:q<CR>:next<CR>:Gdiff development<CR>
@@ -432,8 +465,8 @@
 
       nnoremap <Leader>c :set cursorline!<CR> :set cursorcolumn! <CR>
 
-      map <leader>w :call append(line('.')-1, "console.log('>>> ".@%.":' + ".line('.').' )') <CR>
-      map <leader>q :call append(line('.')-1, "process.exit(".line('.')." )") <CR>
+      map <leader>w :call append(line('.')-1, "console.log('>>> ".@%.":' + ".line('.').')') <CR>
+      map <leader>q :call append(line('.')-1, "process.exit(".line('.').")") <CR>
 
       " open file under cursor on new vertical split
       :nnoremap gf] <C-W>vgf
@@ -450,6 +483,22 @@
 
 " Plugin Settings {{{
 
+
+  " HP4k1h5/ephemeris {{{
+    let g:calendar_diary = "~/scrums"
+    nmap <leader>eci :EphemerisCreateIndex<CR>
+    nmap <leader>egi :EphemerisGotoIndex<CR>
+    nmap <leader>ect :EphemerisCopyTodos<CR>
+    nmap <leader>eft :EphemerisFilterTasks<CR>
+    nmap <leader>et  :EphemerisToggleTask<CR>
+    " keeps index properly sized
+    au BufEnter g:calendar_diary :vertical resize 38
+  " }}}
+
+  " neoclide/coc.nvim {{{
+    " To install = cd .vim/bundle/coc.nvim && yarn install
+  " }}}
+  "
   " UltiSnips {{{
     set runtimepath+=~/.vim/custom_snippets
     let g:UltiSnipsExpandTrigger="<tab>"
@@ -532,7 +581,7 @@
     let g:surround_109 = "{{ \r }}"
 
     " surround selection with console log consolelog(); 'c'
-    let g:surround_99 = "console.log( \r )"
+    let g:surround_99 = "console.log(\r)"
 
   " }}}
 
@@ -563,9 +612,10 @@
     let g:gitgutter_async = 1
 
     " Customize keystrokes, hunk {add, remove, preview}
-    nmap <Leader>ha <Plug>GitGutterStageHunk
-    nmap <Leader>hr <Plug>GitGutterUndoHunk
-    nmap <Leader>hv <Plug>GitGutterPreviewHunk
+    "
+    nmap <Leader>ha <Plug>(GitGutterStageHunk)
+    nmap <Leader>hr <Plug>(GitGutterUndoHunk)
+    nmap <Leader>hv <Plug>(GitGutterPreviewHunk)
 
   " }}}
 
@@ -595,6 +645,7 @@
   let NERDTreeQuitOnOpen = 1
   let NERDTreeMinimalUI = 1
   let NERDTreeDirArrows = 1
+  let NERDTreeShowHidden = 1
 
   " nmap <silent><.eader>f :NERDTreeToggle<CR> && :NERDTreeFind<CR>
   nmap <silent><leader>f :NERDTreeToggle<CR>
@@ -602,33 +653,39 @@
 
 if custom_system_type == "full"
 
-  "== denite.vim {{{
+  "== fzf.vim {{{
+      " map <leader><space>:Files<CR>
+      nmap <leader><space> :Buffers<CR>
+      nmap <space> :GFiles<CR>
+  " }}}
 
+  ""== denite.vim {{{
 
-    autocmd FileType denite call s:denite_my_settings()
-    function! s:denite_my_settings() abort
-      nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-      nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-      nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-      nnoremap <silent><buffer><expr> q denite#do_map('quit')
-      nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-      nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-    endfunction
+  "  autocmd FileType denite call s:denite_my_settings()
+  "  function! s:denite_my_settings() abort
+  "    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  "    nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+  "    nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+  "    nnoremap <silent><buffer><expr> q denite#do_map('quit')
+  "    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  "    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+  "  endfunction
 
-    if executable('ag')
-        call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup',
-              \'--ignore-dir', 'node_modules',
-              \'--ignore-dir', 'vendor',
-              \'--ignore-dir', 'docs',
-              \'-g', ''])
-      endif
+  "  if executable('ag')
+  "      call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup',
+  "            \'--ignore-dir', 'node_modules',
+  "            \'--ignore-dir', 'vendor',
+  "            \'--ignore-dir', 'docs',
+  "            \'--ignore-dir', 'staticContracts',
+  "            \'-g', ''])
+  "    endif
 
-      call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-              \   [ '.git/', 'node_modules/*', 'vendor/', 'build/' ]
-              \ )
+  "    call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+  "            \   [ '.git/', 'node_modules/*', 'vendor/', 'build/', 'staticContracts/' ]
+  "            \ )
 
-      nmap <leader><space> :Denite -start-filter file/rec buffer<CR>
-      nmap <space> :Denite -start-filter buffer<CR>
+  "    nmap <leader><space> :Denite -start-filter file/rec buffer<CR>
+  "    nmap <space> :Denite -start-filter buffer<CR>
 
     else
 
@@ -724,7 +781,10 @@ if custom_system_type == "full"
       " Supported linters
       " https://github.com/dense-analysis/ale/blob/master/supported-tools.md
       " let b:ale_linters = ['flake8', 'pylint', 'solc', 'solhint', 'eslint']
+      let b:ale_linters = {'python': ['pyflakes'], 'javascript': ['xo'], 'solidity': ['solc', 'solhint' ]}
       " let b:ale_fixers = ['autopep8', 'yapf']
+      let b:ale_fixers = {'python': ['black', 'isort'], 'javascript': ['xo']}
+      let g:ale_javascript_xo_options = "--plug=react --prettier"
     " }}}
 
     " vim-test {{{
@@ -758,6 +818,11 @@ if custom_system_type == "full"
       let g:terraform_align=1
       let g:terraform_fold_sections=1
       let g:terraform_fmt_on_save=1
+    " }}}
+
+    " wesQ3/vim-windowswap {{{
+      let g:windowswap_map_keys = 0 "prevent default bindings
+      nnoremap <silent> <leader>ss :call WindowSwap#EasyWindowSwap()<CR>
     " }}}
 
 " }}}

@@ -220,6 +220,7 @@ fi;
 
 alias ls='ls --color=auto -p'
 alias ll='ls -alh'
+alias cp='cp -iv'
 alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
 alias grep="grep --color=auto"
 alias svim='sudoedit'
@@ -269,11 +270,14 @@ command -v systemctl  >/dev/null 2>&1 && alias reboot='sudo systemctl reboot'
 command -v systemctl  >/dev/null 2>&1 && alias shutdown='sudo systemctl poweroff'
 
 #python virtualenv settings
-mkdir -p ~/.virtualenvs
 
-if [ -f /usr/bin/virtualenvwrapper.sh ]; then
-  source /usr/bin/virtualenvwrapper.sh
-fi
+# mkdir -p ~/.virtualenvs
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+
+# if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+
+#   source /usr/bin/virtualenvwrapper.sh
+# fi
 
 # Include host specific bashrc
 if [ -f ~/.extra_bashrc ];
@@ -300,17 +304,24 @@ alias rld="source ~/.bashrc"
 # Opens irc session on personal server
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
 # TODO make gitstatusticker trigger on file changes
-alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
+# alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
 alias gs="git status"
+alias grr="git restore --staged"
 alias gd="git diff"
 alias gcam="git commit --amend -v"
+alias gdiff="git diff"
 alias gres="git restore --staged"
 alias gad="git add"
 alias gl="git log"
 alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
+alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/ --debug"
 
 if [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
+fi
+
+if [ -f "$HOME/.alias" ]; then
+  source "$HOME/.alias"
 fi
 
 if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
@@ -340,3 +351,10 @@ then
     ln -s $etc/docker-compose.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-compose
   fi
 fi
+
+source "$HOME/.cargo/env"
+
+export MYTHX_API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkZjc5NTJkNC04ZTA4LTRiYzktOGM3OS04ZmFhZTQ1NDVkYjMiLCJpYXQiOjE2MTU4NTI0NzUuMDE2LCJpc3MiOiJNeXRoWCBBUEkiLCJleHAiOjE5MzE0Mjg0NzUuMDA0LCJ1c2VySWQiOiI1ZTgzODJiN2Q4OWQzMTAwMTE2MmNkNDAifQ.28_PYfCX7tBKyN7qqOxe2eImw3iI5O5FiZ01-Xr8q4M"
+
+# Created by `pipx` on 2021-09-16 00:03:44
+export PATH="$PATH:/home/ccolorado/.local/bin"
