@@ -434,13 +434,14 @@
 
     " Leader mapping {{{
       " Reload vimrc
-      map <leader>e :so $MYVIMRC <bar> call UltiSnips#RefreshSnippets() <CR>
+      map <leader>e :so $MYVIMRC <bar> call UltiSnips#RefreshSnippets() <CR> :checktime <CR>
     " }}}
 
     " Unit testing {{{
       map <leader>tr :Dispatch! tmux send-keys -t tester.0 "!!" C-m <CR>
       " TEST THIS FILE
-      map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; truffle test --migrations_directory test ./%" C-m <CR>
+      map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; ttester ./%" C-m <CR>
+      " map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; truffle test --migrations_directory test ./%" C-m <CR>
       " COMPILE AND TEST THIS FILE
       " map <leader>tct :Dispatch! tmux send-keys -t tester.0 " clear; truffle test ./% --compile-all" C-m <CR>
       map <leader>tct :Dispatch! tmux send-keys -t tester.0 "truffle compile --all && clear && truffle test ./%" C-m <CR>
@@ -611,6 +612,10 @@
     " Force diffs to run asynchronously.
     let g:gitgutter_async = 1
 
+    " hunk motions
+    nmap ]h <Plug>(GitGutterNextHunk)
+    nmap [h <Plug>(GitGutterPrevHunk)
+
     " Customize keystrokes, hunk {add, remove, preview}
     "
     nmap <Leader>ha <Plug>(GitGutterStageHunk)
@@ -654,6 +659,11 @@
 if custom_system_type == "full"
 
   "== fzf.vim {{{
+
+      " Resizes the preview window to 40 right
+      " Hides the preview window by default
+      " Toggles visibility of preview window with ctrl+/
+      let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
       " map <leader><space>:Files<CR>
       nmap <leader><space> :Buffers<CR>
       nmap <space> :GFiles<CR>
@@ -715,7 +725,7 @@ if custom_system_type == "full"
     let g:airline_left_alt_sep = '⮁'
     let g:airline_right_sep = '⮂'
     let g:airline_right_alt_sep = '⮃'
-    let g:airline#extensions#branch#symbol = '⭠'
+    let g:airline#extensions#branch#symbol = '⎇'
     let g:airline#extensions#readonly#symbol = '⭤'
     let g:airline_symbols.linenr = '⭡'
 

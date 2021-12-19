@@ -296,9 +296,8 @@ pathadd "$HOME/bin"
 pathadd "$HOME/.config/composer/vendor/bin"
 pathadd "$HOME/.gem/ruby/2.4.0/bin"
 
-# Opens a note using vimnote
-# TODO autocompletion on opening would be awesome
-alias vimnote='function vimnote(){ set -e; vim -c ":e note:$1"; }; vimnote'
+# Opens a note using vimnote with autocompeltion needs versining vimnote script
+complete -C vimnote vimnote
 # Reload Bash configuration
 alias rld="source ~/.bashrc"
 # Opens irc session on personal server
@@ -353,8 +352,6 @@ then
 fi
 
 source "$HOME/.cargo/env"
-
-export MYTHX_API_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkZjc5NTJkNC04ZTA4LTRiYzktOGM3OS04ZmFhZTQ1NDVkYjMiLCJpYXQiOjE2MTU4NTI0NzUuMDE2LCJpc3MiOiJNeXRoWCBBUEkiLCJleHAiOjE5MzE0Mjg0NzUuMDA0LCJ1c2VySWQiOiI1ZTgzODJiN2Q4OWQzMTAwMTE2MmNkNDAifQ.28_PYfCX7tBKyN7qqOxe2eImw3iI5O5FiZ01-Xr8q4M"
 
 # Created by `pipx` on 2021-09-16 00:03:44
 export PATH="$PATH:/home/ccolorado/.local/bin"
