@@ -145,6 +145,11 @@
 
 " }}}
 
+
+  " https://vi.stackexchange.com/questions/2514/warning-when-opening-commit-message-with-neovim
+  setlocal nospell
+  let g:SpellChecking=0
+
 " TODO's {{{
 
   "   SOLVED: Highlight ONLY the word under cursor WITHOUT jumping to the next occurence the first time
@@ -213,7 +218,7 @@
     set showmatch " Show matching brackets when text indicator is over them
     set splitbelow " Do vertical splits to DOWN instead of UP
     set splitright " Do horizontal splits to the RIGH instead of LEFT
-    set ssop=blank,buffers,curdir,folds,resize,tabpages,winsize,winpos
+    set ssop=blank,buffers,curdir,folds,resize,tabpages,winsize,winpos " Session options
     scriptencoding utf-8
     set termencoding=utf-8
     set encoding=utf-8
@@ -243,11 +248,11 @@
   " Folding {{{
 
     nnoremap <Tab> za
-    set foldlevel=9999
-    set foldenable
-    set foldlevelstart=1
-    set foldnestmax=10
-    set foldmethod=syntax
+    " set foldlevel=9999
+    " set foldenable
+    " set foldlevelstart=1
+    " set foldnestmax=10
+    " set foldmethod=syntax
 
   " }}}
 
@@ -293,6 +298,10 @@
     " Center cursor Vertically
     nmap <leader>zz :set scrolloff=999<CR>
     nmap <leader>d :DiffSaved <CR>
+
+    " Prevent moving cursor when hitting * (testing)
+    " https://stackoverflow.com/questions/23695727/vim-highlight-a-word-with-without-moving-cursor
+    nnoremap * *``
 
 
   "}}}
@@ -434,13 +443,14 @@
 
     " Leader mapping {{{
       " Reload vimrc
-      map <leader>e :so $MYVIMRC <bar> call UltiSnips#RefreshSnippets() <CR> :checktime <CR>
+      map <leader>e :so $MYVIMRC <CR> call UltiSnips#RefreshSnippets() <CR> :checktime <CR>
     " }}}
 
     " Unit testing {{{
-      map <leader>tr :Dispatch! tmux send-keys -t tester.0 "!!" C-m <CR>
+      " map <leader>tr :Dispatch! tmux send-keys -t tester.0 "!!" C-m <CR>
+      map <leader>tr :AbortDispatch! <bar>  :Dispatch! tmux send-keys -t tester.0 "!!" C-m <CR>
       " TEST THIS FILE
-      map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; ttester ./%" C-m <CR>
+      map <leader>tt :Dispatch!      tmux send-keys -t tester.0 "clear; tcompile && ttest ./%" C-m <CR>
       " map <leader>tt :Dispatch! tmux send-keys -t tester.0 "clear; truffle test --migrations_directory test ./%" C-m <CR>
       " COMPILE AND TEST THIS FILE
       " map <leader>tct :Dispatch! tmux send-keys -t tester.0 " clear; truffle test ./% --compile-all" C-m <CR>
@@ -484,6 +494,11 @@
 
 " Plugin Settings {{{
 
+  " tpope/vim-fugitive
+  "   Forces diffs to be presented vertically probably not part of the plugin
+      " set diffopt+=vertical
+  "   To use vertical diff use `:Gvdiff` instead
+  "
 
   " HP4k1h5/ephemeris {{{
     let g:calendar_diary = "~/scrums"

@@ -8,7 +8,7 @@ autocmd FileType blade  setlocal commentstring={{--%s--}}
 autocmd Filetype notes  setlocal spell
 
 """ Set NestedMarkdownFolds for markdown
-autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+" autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
 
 """ .wiki file detection and highlight. """
 au BufRead,BufNewFile *.md                  set filetype=markdown
@@ -38,7 +38,8 @@ au BufNewFile,BufRead *Notes/*              call matchadd('ColorColumn', '\%110v
 """ TextWidht
 autocmd Filetype svn  setlocal spell textwidth=72
 autocmd Filetype gitcommit setlocal spell textwidth=72
-autocmd Filetype gitcommit setlocal foldlevel=999
+" autocmd Filetype gitcommit setlocal foldlevel=999
+autocmd FileType gitcommit set foldmethod=syntax
 autocmd Filetype gitcommit if getfsize(@%) > 1000000 | setlocal syntax=OFF | endif
 autocmd Filetype mediawiki setlocal spell textwidth=90
 autocmd Filetype markdown setlocal spell textwidth=90

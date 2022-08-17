@@ -298,6 +298,7 @@ pathadd "$HOME/.gem/ruby/2.4.0/bin"
 
 # Opens a note using vimnote with autocompeltion needs versining vimnote script
 complete -C vimnote vimnote
+complete -C vimexec vimexec
 # Reload Bash configuration
 alias rld="source ~/.bashrc"
 # Opens irc session on personal server
