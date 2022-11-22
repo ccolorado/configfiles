@@ -53,11 +53,10 @@ distroPromptFlag()
     DRWN_FLAG="\[\033[40;1;37m\]ć$CLEAR"
     UBNT_FLAG="\[\033[1;33;45m\]U$CLEAR"
 
-    #if [ -f "/etc/lsb-release" ] || [ 0 -eq $(grep --quiet -i ubuntu /etc/lsb-release) ];
-    #then
-    #  distro_flag=$UBNT_FLAG;
-    #fi;
-
+    if [ -f "/etc/lsb-release" ] || [ 0 -eq $(grep --quiet -i ubuntu /etc/lsb-release) ];
+    then
+      distro_flag=$UBNT_FLAG;
+    fi;
     if [ -f /etc/centos-release ];
     then
       distro_flag=$CENT_FLAG;
@@ -74,7 +73,6 @@ distroPromptFlag()
     fi;
     echo $distro_flag;
 }
-
 
 git_get_branching_out_commit (){
 
@@ -352,7 +350,15 @@ then
   fi
 fi
 
-source "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
 
+# PATH extensions
 # Created by `pipx` on 2021-09-16 00:03:44
-export PATH="$PATH:/home/ccolorado/.local/bin"
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$PATH:$HOME/.local/bin"
+fi
+if [ -d "$HOME/.foundry/bin" ]; then
+  export PATH="$PATH:$HOME/.foundry/bin"
+fi
