@@ -768,6 +768,8 @@ if custom_system_type == "full"
     "== vim-notes {{{
       if custom_system_type == "full"
         let g:notes_directories = ['~/Notes']
+        let g:notes_conceal_code = 0
+        let g:notes_smart_quotes = 0
         nnoremap <leader>nc :vsp<CR>:Note<Space>
         nnoremap <leader>ns :vsp<CR>:SearchNotes<Space>
       endif
