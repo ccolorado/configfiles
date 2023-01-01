@@ -35,6 +35,10 @@ au BufNewFile,BufRead *Notes/*              set textwidth=120
 au BufNewFile,BufRead *Notes/*              set spell
 au BufNewFile,BufRead *Notes/*              call matchadd('ColorColumn', '\%110v', 100)
 
+""" Cairo
+au BufReadPost *.cairo set filetype=cairo
+au Filetype cairo set syntax=cairo
+
 """ TextWidht
 autocmd Filetype svn  setlocal spell textwidth=72
 autocmd Filetype gitcommit setlocal spell textwidth=72

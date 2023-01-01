@@ -28,3 +28,7 @@ fi;
 
 # Created by `pipx` on 2021-09-16 00:03:44
 export PATH="$PATH:/home/ccolorado/.local/bin"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

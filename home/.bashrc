@@ -314,6 +314,10 @@ alias gl="git log"
 alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/ --debug"
 
+if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
+
 if [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
 fi
@@ -359,6 +363,9 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
   export PATH="$PATH:$HOME/.local/bin"
 fi
+
 if [ -d "$HOME/.foundry/bin" ]; then
   export PATH="$PATH:$HOME/.foundry/bin"
 fi
+
+export PATH="$PATH:/home/ccolorado/.protostar/dist/protostar"
