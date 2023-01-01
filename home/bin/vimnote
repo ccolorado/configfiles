@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Script that opens note files from a note directory
+# with vim on "Note" mode implementing autocompletion
+# for current notes
+
+declare -a COMMANDS=($(ls -1 ~/Notes/))
+# declare -a COMMANDS=(foo bar blah)
+
+# ---- Completion Start----
+# complete -C vimnote vimnote
+
+if [[ -n $COMP_LINE ]]; then
+  for c in ${COMMANDS[@]}; do
+    [[ ${c:0:${#2}} == $2 ]] && echo "$c"
+  done
+  exit
+fi
+# ---- Completion End ----
+
+vim -c ":e note:$1"
+
+

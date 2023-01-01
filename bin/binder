@@ -68,6 +68,7 @@ git submodule update
 
 mkdir -p "$DESTINY_DIR/bin"
 
+ln -svf "$ORIGIN_DIR/bin/vimnote"                       "$DESTINY_DIR/bin"
 ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/brancher"  "$DESTINY_DIR/bin"
 ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/goproj"    "$DESTINY_DIR/bin"
 ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/idesplit"  "$DESTINY_DIR/bin"
