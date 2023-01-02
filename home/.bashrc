@@ -141,7 +141,7 @@ kernel_needs_reload(){
       return 0
     fi
 
-    if [ $pacman_ver != "" ]
+    if [ "$pacman_ver" != "" ]
     then
 
       if [ "$pacman_ver" != "$uname_ver" ]

@@ -15,12 +15,10 @@ alias set_custom_system_type="echo $@ >  $CUSTOM_SYSTEM_TYPE_FILE"
 alias get_custom_system_type="cat $CUSTOM_SYSTEM_TYPE_FILE"
 
 # TODO: Time how long does loading the bashrc file takes
-# echo $BASHRC_LOADED
-# echo $BESHRC_LOADED
-if [ ! $BESHRC_LOADED ]; then
+# if [ ! $BASHRC_LOADED ]; then
   echo -e ".\c"
   source "$HOME/.bashrc"
-fi
+# fi
 
 if [ -f "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
