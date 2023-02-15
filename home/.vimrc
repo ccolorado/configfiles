@@ -279,10 +279,10 @@
     " }}}
 
     " Indentation {{{
-      set expandtab
-      set tabstop=2
-      set shiftwidth=2
-      set softtabstop=2
+      set expandtab " lines to spaces
+      set tabstop=2 " spaces use as visual representation of a tab
+      set shiftwidth=2 " amount of spaces used for each indentation step
+      set softtabstop=2 " number of spaces that a tab counts for when using the <Tab> key in insert mode.
     " }}}
 
   " }}}
@@ -374,6 +374,11 @@
   nmap \q :nohlsearch<CR>
   " Search visually selected text
   vnoremap // y/<C-R>"<CR>
+
+  " Disable F1 from opening help
+  nmap <F1> <nop>
+  imap <F1> <nop>
+  map <F1> <nop>
 
   " Fat Finger {{{
 
@@ -768,6 +773,8 @@ if custom_system_type == "full"
     "== vim-notes {{{
       if custom_system_type == "full"
         let g:notes_directories = ['~/Notes']
+        let g:notes_conceal_code = 0
+        let g:notes_smart_quotes = 0
         nnoremap <leader>nc :vsp<CR>:Note<Space>
         nnoremap <leader>ns :vsp<CR>:SearchNotes<Space>
       endif
