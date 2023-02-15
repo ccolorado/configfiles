@@ -1,5 +1,43 @@
 extends solidity
 
+snippet newC "popultes contract with template"
+// SPDX-License-Identifier: ${3:MIT}
+// ${4:pragma solidity ^0.8.9;}
+
+/**
+ * ${2:Contract Description}
+ */
+
+contract $1 {
+
+    // StateVariables
+    uint256 public variableName;
+
+    // Events
+    event SampleEvent(address indexed owner, uint256 indexed txId);
+
+    // SolTemplate: Constructor
+    constructor($5) {
+    }
+
+    // SolTemplate: Modifiers(modi)
+
+    //  Functions >
+    // Trnasaction Functions: (func)
+
+    // External Functions
+
+    // View functionsFunctions (pv)
+
+
+    // Internal functions
+
+
+    // Private functions
+
+}
+
+endsnippet
 
 snippet w "log line number"
 console.log("<-- `!v @%`: `!v v:lnum`");
@@ -385,9 +423,4 @@ endsnippet
 
 snippet sh2 "sha256"
 sha256($2);
-endsnippet
-
-# Comments/NatSpec
-snippet /nt "Natspec with title"
-/// @title $1
 endsnippet
