@@ -15,4 +15,4 @@ iabbrev fullfiled fulfilled
 iabbrev fulfiled fulfilled
 iabbrev requrie require
 iabbrev reciept receipt
-
+iabbrev cairo Cairo
