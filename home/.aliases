@@ -1,0 +1,12 @@
+
+
+# alias startdestroy=`rm -rf node_modules && npm install && npm run start:dev`
+# alias startonly=`npm install && npm run start:dev`
+# alias juststart=`npm run start:dev`
+# alias killG="killall \"npm run private-network\""
+alias checkContractSize="truffle run contract-size --checkMaxSize > stats/ContractSizes &&  grep \"2[0-9]\.\|1[7,8,9]\.\"  stats/ContractSizes"
+
+alias suspend='sudo systemctl suspend'
+alias docker.stop_all=docker stop $(docker ps -a -q)
+alias docker.rm_all=docker rm $(docker ps -a -q)
+alias docker.nuke_all=docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
