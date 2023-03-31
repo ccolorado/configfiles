@@ -136,7 +136,7 @@ kernel_needs_reload(){
     type pacman > /dev/null 2>&1
 
     if [ $? -eq 0 ]; then
-      pacman_ver=$(pacman -Q linux | sed -e 's/linux //gi')
+      pacman_ver=$(pacman -Q linux 2> /dev/null | sed -e 's/linux //gi')
     else
       return 0
     fi
