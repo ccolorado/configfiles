@@ -140,7 +140,7 @@ kernel_needs_reload(){
     type pacman > /dev/null 2>&1
 
     if [ $? -eq 0 ]; then
-      pacman_ver=$(pacman -Q linux | sed -e 's/linux //gi')
+      pacman_ver=$(pacman -Q linux 2> /dev/null | sed -e 's/linux //gi')
     else
       return 0
     fi
@@ -307,6 +307,7 @@ alias rld="source ~/.bashrc"
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
 # TODO make gitstatusticker trigger on file changes
 # alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
+alias gpo="git push origin"
 alias gs="git status"
 alias grr="git restore --staged"
 alias gd="git diff"
@@ -317,6 +318,7 @@ alias gad="git add"
 alias gl="git log"
 alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/ --debug"
+alias interdash="vim -S ~/.interview_dashboard.vim"
 
 if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
   source /usr/share/nvm/init-nvm.sh

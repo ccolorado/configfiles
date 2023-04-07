@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Simple script that links resources from this repo into the current 
+# Simple script that links resources from this repo into the current
 # environment configuration
+
 
 # TODO check if valiations can be handled by ln --backup command
 
@@ -57,6 +58,7 @@ backup_and_link "home/.bashrc"           "$ORIGIN_DIR" "$DESTINY_DIR"
 backup_and_link "home/.tmux.conf"        "$ORIGIN_DIR" "$DESTINY_DIR"
 backup_and_link "home/.screenrc"         "$ORIGIN_DIR" "$DESTINY_DIR"
 backup_and_link "home/.gitconfig.sample" "$ORIGIN_DIR" "$DESTINY_DIR"
+backup_and_link "home/.aliase"           "$ORIGIN_DIR" "$DESTINY_DIR"
 
 if [ ! -d "$DESTINY_DIR/.vim/bundle/vundle" ]; then
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
