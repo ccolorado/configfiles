@@ -21,7 +21,7 @@
   " TODO: try deoplete"
   if custom_system_type == "full"
     Bundle "junegunn/fzf.vim"
-    Bundle 'pedrosans/vim-notes'
+    Bundle "xolox/vim-notes"
     if v:version > 8
     endif
   endif
@@ -56,7 +56,6 @@
   Bundle 'Xuyuanp/nerdtree-git-plugin'
   Bundle 'airblade/vim-gitgutter'
   Bundle 'bling/vim-airline.git'
-  Bundle 'kamykn/spelunker.vim'
   Bundle 'chrisbra/NrrwRgn'
   Bundle 'diepm/vim-rest-console'
   Bundle 'editorconfig/editorconfig-vim'
@@ -65,9 +64,9 @@
   Bundle 'janko/vim-test'
   Bundle 'junegunn/goyo.vim'
   Bundle 'junegunn/vim-easy-align'
+  Bundle 'kamykn/spelunker.vim'
   Bundle 'masukomi/vim-markdown-folding'
   Bundle 'mattn/emmet-vim'
-  Bundle 'pedrosans/vim-misc'
   Bundle 'posva/vim-vue'
   Bundle 'ramele/agrep'
   Bundle 'scrooloose/nerdtree'
@@ -88,6 +87,7 @@
   Bundle 'vim-scripts/tar.vim'
   Bundle 'w0rp/ale'
   Bundle 'wesQ3/vim-windowswap'
+  Bundle 'xolox/vim-misc'
   Plugin 'hashivim/vim-terraform'
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'vimwiki/vimwiki'

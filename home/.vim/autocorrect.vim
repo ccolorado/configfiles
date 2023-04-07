@@ -16,3 +16,5 @@ iabbrev fulfiled fulfilled
 iabbrev requrie require
 iabbrev reciept receipt
 iabbrev cairo Cairo
+iabbrev rigth right
+iabbrev correclty correctly
