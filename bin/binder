@@ -62,6 +62,7 @@ backup_and_link "home/.aliases"           "$ORIGIN_DIR" "$DESTINY_DIR"
 
 # TODO: move vim initializations last
 # install yarn
+set -x
 if [ ! -d "$DESTINY_DIR/.vim/bundle/vundle" ]; then
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
   vim -c ":PluginInstall"
