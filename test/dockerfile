@@ -1,0 +1,15 @@
+FROM archlinux
+
+# Install git and any other dependencies you may need
+RUN pacman -Syu --noconfirm git vim
+
+# Set the working directory for the Docker container
+WORKDIR /app
+
+# Clone your Git repository
+RUN git clone -b implement_coc https://github.com/ccolorado/configfiles ~/configfiles
+
+# Set the command to run when the Docker container starts
+# CMD [ "bash ~/configfiles/bin/binder" ]
+
+# run `docker build .`

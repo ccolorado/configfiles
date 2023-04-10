@@ -42,10 +42,10 @@
 
   " Bundle 'joonty/vdebug'
   " Bundle 'tomlion/vim-solidity'
-  " Bundle 'ycm-core/YouCompleteMe'
   " Check code linter https://github.com/maralla/validator.vim
   " Favor tomlion vim-solidity ( check if integration with testing and linter)
 
+  " TODO: annotate plugins
   Bundle "HP4k1h5/ephemeris"
   Bundle "TovarishFin/vim-solidity"
   Bundle "dmdque/solidity.vim"
@@ -53,7 +53,9 @@
   Bundle "jamessan/vim-gnupg"
   Bundle "mattn/calendar-vim"
   Bundle "moll/vim-node"
-  Bundle "neoclide/coc.nvim"
+  " TODO: test if works
+  Bundle "neoclide/coc.nvim", {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+  " Bundle "neoclide/coc.nvim", { 'banch': 'release'}
   Bundle 'AndrewRadev/linediff.vim'
   Bundle 'RRethy/vim-illuminate'
   Bundle 'SirVer/ultisnips'
@@ -65,7 +67,6 @@
   Bundle 'editorconfig/editorconfig-vim'
   Bundle 'elixir-lang/vim-elixir'
   Bundle 'honza/vim-snippets'
-  Bundle 'janko/vim-test'
   Bundle 'junegunn/goyo.vim'
   Bundle 'junegunn/vim-easy-align'
   Bundle 'kamykn/spelunker.vim'
@@ -75,7 +76,6 @@
   Bundle 'ramele/agrep'
   Bundle 'scrooloose/nerdtree'
   Bundle 'sjl/gundo.vim'
-  Bundle 'stephpy/vim-php-cs-fixer'
   Bundle 'tmhedberg/matchit'
   Bundle 'tommcdo/vim-exchange'
   Bundle 'tpope/vim-abolish'
@@ -93,6 +93,7 @@
   Bundle 'wesQ3/vim-windowswap'
   Bundle 'xolox/vim-misc'
   Plugin 'hashivim/vim-terraform'
+  Plugin 'tom-doerr/vim_codex'
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'vimwiki/vimwiki'
 
@@ -101,7 +102,6 @@
 " Syntax Support {{{
 
   Bundle 'JulesWang/css.vim'
-  Bundle 'StanAngeloff/php.vim'
   Bundle 'ap/vim-css-color'
   Bundle 'jelera/vim-javascript-syntax.git'
   Bundle 'kchmck/vim-coffee-script'
@@ -111,7 +111,6 @@
   Bundle 'pangloss/vim-javascript'
   Bundle 'rodjek/vim-puppet'
   Bundle 'ruanyl/vim-blade'
-  Bundle 'shawncplus/phpcomplete.vim'
   Bundle 'tpope/vim-haml'
   Bundle 'tpope/vim-markdown'
   Bundle 'tpope/vim-rails.git'
@@ -250,14 +249,12 @@
 
 
   " Folding {{{
-
-    nnoremap <Tab> za
+    " nnoremap <Tab> za
     " set foldlevel=9999
     " set foldenable
     " set foldlevelstart=1
     " set foldnestmax=10
     " set foldmethod=syntax
-
   " }}}
 
   "" Backup, history and Restoring {{{
@@ -520,10 +517,6 @@
     au BufEnter g:calendar_diary :vertical resize 38
   " }}}
 
-  " neoclide/coc.nvim {{{
-    " To install = cd .vim/bundle/coc.nvim && yarn install
-  " }}}
-  "
   " UltiSnips {{{
     set runtimepath+=~/.vim/custom_snippets
     let g:UltiSnipsExpandTrigger="<tab>"
@@ -539,50 +532,6 @@
     let g:UltiSnipsMappingsToIgnore = ['autocomplete']
   " }}}
 
-  " YouCompleteMe {{{
-  " taken from Greg Hurrell's video [ https://www.youtube.com/watch?v=WeppptWfV-0 ]
-  " https://github.com/wincent/wincent/blob/9b938b4d879a2/roles/dotfiles/files/.vim/plugin/autocomplete.vim
-
-    let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
-    let g:ycm_key_list_accept_completion = ['<C-y>']
-
-    " Additional YouCompleteMe config.
-    let g:ycm_complete_in_comments = 1
-    let g:ycm_collect_identifiers_from_comments_and_strings = 1
-    let g:ycm_seed_identifiers_with_syntax = 1
-
-    " Disable unhelpful semantic completions.
-    let g:ycm_filetype_specific_completion_to_disable = {
-          \   'c': 1,
-          \   'gitcommit': 1,
-          \   'haskell': 1,
-          \   'javascript': 1,
-          \   'ruby': 1
-          \ }
-
-    let g:ycm_semantic_triggers = {
-          \   'haskell': [
-          \     '.',
-          \     '(',
-          \     ',',
-          \     ', '
-          \   ]
-          \ }
-
-    " Same as default, but with "markdown" and "text" removed.
-    let g:ycm_filetype_blacklist = {
-          \   'notes': 1,
-          \   'unite': 1,
-          \   'tagbar': 1,
-          \   'pandoc': 1,
-          \   'qf': 1,
-          \   'vimwiki': 1,
-          \   'infolog': 1,
-          \   'mail': 1
-          \ }
-
-  " }}}
 
   " vim-surround {{{
 
@@ -607,19 +556,6 @@
 
     " surround selection with console log consolelog(); 'c'
     let g:surround_99 = "console.log(\r)"
-
-  " }}}
-
-  " vim-syntastic {{{
-
-    " set statusline+=%#warningmsg#
-    " set statusline+=%{SyntasticStatuslineFlag()}
-    " set statusline+=%*
-
-    " let g:syntastic_always_populate_loc_list = 1
-    " let g:syntastic_auto_loc_list = 1
-    " let g:syntastic_check_on_open = 1
-    " let g:syntastic_check_on_wq = 0
 
   " }}}
 
@@ -650,15 +586,6 @@
 
   " gundo.vim {{{
     nnoremap <leader>u :GundoToggle<CR>
-  " }}}
-
-  "vim-php-cs-fixer {{{
-    let g:php_cs_fixer_enable_default_mapping = 0
-    let g:php_cs_fixer_level = "symfony"
-    let g:php_cs_fixer_config = "default"
-    let g:php_cs_fixer_rules = "@PSR2"
-    nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
-    nnoremap <silent><leader>P :call PhpCsFixerFixDirectory()<CR>
   " }}}
 
   " easy-align {{{
@@ -692,34 +619,6 @@ if custom_system_type == "full"
       nmap <leader><space> :Buffers<CR>
       nmap <space> :GFiles<CR>
   " }}}
-
-  ""== denite.vim {{{
-
-  "  autocmd FileType denite call s:denite_my_settings()
-  "  function! s:denite_my_settings() abort
-  "    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-  "    nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-  "    nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-  "    nnoremap <silent><buffer><expr> q denite#do_map('quit')
-  "    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-  "    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-  "  endfunction
-
-  "  if executable('ag')
-  "      call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup',
-  "            \'--ignore-dir', 'node_modules',
-  "            \'--ignore-dir', 'vendor',
-  "            \'--ignore-dir', 'docs',
-  "            \'--ignore-dir', 'staticContracts',
-  "            \'-g', ''])
-  "    endif
-
-  "    call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-  "            \   [ '.git/', 'node_modules/*', 'vendor/', 'build/', 'staticContracts/' ]
-  "            \ )
-
-  "    nmap <leader><space> :Denite -start-filter file/rec buffer<CR>
-  "    nmap <space> :Denite -start-filter buffer<CR>
 
     else
 
@@ -821,33 +720,6 @@ if custom_system_type == "full"
       " let b:ale_fixers = ['autopep8', 'yapf']
       let b:ale_fixers = {'python': ['black', 'isort'], 'javascript': ['xo']}
       let g:ale_javascript_xo_options = "--plug=react --prettier"
-    " }}}
-
-    " vim-test {{{
-
-      let g:test#preserve_screen = 1
-      let test#strategy = {
-        \ 'nearest': 'dispatch_background',
-        \ 'file':    'dispatch_background',
-        \ 'suite':   'dispatch_background',
-      \}
-
-      let test#vim#term_position = "belowright"
-
-      let test#project_root = "/home/ccolorado/Source/nobservices/nobblockchain"
-      " let test#solidity#minitest#file_pattern = test\.js
-      " let test#solidity#rspec#executable = 'foreman run rspec'
-
-      " augroup test
-      "   autocmd!
-      "   autocmd BufWrite * if test#exists() |
-      "     \   TestFile |
-      "     \ endif
-      " augroup END
-
-      let test#custom_runners = {'Solidity': ['Truffle']}
-      let test#enabled_runners = ["solidity#truffle"]
-
     " }}}
 
     " vim-terraform {{{
