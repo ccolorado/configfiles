@@ -36,9 +36,9 @@ if [ -d "$DESTINY_DIR/.vim/bundle/coc.nvim" ]; then
   if [ $is_yarn_insalled -eq "0" ]; then
     cd "$DESTINY_DIR/.vim/bundle/coc.nvim"
     yarn install && yarn build
-    vim -c ":CocInstall coc-json coc-tsserver coc-cairo"
+    # vim -c ":CocInstall coc-json coc-tsserver coc-cairo"
     # TODO switch to new syntax
-    # vim -c +CocInstall coc-json coc-tsserver coc-cairo +qall
+    vim -c +CocInstall coc-json coc-tsserver coc-cairo +qall
     cd --
   else
     echo "yarn not found: coc will not be installed"

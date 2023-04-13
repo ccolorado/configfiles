@@ -48,6 +48,7 @@
   " Bundle 'elixir-lang/vim-elixir'
   " Bundle 'kamykn/spelunker.vim'
   " Bundle 'posva/vim-vue'
+  " Plugin 'tom-doerr/vim_codex'
 
   " TODO: annotate plugins
 
@@ -93,7 +94,6 @@
   Bundle 'wesQ3/vim-windowswap'
   Bundle 'xolox/vim-misc'
   Plugin 'hashivim/vim-terraform'
-  Plugin 'tom-doerr/vim_codex'
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'vimwiki/vimwiki'
 
