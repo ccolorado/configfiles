@@ -57,12 +57,6 @@ backup_and_link "home/.screenrc"         "$ORIGIN_DIR" "$DESTINY_DIR"
 backup_and_link "home/.gitconfig.sample" "$ORIGIN_DIR" "$DESTINY_DIR"
 backup_and_link "home/.aliases"           "$ORIGIN_DIR" "$DESTINY_DIR"
 
-# install vim bundle and plugins
-if [ ! -d "$DESTINY_DIR/.vim/bundle/vundle" ]; then
-  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  vim -c ":PluginInstall"
-fi;
-
 cd "$ORIGIN_DIR" || exit
 
 git submodule init
