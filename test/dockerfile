@@ -12,4 +12,5 @@ RUN git clone -b implement_coc https://github.com/ccolorado/configfiles ~/config
 # Set the command to run when the Docker container starts
 # CMD [ "bash ~/configfiles/bin/binder" ]
 
-# run `docker build .`
+# BUILD; docker build -t config:coc . 
+# RUN; docker run -it --rm --name config_container config:coc
