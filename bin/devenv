@@ -12,11 +12,6 @@ is_npm_installed=$?
 type yarn
 is_yarn_insalled=$?
 
-# Install vim plugins
-if [ ! -d "$DESTINY_DIR/.vim/bundle/vundle" ]; then
-  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-  vim -c ":PluginInstall"
-fi;
 
 # Ihnstall npm & yarn
 if [ $is_npm_installed -eq "0" ]; then
@@ -28,6 +23,13 @@ else
   exit 1;
 fi;
 
+# Install vim plugins
+if [ ! -d "$DESTINY_DIR/.vim/bundle/vundle" ]; then
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  # vim -c ":PluginInstall"
+  vim +PluginInstall +qall
+fi;
+
 if [ ! -d "$DESTINY_DIR/.vim/bundle/coc.nvim" ]; then
   type yarn > /dev/null
   is_yarn_insalled=$?
@@ -35,6 +37,8 @@ if [ ! -d "$DESTINY_DIR/.vim/bundle/coc.nvim" ]; then
     cd "$DESTINY_DIR/.vim/bundle/coc.nvim"
     yarn install && yarn build
     vim -c ":CocInstall coc-json coc-tsserver coc-cairo"
+    # TODO switch to new syntax
+    # vim -c +CocInstall coc-json coc-tsserver coc-cairo +qall
     cd --
   else
     echo "yarn not found: coc will not be installed"

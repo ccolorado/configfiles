@@ -1,7 +1,7 @@
 FROM archlinux
 
 # Install git and any other dependencies you may need
-RUN pacman -Syu --noconfirm git vim
+RUN pacman -Syu --noconfirm git vim npm
 
 # Set the working directory for the Docker container
 WORKDIR /app
