@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Simple script that install the development environment tools
+# environment configuration
+
+DESTINY_DIR=${1:-~}
+# Remove trailing /s from destoy directory
+DESTINY_DIR=$(echo "$DESTINY_DIR" | sed 's:/*$::')
+
+type npm
+is_npm_installed=$?
+type yarn
+is_yarn_insalled=$?
+
+# Install vim plugins
+if [ ! -d "$DESTINY_DIR/.vim/bundle/vundle" ]; then
+  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+  vim -c ":PluginInstall"
+fi;
+
+# Ihnstall npm & yarn
+if [ $is_npm_installed -eq "0" ]; then
+  if [ $is_yarn_insalled -eq "1" ]; then
+    npm install -g yarn
+  fi
+else
+  echo "NPM is not installed"
+  exit 1;
+fi;
+
+if [ ! -d "$DESTINY_DIR/.vim/bundle/coc.nvim" ]; then
+  type yarn > /dev/null
+  is_yarn_insalled=$?
+  if [ $is_yarn_insalled -eq "0" ]; then
+    cd "$DESTINY_DIR/.vim/bundle/coc.nvim"
+    yarn install && yarn build
+    vim -c ":CocInstall coc-json coc-tsserver coc-cairo"
+    cd --
+  else
+    echo "yarn not found: coc will not be installed"
+  fi;
+fi;
+
