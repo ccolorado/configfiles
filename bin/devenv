@@ -30,7 +30,7 @@ if [ ! -d "$DESTINY_DIR/.vim/bundle/vundle" ]; then
   vim +PluginInstall +qall
 fi;
 
-if [ ! -d "$DESTINY_DIR/.vim/bundle/coc.nvim" ]; then
+if [ -d "$DESTINY_DIR/.vim/bundle/coc.nvim" ]; then
   type yarn > /dev/null
   is_yarn_insalled=$?
   if [ $is_yarn_insalled -eq "0" ]; then

@@ -45,7 +45,12 @@
   " Check code linter https://github.com/maralla/validator.vim
   " Favor tomlion vim-solidity ( check if integration with testing and linter)
 
+  " Bundle 'elixir-lang/vim-elixir'
+  " Bundle 'kamykn/spelunker.vim'
+  " Bundle 'posva/vim-vue'
+
   " TODO: annotate plugins
+
   Bundle "HP4k1h5/ephemeris"
   Bundle "TovarishFin/vim-solidity"
   Bundle "dmdque/solidity.vim"
@@ -55,7 +60,6 @@
   Bundle "moll/vim-node"
   " TODO: test if works
   Bundle "neoclide/coc.nvim", {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-  " Bundle "neoclide/coc.nvim", { 'banch': 'release'}
   Bundle 'AndrewRadev/linediff.vim'
   Bundle 'RRethy/vim-illuminate'
   Bundle 'SirVer/ultisnips'
@@ -64,14 +68,11 @@
   Bundle 'bling/vim-airline.git'
   Bundle 'chrisbra/NrrwRgn'
   Bundle 'editorconfig/editorconfig-vim'
-  " Bundle 'elixir-lang/vim-elixir'
   Bundle 'honza/vim-snippets'
   Bundle 'junegunn/goyo.vim'
   Bundle 'junegunn/vim-easy-align'
-  " Bundle 'kamykn/spelunker.vim'
   Bundle 'masukomi/vim-markdown-folding'
   Bundle 'mattn/emmet-vim'
-  " Bundle 'posva/vim-vue'
   Bundle 'ramele/agrep'
   Bundle 'scrooloose/nerdtree'
   Bundle 'sjl/gundo.vim'
