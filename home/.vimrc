@@ -49,6 +49,7 @@
   " Bundle 'kamykn/spelunker.vim'
   " Bundle 'posva/vim-vue'
   " Plugin 'tom-doerr/vim_codex'
+  " Bundle 'vim-scripts/taglist.vim'
 
   " TODO: annotate plugins
 
@@ -60,7 +61,7 @@
   Bundle "mattn/calendar-vim"
   Bundle "moll/vim-node"
   " TODO: test if works
-  Bundle "neoclide/coc.nvim", {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+  Bundle "neoclide/coc.nvim", {'branch': 'release'}
   Bundle 'AndrewRadev/linediff.vim'
   Bundle 'RRethy/vim-illuminate'
   Bundle 'SirVer/ultisnips'
@@ -88,7 +89,6 @@
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-unimpaired'
   Bundle 'tpope/vim-vinegar'
-  Bundle 'vim-scripts/taglist.vim'
   Bundle 'vim-scripts/tar.vim'
   Bundle 'w0rp/ale'
   Bundle 'wesQ3/vim-windowswap'
@@ -680,24 +680,6 @@ if custom_system_type == "full"
         nnoremap <leader>nc :vsp<CR>:Note<Space>
         nnoremap <leader>ns :vsp<CR>:SearchNotes<Space>
       endif
-    " }}}
-
-    "== taglist {{{
-      " First check if ctags is installed
-      if executable('ctags')
-        let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-        let Tlist_WinWidth = 50
-        let Tlist_Use_Right_Window=1
-        " Maps F4 to toggle the ctags widnow
-        map <F4> :TlistToggle<cr>
-        " Maps building tags to F10 for the current directory
-        " map <leader>0 :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-        map <leader>0 :Dispatch /usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extras=+q --exclude={*.phar,node_modules,vendor,docs,public,.branch_dir,*min.js,.brancher,.branch,build} .<CR>
-        " Open tag file on vertical split and move it to the right split
-        nmap <leader>]  :vsp <CR>:exec("tag ".expand("<cword>"))<CR>zz
-        nmap <leader>[  :exec("tag ".expand("<cword>"))<CR>zz
-      endif
-
     " }}}
 
     "Vdebug {{{

@@ -25,6 +25,7 @@ fi;
 
 # Install vim plugins
 if [ ! -d "$DESTINY_DIR/.vim/bundle/vundle" ]; then
+  echo "1/3 Installing Bundle and plugins"
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
   # vim -c ":PluginInstall"
   vim +PluginInstall +qall
@@ -35,10 +36,12 @@ if [ -d "$DESTINY_DIR/.vim/bundle/coc.nvim" ]; then
   is_yarn_insalled=$?
   if [ $is_yarn_insalled -eq "0" ]; then
     cd "$DESTINY_DIR/.vim/bundle/coc.nvim"
+    echo "2/3 Building coc"
     yarn install && yarn build
     # vim -c ":CocInstall coc-json coc-tsserver coc-cairo"
     # TODO switch to new syntax
-    vim -c +CocInstall coc-json coc-tsserver coc-cairo +qall
+    echo "3/3 Installing coc language plugins"
+    vim -c +"CocInstall coc-json coc-tsserver coc-cairo" +qall
     cd --
   else
     echo "yarn not found: coc will not be installed"
