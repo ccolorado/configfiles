@@ -1,7 +1,8 @@
 FROM archlinux
 
 # Install git and any other dependencies you may need
-RUN pacman -Syu --noconfirm git vim npm gcc tmux
+RUN pacman -Syu --noconfirm git vim npm gcc python-pipenv tmux
+RUN pip3 install ecdsa fastecdsa sympy cairo-lang
 
 # Set the working directory for the Docker container
 WORKDIR /root/

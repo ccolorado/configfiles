@@ -16,6 +16,7 @@ is_yarn_insalled=$?
 # Ihnstall npm & yarn
 if [ $is_npm_installed -eq "0" ]; then
   if [ $is_yarn_insalled -eq "1" ]; then
+    echo "0/3 Optioanlly Installing yarn"
     npm install -g yarn
   fi
 else
