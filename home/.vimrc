@@ -114,7 +114,8 @@
   Bundle 'tpope/vim-markdown'
   " Bundle 'tpope/vim-rails.git'
   Bundle 'vim-ruby/vim-ruby'
-  Plugin 'mxw/vim-jsx'
+  Bundle 'mxw/vim-jsx'
+  Bundle 'ccolorado/vim-cairo'
 
 " }}}
 
