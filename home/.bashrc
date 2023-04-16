@@ -54,7 +54,9 @@ distroPromptFlag()
     DRWN_FLAG="\[\033[40;1;37m\]ć$CLEAR"
     UBNT_FLAG="\[\033[1;33;45m\]U$CLEAR"
 
-    if [ -f "/etc/lsb-release" ] && [ 0 -eq $(grep --quiet -i ubuntu /etc/lsb-release) ];
+    # if [ -f "/etc/lsb-release" ] && [ "0" -eq $(grep --quiet -i ubuntu /etc/lsb-release) ];
+    # TODO: needs testing on ubuntu
+    if [ -f "/etc/lsb-release" ] && [ "$(grep -qi 'ubuntu' /etc/lsb-release)" = "ubuntu" ];
     then
       distro_flag=$UBNT_FLAG;
     fi;

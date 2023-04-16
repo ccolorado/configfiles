@@ -30,9 +30,8 @@ then
   export PATH="$PATH:/home/ccolorado/.local/bin"
 fi
 
-type pyenv 2> /dev/null
+type pyenv > /dev/null
 is_pyenv_installed=$?
-
 
 if [ $is_pyenv_installed -eq "0" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
