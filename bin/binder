@@ -66,6 +66,7 @@ fi;
 
 cd "$ORIGIN_DIR" || exit
 
+git submodule init
 git submodule update
 
 mkdir -p "$DESTINY_DIR/bin"

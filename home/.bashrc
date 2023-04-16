@@ -54,24 +54,28 @@ distroPromptFlag()
     DRWN_FLAG="\[\033[40;1;37m\]ć$CLEAR"
     UBNT_FLAG="\[\033[1;33;45m\]U$CLEAR"
 
-    if [ -f "/etc/lsb-release" ] || [ 0 -eq $(grep --quiet -i ubuntu /etc/lsb-release) ];
+    if [ -f "/etc/lsb-release" ] && [ 0 -eq $(grep --quiet -i ubuntu /etc/lsb-release) ];
     then
       distro_flag=$UBNT_FLAG;
     fi;
+
     if [ -f /etc/centos-release ];
     then
       distro_flag=$CENT_FLAG;
     fi
+
     #archliux distroflag
     if [ -f /etc/arch-release ];
     then
         distro_flag=$ARCH_FLAG
     fi
+
     #osx distroflag
     if [[ $OSTYPE == darwin* ]];
     then
         distro_flag=$DRWN_FLAG;
     fi;
+
     echo $distro_flag;
 }
 
@@ -137,7 +141,7 @@ kernel_needs_reload(){
     type pacman > /dev/null 2>&1
 
     if [ $? -eq 0 ]; then
-      pacman_ver=$(pacman -Q linux | sed -e 's/linux //gi')
+      pacman_ver=$(pacman -Q linux 2> /dev/null | sed -e 's/linux //gi')
     else
       return 0
     fi

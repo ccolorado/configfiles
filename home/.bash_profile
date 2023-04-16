@@ -24,9 +24,18 @@ if [ -f "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
 fi;
 
-# Created by `pipx` on 2021-09-16 00:03:44
-export PATH="$PATH:/home/ccolorado/.local/bin"
+if [ -d "/home/ccolorado/.local/bin" ];
+then
+  # Created by `pipx` on 2021-09-16 00:03:44
+  export PATH="$PATH:/home/ccolorado/.local/bin"
+fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+type pyenv 2> /dev/null
+is_pyenv_installed=$?
+
+
+if [ $is_pyenv_installed -eq "0" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi;
