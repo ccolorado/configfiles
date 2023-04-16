@@ -44,7 +44,6 @@
 
   Bundle "HP4k1h5/ephemeris"
   Bundle "TovarishFin/vim-solidity"
-  Bundle "dmdque/solidity.vim"
   Bundle "isRuslan/vim-es6"
   Bundle "jamessan/vim-gnupg"
   Bundle "mattn/calendar-vim"
@@ -113,6 +112,7 @@
   Bundle 'tpope/vim-rails.git'
   Bundle 'vim-ruby/vim-ruby'
   Plugin 'mxw/vim-jsx'
+  Plugin 'ccolorado/vim-cairo'
 
 " }}}
 

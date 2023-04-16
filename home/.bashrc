@@ -38,6 +38,7 @@ export NOTES_HOME=~/Notes
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"
 PROMPT_ROOT_COLOR="\[\033[40;1;31m\]"
+PROMPT_GIT_COLOR="\[\033[40;1;33m\]"
 PROMPT_WARN_COLOR="\[\033[40;1;11m\]"
 CLEAR="\[\033[0m\]"
 distroPromptFlag()
@@ -213,7 +214,7 @@ export PS1='[$?]$( kernel_needs_reload )'" \A $distro_flag(${SHLVL}:\j)$IS_SSH_S
 
 # Do not include bash_prompt if completion script if completion function  can't be found
 if [ `type -t __git_ps1`"" == 'function' ]; then
-  export PS1='[$?]$( kernel_needs_reload )'" \A $distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 "( ⭠ %s )")'"\n$_USER_SYMBL $CLEAR"
+  export PS1='[$?]$( kernel_needs_reload )'" \A $distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"$PROMPT_GIT_COLOR'$(__git_ps1 " (⭠ %s)")'"$_USER_COLOR \n$_USER_SYMBL $CLEAR"
 fi;
 
 alias ls='ls --color=auto -p'
@@ -295,6 +296,7 @@ pathadd "$HOME/.config/composer/vendor/bin"
 pathadd "$HOME/.gem/ruby/2.4.0/bin"
 
 # Opens a note using vimnote with autocompeltion needs versining vimnote script
+complete -C vnoteGPT  vnoteGPT
 complete -C vimnote vimnote
 complete -C vimexec vimexec
 # Reload Bash configuration

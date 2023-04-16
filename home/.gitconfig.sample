@@ -17,6 +17,7 @@
   default = simple
 
 [alias]
+  us = restore --staged
   cherry = cherry-pick
   rh = reset HEAD
   ci = commit -v
