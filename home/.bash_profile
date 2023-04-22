@@ -33,9 +33,21 @@ fi
 type pyenv 2> /dev/null
 is_pyenv_installed=$?
 
-
 if [ $is_pyenv_installed -eq "0" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 fi;
+
+if [ -d "$HOME/.rvm/bin" ]; then
+  export PATH="$PATH:$HOME/.rvm/bin"
+fi
+
+if [ -d "$HOME/.protostar/dist/protostar" ]; then
+  export PATH="$PATH:$HOME/.protostar/dist/protostar"
+fi
+
+# PATH extensions
+if [ -d "$HOME/.foundry/bin" ]; then
+  export PATH="$PATH:$HOME/.foundry/bin"
+fi

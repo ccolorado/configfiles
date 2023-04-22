@@ -340,7 +340,6 @@ fi
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 if [ -f "$HOME/.extra_aliases" ]; then
   source "$HOME/.extra_aliases"
@@ -359,19 +358,3 @@ then
     ln -s $etc/docker-compose.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-compose
   fi
 fi
-
-if [ -f "$HOME/.cargo/env" ]; then
-  source "$HOME/.cargo/env"
-fi
-
-# PATH extensions
-# Created by `pipx` on 2021-09-16 00:03:44
-if [ -d "$HOME/.local/bin" ]; then
-  export PATH="$PATH:$HOME/.local/bin"
-fi
-
-if [ -d "$HOME/.foundry/bin" ]; then
-  export PATH="$PATH:$HOME/.foundry/bin"
-fi
-
-export PATH="$PATH:/home/ccolorado/.protostar/dist/protostar"
