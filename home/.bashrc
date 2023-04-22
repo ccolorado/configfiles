@@ -53,18 +53,23 @@ distroPromptFlag()
     DRWN_FLAG="\[\033[40;1;37m\]ć$CLEAR"
     UBNT_FLAG="\[\033[1;33;45m\]U$CLEAR"
 
-    if [ -f "/etc/lsb-release" ] && [ 0 -eq $(grep --quiet -i ubuntu /etc/lsb-release) ];
+    if [ -f "/etc/lsb-release" ];
     then
-      distro_flag=$UBNT_FLAG;
+      grep --quiet -i ubuntu "/etc/lsb-release"
+      is_ubuntu_in_lsb_release=$?
+      if [ 0 -eq $is_ubuntu_in_lsb_release ];
+      then
+        distro_flag=$UBNT_FLAG;
+      fi
     fi;
 
-    if [ -f /etc/centos-release ];
+    if [ -f "/etc/centos-release" ];
     then
       distro_flag=$CENT_FLAG;
     fi
 
     #archliux distroflag
-    if [ -f /etc/arch-release ];
+    if [ -f "/etc/arch-release" ];
     then
         distro_flag=$ARCH_FLAG
     fi
@@ -185,7 +190,6 @@ then
   _USER_COLOR=$PROMPT_ROOT_COLOR
   _USER_SYMBL='#'
 fi;
-
 #Arch git completion script
 if [ -f '/usr/share/git/completion/git-prompt.sh' ]; then
   git_completion_script='/usr/share/git/completion/git-prompt.sh'
@@ -241,7 +245,6 @@ alias vup="vagrant up"
 alias vrl="vagrant reload"
 alias vdown="vagrant halt"
 alias vkill="vagrant destroy -f"
-
 
 # Typos
 # =====

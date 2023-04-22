@@ -24,7 +24,6 @@
   " TODO: try https://github.com/ncm2/ncm2
   " TODO: try deoplete"
   if custom_system_type == "full"
-    Bundle "junegunn/fzf.vim"
     Bundle "xolox/vim-notes"
     if v:version > 8
     endif
@@ -96,6 +95,7 @@
   Plugin 'hashivim/vim-terraform'
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'vimwiki/vimwiki'
+  Plugin 'junegunn/fzf.vim'
 
 " }}}
 
