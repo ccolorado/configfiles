@@ -13,7 +13,7 @@
   " set the runtime path to include Vundle and initialize
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
-  if filereadable('~/.custom_system_type')
+  if filereadable(expand('~/.custom_system_type'))
     let custom_system_type = join(readfile(glob('~/.custom_system_type')))
   else
     let custom_system_type = 'minimal'

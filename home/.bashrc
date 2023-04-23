@@ -23,13 +23,6 @@ rule () {
     printf -v _hr "%*s" $(tput cols) && echo ${_hr// /${1--}}
 }
 
-# Taken from https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
-pathadd() {
-   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-       PATH="${PATH:+"$PATH:"}$1"
-   fi
-}
-
 set -o vi
 bind "\C-l":clear-screen
 
@@ -296,10 +289,6 @@ unset SSH_ASKPASS
 # PATH Enhancements
 
 #Adding ~/bin directory to PATH
-mkdir -p ~/bin
-pathadd "$HOME/bin"
-pathadd "$HOME/.config/composer/vendor/bin"
-pathadd "$HOME/.gem/ruby/2.4.0/bin"
 
 # Opens a note using vimnote with autocompeltion needs versining vimnote script
 complete -C vimnote vimnote
@@ -361,3 +350,5 @@ then
     ln -s $etc/docker-compose.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-compose
   fi
 fi
+
+mkdir -p ~/bin
