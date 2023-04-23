@@ -10,25 +10,26 @@ if [ ! -f "$CUSTOM_SYSTEM_TYPE_FILE" ]; then
   echo "minimal" > "$get_custom_system_type"
 fi
 
-# TODO: this seems like it needs some cleanup
 alias set_custom_system_type="echo $@ >  $CUSTOM_SYSTEM_TYPE_FILE"
 alias get_custom_system_type="cat $CUSTOM_SYSTEM_TYPE_FILE"
 
+# Taken from https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
+pathadd() {
+   # Adds path to $PATH if $1 is an existing directoy
+   # and isn't already added
+   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+       PATH="${PATH:+"$PATH:"}$1"
+   fi
+}
+
 # TODO: Time how long does loading the bashrc file takes
 # if [ ! $BASHRC_LOADED ]; then
-  echo -e ".\c"
-  source "$HOME/.bashrc"
+echo -e ".\c"
 # fi
 
-if [ -f "$HOME/.cargo/env" ]; then
-  source "$HOME/.cargo/env"
-fi;
-
-if [ -d "/home/ccolorado/.local/bin" ];
-then
-  # Created by `pipx` on 2021-09-16 00:03:44
-  export PATH="$PATH:/home/ccolorado/.local/bin"
-fi
+# if [ -f "$HOME/.cargo/env" ]; then
+#   source "$HOME/.cargo/env"
+# fi;
 
 type pyenv &> /dev/null
 is_pyenv_installed=$?
@@ -38,3 +39,13 @@ if [ $is_pyenv_installed -eq "0" ]; then
   command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 fi;
+
+pathadd "$HOME/bin"
+pathadd "$HOME/.local/bin"
+pathadd "$HOME/.config/composer/vendor/bin"
+pathadd "$HOME/.gem/ruby/2.4.0/bin"
+pathadd "$HOME/.rvm/bin"
+pathadd "$HOME/.protostar/dist/protostar"
+pathadd "$HOME/.foundry/bin"
+
+source "$HOME/.bashrc"
