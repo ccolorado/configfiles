@@ -16,7 +16,19 @@
 [push]
   default = simple
 [alias]
-  compb = "!f() { git log --oneline --graph --decorate --left-right --boundary --date-order \"$1\"...\"$2\"; }; f"
+  compb = "!f() { \
+    if [[ $# == 0 ]]; then \
+        branch1=$(git rev-parse --abbrev-ref HEAD); \
+        branch2=master; \
+    elif [[ $# == 1 ]]; then \
+        branch1=$1; \
+        branch2=master; \
+    else \
+        branch1=$1; \
+        branch2=$2; \
+    fi; \
+    git log --oneline --graph --decorate --left-right --boundary --date-order $branch1...$branch2; \
+  }; f"
   us = restore --staged
   cherry = cherry-pick
   rh = reset HEAD
