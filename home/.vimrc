@@ -54,7 +54,6 @@
 
   Bundle "HP4k1h5/ephemeris"
   Bundle "TovarishFin/vim-solidity"
-  Bundle "dmdque/solidity.vim"
   Bundle "isRuslan/vim-es6"
   Bundle "jamessan/vim-gnupg"
   Bundle "mattn/calendar-vim"
@@ -114,8 +113,8 @@
   Bundle 'tpope/vim-markdown'
   " Bundle 'tpope/vim-rails.git'
   Bundle 'vim-ruby/vim-ruby'
-  Bundle 'mxw/vim-jsx'
-  Bundle 'ccolorado/vim-cairo'
+  Plugin 'mxw/vim-jsx'
+  Plugin 'ccolorado/vim-cairo'
 
 " }}}
 
@@ -515,6 +514,10 @@
     nmap <leader>et  :EphemerisToggleTask<CR>
     " keeps index properly sized
     au BufEnter g:calendar_diary :vertical resize 38
+  " }}}
+
+  " neoclide/coc.nvim {{{
+    " To install = cd .vim/bundle/coc.nvim && yarn install
   " }}}
 
   " UltiSnips {{{

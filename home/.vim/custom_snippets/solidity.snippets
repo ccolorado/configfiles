@@ -1,5 +1,9 @@
 extends solidity
 
+snippet txcall "transfers eth to an addres"
+(bool sent, ${3:bytes data}) = ${1:recipient}.call{value: ${2:amount}}("");
+endsnippet
+
 snippet newC "popultes contract with template"
 // SPDX-License-Identifier: ${3:MIT}
 // ${4:pragma solidity ^0.8.9;}

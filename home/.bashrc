@@ -38,6 +38,7 @@ export NOTES_HOME=~/Notes
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"
 PROMPT_ROOT_COLOR="\[\033[40;1;31m\]"
+PROMPT_GIT_COLOR="\[\033[40;1;33m\]"
 PROMPT_WARN_COLOR="\[\033[40;1;11m\]"
 CLEAR="\[\033[0m\]"
 distroPromptFlag()
@@ -190,6 +191,7 @@ then
   _USER_COLOR=$PROMPT_ROOT_COLOR
   _USER_SYMBL='#'
 fi;
+
 #Arch git completion script
 if [ -f '/usr/share/git/completion/git-prompt.sh' ]; then
   git_completion_script='/usr/share/git/completion/git-prompt.sh'
@@ -221,7 +223,7 @@ export PS1='[$?]$( kernel_needs_reload )'" \A $distro_flag(${SHLVL}:\j)$IS_SSH_S
 
 # Do not include bash_prompt if completion script if completion function  can't be found
 if [ `type -t __git_ps1`"" == 'function' ]; then
-  export PS1='[$?]$( kernel_needs_reload )'" \A $distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"'$(__git_ps1 "( ⭠ %s )")'"\n$_USER_SYMBL $CLEAR"
+  export PS1='[$?]$( kernel_needs_reload )'" \A $distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"$PROMPT_GIT_COLOR'$(__git_ps1 " (⭠ %s)")'"$_USER_COLOR \n$_USER_SYMBL $CLEAR"
 fi;
 
 alias ls='ls --color=auto -p'
@@ -302,6 +304,7 @@ pathadd "$HOME/.config/composer/vendor/bin"
 pathadd "$HOME/.gem/ruby/2.4.0/bin"
 
 # Opens a note using vimnote with autocompeltion needs versining vimnote script
+complete -C vnoteGPT  vnoteGPT
 complete -C vimnote vimnote
 complete -C vimexec vimexec
 # Reload Bash configuration
@@ -341,8 +344,6 @@ fi
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 
 if [ -f "$HOME/.extra_aliases" ]; then
   source "$HOME/.extra_aliases"
