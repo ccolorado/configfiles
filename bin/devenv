@@ -42,7 +42,7 @@ if [ -d "$DESTINY_DIR/.vim/bundle/coc.nvim" ]; then
     # vim -c ":CocInstall coc-json coc-tsserver coc-cairo"
     # TODO switch to new syntax
     echo "3/3 Installing coc language plugins"
-    vim -c +"CocInstall coc-json coc-tsserver coc-cairo" +qall
+    vim -c +"CocInstall coc-json coc-tsserver coc-cairo coc-solidity" +qall
     cd --
   else
     echo "yarn not found: coc will not be installed"

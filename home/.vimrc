@@ -139,7 +139,6 @@
 
 " Checkout these plugins sometime in the future
 " 'sotte/presenting.vim'
-" https://vimawesome.com/plugin/obsession-vim
 " https://vimawesome.com/plugin/session-vim
 " https://vimawesome.com/plugin/vim-workspace
 
@@ -518,6 +517,29 @@
 
   " neoclide/coc.nvim {{{
     " To install = cd .vim/bundle/coc.nvim && yarn install
+
+    " TODO: check coc-rust-analyzer which uses rust-analyzer
+    " language servers listing
+    " https://github.com/neoclide/coc.nvim/wiki/Language-servers
+
+    " Installed by name
+
+    " coc-cairo
+    " coc-go
+    " coc-json
+    " coc-solidity
+    " coc-tsserver
+    " coc-snippets
+    " coc-sh
+    " coc-css
+    " coc-pyright
+    " coc-rls
+
+
+    " Installed by coc-settings.json
+    " dockerfile
+    " graphql
+
   " }}}
 
   " UltiSnips {{{
