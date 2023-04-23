@@ -15,13 +15,14 @@
   submodule = log
 [push]
   default = simple
-
 [alias]
+  compb = "!f() { git log --oneline --graph --decorate --left-right --boundary --date-order \"$1\"...\"$2\"; }; f"
   us = restore --staged
   cherry = cherry-pick
   rh = reset HEAD
   ci = commit -v
   co = checkout
+  cl = clone
   po = push origin
   st = status -s
   df = diff
