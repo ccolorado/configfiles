@@ -71,7 +71,6 @@
   Bundle 'honza/vim-snippets'
   Bundle 'junegunn/goyo.vim'
   Bundle 'junegunn/vim-easy-align'
-  Bundle 'masukomi/vim-markdown-folding'
   Bundle 'mattn/emmet-vim'
   Bundle 'ramele/agrep'
   Bundle 'scrooloose/nerdtree'
@@ -83,12 +82,12 @@
   Bundle 'tpope/vim-dispatch'
   Bundle 'tpope/vim-eunuch'
   Bundle 'tpope/vim-fugitive.git'
+  Bundle 'tpope/vim-obsession'
   Bundle 'tpope/vim-repeat'
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-unimpaired'
   Bundle 'tpope/vim-vinegar'
   Bundle 'vim-scripts/tar.vim'
-  Bundle 'w0rp/ale'
   Bundle 'wesQ3/vim-windowswap'
   Bundle 'xolox/vim-misc'
   Plugin 'hashivim/vim-terraform'
@@ -110,7 +109,7 @@
   Bundle 'pangloss/vim-javascript'
   " Bundle 'rodjek/vim-puppet'
   Bundle 'tpope/vim-haml'
-  Bundle 'tpope/vim-markdown'
+  " Bundle 'tpope/vim-markdown'
   " Bundle 'tpope/vim-rails.git'
   Bundle 'vim-ruby/vim-ruby'
   Plugin 'mxw/vim-jsx'
@@ -264,7 +263,8 @@
     set backup
     set directory=$HOME/.vim/tmp/swap/
     set viewdir=$HOME/.vim/tmp/view/
-    set viminfo='50,n$HOME/.vim/tmp/viminfo
+    " set viminfo='50,n$HOME/.vim/tmp/viminfo
+    set viminfo='1000,<1000,s1000,n$HOME/.vim/tmp/viminfo'
     " store undo files, undo edits after deleting a buffer
     "set undodir=$HOME/.vim/tmp/undo/
     "set undofile
@@ -719,15 +719,6 @@ if custom_system_type == "full"
 
     " }}}
 
-    " w0rp/ale {{{
-      " Supported linters
-      " https://github.com/dense-analysis/ale/blob/master/supported-tools.md
-      " let b:ale_linters = ['flake8', 'pylint', 'solc', 'solhint', 'eslint']
-      let b:ale_linters = {'python': ['pyflakes'], 'javascript': ['xo'], 'solidity': ['solc', 'solhint' ]}
-      " let b:ale_fixers = ['autopep8', 'yapf']
-      let b:ale_fixers = {'python': ['black', 'isort'], 'javascript': ['xo']}
-      let g:ale_javascript_xo_options = "--plug=react --prettier"
-    " }}}
 
     " vim-terraform {{{
       let g:terraform_align=1
@@ -756,3 +747,8 @@ if custom_system_type == "full"
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
+" temp solution for highlighting current sentence when using vim as
+" a reading aid
+" TODO: find proper replacement
+vnoremap JJ :normal! vwvf.<CR>
+nnoremap JJ :normal! wvf.<CR>
