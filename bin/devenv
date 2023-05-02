@@ -12,6 +12,7 @@ is_npm_installed=$?
 type yarn
 is_yarn_insalled=$?
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Ihnstall npm & yarn
 if [ $is_npm_installed -eq "0" ]; then

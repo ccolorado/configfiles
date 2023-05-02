@@ -1,19 +1,35 @@
 FROM archlinux
 
 # Install git and any other dependencies you may need
-RUN pacman -Syu --noconfirm git vim npm gcc python-pipenv tmux
-RUN pip3 install ecdsa fastecdsa sympy cairo-lang
+RUN pacman -Suy --noconfirm
+RUN pacman -S --noconfirm sudo git
+RUN pacman -S --noconfirm vim tmux
+RUN pacman -S --noconfirm npm yarn
+RUN pacman -S --noconfirm gcc python-pipenv
+# RUN pip3 install ecdsa fastecdsa sympy cairo-lang
 
-# Set the working directory for the Docker container
-WORKDIR /root/
+ARG USERNAME=ccolorado
+ARG USER_UID=1000
+ARG USER_HOME=/home/${USERNAME}
+ARG USER_GROUPS=ccolorado wheel
 
-# Clone your Git repository
-RUN git clone -b implement_coc https://github.com/ccolorado/configfiles ~/configfiles
+# Create new user with specified UID and home directory
+RUN useradd --uid ${USER_UID} --home ${USER_HOME} --create-home ${USERNAME}
 
-# Set the command to run when the Docker container starts
-# CMD [ "bash ./configfiles/bin/binder" ]
-# CMD [ "bash ./configfiles/bin/devenv" ]
+# Add user to specified groups
+RUN usermod -aG ${USER_GROUPS} ${USERNAME}
 
-# BUILD; docker build --no-cache -t config:coc .
-# RUN; docker run -it --rm --name config_container config:coc
-# single line ; docker build --no-cache -t config:coc . ; docker run -it --rm --name config_container config:coc
+# Set ownership and permissions for user's home directory
+RUN chown -R ${USERNAME}:${USERNAME} ${USER_HOME}
+RUN chmod 700 ${USER_HOME}
+
+RUN echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${USERNAME}
+
+USER ${USERNAME}
+
+WORKDIR ${USER_HOME}
+
+RUN rm ${USER_HOME}/.bashrc
+RUN rm ${USER_HOME}/.bash_profile
+
+RUN git clone https://github.com/ccolorado/configfiles.git "${USER_HOME}/_git.configfiles"

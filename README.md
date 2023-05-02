@@ -1,20 +1,24 @@
 configfiles
 ===========
 
-Configuration files for multiple applications 
-
-Primarily containing Linux applications configuration files
+Dot files for my linux set up
 
 Installation
 ============
 To install the configfiles to ~/.configfiles do:
->git clone https://github.com/ccolorado/configfiles ~/configfiles
+```bash
 
->bash ~/configfiles/bin/binder
+git clone https://github.com/ccolorado/configfiles ~/configfiles
 
->vim +PluginInstall +qall
+bash ~/configfiles/bin/binder
+bash ~/configfiles/bin/devenv # optional for really confy system
 
-Todo
-====
-* Review solution for "dynamically" loading changes to the bash config  sounds super convenient but also like a bad idea
-  https://www.quora.com/How-do-I-update-my-bashrc-across-all-the-open-panes-windows-in-tmux
+vim +PluginInstall +qall
+```
+
+Test Setup
+==========
+# Build Image;
+`docker build --no-cache -t config:test .`
+# Run instance;
+`docker run -it --name config_container -v ./:/configfiles config:test`
