@@ -5,6 +5,9 @@
 # This is how one can set a reattach password:
 # password ODSJQf.4IJN7E    # "1234"
 
+# Switch the command prefix with tmux
+escape ^Bb
+
 # no annoying audible bell, please
 vbell on
 
@@ -117,6 +120,7 @@ bind ^\
 bind \\
 bind ^h
 bind h
+
 #make them better
 bind 'K' kill
 bind 'I' login on
@@ -157,6 +161,6 @@ defscrollback 1000
 
 shelltitle "$ |:"
 
-hardstatus alwayslastline  
+hardstatus alwayslastline
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
 
