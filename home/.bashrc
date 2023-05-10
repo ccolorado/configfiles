@@ -219,32 +219,10 @@ if [ `type -t __git_ps1`"" == 'function' ]; then
   export PS1='[$?]$( kernel_needs_reload )'" \A $distro_flag(${SHLVL}:\j)$IS_SSH_SESSION$_USER_COLOR[\u@$HC\h$_USER_COLOR \w]"$PROMPT_GIT_COLOR'$(__git_ps1 " (⭠ %s)")'"$_USER_COLOR \n$_USER_SYMBL $CLEAR"
 fi;
 
-alias ls='ls --color=auto -p'
-alias ll='ls -alh'
-alias cp='cp -iv'
-alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
-alias grep="grep --color=auto"
-alias svim='sudoedit'
-alias svimdiff='sudo vimdiff'
-alias mysql='mysql --auto-rehash'
-alias sshmount='sshfs -o reconnect -o follow_symlinks'
-alias tmux='tmux -2'
-alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias yt-audio="youtube-dl --extract-audio --audio-format mp3 "
-
-# vagrant aliases
-# next will use containers/docker
-
-alias vsh="vagrant ssh"
-alias vup="vagrant up"
-alias vrl="vagrant reload"
-alias vdown="vagrant halt"
-alias vkill="vagrant destroy -f"
 
 # Typos
 # =====
 # I should really take a look at zsh
-alias gti="git"
 
 # Custom system type switching
 export CUSTOM_SYSTEM_TYPE_FILE="$HOME/.custom_system_type"
@@ -253,10 +231,6 @@ alias set_custom_system_type="echo $@ >  $CUSTOM_SYSTEM_TYPE_FILE"
 alias get_custom_system_type="cat $CUSTOM_SYSTEM_TYPE_FILE"
 
 command -v ccze  >/dev/null 2>&1 && CCZE_DECORATOR="| ccze -A"
-
-alias tlogs='sudo find /var/log/httpd/ -iname "*log" | xargs sudo  tail -f '$CCZE_DECORATOR
-alias tlogs_errors='sudo find /var/log/httpd/ -iname "*error**log" | xargs sudo tail  -f | sed -u "s/\\\n/\\n/g" | sed -u "s/\\\t/\\t/g" '$CCZE_DECORATOR;
-alias tlogs_access='sudo find /var/log/httpd/ -iname "*access*log" | xargs sudo  tail -f | sed -u "s/\\\n/\\n/g" | sed -u "s/\\\t/\\t/g" '$CCZE_DECORATOR;
 
 if [ -f ~/.white_noise_playlist ]; then
   alias whitenoise='mplayer -nocache -loop 0 -shuffle $(cat ~/.white_noise_playlist)  -volume 20 -quiet'
@@ -296,24 +270,7 @@ unset SSH_ASKPASS
 complete -C vnoteGPT  vnoteGPT
 complete -C vimnote vimnote
 complete -C vimexec vimexec
-# Reload Bash configuration
-alias rld="source ~/.bashrc"
-# Opens irc session on personal server
-alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
-# TODO make gitstatusticker trigger on file changes
-# alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
-alias gpo="git push origin"
-alias gs="git status"
-alias grr="git restore --staged"
-alias gd="git diff"
-alias gcam="git commit --amend -v"
-alias gdiff="git diff"
-alias gres="git restore --staged"
-alias gad="git add"
-alias gl="git log"
-alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
-alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/ --debug"
-alias interdash="vim -S ~/.interview_dashboard.vim"
+
 
 if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
   source /usr/share/nvm/init-nvm.sh
@@ -323,8 +280,8 @@ if [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
 fi
 
-if [ -f "$HOME/.alias" ]; then
-  source "$HOME/.alias"
+if [ -f "$HOME/.aliases" ]; then
+  source "$HOME/.aliases"
 fi
 
 if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then

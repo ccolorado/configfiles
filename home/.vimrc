@@ -70,6 +70,7 @@
   Bundle 'editorconfig/editorconfig-vim'
   Bundle 'honza/vim-snippets'
   Bundle 'junegunn/goyo.vim'
+  Bundle 'junegunn/limelight.vim'
   Bundle 'junegunn/vim-easy-align'
   Bundle 'mattn/emmet-vim'
   Bundle 'ramele/agrep'
@@ -729,6 +730,38 @@ if custom_system_type == "full"
     " wesQ3/vim-windowswap {{{
       let g:windowswap_map_keys = 0 "prevent default bindings
       nnoremap <silent> <leader>ss :call WindowSwap#EasyWindowSwap()<CR>
+    " }}}
+
+    " vim-goyo & vim-limeligth {{{
+      " Color name (:help cterm-colors) or ANSI code
+      " let g:limelight_conceal_ctermfg = 'gray'
+      let g:limelight_conceal_ctermfg = 245
+
+      " Color name (:help gui-colors) or RGB color
+      let g:limelight_conceal_guifg = 'DarkGray'
+      let g:limelight_conceal_guifg = '#777777'
+
+      " Default: 0.5
+      let g:limelight_default_coefficient = 0.7
+
+      " Number of preceding/following paragraphs to include (default: 0)
+      let g:limelight_paragraph_span = 1
+
+      " Beginning/end of paragraph
+      "   When there's no empty line between the paragraphs
+      "   and each paragraph starts with indentation
+      let g:limelight_bop = '^\s'
+      let g:limelight_eop = '\ze\n^\s'
+
+      " Highlighting priority (default: 10)
+      "   Set it to -1 not to overrule hlsearch
+      let g:limelight_priority = -1
+
+      " Color name (:help cterm-colors) or ANSI code
+      " let g:limelight_conceal_ctermfg = 100
+      "
+      " " Color name (:help gui-colors) or RGB color
+      " let g:limelight_conceal_guifg = '#83a598'
     " }}}
 
 " }}}
