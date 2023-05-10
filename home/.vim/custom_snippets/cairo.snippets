@@ -1,0 +1,63 @@
+extends cairo
+
+# snippet txcall "transfers eth to an addres"
+# (bool sent, ${3:bytes data}) = ${1:recipient}.call{value: ${2:amount}}("");
+# endsnippet
+
+snippet @n "Natspec template"
+/// @notice ${1: does something}
+/// @dev $2
+@p$3
+/// @return
+endsnippet
+
+snippet conta "Contract template"
+mod $1 {
+    // Core Library Imports
+    // use starknet::ContractAddress;
+    // use starknet::get_caller_address;
+    // use array::ArrayTrait;
+
+    // ------
+    // Storage
+    // ------
+    struct Storage {
+    //   name: type,
+    //   mapName: LegacyMap::<typeLeft, typeRight>,
+         $4,
+    }
+
+    // ------
+    // Constructor
+    // ------
+
+    #[constructor]
+    fn constructor($2) {
+      $3
+    }
+
+    // ------
+    // Getter functions
+    // ------
+
+    #[view]
+    // fn viewFunction() -> (u8, u8) {
+    fn ${5:getVariable}() -> (${6:u8, u8}) {
+        return (0, 0);
+    }
+
+    // ------
+    // External functions
+    // ------
+
+    #[external]
+    fn externalFunction(vote: u8) {
+    }
+
+    // ------
+    // Internal Functions
+    // ------
+    fn internalFunction(address: ContractAddress) {
+    }
+}
+endsnippet
