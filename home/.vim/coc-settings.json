@@ -1,4 +1,5 @@
-"languageserver": {
+{
+  "languageserver": {
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],
@@ -10,4 +11,6 @@
       // customize filetypes to your needs
       "filetypes": ["typescript", "typescriptreact", "graphql"]
     }
+  }
 }
+

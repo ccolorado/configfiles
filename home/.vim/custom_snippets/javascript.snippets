@@ -1,5 +1,21 @@
 extends javascript
 
+snippet hhdeploy "Deploys a contract with hardhat"
+let ${1}Factory = await ethers.getContractFactory(
+		'${3:contacts/filename:}${2:DummyERC721}') //, deployer_address);
+this.$1Contract = await $1Factory.deploy(${3});
+endsnippet
+
+snippet expc "failing chai expect"
+expect(${1:true}).to.be.equal(${2:false});
+endsnippet
+
+snippet exprev "expect revert"
+await expect(
+	${1}
+).to.be.revertedWith('$2');
+endsnippet
+
 snippet fori "for i loop" b
 for(let $2 = 0; i < $1.length; $2++) {
 	let item = $1[$2]
