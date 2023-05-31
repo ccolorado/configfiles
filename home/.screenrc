@@ -6,7 +6,7 @@
 # password ODSJQf.4IJN7E    # "1234"
 
 # Switch the command prefix with tmux
-escape ^Bb
+# escape ^Bb
 
 # no annoying audible bell, please
 vbell on
