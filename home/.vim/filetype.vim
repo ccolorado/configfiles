@@ -38,6 +38,8 @@ au BufNewFile,BufRead *Notes/*              call matchadd('ColorColumn', '\%110v
 """ Cairo
 au BufReadPost *.cairo set filetype=cairo
 au Filetype cairo set syntax=cairo
+au FileType cairo setlocal commentstring=//\ %s
+
 
 """ TextWidht
 autocmd Filetype svn  setlocal spell textwidth=72
