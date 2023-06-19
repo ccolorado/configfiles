@@ -279,9 +279,9 @@
     " }}}
 
     " Indentation {{{
-      set expandtab " lines to spaces
-      set tabstop=2 " spaces use as visual representation of a tab
-      set shiftwidth=2 " amount of spaces used for each indentation step
+      " set expandtab " lines to spaces
+      " set tabstop=2 " spaces use as visual representation of a tab
+      " set shiftwidth=2 " amount of spaces used for each indentation step
       set softtabstop=2 " number of spaces that a tab counts for when using the <Tab> key in insert mode.
     " }}}
 
@@ -438,10 +438,10 @@
   " }}}
 
   " Indentation Switching{{{
-    nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
-    nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
-    nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
-    nmap \m :set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+    " nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+    " nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+    " nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+    " nmap \m :set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
   " }}}
 
   " Tool Mappings {{{
@@ -498,6 +498,9 @@
 " }}}
 
 " Plugin Settings {{{
+
+  " editorconfig/editorconfig-vim
+  let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
   " tpope/vim-fugitive
   "   Forces diffs to be presented vertically probably not part of the plugin
@@ -783,5 +786,5 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " temp solution for highlighting current sentence when using vim as
 " a reading aid
 " TODO: find proper replacement
-vnoremap JJ :normal! vwvf.<CR>
-nnoremap JJ :normal! wvf.<CR>
+" vnoremap JJ :normal! vwvf.<CR>
+" nnoremap JJ :normal! wvf.<CR>

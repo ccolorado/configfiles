@@ -40,6 +40,14 @@ if [ $is_pyenv_installed -eq "0" ]; then
   eval "$(pyenv init -)"
 fi;
 
+export CAIRO_ROOT="$HOME/.cairo"
+if [ -d "$CAIRO_ROOT" ]; then
+  export STARKNET_NETWORK=alpha-goerli
+  export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount 
+  pathadd "$CAIRO_ROOT/target/release"
+fi
+
+
 pathadd "$HOME/bin"
 pathadd "$HOME/.local/bin"
 pathadd "$HOME/.config/composer/vendor/bin"

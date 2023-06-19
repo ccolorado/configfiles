@@ -19,3 +19,4 @@ iabbrev reciept receipt
 iabbrev cairo Cairo
 iabbrev rigth right
 iabbrev correclty correctly
+iabbrev starknet StarkNet
