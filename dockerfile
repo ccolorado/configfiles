@@ -11,13 +11,14 @@ RUN pacman -S --noconfirm gcc python-pipenv
 ARG USERNAME=ccolorado
 ARG USER_UID=1000
 ARG USER_HOME=/home/${USERNAME}
-ARG USER_GROUPS=ccolorado wheel
+ARG USER_GROUP=wheel
 
 # Create new user with specified UID and home directory
 RUN useradd --uid ${USER_UID} --home ${USER_HOME} --create-home ${USERNAME}
 
 # Add user to specified groups
-RUN usermod -aG ${USER_GROUPS} ${USERNAME}
+RUN usermod -aG ${USERNAME} ${USERNAME}
+RUN usermod -aG ${USER_GROUP} ${USERNAME}
 
 # Set ownership and permissions for user's home directory
 RUN chown -R ${USERNAME}:${USERNAME} ${USER_HOME}
