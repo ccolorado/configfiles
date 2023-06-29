@@ -73,4 +73,7 @@ ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/brancher"  "$DESTINY_DIR/bin"
 ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/goproj"    "$DESTINY_DIR/bin/gp"
 ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/idesplit"  "$DESTINY_DIR/bin"
 ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/yt-pl"     "$DESTINY_DIR/bin"
+ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/greedydoc" "$DESTINY_DIR/bin"
+ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/dvm"       "$DESTINY_DIR/bin"
+ln -svf "$ORIGIN_DIR/tooling_scripts/scripts/multientr" "$DESTINY_DIR/bin"
 

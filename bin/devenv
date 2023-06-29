@@ -12,6 +12,7 @@ is_npm_installed=$?
 type yarn
 is_yarn_insalled=$?
 
+mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Ihnstall npm & yarn
