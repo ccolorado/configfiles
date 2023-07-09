@@ -1,5 +1,5 @@
 [submodule "tooling_scripts"]
 	path = tooling_scripts
-	# url = https://github.com/ccolorado/tooling_scripts
-	url = git@github.com:ccolorado/tooling_scripts
+	url = https://github.com/ccolorado/tooling_scripts
+  # url = git@github.com:ccolorado/tooling_scripts
 	branch = master
