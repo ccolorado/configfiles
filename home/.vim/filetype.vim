@@ -11,8 +11,10 @@ autocmd Filetype notes  setlocal spell
 " autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
 
 """ .wiki file detection and highlight. """
+au BufRead,BufNewFile *.md                  execute "CocDisable"
 au BufRead,BufNewFile *.md                  set filetype=markdown
 au BufRead,BufNewFile *.es.md               set spelllang=es filetype=markdown
+
 au BufRead,BufNewFile *.wiki                set filetype=mediawiki
 au BufRead,BufNewFile *.wikipedia.org*      set filetype=mediawiki
 au BufRead,BufNewFile *.wikibooks.org*      set filetype=mediawiki

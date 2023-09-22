@@ -96,27 +96,50 @@ git_get_last_pushed_commit (){
 
 feature_hunt_expression (){
   query=""
-  for word in "$@"
-  do
-    query=$query".?"$word
-  done
+  if [ "$1" = "-e" ]; then
+    shift
+    query="${*:1}"
+    echo $query
+    query="${query//-e}"
+    query="${query// / }"
+  else
+    for word in "$@"
+    do
+      query=$query".?"$word
+    done
 
-  query=${query//_/\.\?}
-  echo $query".?"
+    query=${query//_/\.\?}".?"
+  fi
+
+  echo $query;
 
 }
 
 feature_hunt(){
+
   expression=$(feature_hunt_expression "$@")
 
-  echo "looking for $@ => $expression"
+  IS_REGEX=false
+  GREP_FLAG=""
+  if [ "$1" = "-e" ]; then
+    IS_REGEX=true
+    GREP_FLAG="-E"
+    echo "looking for REGEX $@ => $expression"
+    expression="\"$expression\"";
+  else
+    echo "looking for $@ => $expression"
+  fi
+
   type ag > /dev/null
   is_ag_installed=$?
   if [ $is_ag_installed -eq "0" ]; then
-    ag $expression
+    cmd="ag $expression"
   else
-    egrep -rni "$expression" * --exclude="tags"
+    cmd="grep -rni $GREP_FLAG "$expression" * --exclude="tags""
   fi;
+
+  echo Running: $cmd
+  eval $cmd
 
 }
 
