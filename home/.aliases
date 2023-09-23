@@ -37,7 +37,5 @@ alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/
 alias interdash="vim -S ~/.interview_dashboard.vim"
 alias checkContractSize="truffle run contract-size --checkMaxSize > stats/ContractSizes &&  grep \"2[0-9]\.\|1[7,8,9]\.\"  stats/ContractSizes"
 
-# Replaced by dvm
-# alias docker.stop_all=docker stop $(docker ps -a -q)
-# alias docker.rm_all=docker rm $(docker ps -a -q)
-# alias docker.nuke_all=docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
+# Temporal pipewire workaround
+alias redosound='killall pipewire && if [ "$(pactl list | grep bluetooth.codec | tail -1 | cut -d'=' -f2)" = "\"ldac_sq\"" ]; then pactl send-message /card/bluez_card.01_80_DE_00_0A_F7/bluez switch-codec '"ldac_sq"'; else echo "Not found";  type redosound; fi'

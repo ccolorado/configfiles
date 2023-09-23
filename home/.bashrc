@@ -26,7 +26,7 @@ rule () {
 set -o vi
 bind "\C-l":clear-screen
 
-export NOTES_HOME=~/Notes
+export NOTES_HOME=~/Notes/src
 
 # Colors and prompts
 PROMPT_USER_COLOR="\[\033[40;0;36m\]"
@@ -143,8 +143,9 @@ feature_hunt(){
 
 }
 
+# TODO check vnsearch works correctly
 vnsearch(){
-  cd ~/Notes/
+  cd $NOTES_HOME
   feature_hunt $@
   cd -
 }
