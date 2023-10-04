@@ -36,6 +36,3 @@ alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/ --debug"
 alias interdash="vim -S ~/.interview_dashboard.vim"
 alias checkContractSize="truffle run contract-size --checkMaxSize > stats/ContractSizes &&  grep \"2[0-9]\.\|1[7,8,9]\.\"  stats/ContractSizes"
-
-# Temporal pipewire workaround
-alias redosound='killall pipewire && if [ "$(pactl list | grep bluetooth.codec | tail -1 | cut -d'=' -f2)" = "\"ldac_sq\"" ]; then pactl send-message /card/bluez_card.01_80_DE_00_0A_F7/bluez switch-codec '"ldac_sq"'; else echo "Not found";  type redosound; fi'
