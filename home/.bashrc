@@ -18,9 +18,15 @@ vim()
     command vim "$@"
     stty "$STTYOPTS"
 }
-# Taken http://brettterpstra.com/2015/02/20/shell-trick-printf-rules/
-rule () {
-    printf -v _hr "%*s" $(tput cols) && echo ${_hr// /${1--}}
+
+# Taken from:
+# https://unix.stackexchange.com/questions/6463/find-searching-in-parent-directories-instead-of-subdirectories
+upfind () {
+  path=$(pwd)
+  while [[ "$path" != "" && ! -e "$path/$1" ]]; do
+    path=${path%/*}
+  done
+  echo "$path/"$1
 }
 
 set -o vi
