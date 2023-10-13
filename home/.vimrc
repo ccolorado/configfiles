@@ -279,9 +279,9 @@
     " }}}
 
     " Indentation {{{
-      " set expandtab " lines to spaces
-      " set tabstop=2 " spaces use as visual representation of a tab
-      " set shiftwidth=2 " amount of spaces used for each indentation step
+      set expandtab " lines to spaces
+      set tabstop=2 " spaces use as visual representation of a tab
+      set shiftwidth=2 " amount of spaces used for each indentation step
       set softtabstop=2 " number of spaces that a tab counts for when using the <Tab> key in insert mode.
     " }}}
 

@@ -24,7 +24,6 @@ alias grr="git restore --staged"
 alias gd="git diff"
 alias gcam="git commit --amend -v"
 alias gdiff="git diff"
-alias gres="git restore --staged"
 alias gad="git add"
 alias gl="git log"
 # TODO make gitstatusticker trigger on file changes
