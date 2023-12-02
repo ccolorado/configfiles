@@ -340,3 +340,9 @@ then
 fi
 
 mkdir -p ~/bin
+
+# TODO: conditional sourcing
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+. "$HOME/.cargo/env"
+export CARGO_MANIFEST_DIR="/usr/bin/corelib/"

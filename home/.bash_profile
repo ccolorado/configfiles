@@ -13,23 +13,19 @@ fi
 alias set_custom_system_type="echo $@ >  $CUSTOM_SYSTEM_TYPE_FILE"
 alias get_custom_system_type="cat $CUSTOM_SYSTEM_TYPE_FILE"
 
-# Taken from https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
+# Adds path to $PATH if $1 is an existing directoy
+# and isn't already added
 pathadd() {
-   # Adds path to $PATH if $1 is an existing directoy
-   # and isn't already added
-   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-       PATH="${PATH:+"$PATH:"}$1"
-   fi
+  # Taken from https://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="${PATH:+"$PATH:"}$1"
+  fi
 }
 
 # TODO: Time how long does loading the bashrc file takes
 # if [ ! $BASHRC_LOADED ]; then
 echo -e ".\c"
 # fi
-
-# if [ -f "$HOME/.cargo/env" ]; then
-#   source "$HOME/.cargo/env"
-# fi;
 
 type pyenv &> /dev/null
 is_pyenv_installed=$?
