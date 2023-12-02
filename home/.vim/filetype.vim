@@ -53,3 +53,5 @@ autocmd Filetype mediawiki setlocal spell textwidth=90
 autocmd Filetype markdown setlocal spell textwidth=90
 autocmd Filetype vim setlocal foldmethod=marker
 
+""" Reload gitgutter marks on save
+autocmd BufWritePost * GitGutter

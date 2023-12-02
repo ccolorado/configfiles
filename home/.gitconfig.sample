@@ -89,3 +89,5 @@
 # Conditional path gitconfig example
 # [includeIf "gitdir:~/root/of/the/directory/tree"]
 #   path = ~/path/to/.gitconfig
+[pull]
+	rebase = true
