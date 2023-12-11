@@ -17,6 +17,13 @@ snippet @p "Natspec param"
 @p$4
 endsnippet
 
+snippet tra "Natspec param"
+#[starknet::interface]
+trait I$1<TContractState, TNumber> {
+    fn $2(self: @TContractState, some: TNumber) -> felt252;
+}
+endsnippet
+
 snippet conta "Contract template"
 mod $1 {
     // Core Library Imports

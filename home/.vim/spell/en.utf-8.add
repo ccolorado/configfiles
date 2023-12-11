@@ -43,3 +43,6 @@ Starknet
 pedersen
 ECDSA
 ccolorado
+Enums
+Structs
+keccack
