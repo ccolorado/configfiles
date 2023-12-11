@@ -342,7 +342,19 @@ fi
 mkdir -p ~/bin
 
 # TODO: conditional sourcing
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.asdf/asdf.sh" ];
+then
+  . "$HOME/.asdf/asdf.sh"
+fi
+
+if [ -f "$HOME/.asdf/completions/asdf.bash" ];
+then
+  . "$HOME/.asdf/completions/asdf.bash"
+fi
+
+if [ -f "$HOME/.cargo/env" ];
+then
+  . "$HOME/.cargo/env"
+fi
+
 export CARGO_MANIFEST_DIR="/usr/bin/corelib/"
