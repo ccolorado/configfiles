@@ -15,6 +15,6 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
 -- Find in file contents
 vim.keymap.set('n', '<leader>ps', function()
-	builtin.grep_string({ search = vim.fn.input("Grep in files >") })
+	builtin.grep_string({ search = vim.fn.input("Grep >") })
 end)
 

@@ -4,7 +4,6 @@ local ui = require("harpoon.ui")
 vim.keymap.set("n", "<leader>a", mark.add_file)
 vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 
-
 -- Nice tool, but it probably is in conflict with my pannel navigation.
 -- TODO: find alternative + with ease of use for keymaping 
 

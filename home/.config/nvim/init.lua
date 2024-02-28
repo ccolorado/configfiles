@@ -1,2 +1,1 @@
 require("ccolorado")
-print("hello")
