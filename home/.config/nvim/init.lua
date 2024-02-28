@@ -1,0 +1,2 @@
+require("ccolorado")
+print("hello")
