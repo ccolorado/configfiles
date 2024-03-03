@@ -2,10 +2,10 @@ au BufNewFile,BufRead /var/www/conf/httpd/conf.d/* setf apache
 au BufRead,BufNewFile *.php.bkp set filetype=php
 
 """ Set comment string for blade templastes
-autocmd FileType blade  setlocal commentstring={{--%s--}}
+autocmd FileType blade setlocal commentstring={{--%s--}}
 
 """ Set automatic spellcheck for notes
-autocmd Filetype notes  setlocal spell
+autocmd Filetype notes setlocal spell
 
 """ Set NestedMarkdownFolds for markdown
 " autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
@@ -48,7 +48,7 @@ autocmd Filetype svn  setlocal spell textwidth=72
 autocmd Filetype gitcommit setlocal spell textwidth=72
 " autocmd Filetype gitcommit setlocal foldlevel=999
 autocmd FileType gitcommit set foldmethod=syntax
-autocmd Filetype gitcommit if getfsize(@%) > 1000000 | setlocal syntax=OFF | endif
+autocmd Filetype gitcommit if getfsize(@%) > 10000 | setlocal syntax=OFF | endif
 autocmd Filetype mediawiki setlocal spell textwidth=90
 autocmd Filetype markdown setlocal spell textwidth=90
 autocmd Filetype vim setlocal foldmethod=marker

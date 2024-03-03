@@ -314,6 +314,8 @@ if [ -f "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
 
+eval "$(zoxide init --cmd cd bash)";
+
 if [ -f "/usr/local/opt/nvm/nvm.sh" ]; then
   export NVM_DIR="/usr/local/opt/nvm"
 fi
