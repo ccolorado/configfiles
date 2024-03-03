@@ -20,7 +20,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Past highlighted selection in place without replacing void register with 
+-- Past highlighted selection in place without replacing void register with
 -- replaced text.
 -- TODO: evaluate how I feell about these mappings
 vim.keymap.set("x", "<leader>p", "\"_dP")

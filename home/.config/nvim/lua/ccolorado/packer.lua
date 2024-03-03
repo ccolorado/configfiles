@@ -21,6 +21,8 @@ return require('packer').startup(function(use)
 		end
 	})
 
+    -- TODO: try this theme {'folke/tokyonight.nvim'},
+
 	-- TODO: Try CSApprox to fix colors on yakuake https://www.vim.org/scripts/script.php?script_id=2390
 
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -28,34 +30,38 @@ return require('packer').startup(function(use)
 	use('theprimeagen/harpoon')
 	use('mbbill/undotree')
 
-	-- TODO: migrate configuration from ~/.vimrc
-
 	use('tpope/vim-fugitive')
   	use('tpope/vim-surround')
   	use('tpope/vim-commentary')
     use('airblade/vim-gitgutter')
 
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		requires = {
-			-- LSP Suppport
-			{'neovim/nvim-lspconfig'},
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        requires = {
 
-			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},
+            --- Uncomment the two plugins below if you want to manage the language servers from neovim
+            -- {'williamboman/mason.nvim'},
+            -- {'williamboman/mason-lspconfig.nvim'},
+
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-nvim-lsp'},
 			{'saadparwaiz1/cmp_luasnip'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-nvim-lua'},
 
-			-- Snippets
-			{'L3MON4D3/LuaSnip'},
-			{'rafamadriz/friendly-snippets'},
-		}
-	}
+			-- {'hrsh7th/cmp-buffer'},
+			-- {'hrsh7th/cmp-nvim-lua'},
+			-- {'hrsh7th/cmp-path'},
 
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+			-- {'rafamadriz/friendly-snippets'},
+        }
+    }
+
+    -- TODO: continue with https://lsp-zero.netlify.app/v3.x/getting-started.html#installing
+    -- TODO: continue with https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 end)
