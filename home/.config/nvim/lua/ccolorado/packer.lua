@@ -30,6 +30,7 @@ return require('packer').startup(function(use)
 	use('theprimeagen/harpoon')
 	use('mbbill/undotree')
 
+	use('scrooloose/nerdtree')
 	use('tpope/vim-fugitive')
   	use('tpope/vim-surround')
   	use('tpope/vim-commentary')
@@ -63,5 +64,6 @@ return require('packer').startup(function(use)
 
     -- TODO: continue with https://lsp-zero.netlify.app/v3.x/getting-started.html#installing
     -- TODO: continue with https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    -- TODO: fix identation
 
 end)
