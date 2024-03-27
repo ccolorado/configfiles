@@ -13,15 +13,16 @@ return require('packer').startup(function(use)
 		  requires = { {'nvim-lua/plenary.nvim'} }
         }
 
-	use ({
-		'rose-pine/neovim',
-		as = 'rose-pine',
-		config = function()
-			vim.cmd('colorscheme rose-pine')
-		end
-	})
+	-- use ({
+	-- 	'rose-pine/neovim',
+	-- 	as = 'rose-pine',
+	-- 	-- config = function()
+	-- 	-- 	vim.cmd('colorscheme rose-pine')
+	-- 	-- end
+	-- })
 
-    -- TODO: try this theme {'folke/tokyonight.nvim'},
+
+    use('folke/tokyonight.nvim')
 
 	-- TODO: Try CSApprox to fix colors on yakuake https://www.vim.org/scripts/script.php?script_id=2390
 
