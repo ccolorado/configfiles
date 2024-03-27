@@ -199,7 +199,7 @@ kernel_needs_reload(){
 }
 
 # Setting up PS1 value
-export EDITOR=vim
+export EDITOR=nvim
 export hostcolor=$(str2color $HOSTNAME)
 export HC='\[$hostcolor\]'
 export distro_flag=$( distroPromptFlag )
@@ -297,7 +297,8 @@ then
     source ~/.extra_bashrc
 fi
 
-export TERM=xterm-256color
+# export TERM=xterm-256color
+export TERM=konsole-256color
 unset SSH_ASKPASS
 
 # PATH Enhancements
