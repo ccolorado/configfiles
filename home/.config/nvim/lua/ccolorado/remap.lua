@@ -50,10 +50,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Makes current file executable
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-
-
-
-
-
-
-
+-- Makes current file executable
+-- Save file with ctrl+s (requires terminal configuration function nvim
+vim.keymap.set("i", "<C-s>", "<Esc><cmd>:update<CR>")
+vim.keymap.set("n", "<C-s>", "<Esc><cmd>:update<CR>")

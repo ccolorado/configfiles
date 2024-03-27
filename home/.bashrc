@@ -19,6 +19,14 @@ vim()
     stty "$STTYOPTS"
 }
 
+nvim()
+{
+    local STTYOPTS="$(stty --save)"
+    stty stop '' -ixoff
+    command nvim "$@"
+    stty "$STTYOPTS"
+}
+
 # Taken from:
 # https://unix.stackexchange.com/questions/6463/find-searching-in-parent-directories-instead-of-subdirectories
 upfind () {
