@@ -36,6 +36,9 @@ return require('packer').startup(function(use)
   	use('tpope/vim-surround')
   	use('tpope/vim-commentary')
     use('airblade/vim-gitgutter')
+    use('junegunn/vim-easy-align')
+    use('xolox/vim-notes')
+    use('xolox/vim-misc')
 
     use {
         'VonHeikemen/lsp-zero.nvim',
