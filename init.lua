@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -156,6 +156,13 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- [[ Custom setting options ]]
+-- TODO: Auto resize splits|panes, when resizing window
+vim.api.nvim_create_autocmd('VimResized', {
+  pattern = '*',
+  command = 'wincmd =',
+})
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -246,12 +253,19 @@ require('lazy').setup({
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
+      -- Example options @ https://youtu.be/K-FKqXj8BAQ?t=732
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
+        -- add = { text = '+' },
+        -- change = { text = '~' },
+        -- delete = { text = '_' },
+        -- topdelete = { text = '‾' },
+        -- changedelete = { text = '~' },
+        add = { text = '┃' },
+        change = { text = '┃' },
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
+        untracked = { text = '┆' },
       },
     },
   },
@@ -788,6 +802,13 @@ require('lazy').setup({
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = 'transparent',
+        floats = 'transparent',
+      },
+    },
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
@@ -893,6 +914,84 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
+  --
+  -- [[ CUSTOM PLUGINS ]]
+  -- WARN: Custom plugins START
+  -- TODO:
+  -- 1. check why `ss` works like configured on original vim
+  -- 2. seems already working out of the box?
+  --    {'tpope/vim-commentary'},
+  -- { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+  { 'scrooloose/nerdtree', vim.keymap.set('n', '<Leader>f', '<cmd>NERDTreeToggle<CR>'), NERDTreeQuitOnOpen = 1, NERDTreeShowHidden = 1 },
+
+  {
+    --disabling to test neogit
+    'tpope/vim-fugitive',
+    -- TODO: seems not be used
+    -- vim.keymap.set('n', '<leader>gs', vim.cmd.Git),
+    -- TODO: Test if necesary
+    -- vim's `set diffopt+=vertical` Forces` vertical diffs.
+  },
+
+  -- TODO: Test if fully replaced by `echasnovski/mini.nvim.mini.surround`
+  -- { 'tpope/vim-surround' },
+
+  -- {
+  --   'airblade/vim-gitgutter',
+  --   -- Force focus detection
+  --   gitgutter_terminal_reports_focus = 0,
+  --   -- Force diffs to run asynchronously.
+  --   gitgutter_async = 1,
+  --   -- Default value (Vim < 8.1.0614, Neovim < 0.4.0)
+  --   gitgutter_max_signs = 500,
+  --
+  --   -- hunk motions
+  --   vim.keymap.set('n', ']h', '<Plug>(GitGutterNextHunk)'),
+  --   vim.keymap.set('n', ']h', '<cmd>GitGutterNextHunk<CR>'),
+  --   vim.keymap.set('n', '[h', '<cmd>GitGutterPrevHunk<CR>'),
+  --
+  --   -- Customize keystrokes, hunk {add, remove, preview}
+  --   -- Stages changes under cursor
+  --   vim.keymap.set('n', '<Leader>ha', '<cmd>GitGutterStageHunk<CR>'),
+  --   -- De-stages changes under cursor
+  --   vim.keymap.set('n', '<Leader>hr', '<cmd>GitGutterUndoHunk<CR>'),
+  --   -- TODO: no idea XD Where did I get this ? (probably old vimrc
+  --   vim.keymap.set('n', '<Leader>hv', '<cmd>GitGutterPreviewHunk<CR>'),
+  --
+  --   -- -- With Neovim 0.3.2 or higher, you can turn line number highlighting on and off (defaults to off):
+  --   -- -- turn on with :GitGutterLineNrHighlightsEnable
+  --   -- -- turn off with :GitGutterLineNrHighlightsDisable
+  --   -- -- toggle with :GitGutterLineNrHighlightsToggle.
+  -- },
+  { 'junegunn/vim-easy-align' },
+  {
+    'xolox/vim-notes',
+    dependencies = { 'xolox/vim-misc' },
+    notes_directories = { '/home/ccolorado/Notes/src' },
+    notes_conceal_code = 0,
+    notes_smart_quotes = 0,
+  },
+  { 'tommcdo/vim-exchange' },
+  { 'AndrewRadev/linediff.vim' },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      'nvim-telescope/telescope.nvim', -- optional
+      -- 'ibhagwan/fzf-lua', -- optional
+    },
+    config = true,
+    vim.keymap.set('n', '<Leader>gB', '<cmd>G Blame<CR>'),
+    vim.keymap.set('n', '<Leader>gs', ':Neogit<CR>', { silent = true, noremap = true }),
+    -- vim.keymap.set('n', '<Leader>gB', '<cmd>G Blame<CR>'),
+    vim.keymap.set('n', '<Leader>gB', ':G blame<CR>'),
+  },
+  { 'sindrets/diffview.nvim' },
+
+  -- WARN: Custom plugins END
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
