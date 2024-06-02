@@ -4,9 +4,17 @@ alias rld="source ~/.bashrc"
 # Opens irc session on personal server
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
 
-alias gti="git"
+# vim config edit
+alias vev="vim ~/.vimrc"
+alias veon="vim ~/.config/old.nvim/init.lua"
+alias ven="vim ~/.config/nvim/init.lua"
+# alias vim="nvim"
+
+
 alias ls='ls --color=auto -p'
-alias ll='ls -alh'
+# alias ll='ls -alh'
+alias ll='exa -alh'
+alias llt='exa -alh --tree'
 alias cp='cp -iv'
 alias removespaces='for f in *\ *; do mv -- "$f" "${f// /_}"; done'
 alias grep="grep --color=auto"
@@ -16,8 +24,10 @@ alias tmux='tmux -2'
 alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias yt-audio="youtube-dl --extract-audio --audio-format mp3 "
 alias suspend='sudo systemctl suspend'
+alias allfileshere='find ./ -type f -exec mv {} ./ \;'
 
 # Git aliases
+alias gti="git"
 alias gpo="git push origin"
 alias gs="git status"
 alias grr="git restore --staged"
@@ -26,6 +36,7 @@ alias gcam="git commit --amend -v"
 alias gdiff="git diff"
 alias gad="git add"
 alias gl="git log"
+alias gtrimmerge="rm $(git ls-files . --exclude-standard --others | grep ".orig")" # Revmoes .orig files from untracked files (3way merge artifacts"
 # TODO make gitstatusticker trigger on file changes
 # alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
 
@@ -35,3 +46,4 @@ alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/ --debug"
 alias interdash="vim -S ~/.interview_dashboard.vim"
 alias checkContractSize="truffle run contract-size --checkMaxSize > stats/ContractSizes &&  grep \"2[0-9]\.\|1[7,8,9]\.\"  stats/ContractSizes"
+alias updateschecker="curl -s https://aur.archlinux.org/packages/screen-git | grep \"commented on\""

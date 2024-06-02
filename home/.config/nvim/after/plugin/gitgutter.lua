@@ -1,4 +1,3 @@
-
 -- Force focus detection
 vim.g.gitgutter_terminal_reports_focus = 0
 
@@ -6,7 +5,7 @@ vim.g.gitgutter_terminal_reports_focus = 0
 vim.g.gitgutter_async = 1
 
 -- default value (Vim < 8.1.0614, Neovim < 0.4.0)
-vim.g.gitgutter_max_signs = 500  
+vim.g.gitgutter_max_signs = 500
 
 -- hunk motions
 -- vim.keymap.set("n", "]h", "<Plug>(GitGutterNextHunk)")
@@ -25,3 +24,10 @@ vim.keymap.set("n", "<Leader>hv", "<cmd>GitGutterPreviewHunk<CR>")
 -- turn on with :GitGutterLineNrHighlightsEnable
 -- turn off with :GitGutterLineNrHighlightsDisable
 -- toggle with :GitGutterLineNrHighlightsToggle.
+
+-- TODO check if relevant from vimrc
+-- Force sign colors
+-- let g:gitgutter_override_sign_column_highlight = 0
+-- highlight GitGutterAdd ctermfg=green
+-- highlight GitGutterDelete ctermfg=red
+-- highlight GitGutterChange ctermfg=brown

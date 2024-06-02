@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
     use('folke/tokyonight.nvim')
 
 	-- TODO: Try CSApprox to fix colors on yakuake https://www.vim.org/scripts/script.php?script_id=2390
+    -- REMEMBER: Packer(Sync|Insall| )
 
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
@@ -39,6 +40,8 @@ return require('packer').startup(function(use)
     use('junegunn/vim-easy-align')
     use('xolox/vim-notes')
     use('xolox/vim-misc')
+    use('tommcdo/vim-exchange')
+    use('AndrewRadev/linediff.vim')
 
     use {
         'VonHeikemen/lsp-zero.nvim',

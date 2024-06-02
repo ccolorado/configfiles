@@ -60,3 +60,10 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Save file with ctrl+s (requires terminal configuration function nvim
 vim.keymap.set("i", "<C-s>", "<Esc><cmd>:update<CR>")
 vim.keymap.set("n", "<C-s>", "<Esc><cmd>:update<CR>")
+
+-- TODO: Trigger easy align
+-- Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+-- vim: vmap <Enter> <Plug>(EasyAlign)
+-- vim: Start interactive EasyAlign for a motion/text object (e.g. gaip)
+-- nmap ga <Plug>(EasyAlign)
+

@@ -305,10 +305,15 @@ unset SSH_ASKPASS
 
 #Adding ~/bin directory to PATH
 
+
 # Opens a note using vimnote with autocompeltion needs versining vimnote script
 complete -C vnoteGPT  vnoteGPT
 complete -C vimnote vimnote
 complete -C vimexec vimexec
+complete -C gp gp
+# TODO: Check's python autocomplte options
+# https://stackoverflow.com/questions/7821661/how-to-write-code-to-autocomplete-words-and-sentences
+# https://pypi.org/project/autocomplete/
 
 
 if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
@@ -369,3 +374,19 @@ then
 fi
 
 export CARGO_MANIFEST_DIR="/usr/bin/corelib/"
+
+export PATH="$PATH:/home/ccolorado/.foundry/bin"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+export PATH="$PATH:/home/ccolorado/.local/bin"
+
+# pnpm
+export PNPM_HOME="/home/ccolorado/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

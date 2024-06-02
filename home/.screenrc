@@ -17,6 +17,9 @@ autodetach on
 # don't display the copyright page
 startup_message off
 
+# Set to true color
+truecolor on
+
 # emulate .logout message
 pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
 
