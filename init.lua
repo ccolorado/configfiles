@@ -971,9 +971,11 @@ require('lazy').setup({
   {
     'xolox/vim-notes',
     dependencies = { 'xolox/vim-misc' },
-    notes_directories = { '/home/ccolorado/Notes/src' },
-    notes_conceal_code = 0,
-    notes_smart_quotes = 0,
+    config = function()
+      vim.g.notes_directories = { '~/Notes/src' }
+      vim.g.notes_conceal_code = 0
+      vim.g.notes_smart_quotes = 0
+    end,
   },
   { 'tommcdo/vim-exchange' },
   { 'AndrewRadev/linediff.vim' },
