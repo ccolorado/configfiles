@@ -256,21 +256,31 @@ require('lazy').setup({
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    -- TODO: check gitsigns at line ~945
     opts = {
       -- Example options @ https://youtu.be/K-FKqXj8BAQ?t=732
       signs = {
         -- add = { text = '+' },
-        -- change = { text = '~' },
-        -- delete = { text = '_' },
-        -- topdelete = { text = '‾' },
-        -- changedelete = { text = '~' },
         add = { text = '┃' },
+        -- change = { text = '~' },
         change = { text = '┃' },
+        changedelete = { text = '~' },
         delete = { text = '_' },
         topdelete = { text = '‾' },
-        changedelete = { text = '~' },
         untracked = { text = '┆' },
       },
+      current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        delay = 1000,
+        ignore_whitespace = false,
+        virt_text_priority = 100,
+      },
+
+      -- Note: nvim-gitsigns
+      -- Rest of the configuration @lua/kickstart/plugins/gitsigns.lua
+      -- ^ Includes text object {'o', 'x'}
     },
   },
 
@@ -818,7 +828,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -910,7 +920,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -941,7 +951,7 @@ require('lazy').setup({
   -- { 'tpope/vim-surround' },
 
   -- {
-  --   'airblade/vim-gitgutter',
+  --   'airblade/vim-gitgutter',     Testing gitsigns
   --   -- Force focus detection
   --   gitgutter_terminal_reports_focus = 0,
   --   -- Force diffs to run asynchronously.
@@ -959,7 +969,7 @@ require('lazy').setup({
   --   vim.keymap.set('n', '<Leader>ha', '<cmd>GitGutterStageHunk<CR>'),
   --   -- De-stages changes under cursor
   --   vim.keymap.set('n', '<Leader>hr', '<cmd>GitGutterUndoHunk<CR>'),
-  --   -- TODO: no idea XD Where did I get this ? (probably old vimrc
+  --   -- TODO: no idea XD Where did I get this. Probably old vimrc?
   --   vim.keymap.set('n', '<Leader>hv', '<cmd>GitGutterPreviewHunk<CR>'),
   --
   --   -- -- With Neovim 0.3.2 or higher, you can turn line number highlighting on and off (defaults to off):
@@ -996,6 +1006,46 @@ require('lazy').setup({
     vim.keymap.set('n', '<Leader>gB', ':G blame<CR>'),
   },
   { 'sindrets/diffview.nvim' },
+  {
+    'nvim-tree/nvim-tree.lua',
+    -- vim.g.loaded_netrw = 1,
+    -- vim.g.loaded_netrwPlugin = 1,
+    -- vim.opt.termguicolors = true,
+    -- empty setup using defaults
+    -- require('nvim-tree').setup(),
+    config = true,
+    vim.keymap.set('n', '<Leader>f', '<cmd>NvimTreeToggle<CR>'),
+    -- TODO: check why non versioned files are ignored
+  },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      require('catppuccin').setup {
+        flavour = 'mocha',
+        transparent_background = true,
+        default_integrations = true,
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          treesitter = true,
+          notify = false,
+          mini = {
+            enabled = true,
+            indentscope_color = '',
+          },
+        },
+        dim_inactive = {
+          enabled = false,
+          shade = 'dark',
+          percentage = 0.15,
+        },
+      }
+      vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
 
   -- WARN: Custom plugins END
 }, {
