@@ -4,10 +4,10 @@ alias rld="source ~/.bashrc"
 # Opens irc session on personal server
 alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then screen -dRR irc; else screen -U -S irc; fi"'
 
-# vim config edit
-alias vev="vim ~/.vimrc"
-alias veon="vim ~/.config/old.nvim/init.lua"
-alias ven="vim ~/.config/nvim/init.lua"
+# nvim config edit
+alias vev="nvim ~/.vimrc"
+alias veon="nvim ~/.config/old.nvim/init.lua"
+alias ven="nvim ~/.config/nvim/init.lua"
 # alias vim="nvim"
 
 
@@ -44,6 +44,6 @@ alias gtrimmerge="rm $(git ls-files . --exclude-standard --others | grep ".orig"
 # Compound ops
 alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/ --debug"
-alias interdash="vim -S ~/.interview_dashboard.vim"
+alias interdash="nvim -S ~/.interview_dashboard.vim"
 alias checkContractSize="truffle run contract-size --checkMaxSize > stats/ContractSizes &&  grep \"2[0-9]\.\|1[7,8,9]\.\"  stats/ContractSizes"
 alias updateschecker="curl -s https://aur.archlinux.org/packages/screen-git | grep \"commented on\""
