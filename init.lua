@@ -391,6 +391,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'noice')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -921,6 +922,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.noice', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -933,11 +935,7 @@ require('lazy').setup({
   -- WARN: Custom plugins START
   -- TODO:
   -- 1. check why `ss` works like configured on original vim
-  -- 2. seems already working out of the box?
-  --    {'tpope/vim-commentary'},
-  -- { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-  { 'scrooloose/nerdtree', vim.keymap.set('n', '<Leader>f', '<cmd>NERDTreeToggle<CR>'), NERDTreeQuitOnOpen = 1, NERDTreeShowHidden = 1 },
-
+  { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   {
     --disabling to test neogit
     'tpope/vim-fugitive',
@@ -947,36 +945,7 @@ require('lazy').setup({
     -- vim's `set diffopt+=vertical` Forces` vertical diffs.
   },
 
-  -- TODO: Test if fully replaced by `echasnovski/mini.nvim.mini.surround`
-  -- { 'tpope/vim-surround' },
-
-  -- {
-  --   'airblade/vim-gitgutter',     Testing gitsigns
-  --   -- Force focus detection
-  --   gitgutter_terminal_reports_focus = 0,
-  --   -- Force diffs to run asynchronously.
-  --   gitgutter_async = 1,
-  --   -- Default value (Vim < 8.1.0614, Neovim < 0.4.0)
-  --   gitgutter_max_signs = 500,
-  --
-  --   -- hunk motions
-  --   vim.keymap.set('n', ']h', '<Plug>(GitGutterNextHunk)'),
-  --   vim.keymap.set('n', ']h', '<cmd>GitGutterNextHunk<CR>'),
-  --   vim.keymap.set('n', '[h', '<cmd>GitGutterPrevHunk<CR>'),
-  --
-  --   -- Customize keystrokes, hunk {add, remove, preview}
-  --   -- Stages changes under cursor
-  --   vim.keymap.set('n', '<Leader>ha', '<cmd>GitGutterStageHunk<CR>'),
-  --   -- De-stages changes under cursor
-  --   vim.keymap.set('n', '<Leader>hr', '<cmd>GitGutterUndoHunk<CR>'),
-  --   -- TODO: no idea XD Where did I get this. Probably old vimrc?
-  --   vim.keymap.set('n', '<Leader>hv', '<cmd>GitGutterPreviewHunk<CR>'),
-  --
-  --   -- -- With Neovim 0.3.2 or higher, you can turn line number highlighting on and off (defaults to off):
-  --   -- -- turn on with :GitGutterLineNrHighlightsEnable
-  --   -- -- turn off with :GitGutterLineNrHighlightsDisable
-  --   -- -- toggle with :GitGutterLineNrHighlightsToggle.
-  -- },
+  { 'tpope/vim-obsession' },
   { 'junegunn/vim-easy-align' },
   {
     'xolox/vim-notes',
