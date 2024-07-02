@@ -36,7 +36,7 @@ alias gcam="git commit --amend -v"
 alias gdiff="git diff"
 alias gad="git add"
 alias gl="git log"
-alias gtrimmerge="rm $(git ls-files . --exclude-standard --others | grep ".orig")" # Revmoes .orig files from untracked files (3way merge artifacts"
+alias gtrimmerge="git ls-files . --exclude-standard --others | grep ".orig"| xargs rm -vi" # Revmoes .orig files from untracked files (3way merge artifacts"
 # TODO make gitstatusticker trigger on file changes
 # alias gitstatusticker="watch -n5 -t -d -c 'git -c color.ui=always status -s; printf \"\\n\n\"; date ; git ls-files -v | grep -E \"^[a-z]\";date '"
 
