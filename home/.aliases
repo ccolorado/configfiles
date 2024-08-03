@@ -47,3 +47,6 @@ alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/
 alias interdash="nvim -S ~/.interview_dashboard.vim"
 alias checkContractSize="truffle run contract-size --checkMaxSize > stats/ContractSizes &&  grep \"2[0-9]\.\|1[7,8,9]\.\"  stats/ContractSizes"
 alias updateschecker="curl -s https://aur.archlinux.org/packages/screen-git | grep \"commented on\""
+
+alias utwatch="find ./contracts/ ./test/ -type f \( -iname \*.sol -o -iname \*.ts -o -iname \*.js \) | entr -rc yarn test"
+alias invim='$(fzf --preview="bat --color=always {}")'

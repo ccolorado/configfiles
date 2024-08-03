@@ -373,15 +373,21 @@ then
   . "$HOME/.cargo/env"
 fi
 
+if command -v fzf &> /dev/null
+then
+  eval "$(fzf --bash)"
+fi
+
+# cargo
 export CARGO_MANIFEST_DIR="/usr/bin/corelib/"
 
+# foundry
 export PATH="$PATH:/home/ccolorado/.foundry/bin"
+export PATH="$PATH:/home/ccolorado/.local/bin"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
-
-export PATH="$PATH:/home/ccolorado/.local/bin"
 
 # pnpm
 export PNPM_HOME="/home/ccolorado/.local/share/pnpm"
