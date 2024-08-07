@@ -52,5 +52,5 @@ return {
       }
     end,
   },
-  -- vim.keymap.set("n", <Leader>nd, "<cmd>NoiceDismiss<CR>,  { desc = "Dismiss Noice Message"})
+  vim.keymap.set('n', '<Leader>nd', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Message' }),
 }
