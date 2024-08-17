@@ -920,12 +920,12 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-  require 'kickstart.plugins.noice', -- adds gitsigns recommend keymaps
 
   -- [[ CUSTOM Settings ]]
   require 'custom.mappings',
+  require 'custom.autocorrect',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -954,17 +954,7 @@ require('lazy').setup({
   { 'tommcdo/vim-exchange' },
   { 'AndrewRadev/linediff.vim' },
   { 'sindrets/diffview.nvim' },
-  {
-    'nvim-tree/nvim-tree.lua',
-    -- vim.g.loaded_netrw = 1,
-    -- vim.g.loaded_netrwPlugin = 1,
-    -- vim.opt.termguicolors = true,
-    -- empty setup using defaults
-    -- require('nvim-tree').setup(),
-    config = true,
-    vim.keymap.set('n', '<Leader>f', '<cmd>NvimTreeToggle<CR>'),
-    -- TODO: check why non versioned files are ignored
-  },
+  -- { 'nvim-tree/nvim-tree.lua', config = true, vim.keymap.set('n', '<Leader>f', '<cmd>NvimTreeToggle<CR>'), },
   {
     'catppuccin/nvim',
     name = 'catppuccin',

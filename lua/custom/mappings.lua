@@ -20,10 +20,15 @@ return {
 
   -- `:Git mergetool`
   -- `:Git difftool`
-  --
+  --  hunks @ init lua
   -- vim.keymap.set('n', '<Leader>gtm', ':G difftool<CR>'),
   -- vim.keymap.set('n', '<Leader>gtd', ':G mergetool<CR>'),
 
   -- -- neogit
   vim.keymap.set('n', '<Leader>gs', ':Neogit<CR>', { silent = true, noremap = true }),
+
+  -- vim.keymap.set('n', '<Leader>f', '<cmd>NvimTreeToggle<CR>'),
+  vim.keymap.set('n', '<Leader>f', '<cmd>Neotree toggle<CR>'),
+
+  -- vim.cmd("iabbrev <expr> ,d strftime('%Y-%m-%d')")
 }
