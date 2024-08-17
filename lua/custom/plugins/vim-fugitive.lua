@@ -1,5 +1,3 @@
--- lazy.nvim
-
 return {
   {
     --disabling to test neogit

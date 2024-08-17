@@ -15,6 +15,7 @@ return {
   -- using neogit's instead
   -- vim.keymap.set('n', '<Leader>gs', ':Git<CR>'),
 
+  vim.keymap.set('n', '<Leader>gm', ':GMove '), -- prompts GMove requries destinantion path
   vim.keymap.set('n', '<Leader>gc', ':G commit<CR>'), -- commits staged only
 
   -- `:Git mergetool`
