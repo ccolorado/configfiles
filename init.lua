@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -924,27 +924,22 @@ require('lazy').setup({
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.noice', -- adds gitsigns recommend keymaps
 
+  -- [[ CUSTOM Settings ]]
+  require 'custom.mappings',
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
+
   --
   -- [[ CUSTOM PLUGINS ]]
   -- WARN: Custom plugins START
   -- TODO:
   -- 1. check why `ss` works like configured on original vim
   { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-  {
-    --disabling to test neogit
-    'tpope/vim-fugitive',
-    -- TODO: seems not be used
-    -- vim.keymap.set('n', '<leader>gs', vim.cmd.Git),
-    -- TODO: Test if necesary
-    -- vim's `set diffopt+=vertical` Forces` vertical diffs.
-  },
-
   { 'tpope/vim-obsession' },
   { 'junegunn/vim-easy-align' },
   {
@@ -958,22 +953,6 @@ require('lazy').setup({
   },
   { 'tommcdo/vim-exchange' },
   { 'AndrewRadev/linediff.vim' },
-  {
-    'NeogitOrg/neogit',
-    dependencies = {
-      'nvim-lua/plenary.nvim', -- required
-      'sindrets/diffview.nvim', -- optional - Diff integration
-
-      -- Only one of these is needed, not both.
-      'nvim-telescope/telescope.nvim', -- optional
-      -- 'ibhagwan/fzf-lua', -- optional
-    },
-    config = true,
-    vim.keymap.set('n', '<Leader>gB', '<cmd>G Blame<CR>'),
-    vim.keymap.set('n', '<Leader>gs', ':Neogit<CR>', { silent = true, noremap = true }),
-    -- vim.keymap.set('n', '<Leader>gB', '<cmd>G Blame<CR>'),
-    vim.keymap.set('n', '<Leader>gB', ':G blame<CR>'),
-  },
   { 'sindrets/diffview.nvim' },
   {
     'nvim-tree/nvim-tree.lua',
