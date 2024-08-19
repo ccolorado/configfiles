@@ -25,7 +25,7 @@ return {
   -- vim.keymap.set('n', '<Leader>gtd', ':G mergetool<CR>'),
 
   -- -- neogit
-  vim.keymap.set('n', '<Leader>gs', ':Neogit<CR>', { silent = true, noremap = true }),
+  vim.keymap.set('n', '<Leader>gs', ':Neogit<CR>', { silent = true, noremap = true }), -- floating maybe ?
 
   -- vim.keymap.set('n', '<Leader>f', '<cmd>NvimTreeToggle<CR>'),
   vim.keymap.set('n', '<Leader>f', '<cmd>Neotree toggle<CR>'),

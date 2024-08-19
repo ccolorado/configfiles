@@ -715,12 +715,12 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -807,6 +807,24 @@ require('lazy').setup({
           { name = 'luasnip' },
           { name = 'path' },
         },
+
+        luasnip.add_snippets('javascript', {
+          luasnip.snippet('log', {
+            luasnip.text_node { 'console.log(' },
+            luasnip.function_node(function(_, snip)
+              return tostring(snip.env.TM_LINE_NUMBER)
+            end, {}),
+            luasnip.text_node { ', "' },
+            luasnip.dynamic_node(2, function(args)
+              return luasnip.snippet_node(nil, {
+                luasnip.text_node(args[1][1] or 'var_name'),
+              })
+            end, { 1 }),
+            luasnip.text_node { '", ' },
+            luasnip.insert_node(1, 'var'),
+            luasnip.text_node { ');' },
+          }),
+        }),
       }
     end,
   },
