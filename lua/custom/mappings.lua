@@ -2,6 +2,12 @@ return {
   -- save as sudo
   vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %', { noremap = true, silent = true }),
 
+  -- Terminals
+  -- :ToggleTerm direction=float
+  vim.keymap.set('n', '<Leader>ttf', ':ToggleTerm direction=float<CR>'),
+  vim.keymap.set('n', '<Leader>ttv', ':ToggleTerm direction=vertical<CR>'),
+  vim.keymap.set('n', '<Leader>tth', ':ToggleTerm direction=horizontal<CR>'),
+
   -- Git
   -- TODO: search helpers for
   --  * change branch, * pull , * push
