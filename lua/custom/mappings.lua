@@ -8,6 +8,7 @@ return {
   vim.keymap.set('n', '<Leader>ttv', ':ToggleTerm direction=vertical<CR>'),
   vim.keymap.set('n', '<Leader>tth', ':ToggleTerm direction=horizontal<CR>'),
 
+  vim.keymap.set('n', '-', ':Oil<CR>', { desc = 'Open parent directory' }),
   -- Git
   -- TODO: search helpers for
   --  * change branch, * pull , * push
