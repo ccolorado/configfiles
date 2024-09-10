@@ -1,41 +1,38 @@
 return {
-
+  -- string typos
   vim.cmd [[
-    inoreabbrev teh the
-    inoreabbrev cleint client
-    inoreabbrev cleints clients
-    inoreabbrev ccolroado ccolorado
+    inoreabbrev affilaite  affiliate
+    inoreabbrev affilaites affiliates
+    inoreabbrev cairo Cairo
     inoreabbrev colroado colorado
-    inoreabbrev affilaite  affiliate
-    inoreabbrev affilaites affiliates
-    inoreabbrev affilaite  affiliate
-    inoreabbrev affilaites affiliates
-    inoreabbrev resutl result
-    inoreabbrev unit256 uint256
+    inoreabbrev correclty correctly
+    inoreabbrev dont don\'t
+    inoreabbrev fulfiled fulfilled
+    inoreabbrev fullfiled fulfilled
+    inoreabbrev fullfilled fulfilled
     inoreabbrev lenght length
     inoreabbrev lenghts lengths
-    inoreabbrev fullfilled fulfilled
-    inoreabbrev fullfiled fulfilled
-    inoreabbrev fulfiled fulfilled
-    inoreabbrev requrie require
     inoreabbrev reciept receipt
-    inoreabbrev cairo Cairo
+    inoreabbrev requrie require
+    inoreabbrev resutl result
     inoreabbrev rigth right
-    inoreabbrev correclty correctly
     inoreabbrev starknet StarkNet
-    inoreabbrev dont don't
-    cnoreabbrev Vsp vsp
-    cnoreabbrev Sp sp
+    inoreabbrev unit256 uint256
+    ]],
+
+  -- command typos/abbreviations
+  vim.cmd [[
     cnoreabbrev E e
     cnoreabbrev Q q
     cnoreabbrev QA qa
     cnoreabbrev Qa qa
     cnoreabbrev Qall qall
+    cnoreabbrev Sp sp
+    cnoreabbrev Vsp vsp
     cnoreabbrev W w
     cnoreabbrev WA wa
     cnoreabbrev WQ wq
     cnoreabbrev Wa wa
     cnoreabbrev Wq wq
-
-  ]]
+    ]],
 }

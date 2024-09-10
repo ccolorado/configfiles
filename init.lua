@@ -766,9 +766,9 @@ require('lazy').setup({
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          --['<CR>'] = cmp.mapping.confirm { select = true },
-          --['<Tab>'] = cmp.mapping.select_next_item(),
-          --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
@@ -821,7 +821,41 @@ require('lazy').setup({
               })
             end, { 1 }),
             luasnip.text_node { '", ' },
-            luasnip.insert_node(1, 'var'),
+            luasnip.insert_node(1, ''),
+            luasnip.text_node { ');' },
+          }),
+        }),
+        luasnip.add_snippets('typescript', {
+          luasnip.snippet('log', {
+            luasnip.text_node { 'console.log(' },
+            luasnip.function_node(function(_, snip)
+              return tostring(snip.env.TM_LINE_NUMBER)
+            end, {}),
+            luasnip.text_node { ', "' },
+            luasnip.dynamic_node(2, function(args)
+              return luasnip.snippet_node(nil, {
+                luasnip.text_node(args[1][1] or 'var_name'),
+              })
+            end, { 1 }),
+            luasnip.text_node { '", ' },
+            luasnip.insert_node(1, ''),
+            luasnip.text_node { ');' },
+          }),
+        }),
+        luasnip.add_snippets('solidity', {
+          luasnip.snippet('log', {
+            luasnip.text_node { 'console.log(' },
+            luasnip.function_node(function(_, snip)
+              return tostring(snip.env.TM_LINE_NUMBER)
+            end, {}),
+            luasnip.text_node { ', "' },
+            luasnip.dynamic_node(2, function(args)
+              return luasnip.snippet_node(nil, {
+                luasnip.text_node(args[1][1] or 'var_name'),
+              })
+            end, { 1 }),
+            luasnip.text_node { '", ' },
+            luasnip.insert_node(1, ''),
             luasnip.text_node { ');' },
           }),
         }),
@@ -943,7 +977,6 @@ require('lazy').setup({
 
   -- [[ CUSTOM Settings ]]
   require 'custom.mappings',
-  require 'custom.autocorrect',
   require 'custom.colorschemes.init',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -972,6 +1005,7 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+  require 'custom.autocorrect',
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
