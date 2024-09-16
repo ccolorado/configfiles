@@ -1006,6 +1006,7 @@ require('lazy').setup({
     },
   },
   require 'custom.autocorrect',
+  require 'custom.preferences',
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
