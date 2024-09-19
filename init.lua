@@ -719,6 +719,11 @@ require('lazy').setup({
             'rafamadriz/friendly-snippets',
             config = function()
               require('luasnip.loaders.from_vscode').lazy_load()
+              require('luasnip.loaders.from_lua').load {
+                paths = {
+                  '~/.config/nvim/lua/custom/snippets',
+                },
+              }
             end,
           },
         },
@@ -807,58 +812,6 @@ require('lazy').setup({
           { name = 'luasnip' },
           { name = 'path' },
         },
-
-        luasnip.add_snippets('javascript', {
-          luasnip.snippet('log', {
-            luasnip.text_node { 'console.log(' },
-            luasnip.function_node(function(_, snip)
-              return tostring(snip.env.TM_LINE_NUMBER)
-            end, {}),
-            luasnip.text_node { ', "' },
-            luasnip.dynamic_node(2, function(args)
-              return luasnip.snippet_node(nil, {
-                luasnip.text_node(args[1][1] or 'var_name'),
-              })
-            end, { 1 }),
-            luasnip.text_node { '", ' },
-            luasnip.insert_node(1, ''),
-            luasnip.text_node { ');' },
-          }),
-        }),
-        luasnip.add_snippets('typescript', {
-          luasnip.snippet('log', {
-            luasnip.text_node { 'console.log(' },
-            luasnip.function_node(function(_, snip)
-              return tostring(snip.env.TM_LINE_NUMBER)
-            end, {}),
-            luasnip.text_node { ', "' },
-            luasnip.dynamic_node(2, function(args)
-              return luasnip.snippet_node(nil, {
-                luasnip.text_node(args[1][1] or 'var_name'),
-              })
-            end, { 1 }),
-            luasnip.text_node { '", ' },
-            luasnip.insert_node(1, ''),
-            luasnip.text_node { ');' },
-          }),
-        }),
-        luasnip.add_snippets('solidity', {
-          luasnip.snippet('log', {
-            luasnip.text_node { 'console.log(' },
-            luasnip.function_node(function(_, snip)
-              return tostring(snip.env.TM_LINE_NUMBER)
-            end, {}),
-            luasnip.text_node { ', "' },
-            luasnip.dynamic_node(2, function(args)
-              return luasnip.snippet_node(nil, {
-                luasnip.text_node(args[1][1] or 'var_name'),
-              })
-            end, { 1 }),
-            luasnip.text_node { '", ' },
-            luasnip.insert_node(1, ''),
-            luasnip.text_node { ');' },
-          }),
-        }),
       }
     end,
   },
@@ -1006,7 +959,7 @@ require('lazy').setup({
     },
   },
   require 'custom.autocorrect',
-  require 'custom.preferences',
+  require 'custom.autocorrect',
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
