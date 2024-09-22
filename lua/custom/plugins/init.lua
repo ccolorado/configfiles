@@ -10,4 +10,5 @@ return {
   { 'AndrewRadev/linediff.vim' },
   { 'sindrets/diffview.nvim' },
   { 'akinsho/toggleterm.nvim', config = true },
+  { 'lambdalisue/vim-suda' },
 }
