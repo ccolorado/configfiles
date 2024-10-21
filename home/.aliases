@@ -8,6 +8,7 @@ alias irc_screen='ssh -t chalupa "screen -ls | grep irc; if [ \$? -eq 0 ]; then 
 alias vev="nvim ~/.vimrc"
 alias veon="nvim ~/.config/old.nvim/init.lua"
 alias ven="nvim ~/.config/nvim/init.lua"
+alias nvconf="cd ~/.config/nvim/; nvim init.lua"
 # alias vim="nvim"
 
 
@@ -25,6 +26,8 @@ alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias yt-audio="youtube-dl --extract-audio --audio-format mp3 "
 alias suspend='sudo systemctl suspend'
 alias allfileshere='find ./ -type f -exec mv {} ./ \;'
+alias smpadd="smplayer -add-to-playlist "
+alias cleanup="find ./ -type f -exec mv {} ./ \;;rm *.srt *.txt *.exe *jpg;brn"
 
 # Git aliases
 alias gti="git"
@@ -32,7 +35,7 @@ alias gpo="git push origin"
 alias gs="git status"
 alias grr="git restore --staged"
 alias gd="git diff"
-alias gcam="git commit --amend -v"
+alias gcam="git commit --amend"
 alias gdiff="git diff"
 alias gad="git add"
 alias gl="git log"
@@ -46,7 +49,12 @@ alias webcam_disble_autofocues="uvcdynctrl -v -d video0 --set='Focus, Auto' 0"
 alias fastTest="tcompile && clear && truffle test --migrations_directory ./test/ --debug"
 alias interdash="nvim -S ~/.interview_dashboard.vim"
 alias checkContractSize="truffle run contract-size --checkMaxSize > stats/ContractSizes &&  grep \"2[0-9]\.\|1[7,8,9]\.\"  stats/ContractSizes"
-alias updateschecker="curl -s https://aur.archlinux.org/packages/screen-git | grep \"commented on\""
 
-alias utwatch="find ./contracts/ ./test/ -type f \( -iname \*.sol -o -iname \*.ts -o -iname \*.js \) | entr -rc yarn test"
+alias utwatch="find ./contracts/ ./test/ -type f \( -iname \*.sol -o -iname \*.ts -o -iname \*.js \) | entr -rc npm run test"
 alias invim='$(fzf --preview="bat --color=always {}")'
+
+
+# Crotches
+nv=nvim
+vim="echo use nvim"
+hh="npx hardhat"
