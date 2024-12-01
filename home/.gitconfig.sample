@@ -7,12 +7,17 @@
   conflictstyle = diff3
   prompt = false
 [core]
-  editor = vim
+  editor = nvim
   pager = diff-so-fancy | less --tabs=4 -RFX
   ; pager = delta
 [diff]
   tool = vimdiff
   submodule = log
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[difftool]
+  prompt = true
 [push]
   default = simple
 [pull]
@@ -36,6 +41,7 @@
   rh = reset HEAD
   ci = commit -v
   co = checkout
+  fa = fetch all
   cl = clone
   po = push origin
   st = status -s
@@ -57,6 +63,7 @@
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
+
 [color "diff"]
   meta = 11
   frag = magenta bold
@@ -67,6 +74,7 @@
 
 [interactive]
       diffFilter = delta --color-only --features=interactive
+      # diffFilter = diff-so-fancy --patch
 
 [delta]
       features = decorations
@@ -83,11 +91,14 @@
   hunk-header-line-number-style = "#067a00"
   hunk-header-style = file line-number syntax
 
-
-
+[rerere]
+  enabled=true
 
 # Conditional path gitconfig example
 # [includeIf "gitdir:~/root/of/the/directory/tree"]
 #   path = ~/path/to/.gitconfig
+
 [pull]
 	rebase = true
+[init]
+  defaultBranch = main
