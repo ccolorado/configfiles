@@ -73,8 +73,8 @@
   whitespace = red reverse
 
 [interactive]
-      diffFilter = delta --color-only --features=interactive
-      # diffFilter = diff-so-fancy --patch
+  #diffFilter = delta --color-only --features=interactive
+  diffFilter = diff-so-fancy --patch
 
 [delta]
       features = decorations
@@ -100,5 +100,6 @@
 
 [pull]
 	rebase = true
+
 [init]
-	defaultBranch = main
+  defaultBranch = main
