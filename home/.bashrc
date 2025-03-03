@@ -358,14 +358,9 @@ fi
 mkdir -p ~/bin
 
 # TODO: conditional sourcing
-if [ -f "$HOME/.asdf/asdf.sh" ];
+if [ -d "$HOME/.asdf" ];
 then
-  . "$HOME/.asdf/asdf.sh"
-fi
-
-if [ -f "$HOME/.asdf/completions/asdf.bash" ];
-then
-  . "$HOME/.asdf/completions/asdf.bash"
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fi
 
 if [ -f "$HOME/.cargo/env" ];
@@ -396,3 +391,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export PATH="$PATH:/home/ccolorado/.local/bin"
+
+export OLDBRANCH="backup-SR-2170-transplant-to-feat-router-framework"
