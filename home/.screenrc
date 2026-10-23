@@ -164,6 +164,6 @@ defscrollback 1000
 
 shelltitle "$ |:"
 
-hardstatus alwayslastline
-hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+hardstatus alwaysfirstline
+hardstatus string '%{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%{= kG}%-=[ %{G}%H %{g}][%{B} %d/%m %{W}%c %{g}]'
 
